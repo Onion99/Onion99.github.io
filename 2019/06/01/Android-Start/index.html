@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Android重新起步活动意义基本用法创建配套布局注册ToastMenu销毁Inent显式隐式传递数据返回数据生命周期返回栈状态回收启动模式UI控件TextViewButtonEditTextImageViewProgressBarAlertDialogProgressDialog布局线性布局相对布局帧布局百分百布局自定义控件ListViewRecyclerView碎片影响使用方式生命周期动态加载">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Start">
+<meta property="og:url" content="http://yoursite.com/2019/06/01/Android-Start/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="Android重新起步活动意义基本用法创建配套布局注册ToastMenu销毁Inent显式隐式传递数据返回数据生命周期返回栈状态回收启动模式UI控件TextViewButtonEditTextImageViewProgressBarAlertDialogProgressDialog布局线性布局相对布局帧布局百分百布局自定义控件ListViewRecyclerView碎片影响使用方式生命周期动态加载">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-01T13:45:01.202Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Start">
+<meta name="twitter:description" content="Android重新起步活动意义基本用法创建配套布局注册ToastMenu销毁Inent显式隐式传递数据返回数据生命周期返回栈状态回收启动模式UI控件TextViewButtonEditTextImageViewProgressBarAlertDialogProgressDialog布局线性布局相对布局帧布局百分百布局自定义控件ListViewRecyclerView碎片影响使用方式生命周期动态加载">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/01/Android-Start/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android Start | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/Android-Start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Start
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-01 21:44:00 / Modified: 21:45:01" itemprop="dateCreated datePublished" datetime="2019-06-01T21:44:00+08:00">2019-06-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android-NoteBook/" itemprop="url" rel="index"><span itemprop="name">Android NoteBook</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Android重新起步"><a href="#Android重新起步" class="headerlink" title="Android重新起步"></a>Android重新起步</h1><h2 id="活动"><a href="#活动" class="headerlink" title="活动"></a>活动</h2><h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h3 id="配套布局"><a href="#配套布局" class="headerlink" title="配套布局"></a>配套布局</h3><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><h3 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h3><h3 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h3><h3 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h3><h3 id="Inent"><a href="#Inent" class="headerlink" title="Inent"></a>Inent</h3><h4 id="显式"><a href="#显式" class="headerlink" title="显式"></a>显式</h4><h4 id="隐式"><a href="#隐式" class="headerlink" title="隐式"></a>隐式</h4><h3 id="传递数据"><a href="#传递数据" class="headerlink" title="传递数据"></a>传递数据</h3><h3 id="返回数据"><a href="#返回数据" class="headerlink" title="返回数据"></a>返回数据</h3><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="返回栈"><a href="#返回栈" class="headerlink" title="返回栈"></a>返回栈</h3><h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><h3 id="回收"><a href="#回收" class="headerlink" title="回收"></a>回收</h3><h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><h3 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h3><h4 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h4><h4 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h4><h4 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h4><h4 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h4><h4 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h4><h4 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h4><h4 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h4><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><h4 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h4><h4 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h4><h4 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h4><h4 id="百分百布局"><a href="#百分百布局" class="headerlink" title="百分百布局"></a>百分百布局</h4><h3 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h3><h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><h3 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h3><h2 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h2><h3 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h3><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><h3 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="动态加载布局"><a href="#动态加载布局" class="headerlink" title="动态加载布局"></a>动态加载布局</h3><h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><h3 id="接受"><a href="#接受" class="headerlink" title="接受"></a>接受</h3><h3 id="发送"><a href="#发送" class="headerlink" title="发送"></a>发送</h3><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><h3 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h3><h3 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h3><h3 id="LitePal"><a href="#LitePal" class="headerlink" title="LitePal"></a>LitePal</h3><h2 id="程序间数据共享"><a href="#程序间数据共享" class="headerlink" title="程序间数据共享"></a>程序间数据共享</h2><h3 id="意义-1"><a href="#意义-1" class="headerlink" title="意义"></a>意义</h3><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h3 id="内容提供器"><a href="#内容提供器" class="headerlink" title="内容提供器"></a>内容提供器</h3><h2 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h2><h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><h3 id="摄像头和相册"><a href="#摄像头和相册" class="headerlink" title="摄像头和相册"></a>摄像头和相册</h3><h3 id="播放音视"><a href="#播放音视" class="headerlink" title="播放音视"></a>播放音视</h3><h2 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><h3 id="Http协议"><a href="#Http协议" class="headerlink" title="Http协议"></a>Http协议</h3><h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><h3 id="意义-2"><a href="#意义-2" class="headerlink" title="意义"></a>意义</h3><p>实现程序后台运行</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="线程实现方法"><a href="#线程实现方法" class="headerlink" title="线程实现方法"></a>线程实现方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/*新建一个类继承Thread</span><br><span class="line">*/</span><br><span class="line">class Mythread extends Thread&#123;</span><br><span class="line">   @override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   //logic</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> //启动</span><br><span class="line"> new MyThread().start();</span><br><span class="line">/* 实现接口方式定义一个类</span><br><span class="line">*/</span><br><span class="line">class MyThread implements Runable&#123;</span><br><span class="line">   @override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> //启动</span><br><span class="line"> MyThread myThread = new MyThread;</span><br><span class="line"> new Thread(myThread).start();</span><br><span class="line">/* 匿名类方式</span><br><span class="line">*/</span><br><span class="line"> new Thread(new Runnable()&#123;</span><br><span class="line">   @Override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   //logic</span><br><span class="line"> &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<h4 id="异步消息处理"><a href="#异步消息处理" class="headerlink" title="异步消息处理"></a>异步消息处理</h4><blockquote>
+<p>安卓不允许子线程进行UI操作</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UPDATE_TEXT =<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">private</span> TextView text;</span><br><span class="line">   <span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler()&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span></span>&#123;</span><br><span class="line">           <span class="keyword">switch</span>(msg.what)&#123;</span><br><span class="line">           <span class="keyword">case</span> UPDATE_TEXT: <span class="comment">//UI logic </span></span><br><span class="line">           text.setText(<span class="string">"yet"</span>);<span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ...</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">      <span class="keyword">switch</span>(v.getId())&#123;</span><br><span class="line">       <span class="keyword">case</span> R.id.change_text:</span><br><span class="line">       <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">          Message message = <span class="keyword">new</span> Message();</span><br><span class="line">          message.what = UPDATE_TEXT;</span><br><span class="line">          handler.sendMessage(message);<span class="comment">//发送</span></span><br><span class="line">          &#125;</span><br><span class="line">         &#125;).start();</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">default</span> : <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="异步消息处理机制"><a href="#异步消息处理机制" class="headerlink" title="异步消息处理机制"></a>异步消息处理机制</h4><h3 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h3><h3 id="生命周期-2"><a href="#生命周期-2" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><h2 id="Material-Design"><a href="#Material-Design" class="headerlink" title="Material Design"></a>Material Design</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><h3 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h3><h3 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h3><h3 id="悬浮按钮与交互提示"><a href="#悬浮按钮与交互提示" class="headerlink" title="悬浮按钮与交互提示"></a>悬浮按钮与交互提示</h3><h3 id="卡片式布局"><a href="#卡片式布局" class="headerlink" title="卡片式布局"></a>卡片式布局</h3><h3 id="下拉刷新"><a href="#下拉刷新" class="headerlink" title="下拉刷新"></a>下拉刷新</h3><h3 id="可折叠式标题栏"><a href="#可折叠式标题栏" class="headerlink" title="可折叠式标题栏"></a>可折叠式标题栏</h3><h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="全局Context"><a href="#全局Context" class="headerlink" title="全局Context"></a>全局Context</h3><h3 id="Intent传递对象"><a href="#Intent传递对象" class="headerlink" title="Intent传递对象"></a>Intent传递对象</h3><h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><blockquote>
+<p>用于将一个对象转换成可存储或可传输的状态,即序列化</p>
+</blockquote>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><p>让相应的类实现Serializale</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">// get and set '''''</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"> <span class="comment">//FirstA传递数据</span></span><br><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">person.setName(<span class="string">"Dong"</span>);</span><br><span class="line">person.setAge(<span class="number">20</span>);</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstA,SecondB);</span><br><span class="line">intent.putExtra(<span class="string">"person"</span>,person);<span class="comment">//("Key",Value)</span></span><br><span class="line">startAactivity(intent);</span><br><span class="line"> <span class="comment">//SecondB 接受数据</span></span><br><span class="line">Person person = (Person) \getIntent().getSerializableExtra(<span class="string">"person"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Parcclablc"><a href="#Parcclablc" class="headerlink" title="Parcclablc"></a>Parcclablc</h4><blockquote>
+<p> 将对象进行分解,以支持传输</p>
+</blockquote>
+<h5 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h5><p>实现parcelable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//实现</span><br><span class="line">public class Person implements Parcelable&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    //重写方法</span><br><span class="line">    @override</span><br><span class="line">    public int describeContents()&#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">    @override</span><br><span class="line">    public void writeToParcel(Parcel dest,int flag)&#123;</span><br><span class="line">    dest.writeString(name);//按顺序写入</span><br><span class="line">    dest.writeInt(age);</span><br><span class="line">  &#125;</span><br><span class="line">    //创建Parcel.Creator接口的实现,指定泛型</span><br><span class="line">    public static final Parcel.Creator&lt;Person&gt; CREATOR</span><br><span class="line">    =new Parcleable.Creator&lt;Person&gt;()&#123;</span><br><span class="line">    @override</span><br><span class="line">    public Person createFromParcel(Parcel source)&#123;</span><br><span class="line">     Person person = new Person ();</span><br><span class="line">     person.name = source.readString();//按顺序读取</span><br><span class="line">     person,age = source.readInt();</span><br><span class="line">     return person; </span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//使用</span><br><span class="line"> //FirstA</span><br><span class="line">Person person = new Person();</span><br><span class="line">person.setName(&quot;Dong&quot;);</span><br><span class="line">person.setAge(20);</span><br><span class="line">Intent intent = new Intent(FirstA,SecondB);</span><br><span class="line">intent.putExtra(&quot;person&quot;,person)</span><br><span class="line">startAactivity(intent);</span><br><span class="line"> //SecondB</span><br><span class="line">Person person = (Person) getIntent().getParcelableExtra(&quot;person&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="定制日志"><a href="#定制日志" class="headerlink" title="定制日志"></a>定制日志</h3><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><h4 id="ALarm机制"><a href="#ALarm机制" class="headerlink" title="ALarm机制"></a>ALarm机制</h4><h4 id="Doze模式"><a href="#Doze模式" class="headerlink" title="Doze模式"></a>Doze模式</h4><h3 id="多窗口编程"><a href="#多窗口编程" class="headerlink" title="多窗口编程"></a>多窗口编程</h3><h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p> 是一种匿名方法，没有方法名，因此代码会更简洁易读</p>
+<h4 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h4> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//类，对象</span></span><br><span class="line"> FunctionName = (参数)-&gt;｛</span><br><span class="line"> <span class="comment">//具体实现</span></span><br><span class="line">｝</span><br><span class="line"><span class="comment">// 线程</span></span><br><span class="line"><span class="keyword">new</span> Thread ( ()-&gt;&#123;</span><br><span class="line">      <span class="comment">//具体逻辑</span></span><br><span class="line">&#125; ).start();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/31/hello-world/" rel="next" title="Java的编程逻辑Outline">
+                <i class="fa fa-chevron-left"></i> Java的编程逻辑Outline
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android重新起步"><span class="nav-number">1.</span> <span class="nav-text">Android重新起步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#活动"><span class="nav-number">1.1.</span> <span class="nav-text">活动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.1.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">1.1.2.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">1.1.3.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配套布局"><span class="nav-number">1.1.4.</span> <span class="nav-text">配套布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册"><span class="nav-number">1.1.5.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Toast"><span class="nav-number">1.1.6.</span> <span class="nav-text">Toast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Menu"><span class="nav-number">1.1.7.</span> <span class="nav-text">Menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁"><span class="nav-number">1.1.8.</span> <span class="nav-text">销毁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inent"><span class="nav-number">1.1.9.</span> <span class="nav-text">Inent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">显式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式"><span class="nav-number">1.1.9.2.</span> <span class="nav-text">隐式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递数据"><span class="nav-number">1.1.10.</span> <span class="nav-text">传递数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回数据"><span class="nav-number">1.1.11.</span> <span class="nav-text">返回数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">1.1.12.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回栈"><span class="nav-number">1.1.13.</span> <span class="nav-text">返回栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态"><span class="nav-number">1.1.14.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回收"><span class="nav-number">1.1.15.</span> <span class="nav-text">回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动模式"><span class="nav-number">1.1.16.</span> <span class="nav-text">启动模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI"><span class="nav-number">1.2.</span> <span class="nav-text">UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控件"><span class="nav-number">1.2.1.</span> <span class="nav-text">控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TextView"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">TextView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Button"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EditText"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">EditText</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImageView"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">ImageView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ProgressBar"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">ProgressBar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AlertDialog"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">AlertDialog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ProgressDialog"><span class="nav-number">1.2.1.7.</span> <span class="nav-text">ProgressDialog</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布局"><span class="nav-number">1.2.2.</span> <span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性布局"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">线性布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对布局"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">相对布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#帧布局"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">帧布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#百分百布局"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">百分百布局</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义控件"><span class="nav-number">1.2.3.</span> <span class="nav-text">自定义控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListView"><span class="nav-number">1.2.4.</span> <span class="nav-text">ListView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RecyclerView"><span class="nav-number">1.2.5.</span> <span class="nav-text">RecyclerView</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#碎片"><span class="nav-number">1.3.</span> <span class="nav-text">碎片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#影响"><span class="nav-number">1.3.1.</span> <span class="nav-text">影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态加载布局"><span class="nav-number">1.3.4.</span> <span class="nav-text">动态加载布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广播"><span class="nav-number">1.4.</span> <span class="nav-text">广播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#机制"><span class="nav-number">1.4.1.</span> <span class="nav-text">机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受"><span class="nav-number">1.4.2.</span> <span class="nav-text">接受</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送"><span class="nav-number">1.4.3.</span> <span class="nav-text">发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.4.4.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据存储"><span class="nav-number">1.5.</span> <span class="nav-text">数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件存储"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SharedPreferences"><span class="nav-number">1.5.2.</span> <span class="nav-text">SharedPreferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLite"><span class="nav-number">1.5.3.</span> <span class="nav-text">SQLite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LitePal"><span class="nav-number">1.5.4.</span> <span class="nav-text">LitePal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序间数据共享"><span class="nav-number">1.6.</span> <span class="nav-text">程序间数据共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限"><span class="nav-number">1.6.2.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问"><span class="nav-number">1.6.3.</span> <span class="nav-text">访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容提供器"><span class="nav-number">1.6.4.</span> <span class="nav-text">内容提供器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多媒体"><span class="nav-number">1.7.</span> <span class="nav-text">多媒体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通知"><span class="nav-number">1.7.1.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摄像头和相册"><span class="nav-number">1.7.2.</span> <span class="nav-text">摄像头和相册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放音视"><span class="nav-number">1.7.3.</span> <span class="nav-text">播放音视</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebView"><span class="nav-number">1.8.</span> <span class="nav-text">WebView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.8.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http协议"><span class="nav-number">1.8.2.</span> <span class="nav-text">Http协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML"><span class="nav-number">1.8.3.</span> <span class="nav-text">XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">1.8.4.</span> <span class="nav-text">JSON</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务"><span class="nav-number">1.9.</span> <span class="nav-text">服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义-2"><span class="nav-number">1.9.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">1.9.2.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程实现方法"><span class="nav-number">1.9.2.1.</span> <span class="nav-text">线程实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步消息处理"><span class="nav-number">1.9.2.2.</span> <span class="nav-text">异步消息处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步消息处理机制"><span class="nav-number">1.9.2.3.</span> <span class="nav-text">异步消息处理机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法-1"><span class="nav-number">1.9.3.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期-2"><span class="nav-number">1.9.4.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技巧"><span class="nav-number">1.9.5.</span> <span class="nav-text">技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Material-Design"><span class="nav-number">1.10.</span> <span class="nav-text">Material Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.10.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Toolbar"><span class="nav-number">1.10.2.</span> <span class="nav-text">Toolbar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动菜单"><span class="nav-number">1.10.3.</span> <span class="nav-text">滑动菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#悬浮按钮与交互提示"><span class="nav-number">1.10.4.</span> <span class="nav-text">悬浮按钮与交互提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡片式布局"><span class="nav-number">1.10.5.</span> <span class="nav-text">卡片式布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉刷新"><span class="nav-number">1.10.6.</span> <span class="nav-text">下拉刷新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可折叠式标题栏"><span class="nav-number">1.10.7.</span> <span class="nav-text">可折叠式标题栏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶"><span class="nav-number">1.11.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局Context"><span class="nav-number">1.11.1.</span> <span class="nav-text">全局Context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent传递对象"><span class="nav-number">1.11.2.</span> <span class="nav-text">Intent传递对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Serializable"><span class="nav-number">1.11.2.1.</span> <span class="nav-text">Serializable</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">1.11.2.1.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parcclablc"><span class="nav-number">1.11.2.2.</span> <span class="nav-text">Parcclablc</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法-1"><span class="nav-number">1.11.2.2.1.</span> <span class="nav-text">方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制日志"><span class="nav-number">1.11.3.</span> <span class="nav-text">定制日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-number">1.11.4.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时任务"><span class="nav-number">1.11.5.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ALarm机制"><span class="nav-number">1.11.5.1.</span> <span class="nav-text">ALarm机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Doze模式"><span class="nav-number">1.11.5.2.</span> <span class="nav-text">Doze模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多窗口编程"><span class="nav-number">1.11.6.</span> <span class="nav-text">多窗口编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda"><span class="nav-number">1.11.7.</span> <span class="nav-text">Lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">1.11.7.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本质"><span class="nav-number">1.11.7.2.</span> <span class="nav-text">本质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写法"><span class="nav-number">1.11.7.3.</span> <span class="nav-text">写法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
