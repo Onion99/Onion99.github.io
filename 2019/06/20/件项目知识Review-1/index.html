@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="九把刀在书里说过：“有些梦想，纵使永远也没办法实现，纵使光是连说出来都很奢侈。但如果没有说出来温暖自己一下，就无法获得前进的动力。” 人为什么要背负感情？是因为只有在人们面对这些痛楚之后，才能变得强大，才能在面对那些无能为力的自然规律的时候，更好地安慰他人。人为什么要背负梦想？是因为梦想这东西，即使你脆弱地随时会倒下，也没有人能夺走他。即使你真的是一条咸鱼，也没人能夺走你做梦的自由。 所有的辉煌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件项目知识Review-1">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/件项目知识Review-1/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="九把刀在书里说过：“有些梦想，纵使永远也没办法实现，纵使光是连说出来都很奢侈。但如果没有说出来温暖自己一下，就无法获得前进的动力。” 人为什么要背负感情？是因为只有在人们面对这些痛楚之后，才能变得强大，才能在面对那些无能为力的自然规律的时候，更好地安慰他人。人为什么要背负梦想？是因为梦想这东西，即使你脆弱地随时会倒下，也没有人能夺走他。即使你真的是一条咸鱼，也没人能夺走你做梦的自由。 所有的辉煌">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-20T08:21:17.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件项目知识Review-1">
+<meta name="twitter:description" content="九把刀在书里说过：“有些梦想，纵使永远也没办法实现，纵使光是连说出来都很奢侈。但如果没有说出来温暖自己一下，就无法获得前进的动力。” 人为什么要背负感情？是因为只有在人们面对这些痛楚之后，才能变得强大，才能在面对那些无能为力的自然规律的时候，更好地安慰他人。人为什么要背负梦想？是因为梦想这东西，即使你脆弱地随时会倒下，也没有人能夺走他。即使你真的是一条咸鱼，也没人能夺走你做梦的自由。 所有的辉煌">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/件项目知识Review-1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>软件项目知识Review-1 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/件项目知识Review-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件项目知识Review-1
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-20 16:20:43 / Modified: 16:21:17" itemprop="dateCreated datePublished" datetime="2019-06-20T16:20:43+08:00">2019-06-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>九把刀在书里说过：“有些梦想，纵使永远也没办法实现，纵使光是连说出来都很奢侈。但如果没有说出来温暖自己一下，就无法获得前进的动力。”</p>
+<p>人为什么要背负感情？是因为只有在人们面对这些痛楚之后，才能变得强大，才能在面对那些无能为力的自然规律的时候，更好地安慰他人。人为什么要背负梦想？是因为梦想这东西，即使你脆弱地随时会倒下，也没有人能夺走他。即使你真的是一条咸鱼，也没人能夺走你做梦的自由。</p>
+<p>所有的辉煌和伟大，一定伴随着挫折和跌倒，所有的牛逼背后都是一座座苦逼的高墙。谁没有一个不安稳的青春？没有一件事情可以一下子把你打垮，也不会有一件事情可以让你一步登天，慢慢走，慢慢看，生命是一个慢慢累积的过程。</p>
+</blockquote>
+<h1 id="软件项目管理复习"><a href="#软件项目管理复习" class="headerlink" title="软件项目管理复习"></a>软件项目管理复习</h1><h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="项目-1"><a href="#项目-1" class="headerlink" title="项目"></a>项目</h4><p>项目是一个特殊的、将被完成的有限任务，它是在<strong>一定时间</strong> 内，满足一系列特定目标的多项相关工作的总称</p>
+<h4 id="项目的生命周期"><a href="#项目的生命周期" class="headerlink" title="项目的生命周期"></a>项目的生命周期</h4><p>启动、计划、实施、结束</p>
+<h4 id="基线"><a href="#基线" class="headerlink" title="基线"></a>基线</h4><p>指一个（或一组）配置项在项目生命周期的不同时间点上通过正式评审而进入受控的一种状态</p>
+<h4 id="检查点"><a href="#检查点" class="headerlink" title="检查点"></a>检查点</h4><p>在规定的时间间隔内对项目进行检查，比较实际与计划之间的差异，并根据差异进行调整</p>
+<h4 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h4><p>把  <strong>软件需求</strong> 变换成为  <strong>软件表示</strong>  的过程。是开发阶段的重要步骤，也是后续软件开发和软件维护的基础</p>
+<h4 id="质量"><a href="#质量" class="headerlink" title="质量"></a>质量</h4><p>一组固有特性满足要求的程度</p>
+<blockquote>
+<p>软件质量策划是质量管理的一部分，致力于设定 <strong>质量目标</strong> 并规定必要的 <strong>运行过程</strong> 和 <strong>相关资源</strong> 以实现质量目标</p>
+</blockquote>
+<h5 id="质量控制"><a href="#质量控制" class="headerlink" title="质量控制"></a>质量控制</h5><ul>
+<li>监测<ul>
+<li>监测是收集、记录和汇报有关项目质量信息</li>
+</ul>
+</li>
+<li>控制<ul>
+<li>质量监测提供的数据进行控制，确保项目质量与计划保持一致</li>
+<li>软件产品或服务的质量控制</li>
+<li>软件管理过程的质量控制</li>
+</ul>
+</li>
+</ul>
+<h4 id="投资回收期"><a href="#投资回收期" class="headerlink" title="投资回收期"></a>投资回收期</h4><h5 id="静态投资回收期"><a href="#静态投资回收期" class="headerlink" title="静态投资回收期"></a>静态投资回收期</h5><p>用项目各年的净收入将全部投资回收所需要的年限</p>
+<h5 id="动态投资回收期"><a href="#动态投资回收期" class="headerlink" title="动态投资回收期"></a>动态投资回收期</h5><p>在考虑资金时间价值条件下，按设定的利率回收全部投资所需要的时间</p>
+<h3 id="可行性研究"><a href="#可行性研究" class="headerlink" title="可行性研究"></a>可行性研究</h3><h4 id="报告"><a href="#报告" class="headerlink" title="报告"></a>报告</h4><ul>
+<li>分析论证项目投资建设的必要性</li>
+<li>分析项目投资建设的可行性</li>
+<li>分析项目投资建设的合理性</li>
+</ul>
+<h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><ul>
+<li>技术上的可行性</li>
+<li>经济上的可行性</li>
+<li>社会上的可行性</li>
+</ul>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h4 id="需求类别"><a href="#需求类别" class="headerlink" title="需求类别"></a>需求类别</h4><ul>
+<li>业务需求</li>
+<li>用户需求</li>
+<li>功能需求</li>
+</ul>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
+<li>获得当前系统的物理模型</li>
+<li>抽象出当前系统的逻辑模型</li>
+<li>导出目标系统的逻辑模型</li>
+<li>最终目标系统的物理模型是由逻辑模型经实例化，即具体到某个业务领域而得到的</li>
+</ol>
+<h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>借助于当前系统的逻辑模型导出目标系统的逻辑模型，解决目标系统“做什么”的问题</p>
+<h4 id="内容-1"><a href="#内容-1" class="headerlink" title="内容"></a>内容</h4><ul>
+<li><p>功能需求</p>
+</li>
+<li><p>性能需求</p>
+<ul>
+<li><p>精度</p>
+</li>
+<li><p>时间特性要求</p>
+</li>
+<li><p>灵活性</p>
+</li>
+</ul>
+</li>
+<li><p>输入输出要求</p>
+</li>
+<li><p>数据管理能力要求</p>
+</li>
+<li><p>环境需求</p>
+</li>
+<li><p>可靠性需求</p>
+</li>
+<li><p>安全保密要求</p>
+</li>
+<li><p>用户界面需求</p>
+</li>
+<li><p>资源使用需求</p>
+</li>
+<li><p>软件成本消耗与开发进度需求</p>
+</li>
+</ul>
+<h4 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h4><ul>
+<li>需求分析是获得用户需求的有效途径</li>
+<li>需求分析是决定项目成功的关键因素</li>
+<li>需求分析是系统分析和软件设计的桥梁</li>
+<li>需求分析是控制软件质量的重要阶段</li>
+</ul>
+<h4 id="变更原因"><a href="#变更原因" class="headerlink" title="变更原因"></a>变更原因</h4><ul>
+<li>问题域的复杂性越来越高</li>
+<li>交流障碍</li>
+<li>完整性问题</li>
+<li>变更的需求引起更多的变更</li>
+</ul>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><h3 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h3><h4 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h4><p>指从设计软件产品开始到软件产品不能再使用为止的时间周期</p>
+<blockquote>
+<p>每一阶段工作以  上一阶段  工作的结果为依据，并为  下一阶段  工作提供基础</p>
+</blockquote>
+<h4 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h4><ul>
+<li>需求阶段</li>
+<li>设计阶段</li>
+<li>实现阶段</li>
+<li>测试阶段</li>
+<li>安装和验收阶段</li>
+<li>运行和维护阶段</li>
+</ul>
+<h3 id="整体接口"><a href="#整体接口" class="headerlink" title="整体接口"></a>整体接口</h3><ul>
+<li>内部接口</li>
+<li>外部接口</li>
+</ul>
+<h3 id="软件项目管理"><a href="#软件项目管理" class="headerlink" title="软件项目管理"></a>软件项目管理</h3><ul>
+<li>人员（People）</li>
+<li>产品（Product）</li>
+<li><strong>过程</strong>（Process） </li>
+<li><strong>项目</strong>（Project）</li>
+</ul>
+<h3 id="软件过程管理"><a href="#软件过程管理" class="headerlink" title="软件过程管理"></a>软件过程管理</h3><ul>
+<li>工程过程</li>
+<li>支持过程</li>
+<li>管理过程</li>
+<li>组织过程</li>
+<li>客户—供应商过程</li>
+</ul>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="白盒"><a href="#白盒" class="headerlink" title="白盒"></a>白盒</h4><blockquote>
+<p>也称  <strong>结构测试</strong>  或  <strong>逻辑驱动测试</strong>  ，是一种按程序内部的逻辑结构和编码结构设计测试数据的测试方法。主要用于软件验证</p>
+</blockquote>
+<h4 id="黑盒"><a href="#黑盒" class="headerlink" title="黑盒"></a>黑盒</h4><blockquote>
+<p>也称  <strong>功能测试</strong>  或  <strong>数据驱动测试</strong>  ，是已知产品所应具有的功能，通过测试来检测每个功能是否都正确时使用。在测试时，把程序看成是一个不能打开的黑盒子，检查程序功能是否按照需求规格说明书的规定正常使用</p>
+</blockquote>
+<h4 id="软件测试过程"><a href="#软件测试过程" class="headerlink" title="软件测试过程"></a>软件测试过程</h4><ul>
+<li>单元测试<ul>
+<li>模块接口</li>
+<li>局部数据结构</li>
+<li>边界条件</li>
+<li>独立路径</li>
+<li>出错处理</li>
+</ul>
+</li>
+<li>集成测试</li>
+<li>确认测试<ul>
+<li>功能测试</li>
+<li>性能测试</li>
+<li>强度测试（压力测试）</li>
+<li>安全性测试</li>
+</ul>
+</li>
+<li>系统测试</li>
+</ul>
+<h3 id="软件设计规格说明书"><a href="#软件设计规格说明书" class="headerlink" title="软件设计规格说明书"></a>软件设计规格说明书</h3><ul>
+<li>概要设计</li>
+<li>详细设计</li>
+<li>接口设计</li>
+<li>数据库设计</li>
+</ul>
+<h3 id="软件维护工作"><a href="#软件维护工作" class="headerlink" title="软件维护工作"></a>软件维护工作</h3><ol>
+<li>准备</li>
+<li>提出需求</li>
+<li>需求分析</li>
+<li>分析评审</li>
+<li>修改实现</li>
+<li>测试</li>
+<li>验证</li>
+<li>升级等过程</li>
+</ol>
+<h3 id="软件再工程"><a href="#软件再工程" class="headerlink" title="软件再工程"></a>软件再工程</h3><p>为了以新形式重构已存在的软件系统而进行的检测、分析、更替，以及对新形式的实现过程</p>
+<ul>
+<li>逆向工程</li>
+<li>文档重构</li>
+<li>结构重建</li>
+<li>相关转换</li>
+<li>正向工程</li>
+</ul>
+<h3 id="评审内容"><a href="#评审内容" class="headerlink" title="评审内容"></a>评审内容</h3><ul>
+<li>管理评审</li>
+<li>技术评审</li>
+<li>文档评审</li>
+<li>过程评审</li>
+</ul>
+<h3 id="配置项的状态"><a href="#配置项的状态" class="headerlink" title="配置项的状态"></a>配置项的状态</h3><ul>
+<li>设计态</li>
+<li>测试态</li>
+<li>受控态</li>
+<li>运行态</li>
+</ul>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><h3 id="结构程序设计"><a href="#结构程序设计" class="headerlink" title="结构程序设计"></a>结构程序设计</h3><h4 id="基本控制结构"><a href="#基本控制结构" class="headerlink" title="基本控制结构"></a>基本控制结构</h4><p>顺序</p>
+<p>选择</p>
+<p>循环</p>
+<h3 id="程序设计语言"><a href="#程序设计语言" class="headerlink" title="程序设计语言"></a>程序设计语言</h3><ul>
+<li>第一代语言：  机器语言  </li>
+<li>第二代语言：  汇编语言  </li>
+<li>第三代语言：  高级程序设计语言  </li>
+<li>第四代语言：  4GL 第四代语言，如SQL  </li>
+</ul>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><h4 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h4><ul>
+<li>输入方式  </li>
+<li>输入格式 </li>
+<li>输入校验</li>
+</ul>
+<h4 id="错误种类"><a href="#错误种类" class="headerlink" title="错误种类"></a>错误种类</h4><ul>
+<li>数据本身错误</li>
+<li>数据多余或不足 </li>
+<li>数据延误</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/09/英语语法基础/" rel="next" title="英语语法基础">
+                <i class="fa fa-chevron-left"></i> 英语语法基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件项目管理复习"><span class="nav-number">1.</span> <span class="nav-text">软件项目管理复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目"><span class="nav-number">1.1.</span> <span class="nav-text">项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目-1"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目的生命周期"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">项目的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基线"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件设计"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">软件设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#质量"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">质量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#质量控制"><span class="nav-number">1.1.1.6.1.</span> <span class="nav-text">质量控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投资回收期"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">投资回收期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态投资回收期"><span class="nav-number">1.1.1.7.1.</span> <span class="nav-text">静态投资回收期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态投资回收期"><span class="nav-number">1.1.1.7.2.</span> <span class="nav-text">动态投资回收期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可行性研究"><span class="nav-number">1.1.2.</span> <span class="nav-text">可行性研究</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#报告"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">报告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">1.1.3.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求类别"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">需求类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现步骤"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">实现步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容-1"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重要性"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">重要性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变更原因"><span class="nav-number">1.1.3.6.</span> <span class="nav-text">变更原因</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件"><span class="nav-number">1.2.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件生命周期"><span class="nav-number">1.2.1.</span> <span class="nav-text">软件生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#含义"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">阶段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整体接口"><span class="nav-number">1.2.2.</span> <span class="nav-text">整体接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件项目管理"><span class="nav-number">1.2.3.</span> <span class="nav-text">软件项目管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件过程管理"><span class="nav-number">1.2.4.</span> <span class="nav-text">软件过程管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.2.5.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#白盒"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">白盒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#黑盒"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">黑盒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件测试过程"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">软件测试过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件设计规格说明书"><span class="nav-number">1.2.6.</span> <span class="nav-text">软件设计规格说明书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件维护工作"><span class="nav-number">1.2.7.</span> <span class="nav-text">软件维护工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件再工程"><span class="nav-number">1.2.8.</span> <span class="nav-text">软件再工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评审内容"><span class="nav-number">1.2.9.</span> <span class="nav-text">评审内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置项的状态"><span class="nav-number">1.2.10.</span> <span class="nav-text">配置项的状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计"><span class="nav-number">1.3.</span> <span class="nav-text">设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构程序设计"><span class="nav-number">1.3.1.</span> <span class="nav-text">结构程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本控制结构"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基本控制结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序设计语言"><span class="nav-number">1.3.2.</span> <span class="nav-text">程序设计语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">1.3.3.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类型"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误种类"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">错误种类</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
