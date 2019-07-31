@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="配置 下载SDK  AS菜单栏New -&amp;gt; Import Module  进入项目app所在的Dependencies,添加Module Dependence  在IMLib的AM文件按设置应用AppKey  如需高德,在App的AM文件设置Appkey  初始化 1234public  class App extends Application &amp;#123;  @Override  pub">
+<meta name="keywords" content="Android ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="融云配置">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/配置/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="配置 下载SDK  AS菜单栏New -&amp;gt; Import Module  进入项目app所在的Dependencies,添加Module Dependence  在IMLib的AM文件按设置应用AppKey  如需高德,在App的AM文件设置Appkey  初始化 1234public  class App extends Application &amp;#123;  @Override  pub">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-31T13:37:07.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="融云配置">
+<meta name="twitter:description" content="配置 下载SDK  AS菜单栏New -&amp;gt; Import Module  进入项目app所在的Dependencies,添加Module Dependence  在IMLib的AM文件按设置应用AppKey  如需高德,在App的AM文件设置Appkey  初始化 1234public  class App extends Application &amp;#123;  @Override  pub">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/31/配置/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>融云配置 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">融云配置
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-31 21:18:00 / Modified: 21:37:07" itemprop="dateCreated datePublished" datetime="2019-07-31T21:18:00+08:00">2019-07-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li><p>下载SDK</p>
+</li>
+<li><p>AS菜单栏New -&gt; Import Module</p>
+</li>
+<li><p>进入项目app所在的Dependencies,添加Module Dependence</p>
+</li>
+<li><p>在IMLib的AM文件按设置应用AppKey</p>
+</li>
+<li><p>如需高德,在App的AM文件设置Appkey</p>
+</li>
+<li><p>初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123; </span><br><span class="line"> <span class="meta">@Override</span>  <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span>  <span class="title">onCreate</span><span class="params">()</span> </span>&#123;<span class="comment">//只需调用一次</span></span><br><span class="line"> <span class="keyword">super</span>.onCreate(); RongIM.init(<span class="keyword">this</span>); </span><br><span class="line"> &#125;  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取Token连接服务器,才能操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">RongIM.connect(token, <span class="keyword">new</span> RongIMClient.ConnectCallback() &#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(String s)</span> </span>&#123;  </span><br><span class="line">        Log.e(<span class="string">"Connet"</span>, <span class="string">"onSuccess: "</span>+s );  </span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, ConversationsActivity.class);  </span><br><span class="line">        startActivity(intent);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(RongIMClient.ErrorCode errorCode)</span> </span>&#123;  </span><br><span class="line">        Log.e(<span class="string">"Connet"</span>, <span class="string">"onError"</span> );  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTokenIncorrect</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        Log.e(<span class="string">"Connet"</span>, <span class="string">"onTokenIncorrect"</span> );  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>聊天列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ConversationListActivity  extends  FragmentActivity</span></span><br><span class="line">setContentView(R.layout.conversationlist); </span><br><span class="line">FragmentManager fragmentManage = getSupportFragmentManager();</span><br><span class="line">ConversationListFragment fragement=(ConversationListFragment)fragmentManage.findFragmentById(R.id.conversationlist); </span><br><span class="line">Uri uri = Uri.parse(<span class="string">"rong://"</span> + getApplicationInfo().packageName).buildUpon() .appendPath(<span class="string">"conversationlist"</span>) .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), <span class="string">"false"</span>) .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), <span class="string">"false"</span>) .appendQueryParameter(Conversation.ConversationType.PUBLIC_SERVICE.getName(), <span class="string">"false"</span>) .appendQueryParameter(Conversation.ConversationType.APP_PUBLIC_SERVICE.getName(), <span class="string">"false"</span>) .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), <span class="string">"true"</span>) .build(); </span><br><span class="line">fragement.setUri(uri);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  名:conversationlist.xml</span></span><br><span class="line"><span class="comment">android:name 固定为融云的 ConversationListFragment</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">android:orientation</span>=<span class="string">"vertical"</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">fragment</span> </span></span><br><span class="line"><span class="tag">   <span class="attr">android:id</span>=<span class="string">"@+id/conversationlist"</span>                                                                                       </span></span><br><span class="line"><span class="tag">   <span class="attr">android:name</span>=<span class="string">"io.rong.imkit.fragment.ConversationListFragment"</span>     </span></span><br><span class="line"><span class="tag">   <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag">   <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置 intent-filter--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"io.rong.fast.activity.ConversationListActivity"</span>                 </span></span><br><span class="line"><span class="tag">          <span class="attr">android:screenOrientation</span>=<span class="string">"portrait"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">android:windowSoftInputMode</span>=<span class="string">"stateHidden|adjustResize"</span>&gt;</span> </span><br><span class="line">          <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span> </span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span> </span><br><span class="line">          <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span> </span><br><span class="line">          <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:host</span>=<span class="string">"io.rong.fast"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">android:pathPrefix</span>=<span class="string">"/conversationlist"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">android:scheme</span>=<span class="string">"rong"</span> /&gt;</span> </span><br><span class="line">          <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span> </span><br><span class="line">          <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>聊天界面<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">ConversationActivity</span> <span class="keyword">extends</span> <span class="title">FragmentActivity</span> </span>&#123;  </span><br><span class="line"><span class="meta">@Override</span>  <span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span>  <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;                                                                                                        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">setContentView(R.layout.conversation);</span><br><span class="line"> &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--conversation.xml.注意android:name固定为融云的ConversationFragment--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> </span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">fragment</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">android:id</span>=<span class="string">"@+id/conversation"</span>                                                                                                                </span></span><br><span class="line"><span class="tag">  <span class="attr">android:name</span>=<span class="string">"io.rong.imkit.fragment.ConversationFragment"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置 intent-filter--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> </span></span><br><span class="line"><span class="tag"><span class="attr">android:name</span>=<span class="string">"io.rong.fast.activity.ConversationActivity"</span> <span class="attr">android:screenOrientation</span>=<span class="string">"portrait"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:windowSoftInputMode</span>=<span class="string">"stateHidden|adjustResize"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:host</span>=<span class="string">"io.rong.fast"</span> <span class="attr">android:pathPrefix</span>=<span class="string">"/conversation/"</span> <span class="attr">android:scheme</span>=<span class="string">"rong"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义UI"><a href="#自定义UI" class="headerlink" title="自定义UI"></a>自定义UI</h2><h3 id="聊天头像形状"><a href="#聊天头像形状" class="headerlink" title="聊天头像形状"></a>聊天头像形状</h3><ul>
+<li>找到rc_item_message.xml</li>
+<li>定义app:RCShape<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">io.rong.imkit.widget.AsyncImageView</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:id</span>=<span class="string">"@id/rc_right"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"40dp"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_below</span>=<span class="string">"@id/rc_time"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_marginLeft</span>=<span class="string">"4dp"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:background</span>=<span class="string">"@android:color/transparent"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">app:RCShape</span>=<span class="string">"circle"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">app:RCCornerRadius</span>=<span class="string">"3dp"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">app:RCDefDrawable</span>=<span class="string">"@drawable/rc_ic_def_msg_portrait"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="更改气泡背景"><a href="#更改气泡背景" class="headerlink" title="更改气泡背景"></a>更改气泡背景</h3><ul>
+<li>制作相应的D9图片</li>
+<li>找到rc_ic_bubble_left_file.9.png</li>
+<li>替换</li>
+</ul>
+<h3 id="自定义消息"><a href="#自定义消息" class="headerlink" title="自定义消息"></a>自定义消息</h3><h4 id="注册自定义消息"><a href="#注册自定义消息" class="headerlink" title="注册自定义消息"></a>注册自定义消息</h4><ul>
+<li>新建一个实体类</li>
+<li>继承MessageContent</li>
+<li>定义消息属性</li>
+<li>重写encode</li>
+<li>覆盖MessageContent的MessageContent(byte[] data)</li>
+<li>添加该类的注解标识<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">value 即 ObjectName 是消息的唯一标识不可以重复，开发者命名时不能以 RC 开头，避免和融云内置消息冲突；</span></span><br><span class="line"><span class="comment">flag 是用来定义消息的可操作状态</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@MessageTag</span>(value = <span class="string">"ec:custominfo"</span>,flag =MessageTag.ISPERSISTED|MessageTag.ISCOUNTED)  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomInfo</span> <span class="keyword">extends</span> <span class="title">MessageContent</span> </span>&#123;  </span><br><span class="line">    <span class="comment">//定义消息属性</span></span><br><span class="line">    <span class="keyword">private</span> String title;  </span><br><span class="line">    <span class="keyword">private</span> String content; </span><br><span class="line">    <span class="comment">//属性注入方法 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CustomInfo <span class="title">setData</span><span class="params">(String title,String content)</span></span>&#123;  </span><br><span class="line">        CustomInfo customInfo = <span class="keyword">new</span> CustomInfo();  </span><br><span class="line">        customInfo.title = title;  </span><br><span class="line">        customInfo.content = content;  </span><br><span class="line">        <span class="keyword">return</span> customInfo;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomInfo</span><span class="params">()</span></span>&#123; &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomInfo</span><span class="params">(String title, String content)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.title = title;  </span><br><span class="line">        <span class="keyword">this</span>.content = content;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    覆盖父类的 `MessageContent(byte[] data)` 构造方法，</span></span><br><span class="line"><span class="comment">    该方法将对收到的消息进行解析，先由 `byte` 转成 `json` 字符串，</span></span><br><span class="line"><span class="comment">    再将 `json` 中内容取出赋值给消息属性</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomInfo</span><span class="params">(<span class="keyword">byte</span>[] data)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>(data);  </span><br><span class="line">        String jsonStr = <span class="keyword">null</span>;  </span><br><span class="line">        <span class="keyword">try</span>&#123;  </span><br><span class="line">            jsonStr = <span class="keyword">new</span> String(data, <span class="string">"UTF-8"</span>);  </span><br><span class="line">            Gson gson = <span class="keyword">new</span> Gson();  </span><br><span class="line">            CustomInfo customInfo = gson.fromJson(jsonStr, CustomInfo.class);  </span><br><span class="line">            setTitle(customInfo.getTitle());  </span><br><span class="line">            setContent(customInfo.getContent());  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    MessageContent` 已实现 `Parcelable` 接口，下面需要实现 `Parcelable` 中的方法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomInfo</span><span class="params">(Parcel parcel)</span></span>&#123;  </span><br><span class="line">         <span class="comment">//给消息赋值。</span></span><br><span class="line">        title = ParcelUtils.readFromParcel(parcel); <span class="comment">//该类为工具类，消息属性 </span></span><br><span class="line">        content = ParcelUtils.readFromParcel(parcel);  </span><br><span class="line">    &#125;  </span><br><span class="line">        <span class="comment">//读取接口，目的是要从Parcel中构造一个实现了Parcelable的类的实例处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;CustomInfo&gt; CREATOR = <span class="keyword">new</span> Creator&lt;CustomInfo&gt;()     </span><br><span class="line">      &#123;     </span><br><span class="line">          <span class="meta">@Override</span>  </span><br><span class="line">          <span class="function"><span class="keyword">public</span> CustomInfo <span class="title">createFromParcel</span><span class="params">(Parcel parcel)</span> </span>&#123;  </span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> CustomInfo(parcel);  </span><br><span class="line">      &#125;  </span><br><span class="line">     <span class="meta">@Override</span>  </span><br><span class="line">     <span class="keyword">public</span> CustomInfo[] newArray(<span class="keyword">int</span> i) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CustomInfo[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">     &#125;; </span><br><span class="line">     </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="comment">//将消息属性封装成 `json` 串，再将 `json` 串转成 `byte` 数组，该方法会在发消息时调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] encode() &#123;  </span><br><span class="line">        CustomInfo customInfo = CustomInfo.setData(title, content);  </span><br><span class="line">        Gson gson = <span class="keyword">new</span> Gson();  </span><br><span class="line">        String jsonObject = gson.toJson(customInfo);  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="keyword">return</span> jsonObject.getBytes(<span class="string">"UTF-8"</span>);  </span><br><span class="line">        &#125;<span class="keyword">catch</span> (UnsupportedEncodingException e)&#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">      &#125;  </span><br><span class="line">     <span class="meta">@Override</span>  </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">     &#125;  </span><br><span class="line">    <span class="comment">///将类的数据写入外部提供的 Parcel 中</span></span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel parcel, <span class="keyword">int</span> i)</span> </span>&#123;  </span><br><span class="line">        ParcelUtils.writeToParcel(parcel,title);  </span><br><span class="line">        ParcelUtils.writeToParcel(parcel,content);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> title;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.title = title;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> content;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContent</span><span class="params">(String content)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.content = content;  </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="string">"CustomInfo&#123;"</span> +  </span><br><span class="line">                <span class="string">"title='"</span> + title + <span class="string">'\''</span> +  </span><br><span class="line">                <span class="string">", content='"</span> + content + <span class="string">'\''</span> +  </span><br><span class="line">                <span class="string">'&#125;'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="消息展示"><a href="#消息展示" class="headerlink" title="消息展示"></a>消息展示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ProviderTag</span>(messageContent = CustomInfo.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomProvider</span> <span class="keyword">extends</span></span></span><br><span class="line"><span class="class"><span class="title">IContainerItemProvider</span>.<span class="title">MessageProvider</span>&lt;<span class="title">CustomInfo</span>&gt; </span>&#123;  </span><br><span class="line">  <span class="meta">@Override</span> </span><br><span class="line">  <span class="comment">//将数据填充 View 上</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bindView</span><span class="params">(View view, <span class="keyword">int</span> i, CustomInfo      </span></span></span><br><span class="line"><span class="function"><span class="params">                       customInfo,UIMessageuiMessage)</span> </span>&#123;  </span><br><span class="line">     <span class="comment">//CustomHolder holder = (CustomHolder) view.getTag();  </span></span><br><span class="line">     CustomHolder holder = (CustomHolder) view.getTag();  </span><br><span class="line">     <span class="keyword">if</span> (uiMessage.getMessageDirection() ==uiMessage.getMessageDirection().SEND)         </span><br><span class="line">        &#123;  <span class="comment">//消息方向，自己发送的                      </span></span><br><span class="line">         holder.constraintLayout.              </span><br><span class="line">         setBackgroundResource(io.rong.imkit.R.drawable.rc_ic_bubble_right);  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">        holder.constraintLayout</span><br><span class="line">        .setBackgroundResource(io.rong.imkit.R.drawable.rc_ic_bubble_left);  </span><br><span class="line">        &#125;  </span><br><span class="line">        holder.tv_ivshow.setBackgroundResource</span><br><span class="line">           (io.rong.imkit.R.drawable.rc_ac_other_file_icon);  </span><br><span class="line">        holder.tv_title.setText(customInfo.getTitle());  </span><br><span class="line">        holder.tv_content.setText(customInfo.getContent());  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">//该条消息为该会话的最后一条消息时，会话列表要显示的内容，通过该方法进行定义  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Spannable <span class="title">getContentSummary</span><span class="params">(CustomInfo customInfo)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SpannableString(customInfo.toString());  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">//点击该类型消息触发  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(View view, <span class="keyword">int</span> i, CustomInfo customInfo, </span></span></span><br><span class="line"><span class="function"><span class="params">    UIMessage uiMessage)</span> </span>&#123;&#125;  </span><br><span class="line">     </span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">    <span class="comment">//初始化 View </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">newView</span><span class="params">(ContLayoutInflater.from(context)</span></span></span><br><span class="line"><span class="function">   .<span class="title">inflate</span><span class="params">(R.layout.custom_message,<span class="keyword">null</span>)</span></span>;  </span><br><span class="line">    <span class="comment">/*View view =  LayoutInflater.from(context)</span></span><br><span class="line"><span class="comment">    .inflate(R.layout.custom_message,viewGroup,false);  */</span></span><br><span class="line">    CustomHolder holder = <span class="keyword">new</span> CustomHolder();  </span><br><span class="line">    <span class="comment">//holder.iv_show = view.findViewById(R.id.iv_show);  </span></span><br><span class="line">     holder.constraintLayout = view.findViewById(R.id.cl_cm);  </span><br><span class="line">        holder.tv_ivshow = view.findViewById(R.id.iv_show);  </span><br><span class="line">        holder.tv_title = view.findViewById(R.id.tv_title);  </span><br><span class="line">        holder.tv_content = view.findViewById(R.id.tv_content);  </span><br><span class="line">        view.setTag(holder);  </span><br><span class="line">        <span class="keyword">return</span> view;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">CustomHolder</span></span>&#123;  </span><br><span class="line">        ConstraintLayout constraintLayout;  </span><br><span class="line">        ImageView tv_ivshow;  </span><br><span class="line">        TextView tv_title;  </span><br><span class="line">        TextView tv_content;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RongIM.registerMessageType(CustomInfo.class);  </span><br><span class="line">RongIM.registerMessageTemplate(<span class="keyword">new</span> CustomProvider());</span><br></pre></td></tr></table></figure>
+
+<h3 id="发送自定义消息"><a href="#发送自定义消息" class="headerlink" title="发送自定义消息"></a>发送自定义消息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendCustomMessage</span><span class="params">(CustomInfo customInfo)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">final</span> CustomInfo info = <span class="keyword">new</span> CustomInfo();  </span><br><span class="line">    info.setTitle(customInfo.getTitle());  </span><br><span class="line">    info.setContent(customInfo.getContent());  </span><br><span class="line">    <span class="comment">//对方ID设置</span></span><br><span class="line">    Message message = Message.obtain(<span class="string">"dd"</span>, Conversation.ConversationType.PRIVATE, info);  </span><br><span class="line">    RongIM.getInstance().sendMessage(message, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">new</span> IRongCallback.ISendMessageCallback() &#123;  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttached</span><span class="params">(Message message)</span> </span>&#123;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Message message)</span> </span>&#123;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Message message, RongIMClient.ErrorCode errorCode)</span> </span>&#123;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android </a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/31/随记/" rel="next" title="安卓随记">
+                <i class="fa fa-chevron-left"></i> 安卓随记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/31/ndroid编程权威指南学习/" rel="prev" title="Android编程权威指南学习">
+                Android编程权威指南学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义UI"><span class="nav-number">2.</span> <span class="nav-text">自定义UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聊天头像形状"><span class="nav-number">2.1.</span> <span class="nav-text">聊天头像形状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改气泡背景"><span class="nav-number">2.2.</span> <span class="nav-text">更改气泡背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义消息"><span class="nav-number">2.3.</span> <span class="nav-text">自定义消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册自定义消息"><span class="nav-number">2.3.1.</span> <span class="nav-text">注册自定义消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息展示"><span class="nav-number">2.3.2.</span> <span class="nav-text">消息展示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册"><span class="nav-number">2.3.3.</span> <span class="nav-text">注册</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送自定义消息"><span class="nav-number">2.4.</span> <span class="nav-text">发送自定义消息</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/07/31/配置/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
