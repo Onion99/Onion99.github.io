@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Navigation  一个Fragment的容器,系统地管理Fragment   组成 Navigation Graph NavHostFragment NavController  创建Navigation Graph 添加依赖库 12implementation &apos;android.arch.navigation:navigation-fragment:1.0.0&apos;  implementati">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修仙之路_AndroidJetPack">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/修仙之路-AndroidJetPack/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="Navigation  一个Fragment的容器,系统地管理Fragment   组成 Navigation Graph NavHostFragment NavController  创建Navigation Graph 添加依赖库 12implementation &apos;android.arch.navigation:navigation-fragment:1.0.0&apos;  implementati">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/13/mCc1gJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/13/mCRl8S.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/13/mCWXwR.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/13/mCfmff.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/15/mEYCG9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/13/mC7Xid.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/15/mEGwkQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/15/mEYBMq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/14/mPxFpD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/16/mZivSH.png">
+<meta property="og:updated_time" content="2019-08-18T06:38:46.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="修仙之路_AndroidJetPack">
+<meta name="twitter:description" content="Navigation  一个Fragment的容器,系统地管理Fragment   组成 Navigation Graph NavHostFragment NavController  创建Navigation Graph 添加依赖库 12implementation &apos;android.arch.navigation:navigation-fragment:1.0.0&apos;  implementati">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/08/13/mCc1gJ.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/18/修仙之路-AndroidJetPack/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>修仙之路_AndroidJetPack | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/修仙之路-AndroidJetPack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">修仙之路_AndroidJetPack
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-18 14:36:00 / Modified: 14:38:46" itemprop="dateCreated datePublished" datetime="2019-08-18T14:36:00+08:00">2019-08-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Andriod/" itemprop="url" rel="index"><span itemprop="name">Andriod</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h2><blockquote>
+<p> 一个Fragment的容器,系统地管理Fragment</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/13/mCc1gJ.png" alt="mCc1gJ.png"></p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>Navigation Graph</li>
+<li>NavHostFragment</li>
+<li>NavController</li>
+</ul>
+<h3 id="创建Navigation-Graph"><a href="#创建Navigation-Graph" class="headerlink" title="创建Navigation Graph"></a>创建Navigation Graph</h3><ol>
+<li><p>添加依赖库</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'android.arch.navigation:navigation-fragment:1.0.0'</span>  </span><br><span class="line">implementation <span class="string">'android.arch.navigation:navigation-ui:1.0.0'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Android Resourse File<br><img src="https://s2.ax1x.com/2019/08/13/mCRl8S.png" alt="mCRl8S.png"></p>
+</li>
+<li><p>添加NavHostFragment</p>
+<blockquote>
+<p>在Activity布局文件中指定Fragment容器</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><code>android:name=&quot;androidx.navigation.fragment.NavHostFragment&quot;</code>,指定容器</li>
+<li><code>app:defaultNavHost=&quot;true&quot;</code>,使Fragment自动处理系统返回键</li>
+<li><code>app:navGraph=&quot;@navigation/nav_graph&quot;</code>,对应导航图</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;androidx.constraintlayout.widget.ConstraintLayout       </span><br><span class="line">  xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>  </span><br><span class="line">  xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span>  </span><br><span class="line">  xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span>  </span><br><span class="line">  android:layout_width=<span class="string">"match_parent"</span>  </span><br><span class="line">  android:layout_height=<span class="string">"match_parent"</span>  </span><br><span class="line">  tools:context=<span class="string">".MainActivity"</span>&gt;  </span><br><span class="line"> &lt;fragment  </span><br><span class="line">  android:id=<span class="string">"@+id/nav_hostfragment"</span>  </span><br><span class="line">  android:name=<span class="string">"androidx.navigation.fragment.NavHostFragment"</span>  </span><br><span class="line">  android:layout_width=<span class="string">"match_parent"</span>  </span><br><span class="line">  android:layout_height=<span class="string">"match_parent"</span>  </span><br><span class="line">  app:defaultNavHost=<span class="string">"true"</span>  </span><br><span class="line">  app:navGraph=<span class="string">"@navigation/nav_first"</span> /&gt;  </span><br><span class="line">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>创建Fragment页面</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/08/13/mCWXwR.jpg" alt="mCWXwR.jpg"></p>
+<ol start="5">
+<li>设置Fragment访问路径</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/08/13/mCfmff.jpg" alt="mCfmff.jpg"></p>
+<ol start="6">
+<li>访问</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法一</span></span><br><span class="line">Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_secondFragment);</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_secondFragment);</span><br></pre></td></tr></table></figure>
+
+<h2 id="LifeCycle"><a href="#LifeCycle" class="headerlink" title="LifeCycle"></a>LifeCycle</h2><blockquote>
+<p> 更好地监听组件的生命周期状态,和管理组件的生命周期</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/15/mEYCG9.png" alt="mEYCG9.png"></p>
+<h3 id="管理组件生命周期"><a href="#管理组件生命周期" class="headerlink" title="管理组件生命周期"></a>管理组件生命周期</h3><ol>
+<li><p>创建继承LifecycleObserver的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Cycle</span> <span class="keyword">extends</span> <span class="title">LifecycleObserver</span> </span>&#123;  </span><br><span class="line">  <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_START)  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span></span>;  </span><br><span class="line">  </span><br><span class="line">  <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_DESTROY)  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeCycleImp</span> <span class="keyword">implements</span> <span class="title">Cycle</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TAG = Lifecycle.class.getCanonicalName();  </span><br><span class="line">  <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  Log.e(TAG, <span class="string">"onStart: "</span>);  </span><br><span class="line"> &#125;  </span><br><span class="line">  <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  Log.e(TAG, <span class="string">"onDestroy: "</span>);  </span><br><span class="line"> &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>监听组件</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">super</span>.onCreate(savedInstanceState);  </span><br><span class="line">  setContentView(R.layout.activity_main);  </span><br><span class="line">  getLifecycle().addObserver(<span class="keyword">new</span> LifeCycleImp());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/08/13/mC7Xid.jpg" alt="mC7Xid.jpg"></p>
+<h3 id="自定义组件生命周期"><a href="#自定义组件生命周期" class="headerlink" title="自定义组件生命周期"></a>自定义组件生命周期</h3><blockquote>
+<p>官方都定好了,看情况使用吧</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">MyActivity</span>  <span class="keyword">extends</span>  <span class="title">Activity</span>  <span class="keyword">implements</span>  <span class="title">LifecycleOwner</span> </span>&#123;</span><br><span class="line">     <span class="comment">//状态分发类  </span></span><br><span class="line">     <span class="keyword">private</span>  LifecycleRegistry lifecycleRegistry;  </span><br><span class="line">     <span class="meta">@Override</span>  <span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;     </span><br><span class="line">           <span class="keyword">super</span>.onCreate(savedInstanceState); </span><br><span class="line">           <span class="comment">//绑定</span></span><br><span class="line">           lifecycleRegistry =  <span class="keyword">new</span>  LifecycleRegistry(<span class="keyword">this</span>);</span><br><span class="line">           <span class="comment">//指定创建状态       </span></span><br><span class="line">           lifecycleRegistry.markState(Lifecycle.State.CREATED);  </span><br><span class="line">     &#125;  </span><br><span class="line">     <span class="meta">@Override</span>  <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function">     </span>&#123;  </span><br><span class="line">         <span class="keyword">super</span>.onStart();</span><br><span class="line">         <span class="comment">//指点开始状态 </span></span><br><span class="line">         lifecycleRegistry.markState(Lifecycle.State.STARTED);  </span><br><span class="line">     &#125;  </span><br><span class="line">     <span class="meta">@NonNull</span>  <span class="meta">@Override</span>  <span class="function"><span class="keyword">public</span>  Lifecycle <span class="title">getLifecycle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> lifecycleRegistry; </span><br><span class="line">     &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h2><blockquote>
+<p>从今开始,界面数据跟界面逻辑分离开啦</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/15/mEGwkQ.png" alt="mEGwkQ.png"></p>
+<h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><h4 id="继承ViewModel类"><a href="#继承ViewModel类" class="headerlink" title="继承ViewModel类"></a>继承ViewModel类</h4><blockquote>
+<p>因为ViewModel的生命周期是和Activity分开的，所以在ViewModel中禁止引用任何View对象或者任何引用了Activity的Context的实例对象。如果ViewModel中需要Application的context可以继承AndroidViewModel类 –&gt;<a href="https://www.cnblogs.com/cold-ice/p/9115844.html" target="_blank" rel="noopener">Android Architecture Components 系列（四）ViewModel</a></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">private</span> String TAG = <span class="keyword">this</span>.getClass().getSimpleName();  </span><br><span class="line">  <span class="keyword">private</span> MutableLiveData&lt;String&gt; users;</span><br><span class="line">  <span class="comment">// LiveData对象引用  </span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> MutableLiveData&lt;String&gt; <span class="title">getUsers</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">     <span class="keyword">if</span>(users == <span class="keyword">null</span>) &#123;  </span><br><span class="line">     users = <span class="keyword">new</span> MutableLiveData&lt;String&gt;();  </span><br><span class="line">     loadUsers();  </span><br><span class="line">     &#125;  </span><br><span class="line">     <span class="keyword">return</span> users;  </span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadUsers</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    Log.e(TAG, <span class="string">"loadUsers: LOL"</span> );  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>  </span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取VIewMoel实例</span></span><br><span class="line">    MyViewModel model = ViewModelProviders.of(<span class="keyword">this</span>).get(MyViewModel.class);  </span><br><span class="line">    String game = <span class="string">"Mobius"</span>;  </span><br><span class="line">    FloatingActionButton fab = findViewById(R.id.fab);  </span><br><span class="line">    fab.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;  </span><br><span class="line">        <span class="meta">@Override</span>  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;  </span><br><span class="line">            model.getUsers().postValue(game);<span class="comment">//获取LiveData对象,进行赋值  </span></span><br><span class="line">            Snackbar.make(view,model.getUsers().getValue() , Snackbar.LENGTH_LONG) </span><br><span class="line">            .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();  </span><br><span class="line">    &#125;&#125;);</span><br><span class="line">    <span class="comment">// LiveData对象观察者 ,变动即执行</span></span><br><span class="line">    model.getUsers().observe(<span class="keyword">this</span>, (String users) -&gt; &#123;  </span><br><span class="line">       Toast.makeText(<span class="keyword">this</span>,<span class="string">"Cool"</span>,Toast.LENGTH_SHORT).show();  </span><br><span class="line">       &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://s2.ax1x.com/2019/08/15/mEYBMq.png" alt="mEYBMq.png"></p>
+<h2 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h2><blockquote>
+<p>唷,活着的数据耶,配合ViewModel使用</p>
+</blockquote>
+<h3 id="创建LiveData对象"><a href="#创建LiveData对象" class="headerlink" title="创建LiveData对象"></a>创建LiveData对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">NameViewModel</span>  <span class="keyword">extends</span>  <span class="title">ViewModel</span>  </span>&#123;  </span><br><span class="line">    <span class="comment">// 创建String类型的LiveData </span></span><br><span class="line">    <span class="keyword">private</span>  MutableLiveData&lt;String&gt; currentName;  </span><br><span class="line">        <span class="function"><span class="keyword">public</span>   MutableLiveData&lt;String&gt; <span class="title">getCurrentName</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">            <span class="keyword">if</span>(currentName ==  <span class="keyword">null</span>) &#123; </span><br><span class="line">               currentName =  <span class="keyword">new</span>  MutableLiveData&lt;String&gt;();</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">return</span> currentName;</span><br><span class="line">         &#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 其余部分...  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="联动LiveData对象"><a href="#联动LiveData对象" class="headerlink" title="联动LiveData对象"></a>联动LiveData对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">NameActivity</span>  <span class="keyword">extends</span>  <span class="title">AppCompatActivity</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span>  NameViewModel model;  </span><br><span class="line">    <span class="meta">@Override</span>  <span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;     </span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  /</span><br><span class="line">        <span class="comment">// 获取ViewModel实例</span></span><br><span class="line">        model =  ViewModelProviders.of(<span class="keyword">this</span>).get(NameViewModel.class);  </span><br><span class="line">        <span class="comment">// 创建更新UI数据的观察者(执行者)  </span></span><br><span class="line">        <span class="keyword">final</span>  Observer&lt;String&gt; nameObserver =  <span class="keyword">new</span>  Observer&lt;String&gt;() &#123;  </span><br><span class="line">            <span class="meta">@Override</span>  <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">onChanged</span><span class="params">(@Nullable  <span class="keyword">final</span>  String newName)</span> </span>&#123; </span><br><span class="line">                <span class="comment">// Update the UI</span></span><br><span class="line">                TextView. nameTextView.setText(newName);</span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;;  </span><br><span class="line">        <span class="comment">// 观察LiveData,以观察者和生命周期所有者身份传递活动</span></span><br><span class="line">        <span class="comment">// 说白了,就是LiveData类型的currentName绑定nameObserver</span></span><br><span class="line">        <span class="comment">// 两者手牵手,一起走</span></span><br><span class="line">        model.getCurrentName().observe(<span class="keyword">this</span>, nameObserver);  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新LiveData对象"><a href="#更新LiveData对象" class="headerlink" title="更新LiveData对象"></a>更新LiveData对象</h3><ul>
+<li>在主线程,使用<strong>setValue( )</strong></li>
+<li>在子线程中,使用 <strong>postValue( )</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button.setOnClickListener(<span class="keyword">new</span>  OnClickListener() &#123;  </span><br><span class="line">    <span class="meta">@Override</span>  <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;  </span><br><span class="line">        String anotherName =  <span class="string">"John Doe"</span>; </span><br><span class="line">        <span class="comment">// 这里更新currentName,nameObserver同时会执行</span></span><br><span class="line">        model.getCurrentName().setValue(anotherName);  </span><br><span class="line">       &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="LiveData-数据转换"><a href="#LiveData-数据转换" class="headerlink" title="LiveData 数据转换"></a>LiveData 数据转换</h3><h4 id="拆"><a href="#拆" class="headerlink" title="拆"></a>拆</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LiveData&lt;User&gt; userLiveData =  ...;  </span><br><span class="line">LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; &#123; user.name +  <span class="string">" "</span>  + user.lastName &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="封"><a href="#封" class="headerlink" title="封"></a>封</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span>  LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(String id)</span>  </span>&#123;  ...;  </span><br><span class="line">&#125;  </span><br><span class="line">LiveData&lt;String&gt; userId =  ...;  </span><br><span class="line">LiveData&lt;User&gt; user =  Transformations.switchMap(userId, id -&gt; getUser(id)  );</span><br></pre></td></tr></table></figure>
+
+<h2 id="DataBinding"><a href="#DataBinding" class="headerlink" title="DataBinding"></a>DataBinding</h2><blockquote>
+<p>实时监听ViewModel中的数据变化并通知界面 </p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/14/mPxFpD.png" alt="mPxFpD.png"></p>
+<h3 id="初步实现"><a href="#初步实现" class="headerlink" title="初步实现"></a>初步实现</h3><ol>
+<li>添加依赖库</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'android.arch.lifecycle:extensions:1.1.1'</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>启动DataBinding</li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">...</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">       enabled <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将普通布局转为DataBinding布局</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--添加布局变量区域--&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--界面设计布局区域--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="绑定数据"><a href="#绑定数据" class="headerlink" title="绑定数据"></a>绑定数据</h3><ul>
+<li>variable <ul>
+<li>name(参数名)</li>
+<li>type(参数类型)</li>
+</ul>
+</li>
+<li>@{ } , 表达式</li>
+</ul>
+<p><strong>Layout</strong>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加布局变量区--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">data</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">name</span>=<span class="string">"profile"</span> </span></span><br><span class="line"><span class="tag">     <span class="attr">type</span>=<span class="string">"String"</span> /&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">name</span>=<span class="string">"user"</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">type</span>=<span class="string">"com.onion66.User"</span> /&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--控件布局区--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TextView</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">android:id</span>=<span class="string">"@+id/profile"</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">android:text</span>=<span class="string">"@&#123;profile&#125;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TextView</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">android:id</span>=<span class="string">"@+id/name"</span>  </span></span><br><span class="line"><span class="tag">     <span class="attr">android:text</span>=<span class="string">"@&#123;user.name&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Activity</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//替换setContentView</span></span><br><span class="line">ActivityBinding binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.plain_activity);</span><br><span class="line"><span class="comment">//设置控件变量值</span></span><br><span class="line">binding.name = <span class="string">"Mobius"</span>;</span><br><span class="line">User user = <span class="keyword">new</span> User(...);</span><br><span class="line">binding.setUser(user);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fragment,Adapter</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, <span class="keyword">false</span>);  </span><br><span class="line"><span class="comment">// or  </span></span><br><span class="line">ListItemBinding binding = DataBindingUtil.inflate(layoutInflater,R.layout.list_item,viewGroup, <span class="keyword">false</span>);</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h4 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"android.view.View"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">......</span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span>   </span></span><br><span class="line"><span class="tag">   <span class="attr">android:text</span>=<span class="string">"@&#123;user.lastName&#125;"</span>   </span></span><br><span class="line"><span class="tag">   <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span>   </span></span><br><span class="line"><span class="tag">   <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>   </span></span><br><span class="line"><span class="tag">   <span class="attr">android:visibility</span>=<span class="string">"@&#123;user.isAdult ? View.VISIBLE : View.GONE&#125;"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"android.graphics.drawable.Drawable"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"image"</span> <span class="attr">type</span>=<span class="string">"Drawable"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"note"</span> <span class="attr">type</span>=<span class="string">"String"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="给子布局赋值"><a href="#给子布局赋值" class="headerlink" title="给子布局赋值"></a>给子布局赋值</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span> </span></span><br><span class="line"><span class="tag">     <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>       </span></span><br><span class="line"><span class="tag">     <span class="attr">xmlns:bind</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">data</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>       </span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span>       </span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/name"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">bind:user</span>=<span class="string">"@&#123;user&#125;"</span>/&gt;</span>       </span><br><span class="line">     <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/contact"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">bind:user</span>=<span class="string">"@&#123;user&#125;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="表达式语法"><a href="#表达式语法" class="headerlink" title="表达式语法"></a>表达式语法</h3><table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="center">符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">字符串串联</td>
+<td align="center">+</td>
+</tr>
+<tr>
+<td align="center">逻辑判断</td>
+<td align="center">&amp;&amp;</td>
+</tr>
+<tr>
+<td align="center">二元运算</td>
+<td align="center">+  -  /  *  %</td>
+</tr>
+<tr>
+<td align="center">一元运算</td>
+<td align="center">+  -  !  ~</td>
+</tr>
+<tr>
+<td align="center">三元运算</td>
+<td align="center">?:</td>
+</tr>
+<tr>
+<td align="center">比较</td>
+<td align="center">==  &gt;  &lt;  &gt;=  &lt;=</td>
+</tr>
+<tr>
+<td align="center">Null合并运算</td>
+<td align="center">?? ,左有则左,左无则右</td>
+</tr>
+<tr>
+<td align="center">啊,不想列了</td>
+<td align="center"><a href="https://developer.android.com/topic/libraries/data-binding/expressions" target="_blank" rel="noopener">传送门</a></td>
+</tr>
+</tbody></table>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"android.view.View"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--......--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:hint</span>=<span class="string">"@&#123;String.valueOf(index + 1)&#125;"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:text</span>=<span class="string">"@&#123;user.displayName ?? user.lastName&#125;"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:visibility</span>=<span class="string">"@&#123;age &gt; 13 ? View.GONE :View.VISIBLE&#125;"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:transitionName</span>=<span class="string">'@&#123;"image_" + id&#125;'</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他绑定"><a href="#其他绑定" class="headerlink" title="其他绑定"></a>其他绑定</h4><h4 id="绑定集合"><a href="#绑定集合" class="headerlink" title="绑定集合"></a>绑定集合</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"android.util.SparseArray"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"java.util.Map"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"java.util.List"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"list"</span> <span class="attr">type</span>=<span class="string">"List&amp;lt;String&gt;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"sparse"</span> <span class="attr">type</span>=<span class="string">"SparseArray&amp;lt;String&gt;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"map"</span> <span class="attr">type</span>=<span class="string">"Map&amp;lt;String, String&gt;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"index"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">type</span>=<span class="string">"String"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;list[index]&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;sparse[index]&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;map[key]&#125;"</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">'@&#123;map["firstName"]&#125;'</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;map[`firstName`]&#125;"</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="绑定Resource文件属性"><a href="#绑定Resource文件属性" class="headerlink" title="绑定Resource文件属性"></a>绑定Resource文件属性</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:text</span>=<span class="string">"@&#123;@string/nameFormat(firstName, lastName)&#125;"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:padding</span>=<span class="string">"@&#123;large? @dimen/largePadding : @dimen/smallPadding&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><h4 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">MyHandlers</span>  </span>&#123;  </span><br><span class="line">   <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">onClickText</span><span class="params">(View view)</span>  </span>&#123;  ...  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--绑定--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>     </span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"handlers"</span> <span class="attr">type</span>=<span class="string">"com.example.MyHandlers"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--控件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span>               </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>            </span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span>           </span></span><br><span class="line"><span class="tag">  <span class="attr">android:onClick</span>=<span class="string">"@&#123;handlers::onClickFriend&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="侦听绑定"><a href="#侦听绑定" class="headerlink" title="侦听绑定"></a>侦听绑定</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">Presenter</span>  </span>&#123;  </span><br><span class="line">     <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">onSaveClick</span><span class="params">(Task task)</span></span>&#123;&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--绑定--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"task"</span> <span class="attr">type</span>=<span class="string">"com.android.example.Task"</span> /&gt;</span>          </span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"presenter"</span> <span class="attr">type</span>=<span class="string">"com.android.example.Presenter"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--控件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span>               </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>            </span></span><br><span class="line"><span class="tag">  <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span>           </span></span><br><span class="line"><span class="tag">  <span class="attr">android:onClick</span>=<span class="string">"@&#123;() -&gt; presenter.onSaveClick(task)&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="WorkManger"><a href="#WorkManger" class="headerlink" title="WorkManger"></a>WorkManger</h2><blockquote>
+<p>Service的上位替代</p>
+</blockquote>
+<h2 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h2><blockquote>
+<p>在SqlLite的基础上,进一步抽象</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/16/mZivSH.png" alt="mZivSH.png"></p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> room_version = <span class="string">"2.2.0-alpha02"</span></span><br><span class="line">implementation <span class="string">"androidx.room:room-runtime:$room_version"</span></span><br><span class="line">annotationProcessor <span class="string">"androidx.room:room-compiler:$room_version"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h3><ul>
+<li><strong>@Entity</strong><ul>
+<li>tablename,代表表名</li>
+</ul>
+</li>
+<li><strong>@PrimaryKey</strong>,设置主键<ul>
+<li>autoGenerate , 是否自动生成</li>
+</ul>
+</li>
+<li><strong>@ColumnInfo</strong> ,设置列名,不设与变量名相同<ul>
+<li>typeAffinity,设置类型</li>
+</ul>
+</li>
+<li><strong>@Ignore</strong> ,让Room忽略掉</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 一个Entity代表着一张表，而每张表都需要一个Dao对象，以方便对这张表进行各种操作（增删改查）</span></span><br><span class="line"><span class="comment"> * tableName表示设置表名,如不设置,表名与类名相同 </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="meta">@Entity</span>(tableName = <span class="string">"users"</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;  </span><br><span class="line">  <span class="meta">@PrimaryKey</span>  </span><br><span class="line">  <span class="keyword">public</span> Integer id;  </span><br><span class="line">  <span class="meta">@ColumnInfo</span>(name = <span class="string">"name"</span>, typeAffinity = ColumnInfo.TEXT)</span><br><span class="line">  <span class="keyword">public</span> String name;  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> String age;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(Integer id, String name, String age)</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">this</span>.id = id;  </span><br><span class="line">  <span class="keyword">this</span>.name = name;  </span><br><span class="line">  <span class="keyword">this</span>.age = age;  </span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="meta">@Override</span>  </span><br><span class="line">  <span class="meta">@Ignore</span>  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123; ...... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="一对多关系"><a href="#一对多关系" class="headerlink" title="一对多关系"></a>一对多关系</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(foreignKeys =  <span class="meta">@ForeignKey</span>(entity =  User.class, parentColumns =  <span class="string">"id"</span>, childColumns =  <span class="string">"user_id"</span>))  </span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">Book</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PrimaryKey</span>  <span class="keyword">public</span>  <span class="keyword">int</span> bookId;</span><br><span class="line">    <span class="keyword">public</span>  String title;</span><br><span class="line">    <span class="meta">@ColumnInfo</span>(name =  <span class="string">"user_id"</span>)</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">int</span> userId;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">Address</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">public</span>  String street;</span><br><span class="line">    <span class="keyword">public</span>  String state;</span><br><span class="line">    <span class="keyword">public</span>  String city;</span><br><span class="line">    <span class="meta">@ColumnInfo</span>(name =<span class="string">"post_code"</span>)  </span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">int</span> postCode;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="meta">@Entity</span>  </span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">User</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@PrimaryKey</span>  <span class="keyword">public</span>  <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span>  String firstName;</span><br><span class="line">    <span class="meta">@Embedded</span>  <span class="keyword">public</span>  Address address;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>  </span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">Playlist</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@PrimaryKey</span>  <span class="keyword">public</span>  <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span>  String name;</span><br><span class="line">    <span class="keyword">public</span>  String description;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="meta">@Entity</span>  </span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">Song</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@PrimaryKey</span>  <span class="keyword">public</span>  <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span>  String songName;</span><br><span class="line">    <span class="keyword">public</span>  String artistName;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span>(tableName = <span class="string">"playlist_song_join"</span>,</span><br><span class="line">        primaryKeys = &#123; <span class="string">"playlistId"</span>,  <span class="string">"songId"</span>  &#125;,</span><br><span class="line">        foreignKeys =  &#123; <span class="meta">@ForeignKey</span>(entity = Playlist.class, parentColumns =  <span class="string">"id"</span>, childColumns =  <span class="string">"playlistId"</span>),</span><br><span class="line">        <span class="meta">@ForeignKey</span>(entity = Song.class, parentColumns = <span class="string">"id"</span>, childColumns =  <span class="string">"songId"</span>)  &#125;)  </span><br><span class="line"><span class="keyword">public</span>  <span class="class"><span class="keyword">class</span>  <span class="title">PlaylistSongJoin</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">public</span>  <span class="keyword">int</span> playlistId;</span><br><span class="line">        <span class="keyword">public</span>  <span class="keyword">int</span> songId;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现Dao接口"><a href="#实现Dao接口" class="headerlink" title="实现Dao接口"></a>实现Dao接口</h3><ul>
+<li><strong>@Dao</strong>,Room访问接口</li>
+<li><strong>@Insert</strong></li>
+<li><strong>@Query</strong></li>
+<li><strong>@Delete</strong></li>
+<li><strong>@Update</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Dao</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;  </span><br><span class="line">  <span class="meta">@Query</span>(<span class="string">"SELECT * FROM users"</span>)  </span><br><span class="line">  <span class="function">User <span class="title">getUser</span><span class="params">()</span></span>;  </span><br><span class="line">  <span class="meta">@Insert</span>  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insertUser</span><span class="params">(User user)</span></span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h3><ul>
+<li><strong>@DataBase</strong>,Room的数据库对象<ul>
+<li>entities, 指定表,多张表,逗号隔开</li>
+<li>version, 数据库版本号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Database</span>(entities = &#123;User.class&#125;,version = <span class="number">1</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AppDatabase</span> <span class="keyword">extends</span> <span class="title">RoomDatabase</span> </span>&#123;  </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> UserDao <span class="title">userDao</span><span class="params">()</span></span>;  </span><br><span class="line">     <span class="comment">//单例设计模式</span></span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> AppDatabase appDatabase;  </span><br><span class="line">  </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> AppDatabase <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (appDatabase == <span class="keyword">null</span>) &#123;  </span><br><span class="line">            appDatabase = Room.databaseBuilder(context.getApplicationContext(),  </span><br><span class="line">            AppDatabase.class,  </span><br><span class="line">            <span class="string">"UserDb"</span>).allowMainThreadQueries().build(); </span><br><span class="line">            <span class="comment">//表示允许在主线程中访问数据库(官方不推荐),演示用下,一般去掉allowMainThreadQueries()</span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> appDatabase;  </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="comment">//......</span></span><br><span class="line">     AppDatabase database = AppDatabase.getInstance(<span class="keyword">this</span>);  </span><br><span class="line">     User user1 = <span class="keyword">new</span> User(<span class="number">891564341</span>, <span class="string">"Onion66"</span>, <span class="string">"18"</span>);  </span><br><span class="line">     database.userDao().insertUser(user1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/修仙之路-Java/" rel="next" title="修仙之路_Java">
+                <i class="fa fa-chevron-left"></i> 修仙之路_Java
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/18/之路-Android界面设计/" rel="prev" title="修仙之路_Android界面设计">
+                修仙之路_Android界面设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation"><span class="nav-number">1.</span> <span class="nav-text">Navigation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">1.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Navigation-Graph"><span class="nav-number">1.2.</span> <span class="nav-text">创建Navigation Graph</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LifeCycle"><span class="nav-number">2.</span> <span class="nav-text">LifeCycle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管理组件生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">管理组件生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件生命周期"><span class="nav-number">2.2.</span> <span class="nav-text">自定义组件生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewModel"><span class="nav-number">3.</span> <span class="nav-text">ViewModel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建"><span class="nav-number">3.1.</span> <span class="nav-text">构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承ViewModel类"><span class="nav-number">3.1.1.</span> <span class="nav-text">继承ViewModel类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例化"><span class="nav-number">3.1.2.</span> <span class="nav-text">实例化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">3.2.</span> <span class="nav-text">生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LiveData"><span class="nav-number">4.</span> <span class="nav-text">LiveData</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建LiveData对象"><span class="nav-number">4.1.</span> <span class="nav-text">创建LiveData对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联动LiveData对象"><span class="nav-number">4.2.</span> <span class="nav-text">联动LiveData对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新LiveData对象"><span class="nav-number">4.3.</span> <span class="nav-text">更新LiveData对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LiveData-数据转换"><span class="nav-number">4.4.</span> <span class="nav-text">LiveData 数据转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拆"><span class="nav-number">4.4.1.</span> <span class="nav-text">拆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封"><span class="nav-number">4.4.2.</span> <span class="nav-text">封</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataBinding"><span class="nav-number">5.</span> <span class="nav-text">DataBinding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初步实现"><span class="nav-number">5.1.</span> <span class="nav-text">初步实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定数据"><span class="nav-number">5.2.</span> <span class="nav-text">绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导包"><span class="nav-number">5.2.1.</span> <span class="nav-text">导包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数类型"><span class="nav-number">5.2.2.</span> <span class="nav-text">参数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给子布局赋值"><span class="nav-number">5.2.3.</span> <span class="nav-text">给子布局赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式语法"><span class="nav-number">5.3.</span> <span class="nav-text">表达式语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他绑定"><span class="nav-number">5.3.1.</span> <span class="nav-text">其他绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定集合"><span class="nav-number">5.3.2.</span> <span class="nav-text">绑定集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定Resource文件属性"><span class="nav-number">5.3.3.</span> <span class="nav-text">绑定Resource文件属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理"><span class="nav-number">5.4.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法引用"><span class="nav-number">5.4.1.</span> <span class="nav-text">方法引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#侦听绑定"><span class="nav-number">5.4.2.</span> <span class="nav-text">侦听绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WorkManger"><span class="nav-number">6.</span> <span class="nav-text">WorkManger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Room"><span class="nav-number">7.</span> <span class="nav-text">Room</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加依赖"><span class="nav-number">7.1.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表的创建"><span class="nav-number">7.2.</span> <span class="nav-text">表的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一对多关系"><span class="nav-number">7.2.1.</span> <span class="nav-text">一对多关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套"><span class="nav-number">7.2.2.</span> <span class="nav-text">嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多对多"><span class="nav-number">7.2.3.</span> <span class="nav-text">多对多</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现Dao接口"><span class="nav-number">7.3.</span> <span class="nav-text">实现Dao接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的创建"><span class="nav-number">7.4.</span> <span class="nav-text">数据库的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity"><span class="nav-number">7.5.</span> <span class="nav-text">Activity</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/08/18/修仙之路-AndroidJetPack/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
