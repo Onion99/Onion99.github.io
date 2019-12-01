@@ -337,6 +337,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/Dart-语法-整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/01/Dart-语法-整理/" class="post-title-link" itemprop="url">Dart 语法整理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-01 13:03:00 / Modified: 13:11:46" itemprop="dateCreated datePublished" datetime="2019-12-01T13:03:00+08:00">2019-12-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Dart/" itemprop="url" rel="index"><span itemprop="name">Dart</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              基础概念变量
+Dart支持类型自动推导
+
+// 创建var name1 = "Dart";// 显示声明String name2 = "Dart";
+
+默认值
+在 Dart 中一切都是对象，数字类型 也不例外。
+
+未初始化的变量默认值是 null。即使变量是数字 类型默认值也是 null
+var n
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/12/01/Dart-语法-整理/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/我们始终要回答的问题—《皮囊》/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -529,7 +709,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/18/之路-Java代码规范/" class="post-title-link" itemprop="url">修仙之路_Java代码规范</a>
+                <a href="/2019/08/18/之路-Java代码规范/" class="post-title-link" itemprop="url">Java Specification</a>
               
             
           </h1>
@@ -554,12 +734,24 @@
                 
               
 
-              <time title="Created: 2019-08-18 14:59:00 / Modified: 15:02:03" itemprop="dateCreated datePublished" datetime="2019-08-18T14:59:00+08:00">2019-08-18</time>
+              <time title="Created: 2019-08-18 14:59:00" itemprop="dateCreated datePublished" datetime="2019-08-18T14:59:00+08:00">2019-08-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-15 10:23:23" itemprop="dateModified" datetime="2019-09-15T10:23:23+08:00">2019-09-15</time>
               
             
           </span>
@@ -614,18 +806,11 @@
         
           
             <p>
-              编程规约命名风格
-代码中的命名不能以下划线或美元符号开始.也不能以下划线或美元符号结束
+              
+语言用于沟通交流，其要做的是交流双方都明白相互所表达的意思，如果这个做不到的话，那其存在的意义也会大大折扣，同样于编程上的团队工作，编写代码的时候，也要让自己，让别人明白，编写此代码的目的是什么，同时自己的表达也要简洁明了！
 
-正例: _name ,name_,$name.name$
-
-代码中的命名避免使用拼音与混合的方式
-
-正例: login / button
-
-类名使用大驼峰命名(UpperCamelCase)
-
-正例: User
+编程规约命名风格
+代码中的命名不能以下划线或美元符号开始.也不能以下划
               ...
             </p>
           <!--noindex-->
@@ -711,7 +896,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/18/之路-设计模式/" class="post-title-link" itemprop="url">修仙之路_设计模式</a>
+                <a href="/2019/08/18/之路-设计模式/" class="post-title-link" itemprop="url">Coding Design pattern</a>
               
             
           </h1>
@@ -736,12 +921,24 @@
                 
               
 
-              <time title="Created: 2019-08-18 14:48:00 / Modified: 14:57:22" itemprop="dateCreated datePublished" datetime="2019-08-18T14:48:00+08:00">2019-08-18</time>
+              <time title="Created: 2019-08-18 14:48:00" itemprop="dateCreated datePublished" datetime="2019-08-18T14:48:00+08:00">2019-08-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-15 10:23:09" itemprop="dateModified" datetime="2019-09-15T10:23:09+08:00">2019-09-15</time>
               
             
           </span>
@@ -1381,7 +1578,7 @@ implementation 'android.arch.nav
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/11/修仙之路-Java/" class="post-title-link" itemprop="url">修仙之路_Java</a>
+                <a href="/2019/08/11/修仙之路-Java/" class="post-title-link" itemprop="url">Java Foundation</a>
               
             
           </h1>
@@ -1406,12 +1603,24 @@ implementation 'android.arch.nav
                 
               
 
-              <time title="Created: 2019-08-11 20:03:00 / Modified: 20:25:13" itemprop="dateCreated datePublished" datetime="2019-08-11T20:03:00+08:00">2019-08-11</time>
+              <time title="Created: 2019-08-11 20:03:00" itemprop="dateCreated datePublished" datetime="2019-08-11T20:03:00+08:00">2019-08-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-15 10:22:57" itemprop="dateModified" datetime="2019-09-15T10:22:57+08:00">2019-09-15</time>
               
             
           </span>
@@ -1473,44 +1682,9 @@ implementation 'android.arch.nav
         
           
             <p>
-              基础基本类型
+              
 
-
-数据类型
-关键字
-占用字节数
-取值范围
-默认值
-包装类
-
-
-
-布尔型
-boolean
-1
-true,false
-false
-Boolean
-
-
-字节型
-byte
-1
--128~127
-0
-Byte
-
-
-短整型
-short
-1
--2^15^~2^15^-1
-0
-Short
-
-
-整型
-
+语言是什么？于日常中是我们用于沟通交流表达的一种方式，从根本上讲，这只是一个工具，用于方便交流的工具。计算机编程语言在全世界有几百种以上，互联网流行编程语言也有几十种，随着互联网的深入发展，新的技术探索，不适应的编程语言势必将会被淘汰，新的编程语言又会诞生，这是个有涯追无涯的过程，但万变不离其宗
               ...
             </p>
           <!--noindex-->
@@ -1794,34 +1968,28 @@ Short
                 
               
 
-              <time title="Created: 2019-07-31 21:18:00 / Modified: 21:37:07" itemprop="dateCreated datePublished" datetime="2019-07-31T21:18:00+08:00">2019-07-31</time>
+              <time title="Created: 2019-07-31 21:18:00" itemprop="dateCreated datePublished" datetime="2019-07-31T21:18:00+08:00">2019-07-31</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-15 09:19:17" itemprop="dateModified" datetime="2019-09-15T09:19:17+08:00">2019-09-15</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1917,181 +2085,6 @@ public  class
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/droid-Cool-Dependencies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Dong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/31/droid-Cool-Dependencies/" class="post-title-link" itemprop="url">Android Cool Dependencies</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-31 21:02:00 / Modified: 21:14:23" itemprop="dateCreated datePublished" datetime="2019-07-31T21:02:00+08:00">2019-07-31</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              EventBus
-加入项目implementation &#39;org.greenrobot:eventbus:3.1.1&#39;
-基本使用
-注册和解注册总线
-//在Activity重写onStart@Overridepublic void onStart() &#123;    super.o
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/31/droid-Cool-Dependencies/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2138,7 +2131,7 @@ public  class
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2175,7 +2168,7 @@ public  class
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2202,7 +2195,9 @@ public  class
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
