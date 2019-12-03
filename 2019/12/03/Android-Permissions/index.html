@@ -96,22 +96,18 @@
 
 
 
-  <meta name="description" content="Gradle基础  语言基于Groovy的领域专用语言(DSL)  项目和任务  每一次构建都包括最少一个项目 一个项目又包括一个或多个任务 一个任务对象包含一系列动作对象 按顺序执行    生命周期   初始化 配置 执行  构建配置文件 每一个Gradle构建的项目,至少有一个build.gradle文件  整体项目配置 123456789101112 buildscript &amp;#123;">
+  <meta name="description" content="App必须在Manifest文件声明所需的权限,普通权限系统会自动授予,危险权限需请示用户,权限参考  添加权限: 12345678&amp;lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;          package=&quot;com.example.snazzyapp&quot;&amp;gt;    &amp;lt;uses-perm">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle 学记">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/radle-学记/index.html">
+<meta property="og:title" content="Android Permissions">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/Android-Permissions/index.html">
 <meta property="og:site_name" content="Stay Hungry, Stay Foolish">
-<meta property="og:description" content="Gradle基础  语言基于Groovy的领域专用语言(DSL)  项目和任务  每一次构建都包括最少一个项目 一个项目又包括一个或多个任务 一个任务对象包含一系列动作对象 按顺序执行    生命周期   初始化 配置 执行  构建配置文件 每一个Gradle构建的项目,至少有一个build.gradle文件  整体项目配置 123456789101112 buildscript &amp;#123;">
+<meta property="og:description" content="App必须在Manifest文件声明所需的权限,普通权限系统会自动授予,危险权限需请示用户,权限参考  添加权限: 12345678&amp;lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;          package=&quot;com.example.snazzyapp&quot;&amp;gt;    &amp;lt;uses-perm">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563448886426&di=f6681f9f9194e24b4c93fbf2bf443046&imgtype=0&src=http%3A%2F%2Fwww.liuhaihua.cn%2Fwp-content%2Fuploads%2F2019%2F06%2FyaEFV3u.png">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563448965352&di=953b16291c1b6cf6a4cd6193afa63fce&imgtype=0&src=http%3A%2F%2Failianblog.oss-cn-shenzhen.aliyuncs.com%2Fbolg_gradle_1.png">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563449213326&di=36fca0048cf5787300c5be2e972ad664&imgtype=0&src=http%3A%2F%2Fwww.qingpingshan.com%2Fuploads%2Fallimg%2F161209%2F15540B5a-0.png">
-<meta property="og:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3762202780,3235020683&fm=15&gp=0.jpg">
-<meta property="og:updated_time" content="2019-07-31T13:24:20.700Z">
+<meta property="og:updated_time" content="2019-12-03T13:24:46.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle 学记">
-<meta name="twitter:description" content="Gradle基础  语言基于Groovy的领域专用语言(DSL)  项目和任务  每一次构建都包括最少一个项目 一个项目又包括一个或多个任务 一个任务对象包含一系列动作对象 按顺序执行    生命周期   初始化 配置 执行  构建配置文件 每一个Gradle构建的项目,至少有一个build.gradle文件  整体项目配置 123456789101112 buildscript &amp;#123;">
-<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563448886426&di=f6681f9f9194e24b4c93fbf2bf443046&imgtype=0&src=http%3A%2F%2Fwww.liuhaihua.cn%2Fwp-content%2Fuploads%2F2019%2F06%2FyaEFV3u.png">
+<meta name="twitter:title" content="Android Permissions">
+<meta name="twitter:description" content="App必须在Manifest文件声明所需的权限,普通权限系统会自动授予,危险权限需请示用户,权限参考  添加权限: 12345678&amp;lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;          package=&quot;com.example.snazzyapp&quot;&amp;gt;    &amp;lt;uses-perm">
 
 
 
@@ -119,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/radle-学记/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/03/Android-Permissions/">
 
 
 
@@ -129,7 +125,7 @@
   };
 </script>
 
-  <title>Gradle 学记 | Stay Hungry, Stay Foolish</title>
+  <title>Android Permissions | Stay Hungry, Stay Foolish</title>
   
 
 
@@ -345,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/radle-学记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/03/Android-Permissions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dong">
@@ -362,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Gradle 学记
+          <h1 class="post-title" itemprop="name headline">Android Permissions
 
               
             
@@ -388,7 +384,7 @@
                 
               
 
-              <time title="Created: 2019-07-31 21:21:42 / Modified: 21:24:20" itemprop="dateCreated datePublished" datetime="2019-07-31T21:21:42+08:00">2019-07-31</time>
+              <time title="Created: 2019-12-03 21:24:00 / Modified: 21:24:46" itemprop="dateCreated datePublished" datetime="2019-12-03T21:24:00+08:00">2019-12-03</time>
             
 
             
@@ -398,6 +394,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -427,34 +441,33 @@
       
 
       
-        <h2 id="Gradle基础"><a href="#Gradle基础" class="headerlink" title="Gradle基础"></a>Gradle基础</h2><p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563448886426&di=f6681f9f9194e24b4c93fbf2bf443046&imgtype=0&src=http%3A%2F%2Fwww.liuhaihua.cn%2Fwp-content%2Fuploads%2F2019%2F06%2FyaEFV3u.png" alt></p>
-<blockquote>
-<p>语言基于Groovy的领域专用语言(DSL)</p>
+        <blockquote>
+<p>App必须在Manifest文件声明所需的权限,普通权限系统会自动授予,危险权限需请示用户,<a href="https://developer.android.com/guide/topics/permissions/overview" target="_blank" rel="noopener">权限参考</a></p>
 </blockquote>
-<h3 id="项目和任务"><a href="#项目和任务" class="headerlink" title="项目和任务"></a>项目和任务</h3><p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563448965352&di=953b16291c1b6cf6a4cd6193afa63fce&imgtype=0&src=http%3A%2F%2Failianblog.oss-cn-shenzhen.aliyuncs.com%2Fbolg_gradle_1.png" alt></p>
+<p><strong>添加权限:</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">package</span>=<span class="string">"com.example.snazzyapp"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.SEND_SMS"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>检查权限:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.WRITE_CALENDAR)</span><br><span class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">    <span class="comment">//未授予权限处理</span></span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>请求权限:</strong></p>
 <ul>
-<li>每一次构建都包括最少一个项目</li>
-<li>一个项目又包括一个或多个任务</li>
-<li>一个任务对象包含一系列动作对象<ul>
-<li>按顺序执行</li>
+<li>ActivityCompat.shouldShowRequestPermissionRationale( Activity,Manifest.permission.? )<ul>
+<li>用于用户之前拒绝过权限的情况下</li>
+<li>如果用户之前拒绝了该请求，该方法将返回 <code>true</code>；</li>
+<li>如果用户之前拒绝了某项权限并且选中了权限请求对话框中的<strong>不再询问</strong>选项，或者如果设备政策禁止该权限，该方法将返回 <code>false</code></li>
+</ul>
+</li>
+<li>ActivityCompat.requestPermissions( Activity,Manifest.permission.? )<ul>
+<li>用于请求权限</li>
 </ul>
 </li>
 </ul>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p> <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563449213326&di=36fca0048cf5787300c5be2e972ad664&imgtype=0&src=http%3A%2F%2Fwww.qingpingshan.com%2Fuploads%2Fallimg%2F161209%2F15540B5a-0.png" alt></p>
-<ul>
-<li>初始化</li>
-<li>配置</li>
-<li>执行</li>
-</ul>
-<h3 id="构建配置文件"><a href="#构建配置文件" class="headerlink" title="构建配置文件"></a>构建配置文件</h3><blockquote>
-<p>每一个Gradle构建的项目,至少有一个build.gradle文件</p>
-</blockquote>
-<p><strong>整体项目配置</strong><br> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> buildscript &#123;  </span><br><span class="line">  repositories &#123;  </span><br><span class="line">  <span class="comment">//依赖仓库</span></span><br><span class="line">  google()  </span><br><span class="line">  jcenter()  </span><br><span class="line">     &#125;  </span><br><span class="line">  dependencies &#123;  </span><br><span class="line">  classpath <span class="string">'com.android.tools.build:gradle:3.5.0-beta05'</span>  </span><br><span class="line"><span class="comment">//        classpath 'com.android.tools.build:gradle:3.6.0-alpha03'  </span></span><br><span class="line">  classpath <span class="string">'com.jakewharton:butterknife-gradle-plugin:10.1.0'</span>  </span><br><span class="line">  <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong  </span></span><br><span class="line"> <span class="comment">// in the individual module build.gradle files  &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p> <strong>软件模块</strong></p>
- <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//应用相关插件</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.jakewharton.butterknife'</span>  </span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span> <span class="comment">//应用安卓插件  </span></span><br><span class="line"><span class="comment">//应用安卓插件,就可以配置安卓特殊约定参数</span></span><br><span class="line">android &#123;  </span><br><span class="line">  compileSdkVersion <span class="number">29</span>  </span><br><span class="line">  buildToolsVersion <span class="string">"29.0.0"</span>  </span><br><span class="line">  defaultConfig &#123;  </span><br><span class="line">  applicationId <span class="string">"com.example.b2cmarket"</span>  </span><br><span class="line">  minSdkVersion <span class="number">26</span>  </span><br><span class="line">  targetSdkVersion <span class="number">29</span>  </span><br><span class="line">  versionCode <span class="number">1</span>  </span><br><span class="line">  versionName <span class="string">"1.0"</span>  </span><br><span class="line">  testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span>  </span><br><span class="line">  &#125;  </span><br><span class="line">  buildTypes &#123;  </span><br><span class="line">  release &#123;  </span><br><span class="line">  minifyEnabled <span class="literal">false</span>  </span><br><span class="line">  proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>), <span class="string">'proguard-rules.pro'</span>  </span><br><span class="line">  &#125;  </span><br><span class="line"> &#125;  compileOptions &#123;  </span><br><span class="line">  sourceCompatibility JavaVersion.VERSION_1_8  </span><br><span class="line">  targetCompatibility JavaVersion.VERSION_1_8  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">dependencies &#123;  </span><br><span class="line">  implementation fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>])  </span><br><span class="line">  implementation <span class="string">'androidx.appcompat:appcompat:1.0.2'</span>  </span><br><span class="line">  implementation <span class="string">'androidx.constraintlayout:constraintlayout:1.1.3'</span>  </span><br><span class="line">  testImplementation <span class="string">'junit:junit:4.12'</span></span><br></pre></td></tr></table></figure>
+<p><strong>一个完整的请求流程:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断权限是否授予</span></span><br><span class="line"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity,</span><br><span class="line">        Manifest.permission.READ_CONTACTS)</span><br><span class="line">        != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 权限未授予</span></span><br><span class="line">    <span class="comment">// 判断用户之前是否拒绝过权限,是否需要解释</span></span><br><span class="line">    <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,</span><br><span class="line">            Manifest.permission.READ_CONTACTS)) &#123;</span><br><span class="line">        <span class="comment">// 拒绝过,但没有被禁止请求,这里向用户解释请求权限的原因,然后再请求</span></span><br><span class="line">       </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 情况1:没拒绝过,请求权限</span></span><br><span class="line">        <span class="comment">// 情况2:拒绝过,且禁止重复请求</span></span><br><span class="line">        ActivityCompat.requestPermissions(thisActivity,</span><br><span class="line">                <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_CONTACTS&#125;,</span><br><span class="line">                MY_PERMISSIONS_REQUEST_READ_CONTACTS);</span><br><span class="line">        <span class="comment">// MY_PERMISSIONS_REQUEST_READ_CONTACTS 是一个自定义的常量(信号码),以作识别处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 权限已被授予</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//requestPermissions方法回调处理</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,</span></span></span><br><span class="line"><span class="function"><span class="params">        String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: &#123;</span><br><span class="line">            <span class="comment">// 如果授权请求被拒绝,grantResults数组为空</span></span><br><span class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></span><br><span class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                <span class="comment">// 权限被授予成功</span></span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 授权被拒绝</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 其他case处理,App可能有多个权限请求</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p> <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3762202780,3235020683&fm=15&gp=0.jpg" alt></p>
+<p><strong>按APi级别声明权限</strong><br>要仅在支持运行时权限的设备（即运行 Android 6.0（API 级别 23）或更高版本的设备）上声明某项权限，请添加 uses- permission-sdk-23 标记，而不是 uses-permission 标记。</p>
+<p>使用这些标记中的任意一个时，您均可设置 maxSdkVersion 属性，以指定在运行更高版本的设备上不需要特定权限。</p>
 
       
     </div>
@@ -476,6 +489,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
 
       
       
@@ -485,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/31/配置/" rel="next" title="融云配置">
-                <i class="fa fa-chevron-left"></i> 融云配置
+              <a href="/2019/12/03/ndroid-Resources/" rel="next" title="Android Resources">
+                <i class="fa fa-chevron-left"></i> Android Resources
               </a>
             
           </div>
@@ -495,8 +514,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/18/我们始终要回答的问题—《皮囊》/" rel="prev" title="我们始终要回答的问题—《皮囊》">
-                我们始终要回答的问题—《皮囊》 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/03/droid-Cool-Dependencies/" rel="prev" title="Android Cool Dependencies">
+                Android Cool Dependencies <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,17 +565,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -674,23 +684,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle基础"><span class="nav-number">1.</span> <span class="nav-text">Gradle基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目和任务"><span class="nav-number">1.1.</span> <span class="nav-text">项目和任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">构建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目结构"><span class="nav-number">1.4.</span> <span class="nav-text">项目结构</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -843,7 +836,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/07/31/radle-学记/'
+    refer: '2019/12/03/Android-Permissions/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

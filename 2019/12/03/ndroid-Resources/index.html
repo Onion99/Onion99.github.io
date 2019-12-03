@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="坚持始终外部化应用资源,这有利单独维护,如下图所示的资源文件分组   Layout 定义用户界面  Animation 定义交互动画  Property Animation 属性动画  详见抛物线的讲解 View AnimationTween animationFrame animationMenu 定义用户界面(选项菜单,上下文菜单,子菜单),通过MenuInflater实现  1234567">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Resources">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/ndroid-Resources/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="坚持始终外部化应用资源,这有利单独维护,如下图所示的资源文件分组   Layout 定义用户界面  Animation 定义交互动画  Property Animation 属性动画  详见抛物线的讲解 View AnimationTween animationFrame animationMenu 定义用户界面(选项菜单,上下文菜单,子菜单),通过MenuInflater实现  1234567">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/24/myhgC4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/24/myLWFI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/25/uEORWn.png">
+<meta property="og:updated_time" content="2019-12-03T13:23:16.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Resources">
+<meta name="twitter:description" content="坚持始终外部化应用资源,这有利单独维护,如下图所示的资源文件分组   Layout 定义用户界面  Animation 定义交互动画  Property Animation 属性动画  详见抛物线的讲解 View AnimationTween animationFrame animationMenu 定义用户界面(选项菜单,上下文菜单,子菜单),通过MenuInflater实现  1234567">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/08/24/myhgC4.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/03/ndroid-Resources/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android Resources | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/03/ndroid-Resources/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Resources
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-03 21:22:00 / Modified: 21:23:16" itemprop="dateCreated datePublished" datetime="2019-12-03T21:22:00+08:00">2019-12-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>坚持始终外部化应用资源,这有利单独维护,如下图所示的资源文件分组</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/24/myhgC4.png" alt="myhgC4.png"></p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><blockquote>
+<p>定义用户界面</p>
+</blockquote>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><blockquote>
+<p>定义交互动画</p>
+</blockquote>
+<h3 id="Property-Animation"><a href="#Property-Animation" class="headerlink" title="Property Animation"></a>Property Animation</h3><blockquote>
+<p>属性动画</p>
+</blockquote>
+<p>详见<a href="https://hencoder.com/tag/hui-zhi/" target="_blank" rel="noopener">抛物线的讲解</a></p>
+<h3 id="View-Animation"><a href="#View-Animation" class="headerlink" title="View Animation"></a>View Animation</h3><h4 id="Tween-animation"><a href="#Tween-animation" class="headerlink" title="Tween animation"></a>Tween animation</h4><h4 id="Frame-animation"><a href="#Frame-animation" class="headerlink" title="Frame animation"></a>Frame animation</h4><h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><blockquote>
+<p>定义用户界面(选项菜单,上下文菜单,子菜单),通过<code>MenuInflater</code>实现</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:id</span>=<span class="string">"@[+][package:]id/resource_name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:title</span>=<span class="string">"string"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:titleCondensed</span>=<span class="string">"string"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:icon</span>=<span class="string">"@[package:]drawable/drawable_resource_name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:onClick</span>=<span class="string">"method name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:showAsAction</span>=<span class="string">[</span>"<span class="attr">ifRoom</span>" | "<span class="attr">never</span>" | "<span class="attr">withText</span>" | "<span class="attr">always</span>" | "<span class="attr">collapseActionView</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:actionLayout</span>=<span class="string">"@[package:]layout/layout_resource_name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:actionViewClass</span>=<span class="string">"class name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:actionProviderClass</span>=<span class="string">"class name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:alphabeticShortcut</span>=<span class="string">"string"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:alphabeticModifiers</span>=<span class="string">[</span>"<span class="attr">META</span>" | "<span class="attr">CTRL</span>" | "<span class="attr">ALT</span>" | "<span class="attr">SHIFT</span>" | "<span class="attr">SYM</span>" | "<span class="attr">FUNCTION</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:numericShortcut</span>=<span class="string">"string"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:numericModifiers</span>=<span class="string">[</span>"<span class="attr">META</span>" | "<span class="attr">CTRL</span>" | "<span class="attr">ALT</span>" | "<span class="attr">SHIFT</span>" | "<span class="attr">SYM</span>" | "<span class="attr">FUNCTION</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:checkable</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:visible</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:enabled</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:menuCategory</span>=<span class="string">[</span>"<span class="attr">container</span>" | "<span class="attr">system</span>" | "<span class="attr">secondary</span>" | "<span class="attr">alternative</span>"]</span></span><br><span class="line"><span class="tag">          <span class="attr">android:orderInCategory</span>=<span class="string">"integer"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">group</span> <span class="attr">android:id</span>=<span class="string">"@[+][package:]id/resource name"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:checkableBehavior</span>=<span class="string">[</span>"<span class="attr">none</span>" | "<span class="attr">all</span>" | "<span class="attr">single</span>"]</span></span><br><span class="line"><span class="tag">           <span class="attr">android:visible</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</span></span><br><span class="line"><span class="tag">           <span class="attr">android:enabled</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</span></span><br><span class="line"><span class="tag">           <span class="attr">android:menuCategory</span>=<span class="string">[</span>"<span class="attr">container</span>" | "<span class="attr">system</span>" | "<span class="attr">secondary</span>" | "<span class="attr">alternative</span>"]</span></span><br><span class="line"><span class="tag">           <span class="attr">android:orderInCategory</span>=<span class="string">"integer"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">menu</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">item</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h2><blockquote>
+<p>一种定义样式资源的XML文件,以实现样式的统一或者样式的复用</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- Base application theme. --&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span>  </span><br><span class="line"><span class="xml">  <span class="comment">&lt;!-- Customize your theme here. --&gt;</span>  </span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/detail_blue<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/white<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/detail_blue<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MyEditText"</span> <span class="attr">parent</span>=<span class="string">"@android:style/TextAppearance"</span>&gt;</span>  </span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColor"</span>&gt;</span>@color/subtitle_dark<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textSize"</span>&gt;</span>14dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:backgroundTint"</span>&gt;</span>@drawable/et_tint_color_focused_state<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:fontFamily"</span>&gt;</span>@font/my_nunito<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MyMainRoundedActionButton"</span> <span class="attr">parent</span>=<span class="string">"@android:style/TextAppearance"</span>&gt;</span>  </span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColor"</span>&gt;</span>@color/white<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textSize"</span>&gt;</span>18dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:fontFamily"</span>&gt;</span>@font/my_nunito_bold<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:background"</span>&gt;</span>@drawable/button_rounded_main_gradient_enabled_state<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textAllCaps"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:minWidth"</span>&gt;</span>160dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:gravity"</span>&gt;</span>center<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:paddingBottom"</span>&gt;</span>10dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:paddingTop"</span>&gt;</span>10dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:paddingEnd"</span>&gt;</span>36dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:paddingStart"</span>&gt;</span>36dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MyErrorText"</span> <span class="attr">parent</span>=<span class="string">"@android:style/TextAppearance"</span>&gt;</span>  </span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColor"</span>&gt;</span>@color/red_validation<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textSize"</span>&gt;</span>12dp<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:fontFamily"</span>&gt;</span>@font/my_nunito<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"MainActivity"</span> <span class="attr">parent</span>=<span class="string">"AppTheme"</span>&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><blockquote>
+<p>定义字符串资源的XML文件</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/strings.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 单个字符串 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"hello"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 字符串数组 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string-array</span> <span class="attr">name</span>=<span class="string">"planets_array"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>Mercury<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>Venus<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>Earth<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>Mars<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">string-array</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 用于多元化的不同字符串 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plurals</span> <span class="attr">name</span>=<span class="string">"numberOfSongsAvailable"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">quantity</span>=<span class="string">"one"</span>&gt;</span>Znaleziono %d piosenkę.<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">quantity</span>=<span class="string">"few"</span>&gt;</span>Znaleziono %d piosenki.<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">quantity</span>=<span class="string">"other"</span>&gt;</span>Znaleziono %d piosenek.<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plurals</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引用单个字符串</span></span><br><span class="line">String string = getString(R.string.hello);</span><br><span class="line"><span class="comment">//字符串数组</span></span><br><span class="line">Resources res = getResources();</span><br><span class="line">String[] planets = res.getStringArray(R.array.planets_array);</span><br><span class="line"><span class="comment">//多元化字符串</span></span><br><span class="line"><span class="keyword">int</span> count = getNumberOfsongsAvailable();</span><br><span class="line">Resources res = getResources();</span><br><span class="line">String songsFound = res.getQuantityString(R.plurals.numberOfSongsAvailable, count, count);</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式以及样式"><a href="#格式以及样式" class="headerlink" title="格式以及样式"></a>格式以及样式</h3><h4 id="撇号和引号"><a href="#撇号和引号" class="headerlink" title="撇号和引号"></a>撇号和引号</h4><blockquote>
+<p>要使用转移符实现</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- This's work --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"good_example"</span>&gt;</span>This\'s work<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- This is a "good string" --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"good_example"</span>&gt;</span>This is a \"good string\".<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串格式"><a href="#字符串格式" class="headerlink" title="字符串格式"></a>字符串格式</h4><ol>
+<li><p>设置格式参数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"welcome_messages"</span>&gt;</span>Hello, %1$s! You have %2$d new messages.<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line">String text = String.format(res.getString(R.string.welcome_messages), username, mailCount);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="使用HTML元素设置样式"><a href="#使用HTML元素设置样式" class="headerlink" title="使用HTML元素设置样式"></a>使用HTML元素设置样式</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"welcome"</span>&gt;</span>Welcome to <span class="tag">&lt;<span class="name">b</span>&gt;</span>Android<span class="tag">&lt;/<span class="name">b</span>&gt;</span>!<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用Spannable-设置样式"><a href="#使用Spannable-设置样式" class="headerlink" title="使用Spannable 设置样式"></a>使用Spannable 设置样式</h4><blockquote>
+<p>部分文字颜色,字体粗细,上下标等等</p>
+</blockquote>
+<h2 id="Drawables"><a href="#Drawables" class="headerlink" title="Drawables"></a>Drawables</h2><blockquote>
+<p>绘制对象资源,即图像资源</p>
+</blockquote>
+<h3 id="Bitmap-位图"><a href="#Bitmap-位图" class="headerlink" title="Bitmap(位图)"></a>Bitmap(位图)</h3><blockquote>
+<p>在构建过程中,可通过 aapt 工具自动优化位图文件,对图像进行无损压缩。例如，不需要超过 256 色的真彩色 PNG 可通过调色板转换为 8 位 PNG。这样产生的图像质量相同，但所需内存更少。</p>
+</blockquote>
+<p>支持格式:</p>
+<ul>
+<li>png , 首选</li>
+<li>jpg , 海星</li>
+<li>gif , 不推荐</li>
+</ul>
+<p>引用:</p>
+<p>在 Java 中：<code>R.drawable._filename_</code><br>在 XML 中：<code>@[_package_:]drawable/_filename_</code></p>
+<p>语法:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:src</span>=<span class="string">"@drawable/myimage"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ContextCompat.getDrawable(getActivity(), R.drawable.name);</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">ResourcesCompat.getDrawable(getResources(), R.drawable.name, <span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//or </span></span><br><span class="line">ResourcesCompat.getDrawable(getResources(), R.drawable.name, anotherTheme);</span><br></pre></td></tr></table></figure>
+
+<h3 id="XML-位图"><a href="#XML-位图" class="headerlink" title="XML 位图"></a>XML 位图</h3><h3 id="NinePatch"><a href="#NinePatch" class="headerlink" title="NinePatch"></a>NinePatch</h3><blockquote>
+<p>一种被特殊处理过的png图像，能够指定哪些区域可以被拉伸、哪些区域不可以</p>
+</blockquote>
+<ul>
+<li>dither<ul>
+<li>设定是否使用图像抖动处理，会使绘制出来的图片颜色更加平滑和饱满，图像更加清晰。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nine-patch</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:src</span>=<span class="string">"@[package:]drawable/drawable_resource"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:dither</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"] /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Layer-List"><a href="#Layer-List" class="headerlink" title="Layer List"></a>Layer List</h3><blockquote>
+<p>让图像以不同的层次展示的XMl文件</p>
+</blockquote>
+<p>语法:</p>
+<ul>
+<li>layer-list<ul>
+<li>xmlns:android </li>
+</ul>
+</li>
+<li>item <ul>
+<li>android:drawable ,资源文件</li>
+<li>android:id</li>
+<li>android:top , 顶部偏移</li>
+<li>android:right , 右边偏移</li>
+<li>android:bottom , 底部偏移</li>
+<li>android:left , 左边偏移</li>
+</ul>
+</li>
+</ul>
+<p>引用:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- layers.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layer-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bitmap</span> <span class="attr">android:src</span>=<span class="string">"@drawable/android_red"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:top</span>=<span class="string">"10dp"</span> <span class="attr">android:left</span>=<span class="string">"10dp"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bitmap</span> <span class="attr">android:src</span>=<span class="string">"@drawable/android_green"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:top</span>=<span class="string">"20dp"</span> <span class="attr">android:left</span>=<span class="string">"20dp"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bitmap</span> <span class="attr">android:src</span>=<span class="string">"@drawable/android_blue"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layer-list</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- layout.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:src</span>=<span class="string">"@drawable/layers"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/08/24/myLWFI.png" alt="myLWFI.png"></p>
+<blockquote>
+<p>同样也可用来绘制形状</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layer-list</span> <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 边缘 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:bottom</span>=<span class="string">"1dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:left</span>=<span class="string">"-2dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:right</span>=<span class="string">"-2dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:top</span>=<span class="string">"-2dp"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 绘制形状 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">stroke</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:width</span>=<span class="string">"1dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:color</span>=<span class="string">"@color/colorFF3F3E"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layer-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="State-List"><a href="#State-List" class="headerlink" title="State List"></a>State List</h3><blockquote>
+<p>让图像根据不同的状态展示的XML文件</p>
+</blockquote>
+<p>语法:</p>
+<ul>
+<li>selector<ul>
+<li>xmlns:android ,定义命名空间</li>
+<li>android:constantSize , 是否图像大小根据状态变化</li>
+<li>android:dither , 是否抖动</li>
+</ul>
+</li>
+<li>item<ul>
+<li>android:drawable</li>
+<li>android:state_pressed , 设置是否按压状态</li>
+<li>android:state_focused ,  设置是否获得焦点状态</li>
+<li>android:state_hovered , 光标</li>
+<li>android:state_selected , 设置是否选中状态</li>
+<li>android:state_checkable ,  设置勾选是否可用状态</li>
+<li>android:state_checked , 设置是否勾选状态</li>
+<li>android:state_enabled , 设置触摸或点击事件是否可用状态</li>
+<li>android:state_activated , 设置是否被激活状态</li>
+<li>android:state_window_focused<ul>
+<li>设置当前窗口是否获得焦点状态，true表示获得焦点，false表示未获得焦点，例如拉下通知栏或弹出对话框时，当前界面就会失去焦点；另外，ListView的ListItem获得焦点时也会触发true状态，可以理解为当前窗口就是ListItem本身</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/drawable/button.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_pressed"</span> /&gt;</span> <span class="comment">&lt;!-- pressed --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_focused"</span> /&gt;</span> <span class="comment">&lt;!-- focused --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_hovered</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_focused"</span> /&gt;</span> <span class="comment">&lt;!-- hovered --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/button_normal"</span> /&gt;</span> <span class="comment">&lt;!-- default --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- layout.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/button"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Level-List"><a href="#Level-List" class="headerlink" title="Level List"></a>Level List</h3><blockquote>
+<p>让图像根据不同的值显示不同的样式的XMl文件</p>
+</blockquote>
+<h3 id="Transition-Drawable"><a href="#Transition-Drawable" class="headerlink" title="Transition Drawable"></a>Transition Drawable</h3><blockquote>
+<p>实现两个图像之间淡出淡入效果的XML文件</p>
+</blockquote>
+<h3 id="Inset-Drawable"><a href="#Inset-Drawable" class="headerlink" title="Inset Drawable"></a>Inset Drawable</h3><blockquote>
+<p>指定一个图像在另一个图像显示的XML文件</p>
+</blockquote>
+<h3 id="Clip-Drawable"><a href="#Clip-Drawable" class="headerlink" title="Clip Drawable"></a>Clip Drawable</h3><blockquote>
+<p>一种可以裁剪图像的XMl文件,以此控制图像显示,常用于<a href="https://blog.csdn.net/briblue/article/details/53528837" target="_blank" rel="noopener">进度条</a>,<a href="https://www.jianshu.com/p/4af824cf705b" target="_blank" rel="noopener">扫描</a>等动画</p>
+</blockquote>
+<h3 id="Scale-Drawable"><a href="#Scale-Drawable" class="headerlink" title="Scale Drawable"></a>Scale Drawable</h3><blockquote>
+<p>让图像根据不同的值,实现比例缩放的XML文件</p>
+</blockquote>
+<h3 id="Shape-Drawable"><a href="#Shape-Drawable" class="headerlink" title="Shape Drawable"></a>Shape Drawable</h3><blockquote>
+<p>定义形状的XML文件,包括颜色和渐变</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;<span class="name">gradient</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:angle</span>=<span class="string">"180"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:endColor</span>=<span class="string">"@color/detail_pink"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:gradientRadius</span>=<span class="string">"10"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:startColor</span>=<span class="string">"@color/detail_blue"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:type</span>=<span class="string">"linear"</span>  </span></span><br><span class="line"><span class="tag">  /&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"45dp"</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/09/25/uEORWn.png" alt="uEORWn.png"></p>
+<h2 id="Color-state-list-resource"><a href="#Color-state-list-resource" class="headerlink" title="Color state list resource"></a>Color state list resource</h2><blockquote>
+<p>让颜色根据不同的状态展示的XMl文件</p>
+</blockquote>
+<h3 id="引用-1"><a href="#引用-1" class="headerlink" title="引用"></a>引用</h3><p>Java: <code>R.color._filename_</code><br>XML: <code>@[_package_:]color/_filename_</code></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>Xml:</p>
+<ul>
+<li>selector<ul>
+<li>xmlns:android</li>
+</ul>
+</li>
+<li>item<ul>
+<li>android:color</li>
+<li>android:state_pressed</li>
+<li>android:state_focused</li>
+<li>android:state_selected</li>
+<li>android:state_checkable</li>
+<li>android:state_checked</li>
+<li>android:state_enabled</li>
+<li>android:state_window_focused</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/color/button_text.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:color</span>=<span class="string">"#ffff0000"</span>/&gt;</span> <span class="comment">&lt;!-- pressed --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:color</span>=<span class="string">"#ff0000ff"</span>/&gt;</span> <span class="comment">&lt;!-- focused --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:color</span>=<span class="string">"#ff000000"</span>/&gt;</span> <span class="comment">&lt;!-- default --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- layout XML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"@string/button_text"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textColor</span>=<span class="string">"@color/button_text"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">int</span> color = res.getColor(R.color.opaque_red);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h2><blockquote>
+<p>实现自定义字体样式的XML文件</p>
+</blockquote>
+<p>位置:<br><code>res/font/filename.ttf (.ttf, .ttc, .otf, or .xml)</code></p>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/font/lobster.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font-family</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">font</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fontStyle</span>=<span class="string">"normal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fontWeight</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:font</span>=<span class="string">"@font/lobster_regular"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">font</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fontStyle</span>=<span class="string">"italic"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fontWeight</span>=<span class="string">"400"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:font</span>=<span class="string">"@font/lobster_italic"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">font-family</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:fontFamily</span>=<span class="string">"@font/lobster"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"Hello, World!"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Other-resource-types"><a href="#Other-resource-types" class="headerlink" title="Other resource types"></a>Other resource types</h2><p>位置:<br><code>res/values/filename.xml</code></p>
+<h3 id="Bool"><a href="#Bool" class="headerlink" title="Bool"></a>Bool</h3><blockquote>
+<p>定义Boolean值的XMl文件</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values-small/bools.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bool</span> <span class="attr">name</span>=<span class="string">"screen_small"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bool</span> <span class="attr">name</span>=<span class="string">"adjust_view_bounds"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">boolean</span> screenIsSmall = res.getBoolean(R.bool.screen_small);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:src</span>=<span class="string">"@drawable/logo"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:adjustViewBounds</span>=<span class="string">"@bool/adjust_view_bounds"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h3><blockquote>
+<p>定义颜色值得XML文件</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/colors.xml --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"opaque_red"</span>&gt;</span>#f00<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"translucent_red"</span>&gt;</span>#80ff0000<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">int</span> color = res.getColor(R.color.opaque_red);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textColor</span>=<span class="string">"@color/translucent_red"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"Hello"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h3><blockquote>
+<p>定义尺寸值的XMl文件</p>
+</blockquote>
+<ul>
+<li>dp<ul>
+<li>与密度无关的像素 ,基于物理密度的抽象单位</li>
+</ul>
+</li>
+<li>sp<ul>
+<li>与缩放无关的像素</li>
+<li>推荐用于字体</li>
+</ul>
+</li>
+<li>pt<ul>
+<li>物理单位,英寸/72</li>
+</ul>
+</li>
+<li>px<ul>
+<li>像素,对应屏幕的实际像素</li>
+<li>不推荐使用这种度量单位, 因为不同设备像素度不一样</li>
+</ul>
+</li>
+<li>mm<ul>
+<li>物理单位,毫米</li>
+</ul>
+</li>
+<li>in<ul>
+<li>物理单位,英寸</li>
+</ul>
+</li>
+</ul>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/dimens.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"textview_height"</span>&gt;</span>25dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"textview_width"</span>&gt;</span>150dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"ball_radius"</span>&gt;</span>30dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"font_size"</span>&gt;</span>16sp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">float</span> fontSize = res.getDimension(R.dimen.font_size);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"@dimen/textview_height"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"@dimen/textview_width"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textSize</span>=<span class="string">"@dimen/font_size"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ID"><a href="#ID" class="headerlink" title="ID"></a>ID</h3><blockquote>
+<p>定义ID的XMl文件</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/ids.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">type</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"button_ok"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">type</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"dialog_exit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showDialog(R.id.dialog_exit);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">android:id</span>=<span class="string">"@id/button_ok"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">"@style/button_style"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h3><blockquote>
+<p>定义Integer类型值的XML</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/integers.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">integer</span> <span class="attr">name</span>=<span class="string">"max_speed"</span>&gt;</span>75<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">integer</span> <span class="attr">name</span>=<span class="string">"min_speed"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">int</span> maxSpeed = res.getInteger(R.integer.max_speed);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Integer-Array"><a href="#Integer-Array" class="headerlink" title="Integer Array"></a>Integer Array</h3><blockquote>
+<p>定义Integer类型数组的XML文件</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/integers.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">integer-array</span> <span class="attr">name</span>=<span class="string">"bits"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>4<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>8<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>16<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>32<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">integer-array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line"><span class="keyword">int</span>[] bits = res.getIntArray(R.array.bits);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Typed-Array"><a href="#Typed-Array" class="headerlink" title="Typed Array"></a>Typed Array</h3><blockquote>
+<p>定义资源数组的XML文件</p>
+</blockquote>
+<p>定义:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- res/values/arrays.xml --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span> <span class="attr">name</span>=<span class="string">"icons"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>@drawable/home<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>@drawable/settings<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>@drawable/logout<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span> <span class="attr">name</span>=<span class="string">"colors"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#FFFF0000<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#FF00FF00<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#FF0000FF<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Resources res = getResources();</span><br><span class="line">TypedArray icons = res.obtainTypedArray(R.array.icons);</span><br><span class="line">Drawable drawable = icons.getDrawable(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">TypedArray colors = res.obtainTypedArray(R.array.colors);</span><br><span class="line"><span class="keyword">int</span> color = colors.getColor(<span class="number">0</span>,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/之路-AndroidJetpack/" rel="next" title="修仙之路_AndroidJetpack">
+                <i class="fa fa-chevron-left"></i> 修仙之路_AndroidJetpack
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/Android-Permissions/" rel="prev" title="Android Permissions">
+                Android Permissions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-number">1.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">2.</span> <span class="nav-text">Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Property-Animation"><span class="nav-number">2.1.</span> <span class="nav-text">Property Animation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Animation"><span class="nav-number">2.2.</span> <span class="nav-text">View Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tween-animation"><span class="nav-number">2.2.1.</span> <span class="nav-text">Tween animation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Frame-animation"><span class="nav-number">2.2.2.</span> <span class="nav-text">Frame animation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Menu"><span class="nav-number">3.</span> <span class="nav-text">Menu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style"><span class="nav-number">4.</span> <span class="nav-text">Style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">5.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">5.2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式以及样式"><span class="nav-number">5.3.</span> <span class="nav-text">格式以及样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#撇号和引号"><span class="nav-number">5.3.1.</span> <span class="nav-text">撇号和引号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串格式"><span class="nav-number">5.3.2.</span> <span class="nav-text">字符串格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用HTML元素设置样式"><span class="nav-number">5.3.3.</span> <span class="nav-text">使用HTML元素设置样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Spannable-设置样式"><span class="nav-number">5.3.4.</span> <span class="nav-text">使用Spannable 设置样式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawables"><span class="nav-number">6.</span> <span class="nav-text">Drawables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitmap-位图"><span class="nav-number">6.1.</span> <span class="nav-text">Bitmap(位图)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML-位图"><span class="nav-number">6.2.</span> <span class="nav-text">XML 位图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NinePatch"><span class="nav-number">6.3.</span> <span class="nav-text">NinePatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layer-List"><span class="nav-number">6.4.</span> <span class="nav-text">Layer List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State-List"><span class="nav-number">6.5.</span> <span class="nav-text">State List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Level-List"><span class="nav-number">6.6.</span> <span class="nav-text">Level List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transition-Drawable"><span class="nav-number">6.7.</span> <span class="nav-text">Transition Drawable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inset-Drawable"><span class="nav-number">6.8.</span> <span class="nav-text">Inset Drawable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clip-Drawable"><span class="nav-number">6.9.</span> <span class="nav-text">Clip Drawable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scale-Drawable"><span class="nav-number">6.10.</span> <span class="nav-text">Scale Drawable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shape-Drawable"><span class="nav-number">6.11.</span> <span class="nav-text">Shape Drawable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Color-state-list-resource"><span class="nav-number">7.</span> <span class="nav-text">Color state list resource</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用-1"><span class="nav-number">7.1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">7.2.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Font"><span class="nav-number">8.</span> <span class="nav-text">Font</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-resource-types"><span class="nav-number">9.</span> <span class="nav-text">Other resource types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bool"><span class="nav-number">9.1.</span> <span class="nav-text">Bool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Color"><span class="nav-number">9.2.</span> <span class="nav-text">Color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dimension"><span class="nav-number">9.3.</span> <span class="nav-text">Dimension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID"><span class="nav-number">9.4.</span> <span class="nav-text">ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer"><span class="nav-number">9.5.</span> <span class="nav-text">Integer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Array"><span class="nav-number">9.6.</span> <span class="nav-text">Integer Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Typed-Array"><span class="nav-number">9.7.</span> <span class="nav-text">Typed Array</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/12/03/ndroid-Resources/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="每个应用都必须包含一个AndroidManifest.xml文件.此文件向系统提供应用运行的必须信息  额外功能:  提供软件名  描述应用的各个组件  确定托管应用组件的进程  声明权限  列出Instrumentation类  声明系统最低API  声明应用所用的库  manifest  xmlns:android  命名空间,必须指定为http://schemas.android.com/">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Manifest">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/ndroid-Manifest/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="每个应用都必须包含一个AndroidManifest.xml文件.此文件向系统提供应用运行的必须信息  额外功能:  提供软件名  描述应用的各个组件  确定托管应用组件的进程  声明权限  列出Instrumentation类  声明系统最低API  声明应用所用的库  manifest  xmlns:android  命名空间,必须指定为http://schemas.android.com/">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-03T13:28:35.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Manifest">
+<meta name="twitter:description" content="每个应用都必须包含一个AndroidManifest.xml文件.此文件向系统提供应用运行的必须信息  额外功能:  提供软件名  描述应用的各个组件  确定托管应用组件的进程  声明权限  列出Instrumentation类  声明系统最低API  声明应用所用的库  manifest  xmlns:android  命名空间,必须指定为http://schemas.android.com/">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/03/ndroid-Manifest/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android Manifest | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/03/ndroid-Manifest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Manifest
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-03 21:28:00 / Modified: 21:28:35" itemprop="dateCreated datePublished" datetime="2019-12-03T21:28:00+08:00">2019-12-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>每个应用都必须包含一个AndroidManifest.xml文件.此文件向系统提供应用运行的必须信息</p>
+</blockquote>
+<p>额外功能:</p>
+<ul>
+<li><p>提供软件名</p>
+</li>
+<li><p>描述应用的各个组件</p>
+</li>
+<li><p>确定托管应用组件的进程</p>
+</li>
+<li><p>声明权限</p>
+</li>
+<li><p>列出<code>Instrumentation</code>类</p>
+</li>
+<li><p>声明系统最低API</p>
+</li>
+<li><p>声明应用所用的库</p>
+</li>
+<li><p>manifest</p>
+<ul>
+<li>xmlns:android <ul>
+<li>命名空间,必须指定为<code>http://schemas.android.com/apk/res/android</code></li>
+</ul>
+</li>
+<li>package <ul>
+<li>包名,以此解析清单中相对类名,如<code>&lt; activity android:name=&quot;.MainActivity&quot;&gt;</code> 等于<code>com.example.myapp.MainActivity</code></li>
+<li>作为应用程序唯一标识</li>
+</ul>
+</li>
+<li>android:versionCode<ul>
+<li>内部版本号</li>
+</ul>
+</li>
+<li>android:versionName<ul>
+<li>展示给用户看的版本名</li>
+</ul>
+</li>
+<li>android:installLocation<ul>
+<li>安装路径 ,<code>internalOnly</code>,<code>auto</code> ,<code>preferExternal</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>application</p>
+<ul>
+<li>android:usesCleartextTraffic , 是否使用HTTP协议,API28以上默认<code>false</code></li>
+<li>android:theme ,定义所有Activity的默认样式</li>
+<li>resizeableActivity , 是否支持多窗口显示</li>
+<li>android:persistent , 是否一直运行,默认<code>false</code></li>
+<li>android:permission , 自定义权限名称</li>
+<li>android:largeHeap , 申请分配更大的内存空间</li>
+<li>android:hardwareAccelerated , 是否启用硬件加速 , 加快多图加载 , 更占内存</li>
+<li>android:icon , app图标</li>
+</ul>
+</li>
+<li><p>screen</p>
+<ul>
+<li>android:screenSize,<code>&quot;small&quot; | &quot;normal&quot; | &quot;large&quot; | &quot;xlarge&quot;</code></li>
+<li>android:screenDensity,<code>[&quot;ldpi&quot; | &quot;mdpi&quot; | &quot;hdpi&quot; | &quot;xhdpi&quot; | &quot;280&quot; | &quot;360&quot; | &quot;420&quot; | &quot;480&quot; | &quot;560&quot; ]</code></li>
+</ul>
+</li>
+<li><p>Activity</p>
+<ul>
+<li>android:launchMode , 指定启动模式</li>
+<li>其他大部分属性与application同</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--根元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--应用配置--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">application</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--声明Activity,否则不能运行--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--将Activity表示为独立Activity,可以单独启动--&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">activity-alias</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--声明Service,否则不能运行--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">service</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!--声明Broadcast Receiver,否则不能运行--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--包含于以上,指定意图类型--&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--指定行为--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--指定类别--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--向filter添加数据规范?--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">provider</span>&gt;</span> </span><br><span class="line">      <span class="comment">&lt;!--包含于以上,声明一个键值对,存储在Bundle中--&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">meta-data</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">meta-data</span>  <span class="attr">android:name</span>=<span class="string">"zoo"</span>  <span class="attr">android:value</span>=<span class="string">"@string/kangaroo"</span>  /&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!--指定应用要链接的库--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-library</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--屏幕适配--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">compatible-screens</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">screen</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--声明一个工具类或测试类,监视应用程序--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">instrumentation</span>&gt;</span> </span><br><span class="line">  <span class="comment">&lt;!--自定义自身的权限--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">permission</span>&gt;</span> </span><br><span class="line">  <span class="comment">&lt;!--自定义自身的权限分组,以供识别,本身不声明权限--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">permission-group</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--自定义自身的权限命名空间,本身不声明权限--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">permission-tree</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--声明支持纹理格式,应该是用在游戏方面的--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">supports-gl-texture</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--屏幕兼容模式,旧时代产物,少用--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">supports-screens</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--声明需要的硬件或软件功能,以免应用安装在无法运行的设备上--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-configuration</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--声明使用的硬件或软件功能,可让您指定您的应用是需要声明的功能并且没有该功能便无法正常工作，还是使用该功能只是一种优先选择，没有它仍然可以正常工作--&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-feature</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--指明应用需要特定权限,5.0以上,在应用安装时由用户授予--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-permission</span>&gt;</span> </span><br><span class="line">  <span class="comment">&lt;!--指明应用需要特定权限，但仅当应用在API23或更高版本的设备上运行时才需要--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-permission-sdk-23</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--配置应用API级别的兼容性,不建议声明该属性--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-sdk</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/droid-Cool-Dependencies/" rel="next" title="Android Cool Dependencies">
+                <i class="fa fa-chevron-left"></i> Android Cool Dependencies
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/12/03/ndroid-Manifest/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

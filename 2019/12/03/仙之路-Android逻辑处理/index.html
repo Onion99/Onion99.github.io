@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="系统架构  Linux内核层: 提供底层驱动 系统运行层: 通过一些C/C++库来为系统主要特性支持 应用框架层: 提供各种API接口 应用层: 提供用户使用  每个 Android 应用都处于各自的安全沙盒中，并受以下 Android 安全功能的保护：  Android 操作系统是一种多用户 Linux 系统，其中的每个应用都是一个不同的用户； 默认情况下，系统会为每个应用分配一个唯一的 Lin">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修仙之路_Android逻辑处理">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/仙之路-Android逻辑处理/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="系统架构  Linux内核层: 提供底层驱动 系统运行层: 通过一些C/C++库来为系统主要特性支持 应用框架层: 提供各种API接口 应用层: 提供用户使用  每个 Android 应用都处于各自的安全沙盒中，并受以下 Android 安全功能的保护：  Android 操作系统是一种多用户 Linux 系统，其中的每个应用都是一个不同的用户； 默认情况下，系统会为每个应用分配一个唯一的 Lin">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/exyfXT.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/excdeS.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezVH3T.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezVzU1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezZEbd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezeYOe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezrKJI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/ezr0S0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/exNWZt.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/12/exUeJO.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/27/eKV8UO.png">
+<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2810673693,3284661591&fm=26&gp=0.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/824317/201612/824317-20161211213831272-742191218.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/637040/201508/212003481754976.jpg">
+<meta property="og:updated_time" content="2019-12-03T13:10:18.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="修仙之路_Android逻辑处理">
+<meta name="twitter:description" content="系统架构  Linux内核层: 提供底层驱动 系统运行层: 通过一些C/C++库来为系统主要特性支持 应用框架层: 提供各种API接口 应用层: 提供用户使用  每个 Android 应用都处于各自的安全沙盒中，并受以下 Android 安全功能的保护：  Android 操作系统是一种多用户 Linux 系统，其中的每个应用都是一个不同的用户； 默认情况下，系统会为每个应用分配一个唯一的 Lin">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/08/12/exyfXT.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/03/仙之路-Android逻辑处理/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>修仙之路_Android逻辑处理 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/03/仙之路-Android逻辑处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">修仙之路_Android逻辑处理
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-03 21:00:00 / Modified: 21:10:18" itemprop="dateCreated datePublished" datetime="2019-12-03T21:00:00+08:00">2019-12-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><p><img src="https://s2.ax1x.com/2019/08/12/exyfXT.jpg" alt="exyfXT.jpg"></p>
+<ul>
+<li>Linux内核层: 提供底层驱动</li>
+<li>系统运行层: 通过一些C/C++库来为系统主要特性支持</li>
+<li>应用框架层: 提供各种API接口</li>
+<li>应用层: 提供用户使用</li>
+</ul>
+<p>每个 Android 应用都处于各自的安全沙盒中，并受以下 Android 安全功能的保护：</p>
+<ul>
+<li>Android 操作系统是一种多用户 Linux 系统，其中的每个应用都是一个不同的用户；</li>
+<li>默认情况下，系统会为每个应用分配一个唯一的 Linux 用户 ID（该 ID 仅由系统使用，应用并不知晓）。系统会为应用中的所有文件设置权限，使得只有分配给该应用的用户 ID 才能访问这些文件；</li>
+<li>每个进程都拥有自己的虚拟机 (VM)，因此应用代码独立于其他应用而运行。</li>
+<li>默认情况下，每个应用都在其自己的 Linux 进程内运行。Android 系统会在需要执行任何应用组件时启动该进程，然后当不再需要该进程或系统必须为其他应用恢复内存时，其便会关闭该进程</li>
+</ul>
+<p>Android 系统实现了最小权限原则。换言之，默认情况下，每个应用只能访问执行其工作所需的组件，而不能访问其他组件。这样便能创建非常安全的环境，在此环境中，应用无法访问其未获得权限的系统部分。不过，应用仍可通过一些途径与其他应用共享数据以及访问系统服务：</p>
+<ul>
+<li>可以安排两个应用共享同一 Linux 用户 ID，在此情况下，二者便能访问彼此的文件。为节省系统资源，也可安排拥有相同用户 ID 的应用在同一 Linux 进程中运行，并共享同一 VM。应用还必须使用相同的证书进行签名。</li>
+<li>应用可以请求访问设备数据（如用户的联系人、短信消息、可装载存储装置（SD 卡）、相机、蓝牙等）的权限。用户必须明确授予这些权限</li>
+</ul>
+<h2 id="Activity-活动"><a href="#Activity-活动" class="headerlink" title="Activity(活动)"></a>Activity(活动)</h2><blockquote>
+<p><em>Activity</em> 是与用户交互的入口点。它表示拥有界面的单个屏幕</p>
+</blockquote>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ul>
+<li>注册<ul>
+<li>在AndroidManifest.xml,<code>&lt;application&gt;...&lt;/application&gt;</code>中</li>
+</ul>
+</li>
+<li>配套布局<ul>
+<li><code>setContentView(LayoutID);</code></li>
+</ul>
+</li>
+<li>销毁<ul>
+<li><code>finsh()</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h3><blockquote>
+<p>Activity、服务和广播接收器均通过异步消息 <em>Intent</em> 进行启动。Intent 会在运行时对各个组件进行互相绑定,内容提供程序并非由 Intent 启动。相反，它们会在成为 <a href="https://developer.android.com/reference/android/content/ContentResolver.html" target="_blank" rel="noopener">ContentResolver</a> 的请求目标时启动。</p>
+</blockquote>
+<h4 id="显式"><a href="#显式" class="headerlink" title="显式"></a>显式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent1 = <span class="keyword">new</span> Intent(LoginAct.<span class="keyword">this</span>, RegisterAct.class);  </span><br><span class="line">startActivity(intent1);</span><br></pre></td></tr></table></figure>
+
+<h4 id="隐式"><a href="#隐式" class="headerlink" title="隐式"></a>隐式</h4><p><strong>action</strong></p>
+<blockquote>
+<p>实现指定的行为跳转</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">action</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ACTION_MAIN</td>
+<td align="center">Android Application的入口，每个Android应用必须且只能包含一个此类型的Action声明</td>
+</tr>
+<tr>
+<td align="center">ACTION_VIEW</td>
+<td align="center">系统根据不同的Data类型，通过已注册的对应Application显示数据</td>
+</tr>
+<tr>
+<td align="center">ACTION_EDIT</td>
+<td align="center">系统根据不同的Data类型，通过已注册的对应Application编辑示数据</td>
+</tr>
+<tr>
+<td align="center">ACTION_DIAL</td>
+<td align="center">打开系统默认的拨号程序，如果Data中设置了电话号码，则自动在拨号程序中输入此号码</td>
+</tr>
+<tr>
+<td align="center">ACTION_CALL</td>
+<td align="center">直接呼叫Data中所带的号码</td>
+</tr>
+<tr>
+<td align="center">ACTION_ANSWER</td>
+<td align="center">接听来电</td>
+</tr>
+<tr>
+<td align="center">ACTION_SEND</td>
+<td align="center">由用户指定发送方式进=进行数据发送操作</td>
+</tr>
+<tr>
+<td align="center">ACTION_BOOT_COMPLETED</td>
+<td align="center">系统在启动完毕后发出带有此Action的广播（Broadcast）</td>
+</tr>
+<tr>
+<td align="center">CTION_SENDTO</td>
+<td align="center">系统根据不同的Data类型，通过已注册的对应Application进行数据发送操作</td>
+</tr>
+<tr>
+<td align="center">ACTION_TIME_CHANGED</td>
+<td align="center">系统的时间发生改变后发出的带有此Action的广播（Broadcast）</td>
+</tr>
+<tr>
+<td align="center">ACTION_BOOT_COMPLETED</td>
+<td align="center">系统在启动完毕后发出带有此Action的广播（Broadcast）</td>
+</tr>
+<tr>
+<td align="center">ACTION_PACKAGE_ADDED</td>
+<td align="center">Android系统安装了新的Application之后发出的带有此Action的广播</td>
+</tr>
+<tr>
+<td align="center">ACTION_PACKAGE_CHANGED</td>
+<td align="center">Android系统中已存在的Application发生改变之后（如应用更新操作）发出的带有此Action的广播</td>
+</tr>
+<tr>
+<td align="center">ACTION_PACKAGE_ADDED</td>
+<td align="center">Android系统安装了新的Application之后发出的带有此Action的广播</td>
+</tr>
+<tr>
+<td align="center">ACTION_PACKAGE_REMOVED</td>
+<td align="center">卸载了Android系统已存在的Application之后发出的带有此Action的广播</td>
+</tr>
+</tbody></table>
+<p><strong>category</strong></p>
+<blockquote>
+<p>一个 Intent 可以有多个 category，但至少会有一个，也是默认的一个 category</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">category</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CATEGORY_BROWSABLE</td>
+<td align="center">目标Activity能通过在网页浏览器中点击链接而激活（比如，点击浏览器中的图片链接）</td>
+</tr>
+<tr>
+<td align="center">CATEGORY_GADGET</td>
+<td align="center">表示目标Activity可以被内嵌到其他Activity当中</td>
+</tr>
+<tr>
+<td align="center">CATEGORY_HOME</td>
+<td align="center">目标Activity是HOME Activity，即手机开机启动后显示的Activity，或按下HOME键后显示的Activity</td>
+</tr>
+<tr>
+<td align="center">CATEGORY_LAUNCHER</td>
+<td align="center">表示目标Activity是应用程序中最优先被执行的Activity</td>
+</tr>
+<tr>
+<td align="center">CATEGORY_PREFERENCE</td>
+<td align="center">表示目标Activity是一个偏爱设置的Activity</td>
+</tr>
+<tr>
+<td align="center">CATEGORY_LAUNCHER</td>
+<td align="center">表示目标Activity是应用程序中最优先被执行的Activity</td>
+</tr>
+</tbody></table>
+<p><strong>data</strong></p>
+<blockquote>
+<p>通常是URL格式定义的操作数据</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">".view.SecondActivity"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span> = <span class="string">"android.intent.catrgory.DERAULT"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动方式1</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">".view.SecondActivity"</span>);</span><br><span class="line">startActivity(intent);</span><br><span class="line"><span class="comment">//其他调用方式 </span></span><br><span class="line"><span class="comment">//浏览网页   </span></span><br><span class="line">Uri uri = Uri.parse(<span class="string">"http://www.google.com"</span>);   </span><br><span class="line">Intent it  = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW,uri);   </span><br><span class="line">startActivity(it);    </span><br><span class="line"><span class="comment">//拨打电话   </span></span><br><span class="line">Uri uri = Uri.parse(<span class="string">"tel:xxxxxx"</span>);   </span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL, uri);     </span><br><span class="line">startActivity(it);   </span><br><span class="line"><span class="comment">//调用发短信的程序   </span></span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);      </span><br><span class="line">it.putExtra(<span class="string">"sms_body"</span>, <span class="string">"The SMS text"</span>);      </span><br><span class="line">it.setType(<span class="string">"vnd.android-dir/mms-sms"</span>);      </span><br><span class="line">startActivity(it);   </span><br><span class="line"><span class="comment">//发送短信   </span></span><br><span class="line">Uri uri = Uri.parse(<span class="string">"smsto:0800000123"</span>);      </span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO, uri);      </span><br><span class="line">it.putExtra(<span class="string">"sms_body"</span>, <span class="string">"The SMS text"</span>);      </span><br><span class="line">startActivity(it);   </span><br><span class="line">String body=<span class="string">"this is sms demo"</span>;   </span><br><span class="line">Intent mmsintent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO, Uri.fromParts(<span class="string">"smsto"</span>, number, <span class="keyword">null</span>));   </span><br><span class="line">mmsintent.putExtra(Messaging.KEY_ACTION_SENDTO_MESSAGE_BODY, body);   </span><br><span class="line">mmsintent.putExtra(Messaging.KEY_ACTION_SENDTO_COMPOSE_MODE, <span class="keyword">true</span>);   </span><br><span class="line">mmsintent.putExtra(Messaging.KEY_ACTION_SENDTO_EXIT_ON_SENT, <span class="keyword">true</span>);   </span><br><span class="line">startActivity(mmsintent);   </span><br><span class="line"><span class="comment">//播放多媒体     </span></span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);   </span><br><span class="line">Uri uri = Uri.parse(<span class="string">"file:///sdcard/song.mp3"</span>);   </span><br><span class="line">it.setDataAndType(uri, <span class="string">"audio/mp3"</span>);   </span><br><span class="line">startActivity(it);   </span><br><span class="line">Uri uri = Uri.withAppendedPath(MediaStore.Audio.Media.INTERNAL_CONTENT_URI, <span class="string">"1"</span>);      </span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, uri);      </span><br><span class="line">startActivity(it);   </span><br><span class="line"><span class="comment">//uninstall apk   </span></span><br><span class="line">Uri uri = Uri.fromParts(<span class="string">"package"</span>, strPackageName, <span class="keyword">null</span>);      </span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_DELETE, uri);      </span><br><span class="line">startActivity(it);   </span><br><span class="line"><span class="comment">//install apk   </span></span><br><span class="line">Uri installUri = Uri.fromParts(<span class="string">"package"</span>, <span class="string">"xxx"</span>, <span class="keyword">null</span>);   </span><br><span class="line">returnIt = <span class="keyword">new</span> Intent(Intent.ACTION_PACKAGE_ADDED, installUri);   </span><br><span class="line"><span class="comment">//打开照相机   </span></span><br><span class="line">Intent i = <span class="keyword">new</span> Intent(Intent.ACTION_CAMERA_BUTTON, <span class="keyword">null</span>);   </span><br><span class="line"><span class="keyword">this</span>.sendBroadcast(i);   </span><br><span class="line"><span class="keyword">long</span> dateTaken = System.currentTimeMillis();   </span><br><span class="line">String name = createName(dateTaken) + <span class="string">".jpg"</span>;   </span><br><span class="line">fileName = folder + name;   </span><br><span class="line">ContentValues values = <span class="keyword">new</span> ContentValues();   </span><br><span class="line">values.put(Images.Media.TITLE, fileName);   </span><br><span class="line">values.put(<span class="string">"_data"</span>, fileName);   </span><br><span class="line">values.put(Images.Media.PICASA_ID, fileName);   </span><br><span class="line">values.put(Images.Media.DISPLAY_NAME, fileName);   </span><br><span class="line">values.put(Images.Media.DESCRIPTION, fileName);   </span><br><span class="line">values.put(Images.ImageColumns.BUCKET_DISPLAY_NAME, fileName);   </span><br><span class="line">Uri photoUri = getContentResolver().insert(   </span><br><span class="line">MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);   </span><br><span class="line">Intent inttPhoto = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);   </span><br><span class="line">inttPhoto.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);   </span><br><span class="line">startActivityForResult(inttPhoto, <span class="number">10</span>);   </span><br><span class="line"><span class="comment">//从gallery选取图片   </span></span><br><span class="line">Intent i = <span class="keyword">new</span> Intent();   </span><br><span class="line">i.setType(<span class="string">"image/*"</span>);   </span><br><span class="line">i.setAction(Intent.ACTION_GET_CONTENT);   </span><br><span class="line">startActivityForResult(i, <span class="number">11</span>);      </span><br><span class="line"><span class="comment">//寻找应用         </span></span><br><span class="line">Uri uri = Uri.parse(<span class="string">"market://search?q=pname:pkg_name"</span>);           </span><br><span class="line">Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, uri);           </span><br><span class="line">startActivity(it);           </span><br><span class="line"><span class="comment">//打开联系人列表               </span></span><br><span class="line">    Intent i = <span class="keyword">new</span> Intent();   </span><br><span class="line">    i.setAction(Intent.ACTION_GET_CONTENT);   </span><br><span class="line">    i.setType(<span class="string">"vnd.android.cursor.item/phone"</span>);   </span><br><span class="line">    startActivityForResult(i, REQUEST_TEXT);   </span><br><span class="line">    Uri uri = Uri.parse(<span class="string">"content://contacts/people"</span>);   </span><br><span class="line">    Intent it = <span class="keyword">new</span> Intent(Intent.ACTION_PICK, uri);   </span><br><span class="line">    startActivityForResult(it, REQUEST_TEXT);   </span><br><span class="line"><span class="comment">//打开另一程序   </span></span><br><span class="line">Intent i = <span class="keyword">new</span> Intent();   </span><br><span class="line">ComponentName cn = <span class="keyword">new</span> ComponentName(<span class="string">"com.yellowbook.android2"</span>,   </span><br><span class="line">        <span class="string">"com.yellowbook.android2.AndroidSearch"</span>);   </span><br><span class="line">i.setComponent(cn);   </span><br><span class="line">i.setAction(<span class="string">"android.intent.action.MAIN"</span>);   </span><br><span class="line">startActivityForResult(i, RESULT_OK);</span><br></pre></td></tr></table></figure>
+
+<h4 id="传递数据"><a href="#传递数据" class="headerlink" title="传递数据"></a>传递数据</h4><h5 id="简单传递"><a href="#简单传递" class="headerlink" title="简单传递"></a>简单传递</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//FirstActivity</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);</span><br><span class="line">intent.putExtra(<span class="string">"Value"</span>, key);</span><br><span class="line"><span class="comment">//SecondActivity</span></span><br><span class="line">Intent intent = getIntent();</span><br><span class="line">String content = intent.getStringExtra(<span class="string">"key"</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h5><blockquote>
+<p>用于将一个对象转换成可存储或可传输的状态,即序列化</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">// get and set '''''</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"> <span class="comment">//FirstA传递数据</span></span><br><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">person.setName(<span class="string">"Dong"</span>);</span><br><span class="line">person.setAge(<span class="number">20</span>);</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstA, SecondB);</span><br><span class="line">intent.putExtra(<span class="string">"person"</span>, person);<span class="comment">//("Key",Value)</span></span><br><span class="line">startAactivity(intent);</span><br><span class="line"> <span class="comment">//SecondB 接受数据</span></span><br><span class="line">Person person = (Person)getIntent().getSerializableExtra(<span class="string">"person"</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h5><blockquote>
+<p> 将对象进行分解,以支持传输</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Parcelable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">//重写方法</span></span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    dest.writeString(name);<span class="comment">//按顺序写入</span></span><br><span class="line">    dest.writeInt(age);</span><br><span class="line">  &#125;</span><br><span class="line">    <span class="comment">//创建Parcel.Creator接口的实现,指定泛型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Parcel.Creator&lt;Person&gt; CREATOR</span><br><span class="line">    =<span class="keyword">new</span> Parcleable.Creator&lt;Person&gt;()&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">createFromParcel</span><span class="params">(Parcel source)</span></span>&#123;</span><br><span class="line">     Person person = <span class="keyword">new</span> Person ();</span><br><span class="line">     person.name = source.readString();<span class="comment">//按顺序读取</span></span><br><span class="line">     person,age = source.readInt();</span><br><span class="line">     <span class="keyword">return</span> person; </span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="comment">//FirstA</span></span><br><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">person.setName(<span class="string">"Dong"</span>);</span><br><span class="line">person.setAge(<span class="number">20</span>);</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirstA, SecondB);</span><br><span class="line">intent.putExtra(<span class="string">"person"</span>, person)</span><br><span class="line">startAactivity(intent);</span><br><span class="line"> <span class="comment">//SecondB</span></span><br><span class="line">Person person = (Person) getIntent().getParcelableExtra(<span class="string">"person"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="接受数据"><a href="#接受数据" class="headerlink" title="接受数据"></a>接受数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(A.<span class="keyword">this</span>, B.class);</span><br><span class="line">startActivityForResult(intent, <span class="number">1</span>);<span class="comment">//Intent,请求码</span></span><br><span class="line"><span class="comment">//A,接受数据处理</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span></span>&#123;</span><br><span class="line">   <span class="keyword">switch</span> (resultCode)&#123;</span><br><span class="line">    <span class="comment">//返回码处理</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//B,重写返回键方法</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span></span>&#123;</span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">  intent.putExtra(<span class="string">"data_return"</span>, <span class="string">"return ok"</span>);</span><br><span class="line">  setResult(<span class="number">0</span>, intent); <span class="comment">//返回码,Intent(数据可带可不带)</span></span><br><span class="line">  finsh();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li>onCreate()</li>
+<li>onStart()</li>
+<li>onResume()</li>
+<li>onPause()</li>
+<li>onStop()</li>
+<li>onDestroy()</li>
+<li>onRestart()</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/08/12/excdeS.jpg" alt="excdeS.jpg"></p>
+<h4 id="存储活动被回收时的数据"><a href="#存储活动被回收时的数据" class="headerlink" title="存储活动被回收时的数据"></a>存储活动被回收时的数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//回收Activity</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span></span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">     String tempData=<span class="string">"some data"</span>;</span><br><span class="line">     outState.putString(<span class="string">"data"</span>,tempDate);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//修改onCreate()方法</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle SaveInstanceState)</span></span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(SaveInstanceState);</span><br><span class="line">   <span class="keyword">if</span>(SaveInstanceState!=<span class="keyword">null</span>)&#123;</span><br><span class="line">      String tempData =SaveInstanceState.getString(<span class="string">"data"</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><blockquote>
+<p>通过<strong>返回栈</strong>来管理活动</p>
+</blockquote>
+<h4 id="配置启动模式"><a href="#配置启动模式" class="headerlink" title="配置启动模式"></a>配置启动模式</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".SingleTaskActivity"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"singleTask launchMode"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:launchMode</span>=<span class="string">"singleTask"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动模式详解"><a href="#启动模式详解" class="headerlink" title="启动模式详解"></a>启动模式详解</h4><ul>
+<li>standard<ul>
+<li>不理会返回栈中Activity是否存在,启动一次,创建一次</li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezVH3T.png" alt="ezVH3T.png"></li>
+</ul>
+</li>
+<li>singleTop<ul>
+<li>只在栈顶则直接使用,其他情况跟standard模式一模一样</li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezVzU1.png" alt="ezVzU1.png"></li>
+</ul>
+</li>
+<li>singleTask<ul>
+<li>启动时,栈中存在则destroy,然后新建,保持返回栈中只存在一个</li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezZEbd.png" alt="ezZEbd.png"></li>
+</ul>
+</li>
+<li>singleInstance<ul>
+<li>单独另开一个任务栈,与singleTask相似,但在任何情况下都不会重复创建 Activity</li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezeYOe.png" alt="ezeYOe.png"></li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezrKJI.png" alt="ezrKJI.png"></li>
+<li><img src="https://s2.ax1x.com/2019/08/12/ezr0S0.png" alt="ezr0S0.png"></li>
+</ul>
+</li>
+</ul>
+<h4 id="Intent配置启动模式"><a href="#Intent配置启动模式" class="headerlink" title="Intent配置启动模式"></a>Intent配置启动模式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(StandardActivity.<span class="keyword">this</span>, StandardActivity.class);</span><br><span class="line">intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回栈状态"><a href="#返回栈状态" class="headerlink" title="返回栈状态"></a>返回栈状态</h4><ul>
+<li>运行状态</li>
+<li>暂停状态</li>
+<li>停止状态</li>
+<li>销毁状态</li>
+</ul>
+<h2 id="Broadcast-Receiver-广播"><a href="#Broadcast-Receiver-广播" class="headerlink" title="Broadcast Receiver(广播)"></a>Broadcast Receiver(广播)</h2><blockquote>
+<p>借助广播接收器组件，系统能够在常规用户流之外向应用传递事件，从而允许应用响应系统范围内的广播通知。尽管广播接收器不会显示界面，但其可以<a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html" target="_blank" rel="noopener">创建状态栏通知</a>，在发生广播事件时提醒用户。但广播接收器更常见的用途只是作为通向其他组件的_通道_，旨在执行极少量的工作。</p>
+</blockquote>
+<h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><h4 id="Normal-broadcasts-标准"><a href="#Normal-broadcasts-标准" class="headerlink" title="Normal broadcasts(标准)"></a>Normal broadcasts(标准)</h4><h4 id="Ordered-broadcast-有序广播"><a href="#Ordered-broadcast-有序广播" class="headerlink" title="Ordered broadcast(有序广播)"></a>Ordered broadcast(有序广播)</h4><h3 id="监听系统广播"><a href="#监听系统广播" class="headerlink" title="监听系统广播"></a>监听系统广播</h3><h4 id="动态注册-gt-实现监听"><a href="#动态注册-gt-实现监听" class="headerlink" title="动态注册 -&gt;实现监听"></a>动态注册 -&gt;实现监听</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//继承</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IntentFilter intentFilter;</span><br><span class="line">    <span class="comment">//内部类,继承Broadcast Receiver,重写onCreate</span></span><br><span class="line">    <span class="keyword">private</span> NetworkChang eReceiver networkChangeReceiver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        <span class="comment">//监听网络变化Action,想要监听什么广播，就在这里添加相应的action。</span></span><br><span class="line">        intentFilter.addAction(<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>);</span><br><span class="line">        <span class="comment">//实例化</span></span><br><span class="line">        networkChangeReceiver = <span class="keyword">new</span> NetworkChangeReceiver();</span><br><span class="line">        <span class="comment">//进行注册</span></span><br><span class="line">        registerReceiver(networkChangeReceiver, intentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        <span class="comment">//动态注册的广播接收器一定都要取消注册</span></span><br><span class="line">        unregisterReceiver(networkChangeReceiver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetworkChangeReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//一个系统服务类，专门用于管理网络连接的</span></span><br><span class="line">            ConnectivityManager connectionManager = (ConnectivityManager)</span><br><span class="line">                getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">            NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();</span><br><span class="line">            <span class="keyword">if</span> (networkInfo != <span class="keyword">null</span> &amp;&amp; networkInfo.isAvailable()) &#123;</span><br><span class="line">                Toast.makeText(context, <span class="string">"network is available"</span>,</span><br><span class="line">                    Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                Toast.makeText(context, <span class="string">"network is unavailable"</span>,</span><br><span class="line">                    Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="静态注册-gt-实现开机启动"><a href="#静态注册-gt-实现开机启动" class="headerlink" title="静态注册 -&gt; 实现开机启动"></a>静态注册 -&gt; 实现开机启动</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">"Boot Complete"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Mainfiest配置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="发送"><a href="#发送" class="headerlink" title="发送"></a>发送</h3><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h2 id="Content-Providers-内容提供者"><a href="#Content-Providers-内容提供者" class="headerlink" title="Content Providers(内容提供者)"></a>Content Providers(内容提供者)</h2><blockquote>
+<p>内容提供程序管理一组共享的应用数据，您可以将这些数据存储在文件系统、SQLite 数据库、网络中或者您的应用可访问的任何其他持久化存储位置。其他应用可通过内容提供程序查询或修改数据（如果内容提供程序允许）。</p>
+</blockquote>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//申请权限</span></span><br><span class="line"><span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE)!=PackageManger.PERMISSON_GRANTED)</span><br><span class="line">ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>.new String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p><code>ContentResolver</code></p>
+<h3 id="内容提供器"><a href="#内容提供器" class="headerlink" title="内容提供器"></a>内容提供器</h3><p><code>extends ContentProvide</code></p>
+<h2 id="Service-服务"><a href="#Service-服务" class="headerlink" title="Service(服务)"></a>Service(服务)</h2><blockquote>
+<p>服务是一个通用入口点，用于因各种原因使应用在后台保持运行状态</p>
+</blockquote>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="线程实现方法"><a href="#线程实现方法" class="headerlink" title="线程实现方法"></a>线程实现方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//新建一个类继承Thread</span><br><span class="line">class Mythread extends Thread&#123;</span><br><span class="line">   @override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   //logic</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//启动</span><br><span class="line">new MyThread().start();</span><br><span class="line">//实现接口方式定义一个类</span><br><span class="line">class MyThread implements Runable&#123;</span><br><span class="line">   @override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> //启动</span><br><span class="line"> MyThread myThread = new MyThread;</span><br><span class="line"> new Thread(myThread).start();</span><br><span class="line">/* 匿名类方式</span><br><span class="line">*/</span><br><span class="line"> new Thread(new Runnable()&#123;</span><br><span class="line">   @Override</span><br><span class="line">   public void run()&#123;</span><br><span class="line">   //logic</span><br><span class="line"> &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<h4 id="异步消息处理"><a href="#异步消息处理" class="headerlink" title="异步消息处理"></a>异步消息处理</h4><blockquote>
+<p>安卓不允许子线程进行UI操作</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UPDATE_TEXT =<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">private</span> TextView text;</span><br><span class="line">   <span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler()&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span></span>&#123;</span><br><span class="line">           <span class="keyword">switch</span>(msg.what)&#123;</span><br><span class="line">           <span class="keyword">case</span> UPDATE_TEXT: <span class="comment">//UI logic </span></span><br><span class="line">           text.setText(<span class="string">"yet"</span>);<span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ...</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">      <span class="keyword">switch</span>(v.getId())&#123;</span><br><span class="line">       <span class="keyword">case</span> R.id.change_text:</span><br><span class="line">       <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">          Message message = <span class="keyword">new</span> Message();</span><br><span class="line">          message.what = UPDATE_TEXT;</span><br><span class="line">          handler.sendMessage(message);<span class="comment">//发送</span></span><br><span class="line">          &#125;</span><br><span class="line">         &#125;).start();</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">default</span> : <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="异步消息处理机制"><a href="#异步消息处理机制" class="headerlink" title="异步消息处理机制"></a>异步消息处理机制</h4><ul>
+<li>Message</li>
+<li>Handler</li>
+<li>MessagesQueue</li>
+<li>Looper</li>
+</ul>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> <span class="keyword">extends</span> <span class="title">Service</span></span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="title">MyService</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span></span>&#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Service start"</span>);</span><br><span class="line">  &#125;   </span><br><span class="line">      <span class="meta">@Override</span>	</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">super</span>.onCreate();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent,<span class="keyword">int</span> flags,<span class="keyword">int</span> startid)</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent,flag,startid);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onDestroy();</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Activity</span></span><br><span class="line"> <span class="comment">//启动</span></span><br><span class="line"> Intent start = <span class="keyword">new</span> Intent(<span class="keyword">this</span>,Myservice.class)</span><br><span class="line"> startService(start);</span><br><span class="line"> <span class="comment">//停止</span></span><br><span class="line"> stopService(start);</span><br><span class="line"> <span class="comment">//活动和服务进行通信</span></span><br><span class="line"> <span class="keyword">private</span> DownloadBinder mBinder = <span class="keyword">new</span> DownLoadBinder();</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">DownloadBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span></span>&#123;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span> <span class="params">(Intent intent)</span></span>&#123;</span><br><span class="line">      rerurn mBinder;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><blockquote>
+<p>采用fragment来管理应用UI,可避开Android系统activity使用规则的限制,顾名思义这是歪果仁</p>
+</blockquote>
+<p><strong>fragment</strong>是一种控制器对象,activity可委派他执行任务</p>
+<p><strong>UI fragment</strong> 是管理用户界面的fragment,fragment 视图包含了用户可以交互的可视化UI元素</p>
+<p><strong>根据应用和用户需求,可联合使用fragment及Activity来组装或重组用户界面</strong><br><img src="https://s2.ax1x.com/2019/08/12/exNWZt.jpg" alt="exNWZt.jpg">### 生命周期</p>
+<blockquote>
+<p>类似于Activity,关键在于,fragment的生命周期方法由Activity托管,系统不关心activity用来管理视图的fragment. fragment的使用是activity内部的事情</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/08/12/exUeJO.jpg" alt="exUeJO.jpg"></p>
+<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><ul>
+<li>运行</li>
+<li>暂停</li>
+<li>停止<ul>
+<li>FragmentTransaction的remove(),replace()</li>
+</ul>
+</li>
+<li>销毁</li>
+</ul>
+<h3 id="托管的两种方式"><a href="#托管的两种方式" class="headerlink" title="托管的两种方式"></a>托管的两种方式</h3><h4 id="在Activity布局中使用fragment"><a href="#在Activity布局中使用fragment" class="headerlink" title="在Activity布局中使用fragment"></a>在Activity布局中使用fragment</h4><blockquote>
+<p>简单但不灵活,在Activity的生命周期过程中,无法更换fragment视图</p>
+</blockquote>
+<h4 id="在Activity代码中使用fragment"><a href="#在Activity代码中使用fragment" class="headerlink" title="在Activity代码中使用fragment"></a>在Activity代码中使用fragment</h4><blockquote>
+<p>动态控制</p>
+</blockquote>
+<h5 id="定义容器视图"><a href="#定义容器视图" class="headerlink" title="定义容器视图"></a>定义容器视图</h5><blockquote>
+<p>定义通用性的视图,以托管更多的fragment</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">android:id</span>=<span class="string">"@+id/fragment_container"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span>  </span></span><br><span class="line"><span class="tag">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="创建UI-Fragment"><a href="#创建UI-Fragment" class="headerlink" title="创建UI Fragment"></a>创建UI Fragment</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.activity_crime);  </span><br><span class="line"><span class="comment">//Fragment管理者</span></span><br><span class="line">FragmentManager fm = getSupportFragmentManager();  </span><br><span class="line"><span class="comment">//Fragment容器</span></span><br><span class="line">Fragment fragment = fm.findFragmentById(R.id.fragment_container);  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> (fragment == <span class="keyword">null</span>) &#123;  </span><br><span class="line">    <span class="comment">//设置相应的的Fragment类</span></span><br><span class="line">    fragment = <span class="keyword">new</span> CrimeFragment();  </span><br><span class="line">    fm.beginTransaction()  </span><br><span class="line">        .add(R.id.fragment_container, fragment)  </span><br><span class="line">        .commit();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义的fragment</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> Crime mCrime;  </span><br><span class="line">    <span class="keyword">private</span> EditText mTitleField;  </span><br><span class="line">    <span class="keyword">private</span> Button mDateButton;  </span><br><span class="line">    <span class="keyword">private</span> CheckBox mSolvedCheckbox;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  </span><br><span class="line">        mCrime = <span class="keyword">new</span> Crime();  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="comment">//实例化布局视图</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)</span> </span>&#123;  </span><br><span class="line">        View v = inflater.inflate(R.layout.fragment_crime, container, <span class="keyword">false</span>);  </span><br><span class="line">        mTitleField = (EditText) v.findViewById(R.id.crime_title);  </span><br><span class="line">        mTitleField.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;  </span><br><span class="line">            <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span> </span>&#123;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;  </span><br><span class="line">                mCrime.setTitle(s.toString());  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;);  </span><br><span class="line">        mDateButton = (Button) v.findViewById(R.id.crime_date);  </span><br><span class="line">        mDateButton.setText(mCrime.getDate().toString());  </span><br><span class="line">        mDateButton.setEnabled(<span class="keyword">false</span>);  </span><br><span class="line">        mSolvedCheckbox = (CheckBox) v.findViewById(R.id.crime_solved);  </span><br><span class="line">        mSolvedCheckbox.setOnCheckedChangeListener(<span class="keyword">new</span> OnCheckedChangeListener() &#123;  </span><br><span class="line">            <span class="meta">@Override</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCheckedChanged</span><span class="params">(CompoundButton buttonView,   </span></span></span><br><span class="line"><span class="function"><span class="params">                    <span class="keyword">boolean</span> isChecked)</span> </span>&#123;  </span><br><span class="line">                mCrime.setSolved(isChecked);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;);  </span><br><span class="line">        <span class="keyword">return</span> v;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ul>
+<li>Fragment.onCreate(Bundle)是公共方法,而Activity.onCreate(Bundle)是受保护方法. ==Fragment.onCreate(Bundle)方法及其他Fragment生命周期方法必须是公共方法.因为托管fragment的activity要调用他们==</li>
+<li>类似于Activity,Fragmen同样具有保存及获取状态的bundle. 如同使用Activity.onSaveInstanceState(Bundle)方法那样,也可以根据需要覆盖Fragment.onSaveInstanceState(Bundle)方法</li>
+<li>Fragment视图的创建和配置在onCreateView()中完成,其方法接收三个参数<ol>
+<li>视图直接通过调用LayoutInflater.inflate() 方法传入布局的资源ID生成</li>
+<li>视图的父视图,通常需要父视图来正确配置组件</li>
+<li>告诉布局生成器是否将生成的视图添加给父视图<ul>
+<li>if (fragment == null)流程:向FragmentManager请求并获取fragment,如果要获取的fragment在队列中,FragmentManager就直接返回它,之前有可能存在?</li>
+</ul>
+<ul>
+<li>设备旋转或回收内存时,Android洗头会销毁CrimeActivity,而后重逢时,会调用CrimeActivity.onCreate(Bundle)方法,因为activity销毁时,他的FragmentManager会将fragment队列保存下来<h4 id="FragmentManager"><a href="#FragmentManager" class="headerlink" title="FragmentManager"></a>FragmentManager</h4><img src="https://s2.ax1x.com/2019/07/27/eKV8UO.png" alt="eKV8UO.png"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="fragment-事务"><a href="#fragment-事务" class="headerlink" title="fragment 事务"></a>fragment 事务</h5><blockquote>
+<p>fragment事务被用来添加,移除,附加,分离,或替换fragment队列中的fragment.这是使用fragment动态组装和重新组装用户界面的关键</p>
+</blockquote>
+<p><code>fm.beginTransaction().add(R.id.fragment_container, fragment).commit();</code>* beginTransaction()方法创建并返回 FragmentTransaction实例, FragmentTransaction类支持流接口的链式调用,因此以上代码可以理解为:==创建一个新的 fragment事务,执行一个fragment添加操作,然后提交该事务==</p>
+<p><strong>add()</strong>是整个事务的核心,其接受两个参数</p>
+<ul>
+<li><p>容器资源Id</p>
+<ul>
+<li>告诉FragmentManager,fragment的视图应该在Activity视图的什么位置</li>
+<li>唯一标识FragmentManager队列中的fragment</li>
+</ul>
+</li>
+<li><p>要设置的Fragment</p>
+<h2 id="Fragment-argument"><a href="#Fragment-argument" class="headerlink" title="Fragment argument"></a>Fragment argument</h2><blockquote>
+<p>fragment有两种获取Intent中数据的方式,一种通过getIntent.get***,简单粗暴,但这会破坏fragment的封装,另一种就是Fragment argument</p>
+</blockquote>
+<p>每一个fragment实例都可附带一个Bundle对象,该bundle包含键-值对,可以像activity中的intent中的那样使用它们,一个键值对即一个argument</p>
+</li>
+</ul>
+<h3 id="创建fragment-argument"><a href="#创建fragment-argument" class="headerlink" title="创建fragment argument"></a>创建fragment argument</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Bundle args = <span class="keyword">new</span> Bundle();</span><br><span class="line">args.putSerializable(ARG_MY_OBJECT,myObject);</span><br><span class="line">args.putInt(ARG_MY_INT,myInt);</span><br><span class="line">args.putCharSequence(ARG_MY_STRING,myString);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据读写"><a href="#数据读写" class="headerlink" title="数据读写"></a>数据读写</h2><h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><h4 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h4><p><code>openFileOutput</code></p>
+<h4 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h4><p><code>openFileInput</code></p>
+<h3 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h3><blockquote>
+<p>键值对存储</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//write</span></span><br><span class="line">SharePreferences.Editor editor = getShardPreferences(<span class="string">"data"</span>,MODE_PRIVATE).edit();</span><br><span class="line">editor.putString(<span class="string">"name"</span>,<span class="string">"Tom"</span>);</span><br><span class="line">editor.apply();</span><br><span class="line"><span class="comment">//reader</span></span><br><span class="line">SharePreferences pref = getSharePreferences(<span class="string">"data"</span>,MODE_PRIVATE);</span><br><span class="line">String name = pref.getString(<span class="string">"name"</span>,<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库类</span></span><br><span class="line">extends SQLiteOpenHelper</span><br><span class="line"><span class="comment">//insert</span></span><br><span class="line">ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">values.put(<span class="string">"name"</span>,<span class="string">"asdsadas"</span>);</span><br><span class="line">values.put(<span class="string">"age"</span>,<span class="number">12</span>);</span><br><span class="line">de.insert(<span class="string">"Book"</span>,<span class="keyword">null</span>,values);</span><br><span class="line"><span class="comment">//update</span></span><br><span class="line">db.update(<span class="string">"Book"</span>,values,<span class="string">"id=?"</span>,<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>&#125;);</span><br><span class="line"><span class="comment">//delete</span></span><br><span class="line">db.delete(<span class="string">"Book"</span>,<span class="string">"id=?"</span>,<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>&#125;);</span><br><span class="line"><span class="comment">//query</span></span><br><span class="line">db.query(<span class="string">"Book"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//使用sql语句</span></span><br><span class="line">db.execSQL(<span class="string">""</span>,<span class="keyword">new</span> String[][]);<span class="comment">//IUD,前面语句.后面条件</span></span><br><span class="line">db.rawQuery(<span class="string">""</span>,);</span><br></pre></td></tr></table></figure>
+
+<h3 id="LitePal"><a href="#LitePal" class="headerlink" title="LitePal"></a>LitePal</h3><blockquote>
+<p>对象映射</p>
+</blockquote>
+<h3 id="GreenDao"><a href="#GreenDao" class="headerlink" title="GreenDao"></a>GreenDao</h3><ul>
+<li>DaoMaster：所有Dao类的主人，负责整个库的运行，内部的静态抽象子类DevOpenHelper继承并重写了Android的SqliteOpenHelper。</li>
+<li>DaoSession：作为一个会话层的角色，用于生成相应的Dao对象、Dao对象的注册，操作Dao的具体对象。</li>
+<li>xxDao（HistoryDataDao）：生成的Dao对象，用于进行具体的数据库操作。</li>
+</ul>
+<h2 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h2><h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p><code>Notificationt</code></p>
+<h3 id="摄像头和相册"><a href="#摄像头和相册" class="headerlink" title="摄像头和相册"></a>摄像头和相册</h3><h3 id="播放音频"><a href="#播放音频" class="headerlink" title="播放音频"></a>播放音频</h3><p><code>MediaPlayer</code></p>
+<h3 id="播放视频"><a href="#播放视频" class="headerlink" title="播放视频"></a>播放视频</h3><p><code>VideoView</code></p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="OSI七层模型-已淘汰"><a href="#OSI七层模型-已淘汰" class="headerlink" title="OSI七层模型(已淘汰)"></a>OSI七层模型(已淘汰)</h3><p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2810673693,3284661591&fm=26&gp=0.jpg" alt></p>
+<ul>
+<li>物理层<ul>
+<li>负责物理传输</li>
+</ul>
+</li>
+<li>数据链路层<ul>
+<li>保证网络层与物理层之间的通信</li>
+</ul>
+</li>
+<li>网络层<ul>
+<li>决定双方的数据传递方法</li>
+</ul>
+</li>
+<li>传输层<ul>
+<li>应用间传输</li>
+<li>两个传输协议: TCP(传输控制协议)-可靠的面向连接的协议,UDP(用户数据报协议)-不可靠的</li>
+</ul>
+</li>
+<li>应用层<ul>
+<li>解读数据</li>
+<li>主要协议: HTTP,FTP,Telnet,SMTP,POP3</li>
+</ul>
+</li>
+</ul>
+<h3 id="TCP的三四"><a href="#TCP的三四" class="headerlink" title="TCP的三四"></a>TCP的三四</h3><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p><img src="http://images2015.cnblogs.com/blog/824317/201612/824317-20161211213831272-742191218.png" alt></p>
+<ol>
+<li>第一次握手：建立连接。客户端发送连接请求报文段,接下来客户端进入SYN_SENT状态，等待服务端的确认。</li>
+<li>第二次握手：服务器收到客户端的 SYN 报文段，对 SYN 报文段进行确认，设置Acknowledgment Number（ACK）为 x+1（seq+1）；同时自己还要发送 SYN 请求信息，将SYN设置为1、seq为y。服务端将 上述所有信息放到SYN+ACK报文段中，一并发送给客户端，此时服务端进入SYN_RCVD状态。</li>
+<li>第三次握手：客户端收到服务端的SYN+ACK报文段；然后将ACK设置为y+1，向服务端发送ACK报 文段，这个报文段发送完毕后，客户端和服务端都进入ESTABLISHED （TCP连接成功）状态，完成TCP的 三次握手。</li>
+</ol>
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p><img src="https://images0.cnblogs.com/blog2015/637040/201508/212003481754976.jpg" alt></p>
+<ol>
+<li>第一次挥手：客户端设置seq和ACK，向服务端发送一个FIN报文段。此时，客户端进入FIN_WAIT_1 状态，表示客户端没有数据要发送给服务端了。</li>
+<li>第二次挥手：服务端收到了客户端发送的FIN报文段，向客户端回了一个ACK报文段。</li>
+<li>第三次挥手：服务端向客户端发送 FIN 报文段，请求关闭连接，同时服务端进入LAST_ACK状态。</li>
+<li>第四次挥手：客户端收到服务端发送的FIN报文段，向服务端发送ACK报文段，然后客户端进入 TIME_WAIT状态。服务端收到客户端的ACK报文段以后，就关闭连接。此时，客户端等待2MSL（最大报 文段生存时间）后依然没有收到回复，则说明服务端已正常关闭，这样客户端也可以关闭连接了。</li>
+</ol>
+<h3 id="Http协议原理"><a href="#Http协议原理" class="headerlink" title="Http协议原理"></a>Http协议原理</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><h4 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h4><h4 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h4><h4 id="消息报头"><a href="#消息报头" class="headerlink" title="消息报头"></a>消息报头</h4><h3 id="网络请求框架"><a href="#网络请求框架" class="headerlink" title="网络请求框架"></a>网络请求框架</h3><h4 id="Volley"><a href="#Volley" class="headerlink" title="Volley"></a>Volley</h4><blockquote>
+<p>适合数据量不大,但通信频繁的网络操作</p>
+</blockquote>
+<h4 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h4><h5 id="异步GET请求"><a href="#异步GET请求" class="headerlink" title="异步GET请求"></a>异步GET请求</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建OkHttpClient、Request和Call，最后调用Call的enqueue（）</span></span><br><span class="line">Request.Builder requestBuilder = <span class="keyword">new</span> Request.Builder().url(<span class="string">"http://blog.csdn.net/itachi85"</span>);</span><br><span class="line">requestBuilder.method(<span class="string">"GET"</span>,<span class="keyword">null</span>);</span><br><span class="line">Request request = requestBuilder.build();</span><br><span class="line">OkHttpClient mOkHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">Call mcall = mOkHttpClient.newCalll(request);</span><br><span class="line">mcall.enqueue(<span class="keyword">new</span> Callback()&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call,IOException e)</span></span>&#123;&#125;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call,Response response)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">   String str = response.body().string();</span><br><span class="line">   Log.d(TAG str);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="异步post请求"><a href="#异步post请求" class="headerlink" title="异步post请求"></a>异步post请求</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RequestBody formBody = <span class="keyword">new</span> FormBody.Builder().add(<span class="string">"ip"</span>,<span class="string">"59.108.54.37"</span>).build;</span><br><span class="line">Request request = <span class="keyword">new</span> Request.Builder().url(<span class="string">"http://ip.taobao.com/service/getIpInfo.php"</span>).post(formBody).build();</span><br><span class="line">OkHttpClient mOkHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">Call call = mOkHttpClient(Requset);</span><br><span class="line">call.enqueue(<span class="keyword">new</span> Callback()&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call,IOException e)</span></span>&#123;&#125;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call,Response response)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">   String str = response.body().string();</span><br><span class="line">   Log.d(TAG str);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="异步上传文件"><a href="#异步上传文件" class="headerlink" title="异步上传文件"></a>异步上传文件</h5><h5 id="异步下载文件"><a href="#异步下载文件" class="headerlink" title="异步下载文件"></a>异步下载文件</h5><h5 id="异步上传Multipart文件"><a href="#异步上传Multipart文件" class="headerlink" title="异步上传Multipart文件"></a>异步上传Multipart文件</h5><h5 id="设置超时时间和缓存"><a href="#设置超时时间和缓存" class="headerlink" title="设置超时时间和缓存"></a>设置超时时间和缓存</h5><h5 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h5><p><code>call.cancel()</code></p>
+<h4 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a>Retrofit</h4><h3 id="数据格式解析"><a href="#数据格式解析" class="headerlink" title="数据格式解析"></a>数据格式解析</h3><h4 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h4><h5 id="Pull"><a href="#Pull" class="headerlink" title="Pull"></a>Pull</h5><h5 id="Sax"><a href="#Sax" class="headerlink" title="Sax"></a>Sax</h5><h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><blockquote>
+<p>体积小,传输方便,但语义差</p>
+</blockquote>
+<h5 id="JSONObject"><a href="#JSONObject" class="headerlink" title="JSONObject"></a>JSONObject</h5><h5 id="GSON"><a href="#GSON" class="headerlink" title="GSON"></a>GSON</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">Person person = gson.fromJson(jsonData,Person.class);</span><br><span class="line"><span class="comment">//Json数组解析</span></span><br><span class="line">List&lt;Person&gt; people = gson.fromJson(jsonData,<span class="keyword">new</span> TypeToken&lt;List&lt;Person&gt;&gt;()&#123;&#125;.getType());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接映射成对象</p>
+</blockquote>
+<h2 id="其他技术点"><a href="#其他技术点" class="headerlink" title="其他技术点"></a>其他技术点</h2><h3 id="全局Context"><a href="#全局Context" class="headerlink" title="全局Context"></a>全局Context</h3><h4 id="定制Application"><a href="#定制Application" class="headerlink" title="定制Application"></a>定制Application</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span></span>&#123;</span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">static</span> Context context;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">         context = getApplicationContext();</span><br><span class="line">  &#125; </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Context <span class="title">getContext</span><span class="params">()</span></span>&#123;</span><br><span class="line">          <span class="keyword">return</span> context;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动时初始化"><a href="#启动时初始化" class="headerlink" title="启动时初始化"></a>启动时初始化</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">....</span> &gt;</span></span><br><span class="line">...</span><br><span class="line">  <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">"cn.dblog.MyApplication"</span>&gt;</span></span><br><span class="line">     ...</span><br><span class="line">     <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定制日志工具类"><a href="#定制日志工具类" class="headerlink" title="定制日志工具类"></a>定制日志工具类</h3><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><h4 id="ALarm机制"><a href="#ALarm机制" class="headerlink" title="ALarm机制"></a>ALarm机制</h4><h3 id="多窗口编程"><a href="#多窗口编程" class="headerlink" title="多窗口编程"></a>多窗口编程</h3><h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><blockquote>
+<p>是一种匿名方法，没有方法名，因此代码会更简洁易读</p>
+</blockquote>
+<h4 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类，对象</span></span><br><span class="line"> FunctionName = (参数)-&gt;｛</span><br><span class="line"> <span class="comment">//具体实现</span></span><br><span class="line">｝</span><br><span class="line"><span class="comment">// 线程</span></span><br><span class="line"><span class="keyword">new</span> Thread ( ()-&gt;&#123;</span><br><span class="line">      <span class="comment">//具体逻辑</span></span><br><span class="line">&#125; ).start();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/01/Kotlin-Core/" rel="next" title="Kotlin Core">
+                <i class="fa fa-chevron-left"></i> Kotlin Core
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/之路-Android界面设计/" rel="prev" title="修仙之路_Android界面设计">
+                修仙之路_Android界面设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统架构"><span class="nav-number">1.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-活动"><span class="nav-number">2.</span> <span class="nav-text">Activity(活动)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本使用"><span class="nav-number">2.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent"><span class="nav-number">2.2.</span> <span class="nav-text">Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式"><span class="nav-number">2.2.1.</span> <span class="nav-text">显式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式"><span class="nav-number">2.2.2.</span> <span class="nav-text">隐式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传递数据"><span class="nav-number">2.2.3.</span> <span class="nav-text">传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简单传递"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">简单传递</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Serializable"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">Serializable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Parcelable"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">Parcelable</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接受数据"><span class="nav-number">2.2.4.</span> <span class="nav-text">接受数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储活动被回收时的数据"><span class="nav-number">2.3.1.</span> <span class="nav-text">存储活动被回收时的数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动模式"><span class="nav-number">2.4.</span> <span class="nav-text">启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置启动模式"><span class="nav-number">2.4.1.</span> <span class="nav-text">配置启动模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动模式详解"><span class="nav-number">2.4.2.</span> <span class="nav-text">启动模式详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intent配置启动模式"><span class="nav-number">2.4.3.</span> <span class="nav-text">Intent配置启动模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回栈状态"><span class="nav-number">2.4.4.</span> <span class="nav-text">返回栈状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Broadcast-Receiver-广播"><span class="nav-number">3.</span> <span class="nav-text">Broadcast Receiver(广播)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#机制"><span class="nav-number">3.1.</span> <span class="nav-text">机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Normal-broadcasts-标准"><span class="nav-number">3.1.1.</span> <span class="nav-text">Normal broadcasts(标准)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ordered-broadcast-有序广播"><span class="nav-number">3.1.2.</span> <span class="nav-text">Ordered broadcast(有序广播)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听系统广播"><span class="nav-number">3.2.</span> <span class="nav-text">监听系统广播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态注册-gt-实现监听"><span class="nav-number">3.2.1.</span> <span class="nav-text">动态注册 -&gt;实现监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态注册-gt-实现开机启动"><span class="nav-number">3.2.2.</span> <span class="nav-text">静态注册 -&gt; 实现开机启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送"><span class="nav-number">3.3.</span> <span class="nav-text">发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.4.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Providers-内容提供者"><span class="nav-number">4.</span> <span class="nav-text">Content Providers(内容提供者)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">4.1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限"><span class="nav-number">4.2.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问"><span class="nav-number">4.3.</span> <span class="nav-text">访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容提供器"><span class="nav-number">4.4.</span> <span class="nav-text">内容提供器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-服务"><span class="nav-number">5.</span> <span class="nav-text">Service(服务)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">5.1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程实现方法"><span class="nav-number">5.1.1.</span> <span class="nav-text">线程实现方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步消息处理"><span class="nav-number">5.1.2.</span> <span class="nav-text">异步消息处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步消息处理机制"><span class="nav-number">5.1.3.</span> <span class="nav-text">异步消息处理机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">5.2.</span> <span class="nav-text">基本用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment"><span class="nav-number">6.</span> <span class="nav-text">Fragment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态"><span class="nav-number">6.1.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#托管的两种方式"><span class="nav-number">6.2.</span> <span class="nav-text">托管的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在Activity布局中使用fragment"><span class="nav-number">6.2.1.</span> <span class="nav-text">在Activity布局中使用fragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Activity代码中使用fragment"><span class="nav-number">6.2.2.</span> <span class="nav-text">在Activity代码中使用fragment</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义容器视图"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">定义容器视图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建UI-Fragment"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">创建UI Fragment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FragmentManager"><span class="nav-number">6.2.3.</span> <span class="nav-text">FragmentManager</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fragment-事务"><span class="nav-number">6.2.3.1.</span> <span class="nav-text">fragment 事务</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment-argument"><span class="nav-number">7.</span> <span class="nav-text">Fragment argument</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建fragment-argument"><span class="nav-number">7.1.</span> <span class="nav-text">创建fragment argument</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据读写"><span class="nav-number">8.</span> <span class="nav-text">数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件存储"><span class="nav-number">8.1.</span> <span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Write"><span class="nav-number">8.1.1.</span> <span class="nav-text">Write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reader"><span class="nav-number">8.1.2.</span> <span class="nav-text">Reader</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SharedPreferences"><span class="nav-number">8.2.</span> <span class="nav-text">SharedPreferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLite"><span class="nav-number">8.3.</span> <span class="nav-text">SQLite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LitePal"><span class="nav-number">8.4.</span> <span class="nav-text">LitePal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GreenDao"><span class="nav-number">8.5.</span> <span class="nav-text">GreenDao</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多媒体"><span class="nav-number">9.</span> <span class="nav-text">多媒体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通知"><span class="nav-number">9.1.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摄像头和相册"><span class="nav-number">9.2.</span> <span class="nav-text">摄像头和相册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放音频"><span class="nav-number">9.3.</span> <span class="nav-text">播放音频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放视频"><span class="nav-number">9.4.</span> <span class="nav-text">播放视频</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">10.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI七层模型-已淘汰"><span class="nav-number">10.1.</span> <span class="nav-text">OSI七层模型(已淘汰)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP的三四"><span class="nav-number">10.2.</span> <span class="nav-text">TCP的三四</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手"><span class="nav-number">10.2.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">10.2.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http协议原理"><span class="nav-number">10.3.</span> <span class="nav-text">Http协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">10.3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求报文"><span class="nav-number">10.3.2.</span> <span class="nav-text">请求报文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应报文"><span class="nav-number">10.3.3.</span> <span class="nav-text">响应报文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息报头"><span class="nav-number">10.3.4.</span> <span class="nav-text">消息报头</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求框架"><span class="nav-number">10.4.</span> <span class="nav-text">网络请求框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Volley"><span class="nav-number">10.4.1.</span> <span class="nav-text">Volley</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OkHttp"><span class="nav-number">10.4.2.</span> <span class="nav-text">OkHttp</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#异步GET请求"><span class="nav-number">10.4.2.1.</span> <span class="nav-text">异步GET请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步post请求"><span class="nav-number">10.4.2.2.</span> <span class="nav-text">异步post请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步上传文件"><span class="nav-number">10.4.2.3.</span> <span class="nav-text">异步上传文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步下载文件"><span class="nav-number">10.4.2.4.</span> <span class="nav-text">异步下载文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步上传Multipart文件"><span class="nav-number">10.4.2.5.</span> <span class="nav-text">异步上传Multipart文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置超时时间和缓存"><span class="nav-number">10.4.2.6.</span> <span class="nav-text">设置超时时间和缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#取消请求"><span class="nav-number">10.4.2.7.</span> <span class="nav-text">取消请求</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Retrofit"><span class="nav-number">10.4.3.</span> <span class="nav-text">Retrofit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据格式解析"><span class="nav-number">10.5.</span> <span class="nav-text">数据格式解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XML"><span class="nav-number">10.5.1.</span> <span class="nav-text">XML</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Pull"><span class="nav-number">10.5.1.1.</span> <span class="nav-text">Pull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sax"><span class="nav-number">10.5.1.2.</span> <span class="nav-text">Sax</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">10.5.2.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JSONObject"><span class="nav-number">10.5.2.1.</span> <span class="nav-text">JSONObject</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GSON"><span class="nav-number">10.5.2.2.</span> <span class="nav-text">GSON</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他技术点"><span class="nav-number">11.</span> <span class="nav-text">其他技术点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局Context"><span class="nav-number">11.1.</span> <span class="nav-text">全局Context</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定制Application"><span class="nav-number">11.1.1.</span> <span class="nav-text">定制Application</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动时初始化"><span class="nav-number">11.1.2.</span> <span class="nav-text">启动时初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制日志工具类"><span class="nav-number">11.2.</span> <span class="nav-text">定制日志工具类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时任务"><span class="nav-number">11.3.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ALarm机制"><span class="nav-number">11.3.1.</span> <span class="nav-text">ALarm机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多窗口编程"><span class="nav-number">11.4.</span> <span class="nav-text">多窗口编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda"><span class="nav-number">11.5.</span> <span class="nav-text">Lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写法"><span class="nav-number">11.5.1.</span> <span class="nav-text">写法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/12/03/仙之路-Android逻辑处理/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
