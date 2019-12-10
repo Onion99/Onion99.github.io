@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="算法 什么是算法？在数学里，算法用于解决某一类问题的公式和思想；在计算机上，则是一系列程序指令，用于解决特定的运算和逻辑问题  衡量指标时间复杂度 时间成本  空间复杂度 空间成本  排序   排序算法 平均时间复杂度 最坏时间复杂度 空间复杂度 是否稳定排序    冒泡排序 O(n^2^) O(n^2^) O(1) 稳定   鸡尾酒排序 O(n^2^) O(n^2^) O(1) 稳定   快速排">
+<meta name="keywords" content="Computer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法 起步走">
+<meta property="og:url" content="http://yoursite.com/2019/12/10/据结构与算法-起步走/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="算法 什么是算法？在数学里，算法用于解决某一类问题的公式和思想；在计算机上，则是一系列程序指令，用于解决特定的运算和逻辑问题  衡量指标时间复杂度 时间成本  空间复杂度 空间成本  排序   排序算法 平均时间复杂度 最坏时间复杂度 空间复杂度 是否稳定排序    冒泡排序 O(n^2^) O(n^2^) O(1) 稳定   鸡尾酒排序 O(n^2^) O(n^2^) O(1) 稳定   快速排">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-10T14:20:40.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法 起步走">
+<meta name="twitter:description" content="算法 什么是算法？在数学里，算法用于解决某一类问题的公式和思想；在计算机上，则是一系列程序指令，用于解决特定的运算和逻辑问题  衡量指标时间复杂度 时间成本  空间复杂度 空间成本  排序   排序算法 平均时间复杂度 最坏时间复杂度 空间复杂度 是否稳定排序    冒泡排序 O(n^2^) O(n^2^) O(1) 稳定   鸡尾酒排序 O(n^2^) O(n^2^) O(1) 稳定   快速排">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/10/据结构与算法-起步走/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据结构与算法 起步走 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/据结构与算法-起步走/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法 起步走
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-10 22:20:00 / Modified: 22:20:40" itemprop="dateCreated datePublished" datetime="2019-12-10T22:20:00+08:00">2019-12-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Computer/" itemprop="url" rel="index"><span itemprop="name">Computer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><blockquote>
+<p>什么是算法？在数学里，算法用于解决某一类问题的公式和思想；在计算机上，则是一系列程序指令，用于解决特定的运算和逻辑问题</p>
+</blockquote>
+<h3 id="衡量指标"><a href="#衡量指标" class="headerlink" title="衡量指标"></a>衡量指标</h3><h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><blockquote>
+<p>时间成本</p>
+</blockquote>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><blockquote>
+<p>空间成本</p>
+</blockquote>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><table>
+<thead>
+<tr>
+<th align="center">排序算法</th>
+<th align="center">平均时间复杂度</th>
+<th align="center">最坏时间复杂度</th>
+<th align="center">空间复杂度</th>
+<th align="center">是否稳定排序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">冒泡排序</td>
+<td align="center">O(n^2^)</td>
+<td align="center">O(n^2^)</td>
+<td align="center">O(1)</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">鸡尾酒排序</td>
+<td align="center">O(n^2^)</td>
+<td align="center">O(n^2^)</td>
+<td align="center">O(1)</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">快速排序</td>
+<td align="center">O(nlogn)</td>
+<td align="center">O(n^2^)</td>
+<td align="center">O(nlogn)</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">堆排序</td>
+<td align="center">O(nlogn)</td>
+<td align="center">O(nlogn)</td>
+<td align="center">O(1)</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">计数排序</td>
+<td align="center">O(n+m)</td>
+<td align="center">O(n+m)</td>
+<td align="center">O(m)</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">桶排序</td>
+<td align="center">O(n)</td>
+<td align="center">O(nlogn)</td>
+<td align="center">O(n)</td>
+<td align="center">稳定</td>
+</tr>
+</tbody></table>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(start &gt;= end)&#123;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> pivotIndex = partition(arr,start,end);</span><br><span class="line">	quicksort(arr , start , pivotIndex -<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// 递归回来继续执行!!!</span></span><br><span class="line">	quicksort(arr , pivotIndex + <span class="number">1</span> , end);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr , <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 设定基准元素</span></span><br><span class="line">	<span class="keyword">int</span> pivot = arr[start];</span><br><span class="line">	<span class="comment">// 设定遍历起始标记</span></span><br><span class="line">	<span class="keyword">int</span> mark = start;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = start + <span class="number">1</span> ; i&lt;=end; i++ )&#123;</span><br><span class="line">	    <span class="comment">// 遍历元素小于基准元素</span></span><br><span class="line">		<span class="keyword">if</span>(arr[i]&lt;pivot)&#123;</span><br><span class="line">		    <span class="comment">// 起始标记右移</span></span><br><span class="line">			mark++;</span><br><span class="line">			<span class="comment">// 大元素跟小元素位置</span></span><br><span class="line">			<span class="keyword">int</span> p = arr[mark]; <span class="comment">// 大元素</span></span><br><span class="line">			arr[mark] = arr[i]; <span class="comment">// 大元素位置放小元素</span></span><br><span class="line">			arr[i] = p; <span class="comment">//  小元素位置放大元素</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 这一轮遍历完毕</span></span><br><span class="line">	<span class="comment">// 基准元素和起始标记所在位置的元素交换,因为基准元素的位置现在要归属小于基准元素的区域</span></span><br><span class="line">	arr[start] = arr[mark];</span><br><span class="line">	arr[mark] = pivot;</span><br><span class="line">	<span class="keyword">return</span> mark;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line">	quicksort(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">	    System.out.print(arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>| 查找算法算法 | 平均时间复杂度 | 最坏时间复杂度 | 空间复杂度<br>|:–:|:–:|:–:|:–:|:–:|<br>| 顺序查找 | （1+n）/2|   |  O（n） |<br>| 二分查找 | （1+n）/2|   | O（logn） |<br>| 行列递增矩阵查找 | | | |<br>| 分块查找|  |  | |</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><blockquote>
+<p>数据结构是算法的基石，一个舞台，一个舞者，两者相辅相成</p>
+</blockquote>
+<p>数据结构是数据的组织，管理和存储的格式，其使用目的是为了高效的访问和修改数据</p>
+<ul>
+<li>逻辑结构<ul>
+<li>线性结构<ul>
+<li>顺序表</li>
+<li>栈</li>
+<li>队列</li>
+</ul>
+</li>
+<li>非线性结构 <ul>
+<li>树</li>
+<li>图 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>物理结构<ul>
+<li>顺序存储结构<ul>
+<li>数组 </li>
+</ul>
+</li>
+<li>链式存储结构<ul>
+<li>链表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><blockquote>
+<p>有限个相同类型的变量所组成的有序集合,适宜“读多写少”</p>
+</blockquote>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><blockquote>
+<p>后移一位插入</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> element,<span class="keyword">int</span> index)</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt; array.length)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutBoundsException(<span class="string">"out size"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 超范围插入，扩容</span></span><br><span class="line">   <span class="keyword">if</span>(size &gt;= array.length)&#123;</span><br><span class="line">       <span class="keyword">int</span> arrayNew = <span class="keyword">new</span> <span class="keyword">int</span>[array.length*<span class="number">2</span>];</span><br><span class="line">       System,arraycopy(array,<span class="number">0</span>,arrayNew,<span class="number">0</span>,array,length);</span><br><span class="line">       array = arrayNew;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = array.length -<span class="number">1</span> ; i &gt;= index ; i--)&#123;</span><br><span class="line">        array[i+<span class="number">1</span>] = array[i];</span><br><span class="line">   &#125;</span><br><span class="line">   array[index] = element;</span><br><span class="line">   size++；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">查找</th>
+<th align="center">更新</th>
+<th align="center">插入</th>
+<th align="center">删除</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数组</td>
+<td align="center">O(1)</td>
+<td align="center">O(1)</td>
+<td align="center">O(N)</td>
+<td align="center">O(N)</td>
+</tr>
+<tr>
+<td align="center">链表</td>
+<td align="center">O(N)</td>
+<td align="center">O(1)</td>
+<td align="center">O(1)</td>
+<td align="center">O(1)</td>
+</tr>
+</tbody></table>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><blockquote>
+<p>一种线性数据结构，栈中的元素先进后出（First In Last Out,FILO）</p>
+</blockquote>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><blockquote>
+<p>同样是种线性数据结构，但栈中的元素却是（Fisrt In First Out，简称FIFO）</p>
+</blockquote>
+<h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><blockquote>
+<p>也叫哈希表，提供了键( Key ) 和 值 （Value）的映射关系</p>
+</blockquote>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><blockquote>
+<p>树是n（n ≧ 0）个节点的有限集。当 n=0 时 ， 称为空树</p>
+</blockquote>
+<ul>
+<li>有且仅有一个特定的称为跟的节点</li>
+<li>当 n &gt; 1 时 ，其余节点可分为 m （m&gt;0）个互不相交的有限集，每一个集合本身又是一个树，并称为根的子树</li>
+</ul>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><blockquote>
+<p>即树最多有两个节点</p>
+</blockquote>
+<h4 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h4><blockquote>
+<p>一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，典型的用途是实现关联数组</p>
+</blockquote>
+<ul>
+<li><p>性质1：每个节点要么是黑色，要么是红色。</p>
+</li>
+<li><p>性质2：根节点是黑色。</p>
+</li>
+<li><p>性质3：每个叶子节点（NIL）是黑色。</p>
+</li>
+<li><p>性质4：每个红色结点的两个子结点一定都是黑色。</p>
+</li>
+<li><p>性质5：任意一结点到每个叶子结点的路径都包含数量相同的黑结点</p>
+<p><a href="https://www.jianshu.com/p/e136ec79235c" target="_blank" rel="noopener">30图红黑树</a><br><a href="http://www.360doc.com/content/18/0904/19/25944647_783893127.shtml" target="_blank" rel="noopener">五分钟搞懂红黑树</a></p>
+</li>
+</ul>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p><a href="https://blog.csdn.net/qq_32595453/article/details/80933524" target="_blank" rel="noopener">求斐波那契数列的三种方法</a></p>
+<h3 id="老鼠与毒药"><a href="#老鼠与毒药" class="headerlink" title="老鼠与毒药"></a>老鼠与毒药</h3><p><a href="http://www.matrix67.com/blog/archives/4361" target="_blank" rel="noopener"> 趣题：老鼠与毒药问题的推广</a></p>
+<h3 id="100盏灯"><a href="#100盏灯" class="headerlink" title="100盏灯"></a>100盏灯</h3><p><a href="https://blog.csdn.net/zhu_9527/article/details/19761981" target="_blank" rel="noopener">100盏灯问题波希</a></p>
+<p><a href="https://www.cnblogs.com/jason2013/articles/4314258.html" target="_blank" rel="noopener">简说</a></p>
+<h3 id="海量数据问题"><a href="#海量数据问题" class="headerlink" title="海量数据问题"></a>海量数据问题</h3><p><a href="https://blog.csdn.net/weixin_38333555/article/details/80274120" target="_blank" rel="noopener">海量数据问题总结</a></p>
+<p><a href="https://blog.csdn.net/oceansw/article/details/78126124" target="_blank" rel="noopener">结构之法算法之道blog</a></p>
+<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><h3 id="递归与迭代"><a href="#递归与迭代" class="headerlink" title="递归与迭代"></a>递归与迭代</h3><blockquote>
+<p>“迭代是人，递归是神！</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/liuchaoxuan/article/details/79967578" target="_blank" rel="noopener">迭代是人,递归是神</a><br><a href="https://www.jianshu.com/p/32bcc45efd32" target="_blank" rel="noopener">递归与迭代的区别</a></p>
+<ul>
+<li>迭代<ul>
+<li>利用已知的变量值，根据递推公式不断演进得到变量新值得编程思想</li>
+<li>从已知值出发，通过递推式，不断更新变量新值，一直到能够解决要求的问题为止</li>
+</ul>
+</li>
+<li>递归<ul>
+<li>程序调用自身的编程思想，即一个函数调用本身</li>
+<li>将大问题化为相同结构的小问题，从待求解的问题出发，一直分解到已经已知答案的最小问题为止，然后再逐级返回，从而得到大问题的解</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Computer/" rel="tag"># Computer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/10/艺术探索阅读/" rel="next" title="开发艺术探索阅读">
+                <i class="fa fa-chevron-left"></i> 开发艺术探索阅读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/10/算机基础/" rel="prev" title="计算机基础">
+                计算机基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#衡量指标"><span class="nav-number">1.1.</span> <span class="nav-text">衡量指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间复杂度"><span class="nav-number">1.1.1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空间复杂度"><span class="nav-number">1.1.2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.2.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序"><span class="nav-number">1.2.2.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆排序"><span class="nav-number">1.2.3.</span> <span class="nav-text">堆排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">1.3.</span> <span class="nav-text">查找</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">2.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.1.1.</span> <span class="nav-text">插入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">2.2.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-number">2.3.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">2.4.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列表"><span class="nav-number">2.5.</span> <span class="nav-text">散列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树"><span class="nav-number">2.6.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉树"><span class="nav-number">2.6.1.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#红黑树"><span class="nav-number">2.6.2.</span> <span class="nav-text">红黑树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图"><span class="nav-number">2.7.</span> <span class="nav-text">图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典问题"><span class="nav-number">3.</span> <span class="nav-text">经典问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">3.1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#老鼠与毒药"><span class="nav-number">3.2.</span> <span class="nav-text">老鼠与毒药</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#100盏灯"><span class="nav-number">3.3.</span> <span class="nav-text">100盏灯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#海量数据问题"><span class="nav-number">3.4.</span> <span class="nav-text">海量数据问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程"><span class="nav-number">4.</span> <span class="nav-text">编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归与迭代"><span class="nav-number">4.1.</span> <span class="nav-text">递归与迭代</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/12/10/据结构与算法-起步走/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
