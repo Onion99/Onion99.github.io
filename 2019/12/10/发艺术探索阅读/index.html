@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="IPC 含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程     区别 进程 线程    单位 资源分配最小的单位 资源调度(执行)的最小单位   占用 分配独立地址空间 跟进程共享   通信可靠 多进程下处理好同步与互斥是编写多线程程序的难点 同一进程下的线程共享全局变量、静态变量等数据   健壮性 多进程更健壮 多线程下只要有一个线程死掉,其他全死   开启多进程模式 在An">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发艺术探索阅读">
+<meta property="og:url" content="http://yoursite.com/2019/12/10/发艺术探索阅读/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="IPC 含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程     区别 进程 线程    单位 资源分配最小的单位 资源调度(执行)的最小单位   占用 分配独立地址空间 跟进程共享   通信可靠 多进程下处理好同步与互斥是编写多线程程序的难点 同一进程下的线程共享全局变量、静态变量等数据   健壮性 多进程更健壮 多线程下只要有一个线程死掉,其他全死   开启多进程模式 在An">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QG57md.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJQEcR.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJwZJ1.jpg">
+<meta property="og:updated_time" content="2019-12-10T13:38:17.882Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发艺术探索阅读">
+<meta name="twitter:description" content="IPC 含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程     区别 进程 线程    单位 资源分配最小的单位 资源调度(执行)的最小单位   占用 分配独立地址空间 跟进程共享   通信可靠 多进程下处理好同步与互斥是编写多线程程序的难点 同一进程下的线程共享全局变量、静态变量等数据   健壮性 多进程更健壮 多线程下只要有一个线程死掉,其他全死   开启多进程模式 在An">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/06/QG57md.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/10/发艺术探索阅读/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>开发艺术探索阅读 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/发艺术探索阅读/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">开发艺术探索阅读
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-10 21:37:00 / Modified: 21:38:17" itemprop="dateCreated datePublished" datetime="2019-12-10T21:37:00+08:00">2019-12-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h2><blockquote>
+<p>含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">进程</th>
+<th align="center">线程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单位</td>
+<td align="center">资源分配最小的单位</td>
+<td align="center">资源调度(执行)的最小单位</td>
+</tr>
+<tr>
+<td align="center">占用</td>
+<td align="center">分配独立地址空间</td>
+<td align="center">跟进程共享</td>
+</tr>
+<tr>
+<td align="center">通信可靠</td>
+<td align="center">多进程下处理好同步与互斥是编写多线程程序的难点</td>
+<td align="center">同一进程下的线程共享全局变量、静态变量等数据</td>
+</tr>
+<tr>
+<td align="center">健壮性</td>
+<td align="center">多进程更健壮</td>
+<td align="center">多线程下只要有一个线程死掉,其他全死</td>
+</tr>
+</tbody></table>
+<h3 id="开启多进程模式"><a href="#开启多进程模式" class="headerlink" title="开启多进程模式"></a>开启多进程模式</h3><ul>
+<li>在AndroidMenifest中指定android:process属性</li>
+<li>通过JNI在native层去fork一个新的进程，但是这种方法属于特殊情况，也不是常用的创建多进程的方式</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"com.ryg.chapter_2.SecondActivity"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:configChanges</span>=<span class="string">"screenLayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:process</span>=<span class="string">":remote"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">"com.ryg.chapter_2.ThirdActivity"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:configChanges</span>=<span class="string">"screenLayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:process</span>=<span class="string">"com.ryg.chapter_2.remote"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">声明方式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">以<code>:</code>开头</td>
+<td align="center">表示属于当前应用的私有进程，其他应用的组件不可以和它跑在同一个进程中</td>
+</tr>
+<tr>
+<td align="center">不以<code>:</code>开头</td>
+<td align="center">属于全局进程，其他应用通过ShareUID方式可以和它跑在同一个进程中</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Android系统会为每个应用分配一个唯一的UID，具有相同UID的应用才能共享数据。这里要说明的是，两个应用通过ShareUID跑在同一个进程中是有要求的，需要这两个应用有相同的ShareUID并且签名相同才可以</p>
+</blockquote>
+<h3 id="多进程模式运行机制"><a href="#多进程模式运行机制" class="headerlink" title="多进程模式运行机制"></a>多进程模式运行机制</h3><blockquote>
+<p>“当应用开启了多进程以后，各种奇怪的现象都出现了”</p>
+</blockquote>
+<ul>
+<li>静态成员和单例模式完全失效</li>
+<li>线程同步机制完全失效<ul>
+<li>不是一块内存了，那么不管是锁对象还是锁全局类都无法保证线程同步，因为不同进程锁的不是同一个对象</li>
+</ul>
+</li>
+<li>SharedPreferences的可靠性下降<ul>
+<li>SharedPreferences不支持两个进程同时去执行写操作，否则会导致一定几率的数据丢失</li>
+</ul>
+</li>
+<li>Application会多次创建。<ul>
+<li>运行在同一个进程中的组件是属于同一个虚拟机和同一个Application的，同理，运行在不同进程中的组件是属于两个不同的虚拟机和Application的</li>
+</ul>
+</li>
+</ul>
+<h3 id="IPC基础概念"><a href="#IPC基础概念" class="headerlink" title="IPC基础概念"></a>IPC基础概念</h3><blockquote>
+<p>Serializable和Parcelable接口可以完成对象的序列化过程，当我们需要通过Intent和Binder传输数据时就需要使用Parcelable或者Serializable</p>
+</blockquote>
+<h4 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h4><blockquote>
+<p>Java自带的一个序列化接口，它是一个空接口，为对象提供标准的序列化和反序列化操作。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现对象序列化</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">12893781923789L</span>;</span><br><span class="line">         <span class="keyword">public</span> String Name;</span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">         ...</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 进行对象的序列化和序列化</span></span><br><span class="line">    <span class="comment">//序列化过程</span></span><br><span class="line">    User user = <span class="keyword">new</span> User(<span class="string">"dong"</span>,<span class="number">18</span>);</span><br><span class="line">    ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(</span><br><span class="line">                <span class="keyword">new</span> FileOutputStream(<span class="string">"user1.txt"</span>));</span><br><span class="line">    out.writeObject(user);</span><br><span class="line">    out.close();</span><br><span class="line">    <span class="comment">//反序列化过程</span></span><br><span class="line">    ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(</span><br><span class="line">                <span class="keyword">new</span> FileInputStream(<span class="string">"user1.txt"</span>));</span><br><span class="line">    User newUser = (User) in.readObject();</span><br><span class="line">    in.close();</span><br></pre></td></tr></table></figure>
+
+<p><strong>serialVersionUID</strong>是用来辅助序列化和反序列化过程的，原则上序列化后的数据中的serialVersionUID只有和当前类的serialVersionUID相同才能够正常地被反序列化</p>
+<h4 id="Parcelable接口"><a href="#Parcelable接口" class="headerlink" title="Parcelable接口"></a>Parcelable接口</h4><blockquote>
+<p>Android自带的接口,为了解决Serializable在序列化的过程中消耗资源严重的问题而诞生</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Parcelable</span> </span>&#123;</span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">int</span> userId;</span><br><span class="line">         <span class="keyword">public</span> String userName;</span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">boolean</span> isMale;</span><br><span class="line">         <span class="keyword">public</span> Book book;</span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(<span class="keyword">int</span> userId,String userName,<span class="keyword">boolean</span> isMale)</span> </span>&#123;</span><br><span class="line">             <span class="keyword">this</span>.userId = userId;</span><br><span class="line">             <span class="keyword">this</span>.userName = userName;</span><br><span class="line">             <span class="keyword">this</span>.isMale = isMale;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">// 内容描述</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">// 序列化</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel out,<span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">             out.writeInt(userId);</span><br><span class="line">             out.writeString(userName);</span><br><span class="line">             out.writeInt(isMale ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">             out.writeParcelable(book,<span class="number">0</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">// 实现创建序列化对象和数组</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creator&lt;User&gt; CREATOR = <span class="keyword">new</span> Parcelable.</span><br><span class="line">         Creator&lt;User&gt;() &#123;</span><br><span class="line">             <span class="function"><span class="keyword">public</span> User <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="keyword">new</span> User(in);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">public</span> User[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">                 <span class="keyword">return</span> <span class="keyword">new</span> User[size];</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;;</span><br><span class="line">         <span class="comment">// 这边完成反序列化过程</span></span><br><span class="line">         <span class="function"><span class="keyword">private</span> <span class="title">User</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">             userId = in.readInt();</span><br><span class="line">             userName = in.readString();</span><br><span class="line">             isMale = in.readInt() == <span class="number">1</span>;</span><br><span class="line">             book = in.readParcelable(Thread.currentThread().getContextClass-</span><br><span class="line">             Loader());</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h3><blockquote>
+<p>Binder主要用在Service中，包括AIDL和Messenger</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">看待角度</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">本身</td>
+<td align="center">Android中的一个类，它继承了IBinder接口</td>
+</tr>
+<tr>
+<td align="center">IPC</td>
+<td align="center">Binder是Android中的一种跨进程通信方式</td>
+</tr>
+<tr>
+<td align="center">Android Framework</td>
+<td align="center">是ServiceManager连接各种Manager（ActivityManager、WindowManager，等等）和相应ManagerService的桥梁</td>
+</tr>
+<tr>
+<td align="center">Android 应用层</td>
+<td align="center">Binder是客户端和服务端进行通信的媒介</td>
+</tr>
+</tbody></table>
+<p>描述</p>
+<ul>
+<li>Android中的一个类，它继承了IBinder接口</li>
+<li>从IPC角度来说，Binder是Android中的一种跨进程通信方式，Binder还可以理解为一种虚拟的物理设备</li>
+</ul>
+<h4 id="BInder连接池"><a href="#BInder连接池" class="headerlink" title="BInder连接池"></a>BInder连接池</h4><h3 id="Android的IPC方式"><a href="#Android的IPC方式" class="headerlink" title="Android的IPC方式"></a>Android的IPC方式</h3><h4 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h4><blockquote>
+<p>四大组件中的三大组件（Activity、Service、Receiver）都是支持在Intent中传递Bundle数据的，由于Bundle实现了Parcelable接口，所以它可以方便地在不同的进程间传输,但传输的数据必须能够被序列化</p>
+</blockquote>
+<p>除了直接传递数据这种典型的使用场景，它还有一种特殊的使用场景。比如A进程正在进行一个计算，计算完成后它要启动B进程的一个组件并把计算结果传递给B进程，可是遗憾的是这个计算结果不支持放入Bundle中，因此无法通过Intent来传输，这个时候如果我们用其他IPC方式就会略显复杂。可以考虑如下方式：我们通过Intent启动进程B的一个Service组件（比如IntentService），让Service在后台进行计算，计算完毕后再启动B进程中真正要启动的目标组件，由于Service也运行在B进程中，所以目标组件就可以直接获取计算结果，这样一来就轻松解决了跨进程的问题。这种方式的核心思想在于将原本需要在A进程的计算任务转移到B进程的后台Service中去执行，这样就成功地避免了进程间通信问题，而且只用了很小的代价</p>
+<h4 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h4><blockquote>
+<p>Android系统基于Linux，使得其并发读/写文件可以没有限制地进行，甚至两个线程同时对同一个文件进行写操作都是允许的，尽管这可能出问题</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在MainActivity中的修改</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">persistToFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        User user = <span class="keyword">new</span> User(<span class="number">1</span>,<span class="string">"hello world"</span>,<span class="keyword">false</span>);</span><br><span class="line">                        File dir = <span class="keyword">new</span> File(MyConstants.CHAPTER_2_PATH);</span><br><span class="line">                        <span class="keyword">if</span> (!dir.exists()) &#123;</span><br><span class="line">                                dir.mkdirs();</span><br><span class="line">                        &#125;</span><br><span class="line">                        File cachedFile = <span class="keyword">new</span> File(MyConstants.CACHE_FILE_PATH);</span><br><span class="line">                        ObjectOutputStream objectOutputStream = <span class="keyword">null</span>;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                                objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(</span><br><span class="line">                                                <span class="keyword">new</span> FileOutputStream(cachedFile));</span><br><span class="line">                                objectOutputStream.writeObject(user);</span><br><span class="line">                                Log.d(TAG,<span class="string">"persist user:"</span> + user);</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                                e.printStackTrace();</span><br><span class="line">                        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                                MyUtils.close(objectOutputStream);</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//SecondActivity中的修改</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">recoverFromFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        User user = <span class="keyword">null</span>;</span><br><span class="line">                        File cachedFile = <span class="keyword">new</span> File(MyConstants.CACHE_FILE_PATH);</span><br><span class="line">                        <span class="keyword">if</span> (cachedFile.exists()) &#123;</span><br><span class="line">                                ObjectInputStream objectInputStream = <span class="keyword">null</span>;</span><br><span class="line">                                <span class="keyword">try</span> &#123;</span><br><span class="line">                                        objectInputStream = <span class="keyword">new</span> ObjectInputStream(</span><br><span class="line">                                                        <span class="keyword">new</span> FileInputStream(cachedFile));</span><br><span class="line">                                        user = (User) objectInputStream.readObject();</span><br><span class="line">                                        Log.d(TAG,<span class="string">"recover user:"</span> + user);</span><br><span class="line">                                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                                        e.printStackTrace();</span><br><span class="line">                                &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                                        e.printStackTrace();</span><br><span class="line">                                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                                        MyUtils.close(objectInputStream);</span><br><span class="line">                                &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>SharedPreferences也属于文件的一种，但是由于系统对它的读/写有一定的缓存策略，即在内存中会有一份SharedPreferences文件的缓存，因此在多进程模式下，系统对它的读/写就变得不可靠，当面对高并发的读/写访问，Sharedpreferences有很大几率会丢失数据</p>
+</blockquote>
+<h4 id="Messenger"><a href="#Messenger" class="headerlink" title="Messenger"></a>Messenger</h4><blockquote>
+<p>通过它可以在不同进程中传递Message对象，在Message中放入我们需要传递的数据，就可以实现数据的进程间传递了。Messenger是一种轻量级的IPC方案，它的底层实现是AIDL。</p>
+</blockquote>
+<h4 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h4><h4 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h4><h4 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h4><h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">优点</th>
+<th align="center">缺点</th>
+<th align="center">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Bundle</td>
+<td align="center">简单易用</td>
+<td align="center">只能传输Bundle支持的数据类型</td>
+<td align="center">四大组件间的进程间通信</td>
+</tr>
+<tr>
+<td align="center">文件共享</td>
+<td align="center">简单易用</td>
+<td align="center">不适合高并发场景,无法做到进程间的即时通信</td>
+<td align="center">无并发访问情形无即时性数据的交换</td>
+</tr>
+<tr>
+<td align="center">AIDL</td>
+<td align="center">功能强大,支持一对多并发通信,支持实时通信</td>
+<td align="center">使用复杂,需要处理好线程同步</td>
+<td align="center">一对多通信,且有RPC需求</td>
+</tr>
+<tr>
+<td align="center">Messenger</td>
+<td align="center">功能一般,支持一对多串行通信,支持实时通信</td>
+<td align="center">不能处理好高并发情形.不支持RPC,数据通过Message进行传输,只能传输Bundle支持的数据类型</td>
+<td align="center">低并发的一对多通信,无RPC请求</td>
+</tr>
+<tr>
+<td align="center">ContentProvider</td>
+<td align="center">在数据源访问方面功能强大,支持一对多并发数据共享,可通过Call方法扩展其他操作</td>
+<td align="center">可以理解为受束的ALDL,主要提供数据源的CRUD操作</td>
+<td align="center">一对多的进程间的数据共享</td>
+</tr>
+<tr>
+<td align="center">Socket</td>
+<td align="center">功能强大,可以通过网络传输字节派,支持一对多并发实时通信</td>
+<td align="center">实现细节繁琐,不支持直接的RPC</td>
+<td align="center">网络数据交换</td>
+</tr>
+</tbody></table>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p> View是Android中所有控件的基类,是界面层的控件的一种抽象,ViewGroup也继承了View，这就意味着View本身就可以是单个控件也可以是由多个控件组成的一组控件，通过这种关系就形成了View树的结构，这和Web前端中的DOM树的概念是相似的</p>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h4><p><img src="https://s2.ax1x.com/2019/12/06/QG57md.jpg" alt="QG57md.jpg"></p>
+<p>View的宽高与坐标的关系</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Left=getLeft()；</span><br><span class="line">Right=getRight()；</span><br><span class="line">Top=getTop()；</span><br><span class="line">Bottom=getBottom()</span><br><span class="line">width = right - left</span><br><span class="line">height = bottom - top</span><br><span class="line"><span class="comment">// View左上角坐标</span></span><br><span class="line">x=left+translationX</span><br><span class="line">y=top+translationY</span><br></pre></td></tr></table></figure>
+
+<h4 id="MotionEvent"><a href="#MotionEvent" class="headerlink" title="MotionEvent"></a>MotionEvent</h4><blockquote>
+<p>在手指接触屏幕后所产生的一系列事件</p>
+</blockquote>
+<p>典型事件:</p>
+<ul>
+<li>ACTION_DOWN——手指刚接触屏幕</li>
+<li>ACTION_MOVE——手指在屏幕上移动</li>
+<li>ACTION_UP——手机从屏幕上松开的一瞬间</li>
+</ul>
+<p>通过MotionEvent对象我们可以得到点击事件发生的x和y坐标。为此，系统提供了两组方法：getX/getY和getRawX/getRawY。它们的区别其实很简单，getX/getY返回的是相对于当前View左上角的x和y坐标，而getRawX/getRawY返回的是相对于手机屏幕左上角的x和y坐标。</p>
+<h4 id="TouchSlop"><a href="#TouchSlop" class="headerlink" title="TouchSlop"></a>TouchSlop</h4><blockquote>
+<p>系统所能识别出的被认为是滑动的最小距离</p>
+</blockquote>
+<p>这是一个常量，和设备有关，在不同设备上这个值可能是不同的，通过如下方式即可获取这个常量：ViewConfiguration. get(getContext()).getScaledTouchSlop()</p>
+<h4 id="VelocityTracker"><a href="#VelocityTracker" class="headerlink" title="VelocityTracker"></a>VelocityTracker</h4><blockquote>
+<p>速度追踪，用于追踪手指在滑动过程中的速度，包括水平和竖直方向的速度</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 追踪当前单击事件的速度</span></span><br><span class="line">VelocityTracker velocityTracker = VelocityTracker.obtain();</span><br><span class="line">velocityTracker.addMovement(event);</span><br><span class="line"><span class="comment">// 获得当前的速度</span></span><br><span class="line">velocityTracker.computeCurrentVelocity(<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">int</span> xVelocity = (<span class="keyword">int</span>) velocityTracker.getXVelocity();</span><br><span class="line"><span class="keyword">int</span> yVelocity = (<span class="keyword">int</span>) velocityTracker.getYVelocity();</span><br><span class="line"><span class="comment">// 释放</span></span><br><span class="line">velocityTracker.clear();</span><br><span class="line">velocityTracker.recycle();</span><br></pre></td></tr></table></figure>
+
+<h4 id="GestureDetector"><a href="#GestureDetector" class="headerlink" title="GestureDetector"></a>GestureDetector</h4><blockquote>
+<p>手势检测，用于辅助检测用户的单击、滑动、长按、双击等行为</p>
+</blockquote>
+<h4 id="Scroller"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller</h4><blockquote>
+<p>用于实现View的过渡(弹性)滑动</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Scroller scroller = <span class="keyword">new</span> Scroller(mContext);</span><br><span class="line">    <span class="comment">// 缓慢滚动到指定位置</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">smoothScrollTo</span><span class="params">(<span class="keyword">int</span> destX,<span class="keyword">int</span> destY)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> scrollX = getScrollX();</span><br><span class="line">        <span class="keyword">int</span> delta = destX -scrollX;</span><br><span class="line">        <span class="comment">// 1000ms内滑向destX，效果就是慢慢滑动</span></span><br><span class="line">        mScroller.startScroll(scrollX,<span class="number">0</span>,delta,<span class="number">0</span>,<span class="number">1000</span>);</span><br><span class="line">        invalidate();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mScroller.computeScrollOffset()) &#123;</span><br><span class="line">            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</span><br><span class="line">            postInvalidate();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="滑动"><a href="#滑动" class="headerlink" title="滑动"></a>滑动</h3><table>
+<thead>
+<tr>
+<th align="center">方式</th>
+<th align="center">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">scrollTo/scrollBy</td>
+<td align="center">操作简单，适合对View内容的滑动</td>
+</tr>
+<tr>
+<td align="center">动画</td>
+<td align="center">适用于没有交互的View和实现复杂的动画效果</td>
+</tr>
+<tr>
+<td align="center">改变布局参数</td>
+<td align="center">操作稍微复杂，适用于有交互的View</td>
+</tr>
+</tbody></table>
+<h4 id="使用scrollTo-scrollBy"><a href="#使用scrollTo-scrollBy" class="headerlink" title="使用scrollTo/scrollBy"></a>使用scrollTo/scrollBy</h4><h4 id="使用动画"><a href="#使用动画" class="headerlink" title="使用动画"></a>使用动画</h4><blockquote>
+<p>平移就是一种滑动。使用动画来移动View，主要是操作View的translationX和translationY属性，既可以采用传统的View动画，也可以采用属性动画</p>
+</blockquote>
+<p>view动画:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:fillAfter</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:zAdjustment</span>=<span class="string">"normal"</span> &gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:duration</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/linear_interpolator"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:toXDelta</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:toYDelta</span>=<span class="string">"100"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>View动画是对View的影像做操作，它并不能真正改变View的位置参数，包括宽/高，并且如果希望动画后的状态得以保留还必须将fillAfter属性设置为true，否则动画完成后其动画结果会消失,且点击事件还在停留在原来位置。</p>
+</blockquote>
+<p>属性动画:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(targetView,<span class="string">"translationX"</span>,<span class="number">0</span>,<span class="number">100</span>).setDuration</span><br><span class="line">     (<span class="number">100</span>).start();</span><br></pre></td></tr></table></figure>
+
+<p>View拖动效果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) event.getRawX();</span><br><span class="line">        <span class="keyword">int</span> y = (<span class="keyword">int</span>) event.getRawY();</span><br><span class="line">        <span class="keyword">switch</span> (event.getAction()) &#123;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_DOWN: &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_MOVE: &#123;</span><br><span class="line">                <span class="keyword">int</span> deltaX = x -mLastX;</span><br><span class="line">                <span class="keyword">int</span> deltaY = y -mLastY;</span><br><span class="line">                Log.d(TAG,<span class="string">"move,deltaX:"</span> + deltaX + <span class="string">" deltaY:"</span> + deltaY);</span><br><span class="line">                <span class="keyword">int</span> translationX = (<span class="keyword">int</span>)ViewHelper.getTranslationX(<span class="keyword">this</span>) + deltaX;</span><br><span class="line">                <span class="keyword">int</span> translationY = (<span class="keyword">int</span>)ViewHelper.getTranslationY(<span class="keyword">this</span>) + deltaY;</span><br><span class="line">                ViewHelper.setTranslationX(<span class="keyword">this</span>,translationX);</span><br><span class="line">                ViewHelper.setTranslationY(<span class="keyword">this</span>,translationY);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_UP: &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mLastX = x;</span><br><span class="line">        mLastY = y;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="改变布局参数"><a href="#改变布局参数" class="headerlink" title="改变布局参数"></a>改变布局参数</h4><blockquote>
+<p>即改变LayoutParams</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MarginLayoutParams params = (MarginLayoutParams)mButton1.getLayoutParams();</span><br><span class="line">params.width += <span class="number">100</span>;</span><br><span class="line">params.leftMargin += <span class="number">100</span>;</span><br><span class="line">mButton1.requestLayout();</span><br><span class="line"><span class="comment">//或者mButton1.setLayoutParams(params);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实现过渡式-弹性-滑动"><a href="#实现过渡式-弹性-滑动" class="headerlink" title="实现过渡式(弹性)滑动"></a>实现过渡式(弹性)滑动</h3><h4 id="Scroller-1"><a href="#Scroller-1" class="headerlink" title="Scroller"></a>Scroller</h4><h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><blockquote>
+<p>动画本身就是一种渐近的过程，因此通过它来实现的滑动天然就具有弹性效果</p>
+</blockquote>
+<h4 id="延时策略"><a href="#延时策略" class="headerlink" title="延时策略"></a>延时策略</h4><blockquote>
+<p>通过发送一系列延时消息从而达到一种渐近式的效果</p>
+</blockquote>
+<ul>
+<li>Handler或View的postDelayed方法</li>
+<li>线程的sleep方法</li>
+</ul>
+<h3 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h3><h4 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h4><p>传递规则:</p>
+<ul>
+<li>dispatchTouchEvent<ul>
+<li>用来进行事件的分发。如果事件能够传递给当前View，那么此方法一定会被调用，返回结果受当前View的onTouchEvent和下级View的dispatchTouchEvent方法的影响，表示是否消耗当前事件</li>
+</ul>
+</li>
+<li>onInterceptTouchEvent<ul>
+<li>在上述方法内部调用，用来判断是否拦截某个事件，如果当前View拦截了某个事件，那么在同一个事件序列当中，此方法不会被再次调用，返回结果表示是否拦截当前事件。</li>
+</ul>
+</li>
+<li>onTouchEvent<ul>
+<li>在dispatchTouchEvent方法中调用，用来处理点击事件，返回结果表示是否消耗当前事件，如果不消耗，则在同一个事件序列中，当前View无法再次接收到事件</li>
+</ul>
+</li>
+</ul>
+<h4 id="滑动冲突"><a href="#滑动冲突" class="headerlink" title="滑动冲突"></a>滑动冲突</h4><h2 id="View工作原理"><a href="#View工作原理" class="headerlink" title="View工作原理"></a>View工作原理</h2><h3 id="ViewRoot"><a href="#ViewRoot" class="headerlink" title="ViewRoot"></a>ViewRoot</h3><blockquote>
+<p>ViewRoot对应于ViewRootImpl类，它是连接WindowManager和DecorView的纽带，View的三大流程均是通过ViewRoot来完成的</p>
+</blockquote>
+<p>在ActivityThread中，当Activity对象被创建完毕后，会将DecorView添加到Window中，同时会创建ViewRootImpl对象，并将ViewRootImpl对象和DecorView建立关联</p>
+<p>绘制流程:<br><img src="https://s2.ax1x.com/2019/12/06/QJQEcR.jpg" alt="QJQEcR.jpg"></p>
+<h3 id="DecorView"><a href="#DecorView" class="headerlink" title="DecorView"></a>DecorView</h3><blockquote>
+<p>DecorView作为顶级View，一般情况下它内部会包含一个竖直方向的LinearLayout，在这个LinearLayout里面有上下两个部分（具体情况和Android版本及主题有关），上面是标题栏，下面是内容栏。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/06/QJwZJ1.jpg" alt="QJwZJ1.jpg"></p>
+<h3 id="理解MeasureSpec"><a href="#理解MeasureSpec" class="headerlink" title="理解MeasureSpec"></a>理解MeasureSpec</h3><blockquote>
+<p>MeasureSpec在很大程度上决定了一个View的尺寸规格，之所以说是很大程度上是因为这个过程还受父容器的影响，因为父容器影响View的MeasureSpec的创建过程。</p>
+</blockquote>
+<p>测量过程:<br>系统将View的LayoutParams根据父容器所施加的规则转换成对应的MeasureSpec，然后再根据这个measureSpec来测量出View的宽/高。上面提到过，这里的宽/高是测量宽/高，不一定等于View的最终宽/高</p>
+<h4 id="MeasureSpec"><a href="#MeasureSpec" class="headerlink" title="MeasureSpec"></a>MeasureSpec</h4><blockquote>
+<p>MeasureSpec代表一个32位int值</p>
+</blockquote>
+<ul>
+<li>高2位代表SpecMode(测量模式)<ul>
+<li>UNSPECIFIED -&gt; 父容器不对View有任何限制，要多大给多大，这种情况一般用于系统内部，表示一种测量的状态</li>
+<li>EXACTLY -&gt; 父容器已经检测出View所需要的精确大小，这个时候View的最终大小就是SpecSize所指定的值。它对应于LayoutParams中的match_parent和具体的数值这两种模式</li>
+<li>AT_MOST -&gt; 父容器指定了一个可用大小即SpecSize，View的大小不能大于这个值，具体是什么值要看不同View的具体实现。它对应于LayoutParams中的wrap_content</li>
+</ul>
+</li>
+<li>低30位代表SpecSize</li>
+</ul>
+<h4 id="MeasureSpec和LayoutParams的对应关系"><a href="#MeasureSpec和LayoutParams的对应关系" class="headerlink" title="MeasureSpec和LayoutParams的对应关系"></a>MeasureSpec和LayoutParams的对应关系</h4><blockquote>
+<p>MeasureSpec不是唯一由LayoutParams决定的，LayoutParams需要和父容器一起才能决定View的MeasureSpec，从而进一步决定View的宽/高</p>
+</blockquote>
+<p>系统内部是通过MeasureSpec来进行View的测量，但是正常情况下我们使用View指定MeasureSpec，尽管如此，但是我们可以给View设置LayoutParams。在View测量的时候，系统会将LayoutParams在父容器的约束下转换成对应的MeasureSpec，然后再根据这个MeasureSpec来确定View测量后的宽/高。</p>
+<p>转换过程:</p>
+<ul>
+<li>DecorView<ul>
+<li>MeasureSpec由窗口的尺寸和其自身的LayoutParams来共同确定；</li>
+</ul>
+</li>
+<li>普通View<ul>
+<li>其MeasureSpec由父容器的MeasureSpec和自身的LayoutParams来共同决定,MeasureSpec一旦确定后,onMeasure中就可以确定View的测量宽/高。</li>
+</ul>
+</li>
+</ul>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><h4 id="measure"><a href="#measure" class="headerlink" title="measure"></a>measure</h4><h4 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h4><h4 id="draw"><a href="#draw" class="headerlink" title="draw"></a>draw</h4><ul>
+<li>绘制背景background.draw(canvas)</li>
+<li>绘制自己（onDraw）</li>
+<li>绘制children（dispatchDraw）</li>
+<li>绘制装饰（onDrawScrollBars）</li>
+</ul>
+<h3 id="自定义View"><a href="#自定义View" class="headerlink" title="自定义View"></a>自定义View</h3><h4 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h4><ul>
+<li>继承View重写onDraw方法</li>
+<li>继承ViewGroup派生特殊的Layout</li>
+<li>继承特定的View（比如TextView）</li>
+<li>继承特定的ViewGroup（比如LinearLayout）</li>
+</ul>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
+<li>让View支持wrap_content</li>
+<li>如果有必要，让你的View支持padding</li>
+<li>尽量不要在View中使用Handler，没必要</li>
+<li>View中如果有线程或者动画，需要及时停止</li>
+<li>View带有滑动嵌套情形时，需要处理好滑动冲突</li>
+</ul>
+<h2 id="RemoteViews"><a href="#RemoteViews" class="headerlink" title="RemoteViews"></a>RemoteViews</h2><blockquote>
+<p>RemoteViews表示的是一个View结构，它可以在其他进程中显示</p>
+</blockquote>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="通知栏"><a href="#通知栏" class="headerlink" title="通知栏"></a>通知栏</h4><h4 id="桌面小部件"><a href="#桌面小部件" class="headerlink" title="桌面小部件"></a>桌面小部件</h4><h3 id="内部机制"><a href="#内部机制" class="headerlink" title="内部机制"></a>内部机制</h3><h2 id="Drawable"><a href="#Drawable" class="headerlink" title="Drawable"></a>Drawable</h2><h2 id="动画-1"><a href="#动画-1" class="headerlink" title="动画"></a>动画</h2><h2 id="理解Window和WindowManager"><a href="#理解Window和WindowManager" class="headerlink" title="理解Window和WindowManager"></a>理解Window和WindowManager</h2><blockquote>
+<p>Android中所有的视图都是通过Window来呈现的，不管是Activity、Dialog还是Toast，它们的视图实际上都是附加在Window上的，因此Window实际是View的直接管理者</p>
+</blockquote>
+<h2 id="四大组件运行过程"><a href="#四大组件运行过程" class="headerlink" title="四大组件运行过程"></a>四大组件运行过程</h2><p>Android的四大组件中除了BroadcastReceiver以外，其他三种组件都必须在Android-Manifest中注册，对于BroadcastReceiver来说，它既可以在AndroidManifest中注册也可以通过代码来注册。在调用方式上，Activity、Service和BroadcastReceiver需要借助Intent，而ContentProvider则无须借助Intent。</p>
+<ul>
+<li>Activity<ul>
+<li>一种展示型组件，用于向用户直接地展示一个界面，并且可以接收用户的输入信息从而进行交互</li>
+</ul>
+</li>
+<li>Service<ul>
+<li>一种计算型组件，用于在后台执行一系列计算任务</li>
+<li>Service组件处于启动状态时，这个时候Service内部可以做一些后台计算，并且不需要和外界有直接的交互</li>
+<li>Service组件处于绑定状态时，这个时候Service内部同样可以进行后台计算，但是处于这种状态时外界可以很方便地和Service组件进行通信</li>
+<li>灵活采用stopService和unBindService这两个方法才能完全停止一个Service组件</li>
+</ul>
+</li>
+<li>BroadcastReceiver<ul>
+<li>一种消息型组件，用于在不同的组件乃至不同的应用之间传递消息</li>
+</ul>
+</li>
+<li>ContentProvider<ul>
+<li>一种数据共享型组件，用于向其他组件乃至其他应用共享数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="Acivity"><a href="#Acivity" class="headerlink" title="Acivity"></a>Acivity</h3><h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启动过程</span></span><br><span class="line">Intent intentService = <span class="keyword">new</span> Intent(<span class="keyword">this</span>,MyService.class);</span><br><span class="line">startService(intentService);</span><br><span class="line"><span class="comment">// 绑定过程</span></span><br><span class="line">Intent intentService = <span class="keyword">new</span> Intent(<span class="keyword">this</span>,MyService.class);</span><br><span class="line">bindService(intentService,mServiceConnection,BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h4><h4 id="绑定过程"><a href="#绑定过程" class="headerlink" title="绑定过程"></a>绑定过程</h4><h3 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h3><h4 id="注册过程"><a href="#注册过程" class="headerlink" title="注册过程"></a>注册过程</h4><h4 id="发送过程"><a href="#发送过程" class="headerlink" title="发送过程"></a>发送过程</h4><h4 id="接受过程"><a href="#接受过程" class="headerlink" title="接受过程"></a>接受过程</h4><h3 id="ContentProvider-1"><a href="#ContentProvider-1" class="headerlink" title="ContentProvider"></a>ContentProvider</h3><h2 id="Android的线程和线程池"><a href="#Android的线程和线程池" class="headerlink" title="Android的线程和线程池"></a>Android的线程和线程池</h2><h3 id="线程形态"><a href="#线程形态" class="headerlink" title="线程形态"></a>线程形态</h3><h4 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h4><h4 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h4><blockquote>
+<p>AsyncTask是一种轻量级的异步任务类，它可以在线程池中执行后台任务，然后把执行的进度和最终结果传递给主线程并在主线程中更新UI,对于特别耗时的任务来说，建议使用线程池</p>
+</blockquote>
+<ul>
+<li>onPreExecute( )<ul>
+<li>在主线程中执行，在异步任务执行之前，此方法会被调用，一般可以用于做一些准备工作</li>
+</ul>
+</li>
+<li>doInBackground(Params…params)<ul>
+<li>在线程池中执行，此方法用于执行异步任务，params参数表示异步任务的输入参数。在此方法中可以通过publishProgress方法来更新任务的进度，publishProgress方法会调用onProgressUpdate方法。另外此方法需要返回计算结果给onPostExecute方法。</li>
+</ul>
+</li>
+<li>onProgressUpdate(Progress…values)<ul>
+<li>在主线程中执行，当后台任务的执行进度发生改变时此方法会被调用</li>
+</ul>
+</li>
+<li>onPostExecute(Result result)<ul>
+<li>在主线程中执行，在异步任务执行之后，此方法会被调用，其中result参数是后台任务的返回值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DownloadFilesTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">URL</span>,<span class="title">Integer</span>,<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> Long <span class="title">doInBackground</span><span class="params">(URL... urls)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">int</span> count = urls.length;</span><br><span class="line">                <span class="keyword">long</span> totalSize = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">                        totalSize += Downloader.downloadFile(urls[i]);</span><br><span class="line">                        publishProgress((<span class="keyword">int</span>) ((i / (<span class="keyword">float</span>) count) * <span class="number">100</span>));</span><br><span class="line">                        <span class="comment">// Escape early if cancel() is called</span></span><br><span class="line">                        <span class="keyword">if</span> (isCancelled())</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> totalSize;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Integer... progress)</span> </span>&#123;</span><br><span class="line">                setProgressPercent(progress[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Long result)</span> </span>&#123;</span><br><span class="line">                showDialog(<span class="string">"Downloaded "</span> + result + <span class="string">" bytes"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用限制:</p>
+<ul>
+<li>AsyncTask的类必须在主线程中加载</li>
+<li>AsyncTask的对象必须在主线程中创建</li>
+<li>execute方法必须在UI线程调用</li>
+<li>不要在程序中直接调用onPreExecute()、onPostExecute、doInBackground和onProgressUpdate方法</li>
+<li>一个AsyncTask对象只能执行一次，即只能调用一次execute方法，否则会报运行时异常</li>
+</ul>
+<h5 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h5><h4 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h4><blockquote>
+<p>HandlerThread继承了Thread，它是一种可以使用Handler的Thread，它的实现也很简单，就是在run方法中通过Looper.prepare()来创建消息队列，并通过Looper.loop()来开启消息循环</p>
+</blockquote>
+<h4 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h4><blockquote>
+<p>IntentService是一种特殊的Service，它继承了Service并且它是一个抽象类，因此必须创建它的子类才能使用IntentService</p>
+</blockquote>
+<p>IntentService可用于执行后台耗时的任务，当任务执行后它会自动停止，同时由于IntentService是服务的原因，这导致它的优先级比单纯的线程要高很多，所以IntentService比较适合执行一些高优先级的后台任务，因为它优先级高不容易被系统杀死。在实现上，IntentService封装了HandlerThread和Handler</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>优点</p>
+<ul>
+<li>重用线程池中的线程，避免因为线程的创建和销毁所带来的性能开销</li>
+<li>能有效控制线程池的最大并发数，避免大量的线程之间因互相抢占系统资源而导致的阻塞现象</li>
+<li>能够对线程进行简单的管理，并提供定时执行以及指定间隔循环执行等功能</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Runnable command = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            SystemClock.sleep(<span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">4</span>);</span><br><span class="line">fixedThreadPool.execute(command);</span><br><span class="line">ExecutorService cachedThreadPool = Executors.newCachedThreadPool();</span><br><span class="line">cachedThreadPool.execute(command);</span><br><span class="line">ScheduledExecutorService scheduledThreadPool = Executors.newScheduled-ThreadPool(<span class="number">4</span>);</span><br><span class="line"><span class="comment">// 2000ms后执行command</span></span><br><span class="line">scheduledThreadPool.schedule(command,<span class="number">2000</span>,TimeUnit.MILLISECONDS);</span><br><span class="line"><span class="comment">// 延迟10ms后，每隔1000ms执行一次command</span></span><br><span class="line">scheduledThreadPool.scheduleAtFixedRate(command,<span class="number">10</span>,<span class="number">1000</span>,TimeUnit. MILLISECONDS);</span><br><span class="line">ExecutorService singleThreadExecutor = Executors.newSingleThread-Executor();</span><br><span class="line">singleThreadExecutor.execute(command);</span><br></pre></td></tr></table></figure>
+
+<h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><blockquote>
+<p>ThreadPoolExecutor是线程池的真正实现，它的构造方法提供了一系列参数来配置线程池</p>
+</blockquote>
+<h4 id="常见线程池"><a href="#常见线程池" class="headerlink" title="常见线程池"></a>常见线程池</h4><h5 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool"></a>FixedThreadPool</h5><p>一种线程数量固定的线程池，当线程处于空闲状态时，它们并不会被回收，除非线程池被关闭了。当所有的线程都处于活动状态时，新任务都会处于等待状态，直到有线程空闲出来。由于FixedThreadPool只有核心线程并且这些核心线程不会被回收，这意味着它能够更加快速地响应外界的请求</p>
+<h5 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h5><p>一种线程数量不定的线程池，它只有非核心线程，并且其最大线程数为Integer.MAX_VALUE。由于Integer.MAX_VALUE是一个很大的数，实际上就相当于最大线程数可以任意大。当线程池中的线程都处于活动状态时，线程池会创建新的线程来处理新任务，否则就会利用空闲的线程来处理新任务。线程池中的空闲线程都有超时机制，这个超时时长为60秒，超过60秒闲置线程就会被回收</p>
+<p>从CachedThreadPool的特性来看，这类线程池比较适合执行大量的耗时较少的任务。当整个线程池都处于闲置状态时，线程池中的线程都会超时而被停止，这个时候CachedThreadPool之中实际上是没有任何线程的，它几乎是不占用任何系统资源的。</p>
+<h5 id="ScheduledThreadPool"><a href="#ScheduledThreadPool" class="headerlink" title="ScheduledThreadPool"></a>ScheduledThreadPool</h5><p>核心线程数量是固定的，而非核心线程数是没有限制的，并且当非核心线程闲置时会被立即回收。ScheduledThreadPool这类线程池主要用于执行定时任务和具有固定周期的重复任务</p>
+<h5 id="SingleThreadExecutor"><a href="#SingleThreadExecutor" class="headerlink" title="SingleThreadExecutor"></a>SingleThreadExecutor</h5><p>这类线程池内部只有一个核心线程，它确保所有的任务都在同一个线程中按顺序执行。SingleThreadExecutor的意义在于统一所有的外界任务到一个线程中，这使得在这些任务之间不需要处理线程同步的问题</p>
+<h2 id="Bitmap的加载和Cache"><a href="#Bitmap的加载和Cache" class="headerlink" title="Bitmap的加载和Cache"></a>Bitmap的加载和Cache</h2><h3 id="Bitmap的高效加载"><a href="#Bitmap的高效加载" class="headerlink" title="Bitmap的高效加载"></a>Bitmap的高效加载</h3><blockquote>
+<p>Bitmap在Android中指的是一张图片，可以是png格式也可以是jpg等其他常见的图片格式</p>
+</blockquote>
+<p>BitmapFactory 加载图片方式:</p>
+<ul>
+<li>decodeFile(文件系统)</li>
+<li>decodeResource(资源)</li>
+<li>decodeStream(输入流)</li>
+<li>decodeByteArray(字节数组)</li>
+</ul>
+<p>BitmapFactory.Options 实现高效加载:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">decodeSampledBitmapFromResource</span><span class="params">(Resources res,<span class="keyword">int</span> resId,</span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="keyword">int</span> reqWidth,<span class="keyword">int</span> reqHeight)</span> </span>&#123;</span><br><span class="line">         <span class="comment">// First decode with inJustDecodeBounds=true to check dimensions</span></span><br><span class="line">         <span class="keyword">final</span> BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">         options.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">         BitmapFactory.decodeResource(res,resId,options);</span><br><span class="line">         <span class="comment">// 设置采样率</span></span><br><span class="line">         options.inSampleSize = calculateInSampleSize(options,reqWidth,reqHeight);</span><br><span class="line">         <span class="comment">// Decode bitmap with inSampleSize set,重新加载</span></span><br><span class="line">         options.inJustDecodeBounds = <span class="keyword">false</span>;</span><br><span class="line">         <span class="keyword">return</span> BitmapFactory.decodeResource(res,resId,options);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取采样率</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateInSampleSize</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">                 BitmapFactory.Options options,<span class="keyword">int</span> reqWidth,<span class="keyword">int</span> reqHeight)</span> </span>&#123;</span><br><span class="line">         <span class="comment">// 取得图片原始宽高</span></span><br><span class="line">         <span class="keyword">final</span> <span class="keyword">int</span> height = options.outHeight;</span><br><span class="line">         <span class="keyword">final</span> <span class="keyword">int</span> width = options.outWidth;</span><br><span class="line">         <span class="keyword">int</span> inSampleSize = <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">if</span> (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">             <span class="keyword">final</span> <span class="keyword">int</span> halfHeight = height / <span class="number">2</span>;</span><br><span class="line">             <span class="keyword">final</span> <span class="keyword">int</span> halfWidth = width / <span class="number">2</span>;</span><br><span class="line">             <span class="comment">// 计算合适的采样率</span></span><br><span class="line">             <span class="comment">// Calculate the largest inSampleSize value that is a power of 2 and  keeps both</span></span><br><span class="line">             <span class="comment">// height and width larger than the requested height and width.</span></span><br><span class="line">             <span class="keyword">while</span> ((halfHeight / inSampleSize) =&gt; reqHeight</span><br><span class="line">                     &amp;&amp; (halfWidth / inSampleSize) =&gt; reqWidth) &#123;</span><br><span class="line">                 inSampleSize *= <span class="number">2</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> inSampleSize;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android中的缓存策略"><a href="#Android中的缓存策略" class="headerlink" title="Android中的缓存策略"></a>Android中的缓存策略</h3><blockquote>
+<p>目前常用的一种缓存算法是LRU（Least Recently Used），LRU是近期最少使用算法，它的核心思想是当缓存满时，会优先淘汰那些近期最少使用的缓存对象。采用LRU算法的缓存有两种：LruCache和DiskLruCache，LruCache用于实现内存缓存，而DiskLruCache则充当了存储设备缓存。</p>
+</blockquote>
+<h4 id="LruCache"><a href="#LruCache" class="headerlink" title="LruCache"></a>LruCache</h4><blockquote>
+<p>LruCache是一个泛型类，它内部采用一个LinkedHashMap以强引用的方式存储外界的缓存对象，其提供了get和put方法来完成缓存的获取和添加操作，当缓存满时，LruCache会移除较早使用的缓存对象，然后再添加新的缓存对象。</p>
+</blockquote>
+<ul>
+<li>强引用：直接的对象引用；</li>
+<li>软引用：当一个对象只有软引用存在时，系统内存不足时此对象会被gc回收；</li>
+<li>弱引用：当一个对象只有弱引用存在时，此对象会随时被gc回收。</li>
+</ul>
+<h4 id="DiskLruCache"><a href="#DiskLruCache" class="headerlink" title="DiskLruCache"></a>DiskLruCache</h4><blockquote>
+<p>通过将缓存对象写入文件系统从而实现缓存的效果</p>
+</blockquote>
+<p>创建：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> DISK_CACHE_SIZE = <span class="number">1024</span> * <span class="number">1024</span> * <span class="number">50</span>; <span class="comment">//50MB</span></span><br><span class="line">    File diskCacheDir = getDiskCacheDir(mContext,<span class="string">"bitmap"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!diskCacheDir.exists()) &#123;</span><br><span class="line">        diskCacheDir.mkdirs();</span><br><span class="line">    &#125;</span><br><span class="line">    mDiskLruCache = DiskLruCache.open(diskCacheDir,<span class="number">1</span>,<span class="number">1</span>,DISK_CACHE_SIZE);</span><br></pre></td></tr></table></figure>
+
+<p>添加缓存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String key = hashKeyFormUrl(url);</span><br><span class="line">   DiskLruCache.Editor editor = mDiskLruCache.edit(key);</span><br><span class="line">   <span class="keyword">if</span> (editor != <span class="keyword">null</span>) &#123;</span><br><span class="line">       OutputStream outputStream = editor.newOutputStream(DISK_CACHE_INDEX);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>查找缓存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line">    String key = hashKeyFormUrl(url);</span><br><span class="line">    DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);</span><br><span class="line">    <span class="keyword">if</span> (snapShot != <span class="keyword">null</span>) &#123;</span><br><span class="line">        FileInputStream fileInputStream = (FileInputStream)snapShot.getInput-          Stream(DISK_CACHE_INDEX);</span><br><span class="line">        FileDescriptor fileDescriptor = fileInputStream.getFD();</span><br><span class="line">        bitmap = mImageResizer.decodeSampledBitmapFromFileDescriptor                            (fileDescriptor,</span><br><span class="line">                        reqWidth,reqHeight);</span><br><span class="line">        <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">                addBitmapToMemoryCache(key,bitmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/ndroid-Manifest/" rel="next" title="Android Manifest">
+                <i class="fa fa-chevron-left"></i> Android Manifest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IPC"><span class="nav-number">1.</span> <span class="nav-text">IPC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启多进程模式"><span class="nav-number">1.1.</span> <span class="nav-text">开启多进程模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多进程模式运行机制"><span class="nav-number">1.2.</span> <span class="nav-text">多进程模式运行机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC基础概念"><span class="nav-number">1.3.</span> <span class="nav-text">IPC基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Serializable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Serializable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parcelable接口"><span class="nav-number">1.3.2.</span> <span class="nav-text">Parcelable接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder"><span class="nav-number">1.4.</span> <span class="nav-text">Binder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BInder连接池"><span class="nav-number">1.4.1.</span> <span class="nav-text">BInder连接池</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android的IPC方式"><span class="nav-number">1.5.</span> <span class="nav-text">Android的IPC方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bundle"><span class="nav-number">1.5.1.</span> <span class="nav-text">Bundle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件共享"><span class="nav-number">1.5.2.</span> <span class="nav-text">文件共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Messenger"><span class="nav-number">1.5.3.</span> <span class="nav-text">Messenger</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AIDL"><span class="nav-number">1.5.4.</span> <span class="nav-text">AIDL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ContentProvider"><span class="nav-number">1.5.5.</span> <span class="nav-text">ContentProvider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket"><span class="nav-number">1.5.6.</span> <span class="nav-text">Socket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.5.7.</span> <span class="nav-text">适用场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">2.</span> <span class="nav-text">View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础"><span class="nav-number">2.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#位置参数"><span class="nav-number">2.1.1.</span> <span class="nav-text">位置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MotionEvent"><span class="nav-number">2.1.2.</span> <span class="nav-text">MotionEvent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TouchSlop"><span class="nav-number">2.1.3.</span> <span class="nav-text">TouchSlop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VelocityTracker"><span class="nav-number">2.1.4.</span> <span class="nav-text">VelocityTracker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GestureDetector"><span class="nav-number">2.1.5.</span> <span class="nav-text">GestureDetector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scroller"><span class="nav-number">2.1.6.</span> <span class="nav-text">Scroller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动"><span class="nav-number">2.2.</span> <span class="nav-text">滑动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用scrollTo-scrollBy"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用scrollTo/scrollBy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用动画"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改变布局参数"><span class="nav-number">2.2.3.</span> <span class="nav-text">改变布局参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现过渡式-弹性-滑动"><span class="nav-number">2.3.</span> <span class="nav-text">实现过渡式(弹性)滑动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scroller-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">Scroller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画"><span class="nav-number">2.3.2.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#延时策略"><span class="nav-number">2.3.3.</span> <span class="nav-text">延时策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件分发"><span class="nav-number">2.4.</span> <span class="nav-text">事件分发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点击事件"><span class="nav-number">2.4.1.</span> <span class="nav-text">点击事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑动冲突"><span class="nav-number">2.4.2.</span> <span class="nav-text">滑动冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View工作原理"><span class="nav-number">3.</span> <span class="nav-text">View工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewRoot"><span class="nav-number">3.1.</span> <span class="nav-text">ViewRoot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DecorView"><span class="nav-number">3.2.</span> <span class="nav-text">DecorView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解MeasureSpec"><span class="nav-number">3.3.</span> <span class="nav-text">理解MeasureSpec</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MeasureSpec"><span class="nav-number">3.3.1.</span> <span class="nav-text">MeasureSpec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MeasureSpec和LayoutParams的对应关系"><span class="nav-number">3.3.2.</span> <span class="nav-text">MeasureSpec和LayoutParams的对应关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流程"><span class="nav-number">3.4.</span> <span class="nav-text">工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#measure"><span class="nav-number">3.4.1.</span> <span class="nav-text">measure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layout"><span class="nav-number">3.4.2.</span> <span class="nav-text">layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">3.4.3.</span> <span class="nav-text">draw</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义View"><span class="nav-number">3.5.</span> <span class="nav-text">自定义View</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类别"><span class="nav-number">3.5.1.</span> <span class="nav-text">类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意点"><span class="nav-number">3.5.2.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RemoteViews"><span class="nav-number">4.</span> <span class="nav-text">RemoteViews</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">4.1.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通知栏"><span class="nav-number">4.1.1.</span> <span class="nav-text">通知栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#桌面小部件"><span class="nav-number">4.1.2.</span> <span class="nav-text">桌面小部件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部机制"><span class="nav-number">4.2.</span> <span class="nav-text">内部机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawable"><span class="nav-number">5.</span> <span class="nav-text">Drawable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画-1"><span class="nav-number">6.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解Window和WindowManager"><span class="nav-number">7.</span> <span class="nav-text">理解Window和WindowManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四大组件运行过程"><span class="nav-number">8.</span> <span class="nav-text">四大组件运行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Acivity"><span class="nav-number">8.1.</span> <span class="nav-text">Acivity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service"><span class="nav-number">8.2.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动过程"><span class="nav-number">8.2.1.</span> <span class="nav-text">启动过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定过程"><span class="nav-number">8.2.2.</span> <span class="nav-text">绑定过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BroadcastReceiver"><span class="nav-number">8.3.</span> <span class="nav-text">BroadcastReceiver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册过程"><span class="nav-number">8.3.1.</span> <span class="nav-text">注册过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送过程"><span class="nav-number">8.3.2.</span> <span class="nav-text">发送过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接受过程"><span class="nav-number">8.3.3.</span> <span class="nav-text">接受过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ContentProvider-1"><span class="nav-number">8.4.</span> <span class="nav-text">ContentProvider</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android的线程和线程池"><span class="nav-number">9.</span> <span class="nav-text">Android的线程和线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程形态"><span class="nav-number">9.1.</span> <span class="nav-text">线程形态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Thread"><span class="nav-number">9.1.1.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AsyncTask"><span class="nav-number">9.1.2.</span> <span class="nav-text">AsyncTask</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#工作原理"><span class="nav-number">9.1.2.1.</span> <span class="nav-text">工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HandlerThread"><span class="nav-number">9.1.3.</span> <span class="nav-text">HandlerThread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IntentService"><span class="nav-number">9.1.4.</span> <span class="nav-text">IntentService</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">9.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">9.2.1.</span> <span class="nav-text">ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见线程池"><span class="nav-number">9.2.2.</span> <span class="nav-text">常见线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FixedThreadPool"><span class="nav-number">9.2.2.1.</span> <span class="nav-text">FixedThreadPool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CachedThreadPool"><span class="nav-number">9.2.2.2.</span> <span class="nav-text">CachedThreadPool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ScheduledThreadPool"><span class="nav-number">9.2.2.3.</span> <span class="nav-text">ScheduledThreadPool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SingleThreadExecutor"><span class="nav-number">9.2.2.4.</span> <span class="nav-text">SingleThreadExecutor</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmap的加载和Cache"><span class="nav-number">10.</span> <span class="nav-text">Bitmap的加载和Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitmap的高效加载"><span class="nav-number">10.1.</span> <span class="nav-text">Bitmap的高效加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android中的缓存策略"><span class="nav-number">10.2.</span> <span class="nav-text">Android中的缓存策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LruCache"><span class="nav-number">10.2.1.</span> <span class="nav-text">LruCache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DiskLruCache"><span class="nav-number">10.2.2.</span> <span class="nav-text">DiskLruCache</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/12/10/发艺术探索阅读/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
