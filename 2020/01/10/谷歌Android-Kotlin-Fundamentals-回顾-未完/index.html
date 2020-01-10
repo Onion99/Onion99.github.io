@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="基础回顾四大组件除广播都必须在AndroidManifest.xml声明 12345678&amp;lt;!-- 配置起始活动 --&amp;gt;&amp;lt;activity android:name=&quot;.MainActivity&quot;&amp;gt;   &amp;lt;intent-filter&amp;gt;       &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot;/&amp;gt;">
+<meta name="keywords" content="JetPack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谷歌Android Kotlin Fundamentals 回顾(未完)">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/谷歌Android-Kotlin-Fundamentals-回顾-未完/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="基础回顾四大组件除广播都必须在AndroidManifest.xml声明 12345678&amp;lt;!-- 配置起始活动 --&amp;gt;&amp;lt;activity android:name=&quot;.MainActivity&quot;&amp;gt;   &amp;lt;intent-filter&amp;gt;       &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot;/&amp;gt;">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l17FNF.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l1xlU1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l3FZnK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l3Zgfg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l3ZHtU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/31/l3VV8H.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/01/l8EbTK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/01/l8mtXj.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYo6jH.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYozCT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/ltQPQx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/ltQYkQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/lUHyOU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/04/ldxgWF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/04/lwMqVP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/04/lwdusf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/04/lwdQeS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/04/lwdblt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/05/lDQqb9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/05/lD1gkn.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/05/lD1Lfx.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/06/lshYsP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/06/lsTW8g.png">
+<meta property="og:updated_time" content="2020-01-10T03:30:48.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谷歌Android Kotlin Fundamentals 回顾(未完)">
+<meta name="twitter:description" content="基础回顾四大组件除广播都必须在AndroidManifest.xml声明 12345678&amp;lt;!-- 配置起始活动 --&amp;gt;&amp;lt;activity android:name=&quot;.MainActivity&quot;&amp;gt;   &amp;lt;intent-filter&amp;gt;       &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot;/&amp;gt;">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/31/l17FNF.md.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2020/01/10/谷歌Android-Kotlin-Fundamentals-回顾-未完/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>谷歌Android Kotlin Fundamentals 回顾(未完) | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/谷歌Android-Kotlin-Fundamentals-回顾-未完/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">谷歌Android Kotlin Fundamentals 回顾(未完)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-01-10 11:30:00 / Modified: 11:30:48" itemprop="dateCreated datePublished" datetime="2020-01-10T11:30:00+08:00">2020-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基础回顾"><a href="#基础回顾" class="headerlink" title="基础回顾"></a>基础回顾</h2><p>四大组件除广播都必须在<code>AndroidManifest.xml</code>声明</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置起始活动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>Gradle：</strong><br>一个自动构建系统，使用特定的语言描述应用的项目结构、配置、依赖</p>
+<p> <strong>AppCompatActivity：</strong><br> Activity的子类，在支持android新特性的同时，又向后提供兼容，官方推荐使用</p>
+<p><strong>本地化推荐：</strong><br> 最好将所有的字符串放在一个单独的文件<code>strings.xml</code>，方便管理和翻译</p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><p><strong>padding vs margin</strong><br><img src="https://s2.ax1x.com/2019/12/31/l17FNF.md.png" alt="l17FNF.md.png"></p>
+<p><strong>Right/left  vs start/end</strong></p>
+<ul>
+<li>在LTR或RTL反转布局中，Right/left是不同的，而start/end不受影响，始终指代布局的起始和结束</li>
+<li>在API17以上，推荐使用start/end</li>
+</ul>
+<p><strong>String.xml中语法 ：</strong></p>
+<ul>
+<li><code>\n</code>: 换行</li>
+<li><code>\&#39;</code>: 撇号</li>
+<li><code>&lt;b&gt;...&lt;/b&gt;</code>: 加粗</li>
+<li><code>&lt;i&gt;...&lt;/i&gt;</code>: 斜体</li>
+</ul>
+<p><strong>Style:</strong><br>View属性的集合，统一Style方便样式的管理和复用<br>Style生成：<br>查看Component Tree，然后右键相应Widget， select Refactor &gt; Extract Style<br><img src="https://s2.ax1x.com/2019/12/31/l1xlU1.png" alt="l1xlU1.png"></p>
+<p><strong>软键盘控制:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// editText请求焦点</span></span><br><span class="line">editText.requestFocus()</span><br><span class="line"><span class="comment">// 弹出键盘</span></span><br><span class="line"><span class="keyword">val</span> imm = getSystemService(Context.INPUT_METHOD_SERVICE) <span class="keyword">as</span> InputMethodManager</span><br><span class="line">imm.showSoftInput(editText, <span class="number">0</span>)</span><br><span class="line"><span class="comment">// 隐藏键盘</span></span><br><span class="line"><span class="keyword">val</span> inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) <span class="keyword">as</span> InputMethodManager</span><br><span class="line">inputMethodManager.hideSoftInputFromWindow(view.windowToken, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h3><h4 id="Chain"><a href="#Chain" class="headerlink" title="Chain"></a>Chain</h4><blockquote>
+<p>一组双向链接，彼此约束的视图</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/31/l3FZnK.png" alt="l3FZnK.png"></p>
+<h4 id="ChainStyle"><a href="#ChainStyle" class="headerlink" title="ChainStyle"></a>ChainStyle</h4><blockquote>
+<p>定义Chain View 的分布和对齐</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Horizontal spread chain</span><br><span class="line">app:layout_constraintHorizontal_chainStyle="spread"</span><br><span class="line"></span><br><span class="line">// Vertical spread inside chain</span><br><span class="line">app:layout_constraintVertical_chainStyle="spread_inside"</span><br><span class="line"></span><br><span class="line">// Horizontal packed chain</span><br><span class="line">app:layout_constraintHorizontal_chainStyle="packed"</span><br></pre></td></tr></table></figure>
+
+<h5 id="Spread"><a href="#Spread" class="headerlink" title="Spread"></a>Spread</h5><blockquote>
+<p>默认风格，均匀分布</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/31/l3Zgfg.png" alt="l3Zgfg.png"></p>
+<h5 id="Spread-inside"><a href="#Spread-inside" class="headerlink" title="Spread inside"></a>Spread inside</h5><blockquote>
+<p>首尾视图贴合父视图，其他均匀分布</p>
+</blockquote>
+<p> <img src="https://s2.ax1x.com/2019/12/31/l3ZHtU.png" alt="l3ZHtU.png"></p>
+<h4 id="Weighted"><a href="#Weighted" class="headerlink" title="Weighted"></a>Weighted</h4><blockquote>
+<p>设置Chain里子VIew的权重</p>
+</blockquote>
+<ul>
+<li><code>layout_constraintHorizontal_weight</code></li>
+<li>l<code>layout_constraintVertical_weight</code></li>
+</ul>
+<h5 id="Packed"><a href="#Packed" class="headerlink" title="Packed"></a>Packed</h5><blockquote>
+<p>以包的形式居中分布</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/31/l3VV8H.png" alt="l3VV8H.png"></p>
+<h4 id="Baseline-constraint"><a href="#Baseline-constraint" class="headerlink" title="Baseline constraint"></a>Baseline constraint</h4><blockquote>
+<p>用于View之间文本对齐</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/01/l8EbTK.png" alt="l8EbTK.png"></p>
+<h3 id="使用-Data-binding-替代-findViewById"><a href="#使用-Data-binding-替代-findViewById" class="headerlink" title="使用 Data binding 替代 findViewById"></a>使用 Data binding 替代 findViewById</h3><blockquote>
+<p>创建一个包含对每一个视图引用的对象，统一管理视图</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/01/l8mtXj.jpg" alt="l8mtXj.jpg"></p>
+<ul>
+<li>代码更少，易读，以及方便维护</li>
+<li>数据和View是分开的</li>
+<li>在程序启动时获取View引用，而不是在于用户交互时</li>
+<li>访问View安全</li>
+</ul>
+<h4 id="启动DataBinding"><a href="#启动DataBinding" class="headerlink" title="启动DataBinding"></a>启动DataBinding</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// build.gradle (Module: app)</span></span><br><span class="line">dataBinding &#123;</span><br><span class="line">    enabled = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="DataBinding-in-Layout"><a href="#DataBinding-in-Layout" class="headerlink" title="DataBinding in Layout"></a>DataBinding in Layout</h4><ol>
+<li>使用<code>&lt;layout&gt;&lt;/layout&gt;</code>作为最外层包裹布局</li>
+<li><code>&lt;data&gt;</code>标签，声明引用的变量</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"myName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.example.android.aboutme.MyName"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:paddingStart</span>=<span class="string">"@dimen/padding"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:paddingEnd</span>=<span class="string">"@dimen/padding"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/name_text"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"@style/NameStyle"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"@=&#123;myName.name&#125;"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textAlignment</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/nickname_text"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"@style/NameStyle"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"@=&#123;myName.nickname&#125;"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textAlignment</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:visibility</span>=<span class="string">"gone"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/nickname_edit"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"@style/NameStyle"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:hint</span>=<span class="string">"@string/what_is_your_nickname"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">"textPersonName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textAlignment</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/done_button"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"@style/Widget.AppCompat.Button.Colored"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_gravity</span>=<span class="string">"center_horizontal"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"@dimen/layout_margin"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:fontFamily</span>=<span class="string">"@font/roboto"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"@string/done"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:textAlignment</span>=<span class="string">"center"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/star_image"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"@dimen/layout_margin"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:contentDescription</span>=<span class="string">"@string/yellow_star"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:srcCompat</span>=<span class="string">"@android:drawable/btn_star_big_on"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ScrollView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/bio_scroll"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginTop</span>=<span class="string">"@dimen/layout_margin"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/bio_text"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:lineSpacingMultiplier</span>=<span class="string">"@dimen/line_spacing_multiplier"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">"@string/bio"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textAppearance</span>=<span class="string">"@style/NameStyle"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="DataBinding-in-Activity"><a href="#DataBinding-in-Activity" class="headerlink" title="DataBinding in Activity"></a>DataBinding in Activity</h4><blockquote>
+<p>如果生成DataBing对象报错，清进行Build &gt; Rebuild Project或者 File &gt; Invalidate Caches/Restart</p>
+</blockquote>
+<ol>
+<li>在onCreate() 中，实例化DataBinding对象<ul>
+<li>该DataBinding类，由编译器自动为当前Activity构建</li>
+<li>类名源于活动布局名称:<code>activity_main + Binding</code></li>
+</ul>
+</li>
+<li>替换<code>setContentView()</code>,使用Bing对象获取View的引用<ul>
+<li>编译器会自动根据Layout中的View的id生成Bingding对象中的View名称，并将其转换为驼峰式大小写</li>
+<li><code>binding.doneButton</code> = <code>findViewById&lt;Button&gt;(R.id.done_button)</code></li>
+<li><code>binding. apply {}</code>,集中处理</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.view.View</span><br><span class="line"><span class="keyword">import</span> android.view.inputmethod.InputMethodManager</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> androidx.databinding.DataBindingUtil</span><br><span class="line"><span class="keyword">import</span> com.example.android.aboutme.databinding.ActivityMainBinding</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实例化DataBingding对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> myName: MyName = MyName(<span class="string">"Aleks Haecky"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        <span class="comment">// 替换setContentView</span></span><br><span class="line">        binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_main)</span><br><span class="line">        <span class="comment">// 使用binding获取View引用</span></span><br><span class="line">        <span class="comment">// XML中不能直接访问数据类，需要通过绑定数据类访问</span></span><br><span class="line">        binding.myName = myName</span><br><span class="line">        binding.doneButton.setOnClickListener &#123;</span><br><span class="line">            addNickname(it)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">addNickname</span><span class="params">(view: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">        binding. apply &#123;</span><br><span class="line">            myName?.nickname = nicknameEdit.text.toString()</span><br><span class="line">            <span class="comment">// invalidateAll，更新绑定对象中的值</span></span><br><span class="line">            invalidateAll()</span><br><span class="line">            nicknameEdit.visibility = View.GONE</span><br><span class="line">            doneButton.visibility = View.GONE</span><br><span class="line">            nicknameText.visibility = View.VISIBLE</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 隐藏键盘</span></span><br><span class="line">        <span class="keyword">val</span> imm = getSystemService(Context.INPUT_METHOD_SERVICE) <span class="keyword">as</span> InputMethodManager</span><br><span class="line">        imm.hideSoftInputFromWindow(view.windowToken, <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h2><h3 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h3><blockquote>
+<p>作为Activity的模块或者UI的一部分，可以在一个Activity中组合多个Fragment，也可以在多个Activity中复用一个Fragment，类一个子Activity</p>
+</blockquote>
+<p><strong>简单的Fragment实现</strong><br>activity_main.xml:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">            android:orientation=<span class="string">"vertical"</span>&gt;</span><br><span class="line">            &lt;fragment</span><br><span class="line">                android:id=<span class="string">"@+id/titleFragment"</span></span><br><span class="line">                android:name=<span class="string">"com.example.android.navigation.TitleFragment"</span></span><br><span class="line">                android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">                android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">                /&gt;</span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>MainActivity:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TitleFragment</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        <span class="keyword">val</span> binding = DataBindingUtil.inflate&lt;FragmentTitleBinding&gt;(inflater,</span><br><span class="line">                R.layout.fragment_title,container,<span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">return</span> binding.root</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Navigation-and-Fragment"><a href="#Navigation-and-Fragment" class="headerlink" title="Navigation and Fragment"></a>Navigation and Fragment</h3><h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><ol>
+<li><p>编辑(Project)build.gradle:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext &#123;</span><br><span class="line">        kotlin_version = <span class="string">'1.3.11'</span></span><br><span class="line">        archLifecycleVersion = <span class="string">'1.1.1'</span></span><br><span class="line">        gradleVersion = <span class="string">'3.3.1'</span></span><br><span class="line">        supportlibVersion = <span class="string">'1.0.0-rc03'</span></span><br><span class="line">        dataBindingCompilerVersion = gradleVersion <span class="comment">// Always need to be the same.</span></span><br><span class="line">        navigationVersion = <span class="string">'1.0.0-rc02'</span></span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">"com.android.tools.build:gradle:$gradleVersion"</span></span><br><span class="line">        classpath <span class="string">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑(Module)build.gradle:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-android'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-kapt'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-android-extensions'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">28</span></span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">'com.example.android.navigation'</span></span><br><span class="line">        minSdkVersion <span class="number">19</span></span><br><span class="line">        targetSdkVersion <span class="number">28</span></span><br><span class="line">        vectorDrawables.useSupportLibrary = <span class="literal">true</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    productFlavors &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(<span class="string">include:</span> [<span class="string">'*.jar'</span>], <span class="string">dir:</span> <span class="string">'libs'</span>)</span><br><span class="line">    implementation <span class="string">"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"</span></span><br><span class="line">    implementation <span class="string">"org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"</span></span><br><span class="line">    implementation <span class="string">"androidx.appcompat:appcompat:$supportlibVersion"</span></span><br><span class="line">    implementation <span class="string">'androidx.constraintlayout:constraintlayout:2.0.0-alpha1'</span></span><br><span class="line">    implementation <span class="string">'androidx.legacy:legacy-support-v4:1.0.0-beta01'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test:runner:1.1.0-alpha4'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.0-alpha4'</span></span><br><span class="line">    implementation <span class="string">"com.google.android.material:material:1.0.0-rc01"</span></span><br><span class="line">    implementation<span class="string">"android.arch.navigation:navigation-fragment-ktx:$navigationVersion"</span></span><br><span class="line">    implementation <span class="string">"android.arch.navigation:navigation-ui-ktx:$navigationVersion"</span></span><br><span class="line">    implementation <span class="string">"com.google.android.material:material:$supportlibVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Navigation Graph</p>
+<ul>
+<li>在Res目录下，右键New &gt; Android Resource File.</li>
+<li><a href="https://imgchr.com/i/lYo6jH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/02/lYo6jH.md.png" alt="lYo6jH.md.png"></a></li>
+<li><img src="https://s2.ax1x.com/2020/01/02/lYozCT.png" alt="lYozCT.png"></li>
+</ul>
+</li>
+</ol>
+<h4 id="Create-the-NavHostFragment"><a href="#Create-the-NavHostFragment" class="headerlink" title="Create the NavHostFragment"></a>Create the NavHostFragment</h4><blockquote>
+<p>即导航引导者，规定整个Fragment路径的跳转</p>
+</blockquote>
+<p>activity_main.xml:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.drawerlayout.widget.DrawerLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/drawerLayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置NavHostFragment --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/myNavHostFragment"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"androidx.navigation.fragment.NavHostFragment"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">app:navGraph</span>=<span class="string">"@navigation/navigation"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">app:defaultNavHost</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">                /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">com.google.android.material.navigation.NavigationView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/navView"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_gravity</span>=<span class="string">"start"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:headerLayout</span>=<span class="string">"@layout/nav_header"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:menu</span>=<span class="string">"@menu/navdrawer_menu"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">androidx.drawerlayout.widget.DrawerLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加Fragment到-Navigation-Graph"><a href="#添加Fragment到-Navigation-Graph" class="headerlink" title="添加Fragment到 Navigation Graph"></a>添加Fragment到 Navigation Graph</h4><blockquote>
+<p>即规划整个UI路线的走向</p>
+</blockquote>
+<p>添加：<br><img src="https://s2.ax1x.com/2020/01/02/ltQPQx.png" alt="ltQPQx.png"></p>
+<p>指定跳转路线：<br><img src="https://s2.ax1x.com/2020/01/02/ltQYkQ.png" alt="ltQYkQ.png"></p>
+<ul>
+<li>一个Fragment可以有多个走向</li>
+</ul>
+<p>navigation.xml:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/titleFragment"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.example.android.navigation.TitleFragment"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"fragment_title"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:layout</span>=<span class="string">"@layout/fragment_title"</span> &gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- id:跳转标识, destination: 目的地--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/action_titleFragment_to_gameFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:destination</span>=<span class="string">"@id/gameFragment"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fragment</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行跳转：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.navigation.findNavController</span><br><span class="line"></span><br><span class="line">binding.playButton.setOnClickListener &#123; view : View -&gt;</span><br><span class="line">       view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="更改返回键意图"><a href="#更改返回键意图" class="headerlink" title="更改返回键意图"></a>更改返回键意图</h4><blockquote>
+<p>当我们在一个Fragment需要返回的不是前一个Fragment时，就需要通过Pop属性指定,难点在于回退栈的处理</p>
+</blockquote>
+<ul>
+<li><code>popUpTo</code>:返回的目的地</li>
+<li><code>popUpTo</code>加<code>popUpToInclusive</code>=true，清空回退栈</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUHyOU.png" alt="lUHyOU.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/gameWonFragment"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.example.android.navigation.GameWonFragment"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"fragment_game_won"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:layout</span>=<span class="string">"@layout/fragment_game_won"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/action_gameWonFragment_to_gameFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:destination</span>=<span class="string">"@id/gameFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:popUpTo</span>=<span class="string">"@+id/titleFragment"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:popUpToInclusive</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fragment</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加Navigation-Drawer"><a href="#添加Navigation-Drawer" class="headerlink" title="添加Navigation Drawer"></a>添加Navigation Drawer</h4><blockquote>
+<p>实现侧边栏效果</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/04/ldxgWF.png" alt="ldxgWF.png"></p>
+<p>activity_main.xml:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.drawerlayout.widget.DrawerLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/drawerLayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置NavHostFragment --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/myNavHostFragment"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"androidx.navigation.fragment.NavHostFragment"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">app:navGraph</span>=<span class="string">"@navigation/navigation"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">app:defaultNavHost</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">                /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">com.google.android.material.navigation.NavigationView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/navView"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_gravity</span>=<span class="string">"start"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:headerLayout</span>=<span class="string">"@layout/nav_header"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:menu</span>=<span class="string">"@menu/navdrawer_menu"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">androidx.drawerlayout.widget.DrawerLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>MainActivity(可忽略):</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> drawerLayout: DrawerLayout</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        <span class="meta">@Suppress(<span class="meta-string">"UNUSED_VARIABLE"</span>)</span></span><br><span class="line">        <span class="keyword">val</span> binding = DataBindingUtil.setContentView&lt;ActivityMainBinding&gt;(<span class="keyword">this</span>, R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        drawerLayout = binding.drawerLayout</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> navController = <span class="keyword">this</span>.findNavController(R.id.myNavHostFragment)</span><br><span class="line">        NavigationUI.setupActionBarWithNavController(<span class="keyword">this</span>,navController, drawerLayout)</span><br><span class="line">        NavigationUI.setupWithNavController(binding.navView, navController)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSupportNavigateUp</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> navController = <span class="keyword">this</span>.findNavController(R.id.myNavHostFragment)</span><br><span class="line">        <span class="keyword">return</span> NavigationUI.navigateUp(navController, drawerLayout)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fragment之间数据传递"><a href="#Fragment之间数据传递" class="headerlink" title="Fragment之间数据传递"></a>Fragment之间数据传递</h3><blockquote>
+<p>Safe Args是一个Gradle插件，可生成代码和类，以帮助在编译时检测错误</p>
+</blockquote>
+<p>使用 <strong>Safe Args plugin</strong>，用来帮助编译捕获错误：</p>
+<ul>
+<li>Type mis-match errors</li>
+<li>Missing key errors</li>
+</ul>
+<p>添加<strong>Safe Args plugin</strong>到项目<br>(Project)build.gradle:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext &#123;</span><br><span class="line">        kotlin_version = <span class="string">'1.3.11'</span></span><br><span class="line">        archLifecycleVersion = <span class="string">'1.1.1'</span></span><br><span class="line">        gradleVersion = <span class="string">'3.3.1'</span></span><br><span class="line">        supportlibVersion = <span class="string">'1.0.0-rc03'</span></span><br><span class="line">        dataBindingCompilerVersion = gradleVersion <span class="comment">// Always need to be the same.</span></span><br><span class="line">        navigationVersion = <span class="string">'1.0.0-rc02'</span></span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">"com.android.tools.build:gradle:$gradleVersion"</span></span><br><span class="line">        classpath <span class="string">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span></span><br><span class="line">        <span class="comment">//here看到没有</span></span><br><span class="line">        classpath <span class="string">"android.arch.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(App)build.gradle:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span></span><br><span class="line"></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-android'</span></span><br><span class="line"><span class="comment">// here,看到没有</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-kapt'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin-android-extensions'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'androidx.navigation.safeargs'</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">28</span></span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">'com.example.android.navigation'</span></span><br><span class="line">        minSdkVersion <span class="number">19</span></span><br><span class="line">        targetSdkVersion <span class="number">28</span></span><br><span class="line">        vectorDrawables.useSupportLibrary = <span class="literal">true</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    productFlavors &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(<span class="string">include:</span> [<span class="string">'*.jar'</span>], <span class="string">dir:</span> <span class="string">'libs'</span>)</span><br><span class="line">    implementation <span class="string">"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"</span></span><br><span class="line">    implementation <span class="string">"org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"</span></span><br><span class="line">    implementation <span class="string">"androidx.appcompat:appcompat:$supportlibVersion"</span></span><br><span class="line">    implementation <span class="string">'androidx.constraintlayout:constraintlayout:2.0.0-alpha1'</span></span><br><span class="line">    implementation <span class="string">'androidx.legacy:legacy-support-v4:1.0.0-beta01'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test:runner:1.1.0-alpha4'</span></span><br><span class="line">    androidTestImplementation <span class="string">'androidx.test.espresso:espresso-core:3.1.0-alpha4'</span></span><br><span class="line">    implementation <span class="string">"com.google.android.material:material:1.0.0-rc01"</span></span><br><span class="line">    implementation<span class="string">"android.arch.navigation:navigation-fragment-ktx:$navigationVersion"</span></span><br><span class="line">    implementation <span class="string">"android.arch.navigation:navigation-ui-ktx:$navigationVersion"</span></span><br><span class="line">    implementation <span class="string">"com.google.android.material:material:$supportlibVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加目的地Fragment需要的Arg：<br><img src="https://s2.ax1x.com/2020/01/04/lwMqVP.png" alt="lwMqVP.png"></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GameFragment</span></span><br><span class="line"><span class="comment">// 去GameWonFragment</span></span><br><span class="line">view.findNavController().navigate(GameFragmentDirections</span><br><span class="line">    .actionGameFragmentToGameWonFragment(numQuestions, questionIndex))</span><br><span class="line"><span class="comment">// GameWonFragment  </span></span><br><span class="line"><span class="comment">// 接受GameFragment传输的数据</span></span><br><span class="line"><span class="keyword">val</span> args = GameWonFragmentArgs.fromBundle(arguments!!)</span><br><span class="line">Toast.makeText(context, <span class="string">"NumCorrect: <span class="subst">$&#123;args.numCorrect&#125;</span>, NumQuestions: <span class="subst">$&#123;args.numQuestions&#125;</span>"</span>, Toast.LENGTH_LONG).show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Implicit-Intents-隐式意图"><a href="#Implicit-Intents-隐式意图" class="headerlink" title="Implicit Intents(隐式意图)"></a>Implicit Intents(隐式意图)</h3><blockquote>
+<p>Intents作为一个简单的消息对象，用于Android组件间通信，隐式意图用于在不知道何方处理此任务的情况，启动此任务</p>
+</blockquote>
+<p>在菜单中增加程序分享功能</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameWonFragment</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line">        <span class="comment">// Inflate the layout for this fragment</span></span><br><span class="line">        <span class="keyword">val</span> binding: FragmentGameWonBinding = DataBindingUtil.inflate(</span><br><span class="line">                inflater, R.layout.fragment_game_won, container, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">        binding.nextMatchButton.setOnClickListener &#123; view: View -&gt;</span><br><span class="line">            vi	ew.findNavController().navigate(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">val</span> args = GameWonFragmentArgs.fromBundle(arguments!!)</span><br><span class="line">        Toast.makeText(context, <span class="string">"NumCorrect: <span class="subst">$&#123;args.numCorrect&#125;</span>, NumQuestions: <span class="subst">$&#123;args.numQuestions&#125;</span>"</span>, Toast.LENGTH_LONG).show()</span><br><span class="line">        <span class="comment">// 设置菜单选项</span></span><br><span class="line">        setHasOptionsMenu(<span class="literal">true</span>)</span><br><span class="line">        <span class="keyword">return</span> binding.root</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="comment">// 显示菜单</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateOptionsMenu</span><span class="params">(menu: <span class="type">Menu</span>?, inflater: <span class="type">MenuInflater</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreateOptionsMenu(menu, inflater)</span><br><span class="line">        <span class="comment">// 菜单布局</span></span><br><span class="line">        inflater?.inflate(R.menu.winner_menu, menu)</span><br><span class="line">        <span class="comment">// check if the activity resolves</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> == getShareIntent().resolveActivity(activity!!.packageManager)) &#123;</span><br><span class="line">            <span class="comment">// hide the menu item if it doesn't resolve</span></span><br><span class="line">            menu?.findItem(R.id.share)?.setVisible(<span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 菜单选项操作</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onOptionsItemSelected</span><span class="params">(item: <span class="type">MenuItem</span>?)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">when</span> (item!!.itemId) &#123;</span><br><span class="line">            R.id.share -&gt; shareSuccess()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建分享Intent</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">getShareIntent</span><span class="params">()</span></span> : Intent &#123;</span><br><span class="line">        <span class="keyword">val</span> args = GameWonFragmentArgs.fromBundle(arguments!!)</span><br><span class="line">        <span class="keyword">val</span> shareIntent = Intent(Intent.ACTION_SEND)</span><br><span class="line">        shareIntent.setType(<span class="string">"text/plain"</span>)</span><br><span class="line">                .putExtra(Intent.EXTRA_TEXT, getString(R.string.share_success_text, args.numCorrect, args.numQuestions))</span><br><span class="line">        <span class="keyword">return</span> shareIntent</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动分享Intent</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">shareSuccess</span><span class="params">()</span></span> &#123;</span><br><span class="line">        startActivity(getShareIntent())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Activity-and-Fragment-lifecycles"><a href="#Activity-and-Fragment-lifecycles" class="headerlink" title="Activity and Fragment lifecycles"></a>Activity and Fragment lifecycles</h2><blockquote>
+<p>每一个Activity和Fragment都有自己的生命周期，就像动物生命周期的一般，在生命周期的不同阶段有着不一样的状态</p>
+</blockquote>
+<p>蝴蝶的生命周期：<br><img src="https://s2.ax1x.com/2020/01/04/lwdusf.png" alt="lwdusf.png"></p>
+<p> Activity :<br> <img src="https://s2.ax1x.com/2020/01/04/lwdQeS.png" alt="lwdQeS.png"></p>
+<p>Fragment：<br><img src="https://s2.ax1x.com/2020/01/04/lwdblt.png" alt="lwdblt.png"></p>
+<h3 id="Timber"><a href="#Timber" class="headerlink" title="Timber"></a>Timber</h3><blockquote>
+<p>相比内置Log类，Timber库更加方便，自动生成类名，发行版不显示日志，而且允许集成崩溃库</p>
+</blockquote>
+<h4 id="添加库"><a href="#添加库" class="headerlink" title="添加库"></a>添加库</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   ...</span><br><span class="line">   implementation <span class="string">'com.jakewharton.timber:timber:4.7.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建Application类并用来初始化Timber"><a href="#创建Application类并用来初始化Timber" class="headerlink" title="创建Application类并用来初始化Timber"></a>创建Application类并用来初始化Timber</h4><blockquote>
+<p>Applications是一个基类，其包含整个应用程序的全局状态，也是操作系统与应用交互的主要对象，如果不指定默认的Application类,那么系统将会默认创建一个</p>
+</blockquote>
+<p>创建</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> : <span class="type">Application</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">        <span class="comment">// 初始化Timber库</span></span><br><span class="line">        Timber.plant(Timber.DebugTree())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注册：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">package</span>=<span class="string">"com.example.android.dessertclicker"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">".MyApplication"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_dessert_clicker"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_dessert_clicker_round"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.example.android.dessertclicker.MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="在Activity中使用"><a href="#在Activity中使用" class="headerlink" title="在Activity中使用"></a>在Activity中使用</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStart</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onStart()</span><br><span class="line">   Timber.i(<span class="string">"onStart Called"</span>)</span><br><span class="line">&#125;   </span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onResume()</span><br><span class="line">   Timber.i(<span class="string">"onResume Called"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onPause</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onPause()</span><br><span class="line">   Timber.i(<span class="string">"onPause Called"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStop</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onStop()</span><br><span class="line">   Timber.i(<span class="string">"onStop Called"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onDestroy()</span><br><span class="line">   Timber.i(<span class="string">"onDestroy Called"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onRestart</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">super</span>.onRestart()</span><br><span class="line">   Timber.i(<span class="string">"onRestart Called"</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LifeCycle"><a href="#LifeCycle" class="headerlink" title="LifeCycle"></a>LifeCycle</h3><blockquote>
+<p>在App复杂的情况，我们可能需要在Activity的onStart() 和 onStop() 回调中编写许多准备和释放操作代码, LifeCycle库正是用于对这种情况作出简化，LifeCycle库会监视所处的生命周期的变化，执行对应对应的操作</p>
+</blockquote>
+<ul>
+<li>Lifecycle owners，即拥有生命周期的组件，比如Activity和Fragment</li>
+<li><strong>Lifecycle owners</strong> implement <code>Lifecycle Owner</code>接口</li>
+<li>Lifecycle 类，保存Lifecycle owners的实际状态，并在生命周期变化时触发事件</li>
+<li>Lifecycle observers，观察生命周期状态并在改变时执行任务</li>
+<li><strong>Lifecycle observers</strong>implement  <code>LifecycleObserver</code> 接口.</li>
+</ul>
+<p>Lifecycle observers 实现：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现LifecycleObserver接口 </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DessertTimer</span></span>(lifecycle: Lifecycle) : LifecycleObserver &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计时开始</span></span><br><span class="line">    <span class="keyword">var</span> secondsCount = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实例化Handler类处理消息队列</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> handler = Handler()</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> runnable: Runnable</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        <span class="comment">// LifeCycle添加此LifecycleObserver类</span></span><br><span class="line">        lifecycle.addObserver(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 生命周期开始时事件</span></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_START)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">startTimer</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 创建线程打印任务</span></span><br><span class="line">        runnable = Runnable &#123;</span><br><span class="line">            secondsCount++</span><br><span class="line">            Timber.i(<span class="string">"Timer is at : <span class="variable">$secondsCount</span>"</span>)</span><br><span class="line">            <span class="comment">// 递归执行</span></span><br><span class="line">            handler.postDelayed(runnable, <span class="number">1000</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行子线程</span></span><br><span class="line">        handler.postDelayed(runnable, <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 生命周期结束时事件</span></span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_STOP)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">stopTimer</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 移除所有人物队列</span></span><br><span class="line">        handler.removeCallbacks(runnable)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> dessertTimer : DessertTimer;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将此LifecycleObserver添加到此Lifecycle owners</span></span><br><span class="line">        <span class="comment">// 直接免了在onStart()和onStop()中操作，大大简化</span></span><br><span class="line">        dessertTimer = DessertTimer(<span class="keyword">this</span>.lifecycle)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="onSaveInstanceState"><a href="#onSaveInstanceState" class="headerlink" title="onSaveInstanceState()"></a>onSaveInstanceState()</h3><blockquote>
+<p>onSaveInstanceState()回调用于App进入后台时被kill掉时保存数据，每次App进入后台时都会调用此方法</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/05/lDQqb9.png" alt="lDQqb9.png"></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** onSaveInstanceState Bundle Keys **/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">val</span> KEY_REVENUE = <span class="string">"revenue_key"</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">val</span> KEY_DESSERT_SOLD = <span class="string">"dessert_sold_key"</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">val</span> KEY_TIMER_SECONDS = <span class="string">"timer_seconds_key"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> revenue = <span class="number">0</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> dessertsSold = <span class="number">0</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> dessertTimer : DessertTimer;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        <span class="comment">// App重新启动时恢复数据</span></span><br><span class="line">        <span class="keyword">if</span> (savedInstanceState != <span class="literal">null</span>) &#123;</span><br><span class="line">            revenue = savedInstanceState.getInt(KEY_REVENUE, <span class="number">0</span>)</span><br><span class="line">            dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD, <span class="number">0</span>)</span><br><span class="line">            dessertTimer.secondsCount =</span><br><span class="line">                    savedInstanceState.getInt(KEY_TIMER_SECONDS, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * App被Kill调时，回调此方法保存数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSaveInstanceState</span><span class="params">(outState: <span class="type">Bundle</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState)</span><br><span class="line">        Timber.i(<span class="string">"onSaveInstanceState Called"</span>)</span><br><span class="line">        outState.putInt(KEY_REVENUE, revenue)</span><br><span class="line">        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)</span><br><span class="line">        outState.putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-changes"><a href="#Configuration-changes" class="headerlink" title="Configuration changes"></a>Configuration changes</h3><blockquote>
+<p>当用户设备状态发生巨大改变时，就会发生配置变更(Configuration changes),系统最简单的方法完全关闭并重建</p>
+</blockquote>
+<p>配置变更例子：</p>
+<ul>
+<li>语言更改，布局要适应不同的文本</li>
+<li>设备方向变化，布局要适应新的方向</li>
+<li>外设扩展</li>
+</ul>
+<p><a href="https://imgchr.com/i/lD1gkn" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/05/lD1gkn.md.png" alt="lD1gkn.md.png"></a><br><a href="https://imgchr.com/i/lD1Lfx" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/05/lD1Lfx.md.png" alt="lD1Lfx.md.png"></a></p>
+<h2 id="Architecture-components"><a href="#Architecture-components" class="headerlink" title="Architecture components"></a>Architecture components</h2><h3 id="App-architecture"><a href="#App-architecture" class="headerlink" title="App architecture"></a>App architecture</h3><blockquote>
+<p>App 架构 是设计应用程序类的一种方式</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/06/lshYsP.png" alt="lshYsP.png"></p>
+<ul>
+<li>UI controller<ul>
+<li>基于UI的类，如Activity</li>
+<li>应仅包含处理UI和操作系统交互的逻辑</li>
+<li>Don’t put decision-making logic into the UI controller.</li>
+</ul>
+</li>
+<li>ViewModel<ul>
+<li>保存与ViewModel关联的Activity或Fragment中显示的数据</li>
+<li>Performs the decision-making.</li>
+<li></li>
+</ul>
+</li>
+<li>ViewModelFactory<ul>
+<li>ViewModelFactory实例化ViewModel对象</li>
+</ul>
+</li>
+</ul>
+<h4 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h4><blockquote>
+<p>旨在存储和管理与UI相关的数据，每个ViewModel都与一个Fragment或者Activity相关联</p>
+</blockquote>
+<p>添加依赖:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'androidx.lifecycle:lifecycle-extensions:2.0.0'</span></span><br></pre></td></tr></table></figure>
+
+<p>创建xxModel类继承<code>ViewModel</code>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameViewModel</span> : <span class="type">ViewModel</span></span>()&#123;</span><br><span class="line">    <span class="comment">// ViewModel 初始化</span></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        Log.i(<span class="string">"GameViewModel"</span>, <span class="string">"GameViewModel created!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ViewModel 销毁</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCleared</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCleared()</span><br><span class="line">        Log.i(<span class="string">"GameViewModel"</span>, <span class="string">"GameViewModel destroyed!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ViewModel关联 UI controller：</p>
+<blockquote>
+<p>始终使用ViewModelProvider创建ViewModel对象，而不是直接实例化ViewModel的实例</p>
+</blockquote>
+<p>直接实例化ViewModel，会在配置变更时，反复创建</p>
+<p><img src="https://s2.ax1x.com/2020/01/06/lsTW8g.png" alt="lsTW8g.png"></p>
+<p>ViewModelProvider 工作流程：</p>
+<ul>
+<li>如果ViewModel存在，则ViewModelProvider返回一个现有的ViewModel；反之创建一个新的ViewModel</li>
+<li>只创建与给定范围(Activity或Fragment)关联的ViewModel实例</li>
+<li>给定范围存活到什么时候，ViewModel就存活到什么时候</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameFragment</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: GameFragmentBinding</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ViewModel 与控制器关联</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: GameViewModel</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Inflate view and obtain an instance of the binding class</span></span><br><span class="line">        binding = DataBindingUtil.inflate(</span><br><span class="line">                inflater,</span><br><span class="line">                R.layout.game_fragment,</span><br><span class="line">                container,</span><br><span class="line">                <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line">        Log.i(<span class="string">"GameFragment"</span>, <span class="string">"Called ViewModelProviders.of"</span>)</span><br><span class="line">        <span class="comment">// ViewModel 实例化</span></span><br><span class="line">        viewModel = ViewModelProviders.of(<span class="keyword">this</span>).<span class="keyword">get</span>(GameViewModel::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存配置变更数据:</p>
+<ol>
+<li>将关联范围的UI数据保存到ViewModel中</li>
+<li>关联范围的方法体中，处理数据的代码迁移到ViewModel中，更新UI的代码则保留</li>
+<li>ViewModel不应包含对Activity，Fragment或View的引用，因为其无法在配置更改后保留下来</li>
+</ol>
+<p>ViewModel：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameViewModel</span> : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 单词</span></span><br><span class="line">    <span class="keyword">var</span> word = <span class="string">""</span></span><br><span class="line">    <span class="comment">// 分数</span></span><br><span class="line">    <span class="keyword">var</span> score = <span class="number">0</span></span><br><span class="line">    <span class="comment">// 单词表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> wordList: MutableList&lt;String&gt;</span><br><span class="line">    <span class="comment">// 单词表初始化和顺序重置</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">resetList</span><span class="params">()</span></span> &#123;</span><br><span class="line">        wordList = mutableListOf(</span><br><span class="line">                <span class="string">"queen"</span>,</span><br><span class="line">                <span class="string">"hospital"</span>,</span><br><span class="line">                <span class="string">"basketball"</span>,</span><br><span class="line">                <span class="string">"cat"</span>,</span><br><span class="line">                <span class="string">"change"</span>,</span><br><span class="line">                <span class="string">"snail"</span>,</span><br><span class="line">                <span class="string">"soup"</span>,</span><br><span class="line">                <span class="string">"calendar"</span>,</span><br><span class="line">                <span class="string">"sad"</span>,</span><br><span class="line">                <span class="string">"desk"</span>,</span><br><span class="line">                <span class="string">"guitar"</span>,</span><br><span class="line">                <span class="string">"home"</span>,</span><br><span class="line">                <span class="string">"railway"</span>,</span><br><span class="line">                <span class="string">"zebra"</span>,</span><br><span class="line">                <span class="string">"jelly"</span>,</span><br><span class="line">                <span class="string">"car"</span>,</span><br><span class="line">                <span class="string">"crow"</span>,</span><br><span class="line">                <span class="string">"trade"</span>,</span><br><span class="line">                <span class="string">"bag"</span>,</span><br><span class="line">                <span class="string">"roll"</span>,</span><br><span class="line">                <span class="string">"bubble"</span></span><br><span class="line">        )</span><br><span class="line">        wordList.shuffle()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        Log.i(<span class="string">"GameViewModel"</span>, <span class="string">"GameViewModel created!"</span>)</span><br><span class="line">        resetList()</span><br><span class="line">        nextWord()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 销毁时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCleared</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCleared()</span><br><span class="line">        Log.i(<span class="string">"GameViewModel"</span>, <span class="string">"GameViewModel destroyed!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新UI数据</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onSkip</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!wordList.isEmpty()) &#123;</span><br><span class="line">            score--</span><br><span class="line">        &#125;</span><br><span class="line">        nextWord()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onCorrect</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!wordList.isEmpty()) &#123;</span><br><span class="line">            score++</span><br><span class="line">        &#125;</span><br><span class="line">        nextWord()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 下一个单词，移除表已知的一个词</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">nextWord</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">//Select and remove a word from the list</span></span><br><span class="line">        <span class="keyword">if</span> (!wordList.isEmpty()) &#123;</span><br><span class="line">            word = wordList.removeAt(<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Fragment:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameFragment</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: GameFragmentBinding</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: GameViewModel</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(inflater: <span class="type">LayoutInflater</span>, container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">                              savedInstanceState: <span class="type">Bundle</span>?)</span></span>: View? &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绑定View</span></span><br><span class="line">        binding = DataBindingUtil.inflate(</span><br><span class="line">                inflater,</span><br><span class="line">                R.layout.game_fragment,</span><br><span class="line">                container,</span><br><span class="line">                <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line">        Log.i(<span class="string">"GameFragment"</span>, <span class="string">"Called ViewModelProviders.of"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 关联ViewModel</span></span><br><span class="line">        viewModel = ViewModelProviders.of(<span class="keyword">this</span>).<span class="keyword">get</span>(GameViewModel::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"></span><br><span class="line">        binding.correctButton.setOnClickListener &#123; onCorrect() &#125;</span><br><span class="line">        binding.skipButton.setOnClickListener &#123; onSkip() &#125;</span><br><span class="line">        binding.endGameButton.setOnClickListener &#123; onEndGame() &#125;</span><br><span class="line">        updateScoreText()</span><br><span class="line">        updateWordText()</span><br><span class="line">        <span class="keyword">return</span> binding.root</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 操作判断**/</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSkip</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 在Viewodel中更新UI数据</span></span><br><span class="line">        viewModel.onSkip()</span><br><span class="line">        <span class="comment">// 更新UI</span></span><br><span class="line">        updateWordText()</span><br><span class="line">        updateScoreText()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCorrect</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 在Viewodel中更新UI数据</span></span><br><span class="line">        viewModel.onCorrect()</span><br><span class="line">        <span class="comment">// 更新UI</span></span><br><span class="line">        updateScoreText()</span><br><span class="line">        updateWordText()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 结束</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">onEndGame</span><span class="params">()</span></span> &#123;</span><br><span class="line">        gameFinished()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新UI</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">updateWordText</span><span class="params">()</span></span> &#123;</span><br><span class="line">        binding.wordText.text = viewModel.word</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">updateScoreText</span><span class="params">()</span></span> &#123;</span><br><span class="line">        binding.scoreText.text = viewModel.score.toString()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 退出游戏</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">gameFinished</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Toast.makeText(activity, <span class="string">"Game has just finished"</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">        <span class="keyword">val</span> action = GameFragmentDirections.actionGameToScore()</span><br><span class="line">        action.score = viewModel.score</span><br><span class="line">        NavHostFragment.findNavController(<span class="keyword">this</span>).navigate(action)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用ViewModelFactory实现ViewModel间传递数据：</p>
+<ol>
+<li><p>构建需要传递数据的ViewModel</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreViewModel</span></span>(finalScore: <span class="built_in">Int</span>) : ViewModel() &#123;</span><br><span class="line">    <span class="comment">// 分数，需要传递的直</span></span><br><span class="line">    <span class="keyword">var</span> score = finalScore</span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        Log.i(<span class="string">"ScoreViewModel"</span>, <span class="string">"Final score is <span class="variable">$finalScore</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建需要传递数据的ViewModel的ViewModelFactory</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreViewModelFactory</span> </span>(<span class="keyword">private</span> <span class="keyword">val</span> finalScore: <span class="built_in">Int</span>) : ViewModelProvider.Factory &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel?&gt;</span> <span class="title">create</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">        <span class="keyword">if</span> (modelClass.isAssignableFrom(ScoreViewModel::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> ScoreViewModel(finalScore) <span class="keyword">as</span> T</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> IllegalArgumentException(<span class="string">"Unknown ViewModel class"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传值</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GameFragment,传递者</span></span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">val</span> action = GameFragmentDirections.actionGameToScore()</span><br><span class="line">   action.score = viewModel.score</span><br><span class="line">   NavHostFragment.findNavController(<span class="keyword">this</span>).navigate(action)</span><br><span class="line">   ...</span><br><span class="line"><span class="comment">// ScoreFragment，接受者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreFragment</span> : <span class="type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: ScoreViewModel</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModelFactory: ScoreViewModelFactory</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            inflater: <span class="type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="function"><span class="params">            savedInstanceState: <span class="type">Bundle</span>?</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span></span>: View? &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化binding</span></span><br><span class="line">        <span class="keyword">val</span> binding: ScoreFragmentBinding = DataBindingUtil.inflate(</span><br><span class="line">                inflater,</span><br><span class="line">                R.layout.score_fragment,</span><br><span class="line">                container,</span><br><span class="line">                <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line">        <span class="comment">// 接收GameFragement传来的参数，初始化viewModelFactory</span></span><br><span class="line">        viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)</span><br><span class="line">        <span class="comment">// 利用viewModelFactory 初始化 viewModel</span></span><br><span class="line">        viewModel = ViewModelProviders.of(<span class="keyword">this</span>, viewModelFactory)</span><br><span class="line">                .<span class="keyword">get</span>(ScoreViewModel::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"></span><br><span class="line">        binding.scoreText.text = viewModel.score.toString()</span><br><span class="line">        <span class="keyword">return</span> binding.root</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h3><blockquote>
+<p>LiveData是可观察到的数据持有者类，具有生命周期意识</p>
+</blockquote>
+<ul>
+<li>LiveData是可观察的，这意味着当LiveData对象保存的数据发生更改时会通知观察者。</li>
+<li>LiveData持有数据，LiveData是可以与任何数据一起使用的包装器</li>
+<li>LiveData具有生命周期感知功能，这意味着它仅更新处于活动生命周期状态（例如STARTED或RESUMED）的观察者</li>
+</ul>
+<blockquote>
+<p>MutableLiveData是一个LiveData，其值可以更改。MutableLiveData是一个通用类，可以指定其保存的数据类型。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JetPack/" rel="tag"># JetPack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/19/ndroid开发艺术探索》阅读-12-19/" rel="next" title="《Android开发艺术探索》阅读 12.19">
+                <i class="fa fa-chevron-left"></i> 《Android开发艺术探索》阅读 12.19
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/10/Flutter-杂记/" rel="prev" title="Flutter 杂记">
+                Flutter 杂记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础回顾"><span class="nav-number">1.</span> <span class="nav-text">基础回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-number">2.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ConstraintLayout"><span class="nav-number">2.1.</span> <span class="nav-text">ConstraintLayout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Chain"><span class="nav-number">2.1.1.</span> <span class="nav-text">Chain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChainStyle"><span class="nav-number">2.1.2.</span> <span class="nav-text">ChainStyle</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spread"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Spread</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spread-inside"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Spread inside</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weighted"><span class="nav-number">2.1.3.</span> <span class="nav-text">Weighted</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Packed"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Packed</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Baseline-constraint"><span class="nav-number">2.1.4.</span> <span class="nav-text">Baseline constraint</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Data-binding-替代-findViewById"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Data binding 替代 findViewById</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动DataBinding"><span class="nav-number">2.2.1.</span> <span class="nav-text">启动DataBinding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataBinding-in-Layout"><span class="nav-number">2.2.2.</span> <span class="nav-text">DataBinding in Layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataBinding-in-Activity"><span class="nav-number">2.2.3.</span> <span class="nav-text">DataBinding in Activity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation"><span class="nav-number">3.</span> <span class="nav-text">Navigation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment"><span class="nav-number">3.1.</span> <span class="nav-text">Fragment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigation-and-Fragment"><span class="nav-number">3.2.</span> <span class="nav-text">Navigation and Fragment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加依赖"><span class="nav-number">3.2.1.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-the-NavHostFragment"><span class="nav-number">3.2.2.</span> <span class="nav-text">Create the NavHostFragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Fragment到-Navigation-Graph"><span class="nav-number">3.2.3.</span> <span class="nav-text">添加Fragment到 Navigation Graph</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改返回键意图"><span class="nav-number">3.2.4.</span> <span class="nav-text">更改返回键意图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Navigation-Drawer"><span class="nav-number">3.2.5.</span> <span class="nav-text">添加Navigation Drawer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment之间数据传递"><span class="nav-number">3.3.</span> <span class="nav-text">Fragment之间数据传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implicit-Intents-隐式意图"><span class="nav-number">3.4.</span> <span class="nav-text">Implicit Intents(隐式意图)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-and-Fragment-lifecycles"><span class="nav-number">4.</span> <span class="nav-text">Activity and Fragment lifecycles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timber"><span class="nav-number">4.1.</span> <span class="nav-text">Timber</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加库"><span class="nav-number">4.1.1.</span> <span class="nav-text">添加库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Application类并用来初始化Timber"><span class="nav-number">4.1.2.</span> <span class="nav-text">创建Application类并用来初始化Timber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Activity中使用"><span class="nav-number">4.1.3.</span> <span class="nav-text">在Activity中使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LifeCycle"><span class="nav-number">4.2.</span> <span class="nav-text">LifeCycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onSaveInstanceState"><span class="nav-number">4.3.</span> <span class="nav-text">onSaveInstanceState()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration-changes"><span class="nav-number">4.4.</span> <span class="nav-text">Configuration changes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-components"><span class="nav-number">5.</span> <span class="nav-text">Architecture components</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#App-architecture"><span class="nav-number">5.1.</span> <span class="nav-text">App architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewModel"><span class="nav-number">5.1.1.</span> <span class="nav-text">ViewModel</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LiveData"><span class="nav-number">5.2.</span> <span class="nav-text">LiveData</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2020/01/10/谷歌Android-Kotlin-Fundamentals-回顾-未完/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

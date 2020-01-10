@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="运行机制Windows Windows 是 Flutter Framework连接宿主操作系统的接口，而Binding中基本都是监听并处理Window对象的一些事件，然后将这些事件按照Framework的模型包装、抽象然后分发   WidgetsFlutterBinding：粘连Flutter engine与上层Framework的“胶水”。 GestureBinding：提供了window.on">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 杂记">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/Flutter-杂记/index.html">
+<meta property="og:site_name" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="运行机制Windows Windows 是 Flutter Framework连接宿主操作系统的接口，而Binding中基本都是监听并处理Window对象的一些事件，然后将这些事件按照Framework的模型包装、抽象然后分发   WidgetsFlutterBinding：粘连Flutter engine与上层Framework的“胶水”。 GestureBinding：提供了window.on">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/5-16.png">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/5/24/16ae745468b4e02c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/28/lmpNND.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/27/lZZvoq.png">
+<meta property="og:updated_time" content="2020-01-10T03:37:44.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 杂记">
+<meta name="twitter:description" content="运行机制Windows Windows 是 Flutter Framework连接宿主操作系统的接口，而Binding中基本都是监听并处理Window对象的一些事件，然后将这些事件按照Framework的模型包装、抽象然后分发   WidgetsFlutterBinding：粘连Flutter engine与上层Framework的“胶水”。 GestureBinding：提供了window.on">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/5-16.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2020/01/10/Flutter-杂记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Flutter 杂记 | Stay Hungry, Stay Foolish</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stay Hungry, Stay Foolish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/Flutter-杂记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry, Stay Foolish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter 杂记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-01-10 11:37:00 / Modified: 11:37:44" itemprop="dateCreated datePublished" datetime="2020-01-10T11:37:00+08:00">2020-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><blockquote>
+<p>Windows 是 Flutter Framework连接宿主操作系统的接口，而Binding中基本都是监听并处理Window对象的一些事件，然后将这些事件按照Framework的模型包装、抽象然后分发</p>
+</blockquote>
+<ul>
+<li><code>WidgetsFlutterBinding</code>：粘连Flutter engine与上层Framework的“胶水”。</li>
+<li><code>GestureBinding</code>：提供了<code>window.onPointerDataPacket</code>  回调，绑定Framework手势子系统，是Framework事件模型与底层事件的绑定入口。</li>
+<li><code>ServicesBinding</code>：提供了<code>window.onPlatformMessage</code>  回调， 用于绑定平台消息通道（message channel），主要处理原生和Flutter通信。</li>
+<li><code>SchedulerBinding</code>：提供了<code>window.onBeginFrame</code>和<code>window.onDrawFrame</code>回调，监听刷新事件，绑定Framework绘制调度子系统。</li>
+<li><code>PaintingBinding</code>：绑定绘制库，主要用于处理图片缓存。</li>
+<li><code>SemanticsBinding</code>：语义化层与Flutter engine的桥梁，主要是辅助功能的底层支持。</li>
+<li><code>RendererBinding</code>: 提供了<code>window.onMetricsChanged</code>  、<code>window.onTextScaleFactorChanged</code>  等回调。它是渲染树与Flutter engine的桥梁。</li>
+<li><code>WidgetsBinding</code>：提供了<code>window.onLocaleChanged</code>、<code>onBuildScheduled</code>  等回调。它是Flutter widget层与engine的桥梁。</li>
+</ul>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p><code>main()</code>函数从<code>runApp()</code>开始</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> runApp(Widget app) &#123;</span><br><span class="line">  WidgetsFlutterBinding.ensureInitialized()</span><br><span class="line">    ..attachRootWidget(app)</span><br><span class="line">    ..scheduleWarmUpFrame();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数<code>app</code>是一个widget，它是Flutter应用启动后要展示的第一个Widget。而<code>WidgetsFlutterBinding</code>正是绑定widget 框架和Flutter engine的桥梁</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WidgetsFlutterBinding</span> <span class="keyword">extends</span> <span class="title">BindingBase</span> <span class="title">with</span> <span class="title">GestureBinding</span>, <span class="title">ServicesBinding</span>, <span class="title">SchedulerBinding</span>, <span class="title">PaintingBinding</span>, <span class="title">SemanticsBinding</span>, <span class="title">RendererBinding</span>, <span class="title">WidgetsBinding</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> WidgetsBinding ensureInitialized() &#123;</span><br><span class="line">    <span class="keyword">if</span> (WidgetsBinding.instance == <span class="keyword">null</span>)</span><br><span class="line">      WidgetsFlutterBinding();</span><br><span class="line">    <span class="keyword">return</span> WidgetsBinding.instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>idgetsFlutterBinding.ensureInitialized()</code>负责初始化一个<code>WidgetsBinding</code>的全局单例，紧接着会调用<code>WidgetsBinding</code>的<code>attachRootWidget</code>方法，该方法负责将根Widget添加到<code>RenderView</code>上</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> attachRootWidget(Widget rootWidget) &#123;</span><br><span class="line">  _renderViewElement = RenderObjectToWidgetAdapter&lt;RenderBox&gt;(</span><br><span class="line">    container: renderView, </span><br><span class="line">    debugShortDescription: <span class="string">'[root]'</span>,</span><br><span class="line">    child: rootWidget</span><br><span class="line">  ).attachToRenderTree(buildOwner, renderViewElement);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><p>从<code>scheduleWarmUpFrame()</code> 方法开始，该方法的实现在<code>SchedulerBinding</code> 中，它被调用后会立即进行一次绘制（而不是等待”vsync” 信号），在此次绘制结束前，该方法会锁定事件分发，也就是说在本次绘制结束完成之前Flutter将不会响应各种事件，这可以保证在绘制过程中不会再触发新的重绘</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> scheduleWarmUpFrame() &#123;</span><br><span class="line">  ...</span><br><span class="line">  Timer.run(() &#123;</span><br><span class="line">    <span class="comment">// 执行transientCallbacks队列</span></span><br><span class="line">    handleBeginFrame(<span class="keyword">null</span>); </span><br><span class="line">  &#125;);</span><br><span class="line">  Timer.run(() &#123;</span><br><span class="line">    <span class="comment">// 执行persistentCallbacks 和 postFrameCallbacks 队列</span></span><br><span class="line">    handleDrawFrame();  </span><br><span class="line">    resetEpoch();</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 锁定事件</span></span><br><span class="line">  lockEvents(() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> endOfFrame;</span><br><span class="line">    Timeline.finishSync();</span><br><span class="line">  &#125;);</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Frame: 一次绘制过程，我们称其为一帧。Flutter engine受显示器垂直同步信号”VSync”的驱使不断的触发绘制</p>
+</li>
+<li><p>FrameCallback：<code>SchedulerBinding</code>  类中有三个FrameCallback回调队列， 在一次绘制过程中，这三个回调队列会放在不同时机被执行：</p>
+<ol>
+<li><code>transientCallbacks</code>：用于存放一些临时回调，一般存放动画回调。可以通过<code>SchedulerBinding.instance.scheduleFrameCallback</code>  添加回调。</li>
+<li><code>persistentCallbacks</code>：用于存放一些持久的回调，不能在此类回调中再请求新的绘制帧，持久回调一经注册则不能移除。<code>SchedulerBinding.instance.addPersitentFrameCallback()</code>，这个回调中处理了布局与绘制工作。</li>
+<li><code>postFrameCallbacks</code>：在Frame结束时只会被调用一次，调用后会被系统移除，可由  <code>SchedulerBinding.instance.addPostFrameCallback()</code>  注册，注意，不要在此类回调中再触发新的Frame，这可以会导致循环刷新。</li>
+</ol>
+</li>
+</ul>
+<h3 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h3><blockquote>
+<p>  渲染和绘制逻辑在RendererBinding中实现</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> initInstances() &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">//监听Window对象的事件  </span></span><br><span class="line">  ui.<span class="built_in">window</span></span><br><span class="line">    ..onMetricsChanged = handleMetricsChanged</span><br><span class="line">    ..onTextScaleFactorChanged = handleTextScaleFactorChanged</span><br><span class="line">    ..onSemanticsEnabledChanged = _handleSemanticsEnabledChanged</span><br><span class="line">    ..onSemanticsAction = _handleSemanticsAction;</span><br><span class="line">  <span class="comment">//添加PersistentFrame回调 </span></span><br><span class="line">  addPersistentFrameCallback(_handlePersistentFrameCallback);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加PersistentFrame回调 </span></span><br><span class="line"><span class="keyword">void</span> _handlePersistentFrameCallback(<span class="built_in">Duration</span> timeStamp) &#123;</span><br><span class="line">  drawFrame();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//绘制每一画面帧</span></span><br><span class="line"><span class="keyword">void</span> drawFrame() &#123;</span><br><span class="line">  <span class="keyword">assert</span>(renderView != <span class="keyword">null</span>);</span><br><span class="line">  pipelineOwner.flushLayout(); <span class="comment">//布局</span></span><br><span class="line">  pipelineOwner.flushCompositingBits(); <span class="comment">//重绘之前的预处理操作，检查RenderObject是否需要重绘</span></span><br><span class="line">  pipelineOwner.flushPaint(); <span class="comment">// 重绘</span></span><br><span class="line">  renderView.compositeFrame(); <span class="comment">// 将需要绘制的比特数据发给GPU</span></span><br><span class="line">  pipelineOwner.flushSemantics(); <span class="comment">// this also sends the semantics to the OS.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SystemChrome"><a href="#SystemChrome" class="headerlink" title="SystemChrome"></a>SystemChrome</h2><blockquote>
+<p>可以理解为系统属性</p>
+</blockquote>
+<h3 id="setPreferredOrientations"><a href="#setPreferredOrientations" class="headerlink" title="setPreferredOrientations"></a>setPreferredOrientations</h3><blockquote>
+<p>设置屏幕方向</p>
+</blockquote>
+<p>单一方向：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 竖直</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);</span><br><span class="line"><span class="comment">// 竖直倒</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);</span><br><span class="line"><span class="comment">// 左横屏</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);</span><br><span class="line"><span class="comment">// 右横屏</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);</span><br></pre></td></tr></table></figure>
+
+<p>多方向：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 竖直方向</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);</span><br><span class="line"><span class="comment">// 水平方向</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]);</span><br><span class="line"><span class="comment">// 多方向</span></span><br><span class="line">SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft, DeviceOrientation.portraitUp]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="setEnabledSystemUIOverlays"><a href="#setEnabledSystemUIOverlays" class="headerlink" title="setEnabledSystemUIOverlays"></a>setEnabledSystemUIOverlays</h3><blockquote>
+<p>设置导航栏(虚拟按键)和状态栏可见性</p>
+</blockquote>
+<p> SystemUiOverlay.top：导航栏默认不可见</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);</span><br></pre></td></tr></table></figure>
+
+<p> SystemUiOverlay.bottom：状态栏默认不可见</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]); </span><br><span class="line"><span class="comment">// 两个都隐藏</span></span><br><span class="line">SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="setSystemUIOverlayStyle"><a href="#setSystemUIOverlayStyle" class="headerlink" title="setSystemUIOverlayStyle"></a>setSystemUIOverlayStyle</h3><blockquote>
+<p>设置导航栏(虚拟按键)和状态栏样式</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(</span><br><span class="line">  <span class="comment">// 状态栏背景颜色</span></span><br><span class="line">  statusBarColor: Colors.transparent,</span><br><span class="line">  <span class="comment">// 状态栏按钮样式</span></span><br><span class="line">  statusBarIconBrightness: Brightness.dark,</span><br><span class="line">  <span class="comment">// 状态栏亮度，仅IOS</span></span><br><span class="line">  statusBarBrightness:</span><br><span class="line">      Platform.isAndroid ? Brightness.dark : Brightness.light,</span><br><span class="line">  <span class="comment">// 设置导航栏背景，仅用于 Android 设备且 SDK &gt;= O 时</span></span><br><span class="line">  systemNavigationBarColor: Colors.blue,</span><br><span class="line">  <span class="comment">// 设置导航栏与主题分割的颜色，不明显，看了半天才发现</span></span><br><span class="line">  systemNavigationBarDividerColor: Colors.red,</span><br><span class="line">  <span class="comment">// 导航栏按钮样式</span></span><br><span class="line">  systemNavigationBarIconBrightness: Brightness.light,</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+
+<h2 id="MaterialApp"><a href="#MaterialApp" class="headerlink" title="MaterialApp"></a>MaterialApp</h2><blockquote>
+<p>Material Design设计入口Widget</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Material入口Widget</span></span><br><span class="line"><span class="keyword">return</span> MaterialApp(</span><br><span class="line">  <span class="comment">// 标题</span></span><br><span class="line">  title: <span class="string">'Flutter UI'</span>,</span><br><span class="line">  <span class="comment">// 是否显示调试横幅</span></span><br><span class="line">  debugShowCheckedModeBanner: <span class="keyword">false</span>,</span><br><span class="line">  <span class="comment">// 主题</span></span><br><span class="line">  theme: ThemeData(</span><br><span class="line">    primarySwatch: Colors.blue,</span><br><span class="line">    textTheme: AppTheme.textTheme,</span><br><span class="line">    platform: TargetPlatform.iOS,</span><br><span class="line">  ),</span><br><span class="line">  <span class="comment">// 主页</span></span><br><span class="line">  home: NavigationHomeScreen(),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h3><blockquote>
+<p>标题</p>
+</blockquote>
+<h3 id="Home"><a href="#Home" class="headerlink" title="Home"></a>Home</h3><blockquote>
+<p>进入程序后显示的页面</p>
+</blockquote>
+<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><blockquote>
+<p>主题风格样式</p>
+</blockquote>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><blockquote>
+<p>一个组合类容器，它本身不对应具体的RenderObject，它是DecoratedBox、ConstrainedBox、Transform、Padding、Align等组件组合的一个多功能容器</p>
+</blockquote>
+<ul>
+<li>padding:容器内补白，属于decoration的装饰范围</li>
+<li>color:背景色</li>
+<li>decoration:背景装饰</li>
+<li>foregroundDecoration:前景装饰</li>
+<li>width:容器的宽度</li>
+<li>heigh:容器的高度</li>
+<li>BoxConstraints constraints:容器大小的限制条件</li>
+<li>margin:容器外补白，不属于decoration的装饰范围</li>
+<li>transform:变换</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/5-16.png" alt="输入图片描述"></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">  margin: EdgeInsets.only(top: <span class="number">50.0</span>, left: <span class="number">120.0</span>), <span class="comment">//容器外填充</span></span><br><span class="line">  constraints: BoxConstraints.tightFor(width: <span class="number">200.0</span>, height: <span class="number">150.0</span>), <span class="comment">//卡片大小</span></span><br><span class="line">  decoration: BoxDecoration(<span class="comment">//背景装饰</span></span><br><span class="line">      gradient: RadialGradient( <span class="comment">//背景径向渐变</span></span><br><span class="line">          colors: [Colors.red, Colors.orange],</span><br><span class="line">          center: Alignment.topLeft,</span><br><span class="line">          radius: <span class="number">.98</span></span><br><span class="line">      ),</span><br><span class="line">      boxShadow: [ <span class="comment">//卡片阴影</span></span><br><span class="line">        BoxShadow(</span><br><span class="line">            color: Colors.black54,</span><br><span class="line">            offset: Offset(<span class="number">2.0</span>, <span class="number">2.0</span>),</span><br><span class="line">            blurRadius: <span class="number">4.0</span></span><br><span class="line">        )</span><br><span class="line">      ]</span><br><span class="line">  ),</span><br><span class="line">  transform: Matrix4.rotationZ(<span class="number">.2</span>), <span class="comment">//卡片倾斜变换</span></span><br><span class="line">  alignment: Alignment.center, <span class="comment">//卡片内文字居中</span></span><br><span class="line">  child: Text( <span class="comment">//卡片文字</span></span><br><span class="line">    <span class="string">"5.20"</span>, style: TextStyle(color: Colors.white, fontSize: <span class="number">40.0</span>),</span><br><span class="line">  ),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="SafeArea"><a href="#SafeArea" class="headerlink" title="SafeArea"></a>SafeArea</h2><blockquote>
+<p>不规则屏幕适配器</p>
+</blockquote>
+<p>指定适配位置：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SafeArea(</span><br><span class="line">  top: <span class="keyword">false</span>,</span><br><span class="line">  bottom: <span class="keyword">true</span>,</span><br><span class="line">  left: <span class="keyword">true</span>,</span><br><span class="line">  right: <span class="keyword">false</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/5/24/16ae745468b4e02c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">child: SafeArea(</span><br><span class="line">  top: <span class="keyword">false</span>,</span><br><span class="line">  bottom: <span class="keyword">false</span>,</span><br><span class="line">  child: Scaffold(</span><br><span class="line">    backgroundColor: AppTheme.nearlyWhite,</span><br><span class="line">    body: DrawerUserController(</span><br><span class="line">      screenIndex: drawerIndex,</span><br><span class="line">      drawerWidth: MediaQuery.of(context).size.width * <span class="number">0.75</span>,</span><br><span class="line">      animationController: (AnimationController animationController) &#123;</span><br><span class="line">        sliderAnimationController = animationController;</span><br><span class="line">      &#125;,</span><br><span class="line">      onDrawerCall: (DrawerIndex drawerIndexdata) &#123;</span><br><span class="line">        changeIndex(drawerIndexdata);</span><br><span class="line">      &#125;,</span><br><span class="line">      screenView: screenView,</span><br><span class="line">    ),</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+
+<h2 id="Scaffold"><a href="#Scaffold" class="headerlink" title="Scaffold"></a>Scaffold</h2><blockquote>
+<p>与MaterialApp 结合的页面框架</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">appBar</td>
+<td align="center">标题栏</td>
+</tr>
+<tr>
+<td align="center">body</td>
+<td align="center">界面主要内容Widget</td>
+</tr>
+<tr>
+<td align="center">floatingActionButton</td>
+<td align="center">悬浮按钮</td>
+</tr>
+<tr>
+<td align="center">persistentFooterButtons</td>
+<td align="center">最下方按钮</td>
+</tr>
+<tr>
+<td align="center">drawer</td>
+<td align="center">侧边栏控件</td>
+</tr>
+<tr>
+<td align="center">backgroundColor</td>
+<td align="center">内容的背景颜色</td>
+</tr>
+<tr>
+<td align="center">bottomNavigationBar</td>
+<td align="center">底部导航</td>
+</tr>
+<tr>
+<td align="center">resizeToAvoidBottomPadding</td>
+<td align="center">控制界面内容 body 是否重新布局来避免底部被覆盖了，比如当键盘显示的时候，重新布局避免被键盘盖住内容。默认值为 true</td>
+</tr>
+</tbody></table>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">child: Scaffold(</span><br><span class="line">  backgroundColor: AppTheme.nearlyWhite,</span><br><span class="line">  <span class="comment">// 主Widget</span></span><br><span class="line">  body: DrawerUserController(</span><br><span class="line">    screenIndex: drawerIndex,</span><br><span class="line">    drawerWidth: MediaQuery.of(context).size.width * <span class="number">0.75</span>,</span><br><span class="line">    animationController: (AnimationController animationController) &#123;</span><br><span class="line">      sliderAnimationController = animationController;</span><br><span class="line">    &#125;,</span><br><span class="line">    onDrawerCall: (DrawerIndex drawerIndexdata) &#123;</span><br><span class="line">      changeIndex(drawerIndexdata);</span><br><span class="line">    &#125;,</span><br><span class="line">    screenView: screenView,</span><br><span class="line">  ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="persistentFooterButtons"><a href="#persistentFooterButtons" class="headerlink" title="persistentFooterButtons"></a>persistentFooterButtons</h3><p><img src="https://s2.ax1x.com/2019/12/28/lmpNND.png" alt="lmpNND.png"></p>
+<h2 id="StatefulWidget和StatelessWidget"><a href="#StatefulWidget和StatelessWidget" class="headerlink" title="StatefulWidget和StatelessWidget"></a>StatefulWidget和StatelessWidget</h2><blockquote>
+<p>无状态静态的视图展示使用StatelessWidget，而有交互,需要动态变化的使用StatefulWidget</p>
+</blockquote>
+<p>使用决策：</p>
+<ul>
+<li><p>优先使用 StatelessWidget</p>
+</li>
+<li><p>含有大量子 Widget（如根布局、次根布局）慎用 StatefulWidget</p>
+</li>
+<li><p>尽量在叶子节点使用 StatefulWidget</p>
+</li>
+<li><p>将会调用到<code>setState((){})</code>  的代码尽可能的和要更新的视图封装在一个尽可能小的模块里。</p>
+</li>
+<li><p>如果一个Widget需要reBuild，那么它的子节点、兄弟节点、兄弟节点的子节点应该尽可能少</p>
+</li>
+<li><p>相较Android的View，Flutter Widget的构造方法可能被会执行很多次，做的事情应该尽可能的少</p>
+</li>
+<li><p>Flutter Widget build方法可能会执行多次，做的事情应该尽可能的少</p>
+</li>
+</ul>
+<h3 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><img src="https://s2.ax1x.com/2019/12/27/lZZvoq.png" alt="lZZvoq.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">State</td>
+<td align="center">构造函数会在最开始被调用</td>
+</tr>
+<tr>
+<td align="center">initState</td>
+<td align="center">Widget创建时进行调用，在构造函数之后</td>
+</tr>
+<tr>
+<td align="center">didChangeDependencies</td>
+<td align="center">当State对象的依赖发生变化时会被调用</td>
+</tr>
+<tr>
+<td align="center">build</td>
+<td align="center">它用于构建Widget子树的,当setState触发的时候会被调用</td>
+</tr>
+<tr>
+<td align="center">didUpdateWidget</td>
+<td align="center">组件状态改变时候调用</td>
+</tr>
+<tr>
+<td align="center">deactivate</td>
+<td align="center">当State对象从树中被移除时，会调用此回调。</td>
+</tr>
+<tr>
+<td align="center">dispose</td>
+<td align="center">当State对象从树中被永久移除时调用；通常在此回调中释放资源</td>
+</tr>
+<tr>
+<td align="center">reassemble</td>
+<td align="center">在热重载(hot reload)时会被调用，此回调在Release模式下永远不会被调用</td>
+</tr>
+</tbody></table>
+<p>初期化:<br><code>构造函数</code>  -&gt;<code>initState</code>  -&gt;  <code>didChangeDependencies</code>  -&gt;<code>build</code></p>
+<p> (reload)热更新:<br><code>reassemble</code>  -&gt;<code>didUpdateWidget</code>  -&gt;<code>build</code></p>
+<p>析构:<br><code>deactivate</code>  -&gt;<code>dispose</code></p>
+<p>模板：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStatefulWidget</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _MyStatefulWidgetState createState() =&gt; _MyStatefulWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyStatefulWidgetState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyStatefulWidget</span>&gt; </span>&#123;</span><br><span class="line">  _MyStatefulWidgetState() &#123;&#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">'Stateful Widget'</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>转自<a href="https://www.kaisawind.com/2019/09/19/2019-09-20-flutter-statefulwidget/" target="_blank" rel="noopener">kaisawind</a></p>
+<h4 id="与StatelessWidget区别"><a href="#与StatelessWidget区别" class="headerlink" title="与StatelessWidget区别"></a>与StatelessWidget区别</h4><p>转载<a href="https://lizhaoxuan.github.io/2019/01/02/Flutter-%E4%BD%A0%E8%BF%98%E5%9C%A8%E6%BB%A5%E7%94%A8StatefulWidget%E5%90%97/" target="_blank" rel="noopener">暴打小女孩Blog</a>的一部分：<br>StatelessWidget初始化之后就无法改变，如果想改变，那便需要重新创建，new另一个StatelessWidget进行替换。但StatelessWidget因为是静态的，他没有办法重新创建自己。所以StatefulWidget便提供了这样的机制，通过调用<code>setState((){})</code>标记自身为dirty状态，以等待下一次系统的重绘检查</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p><strong>在State类中的调用<code>setState((){})</code>更新视图，将会触发State.build！</strong> 也将间接的触发其每个子Widget的构造方法以及build方法，这意味着如果子Widget过多，所带来的性能消耗是很严重的(改变UI相当简单粗暴，代价高昂)。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/10/谷歌Android-Kotlin-Fundamentals-回顾-未完/" rel="next" title="谷歌Android Kotlin Fundamentals 回顾(未完)">
+                <i class="fa fa-chevron-left"></i> 谷歌Android Kotlin Fundamentals 回顾(未完)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTU5OS8yMjExMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dong</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">1.</span> <span class="nav-text">运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">1.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">1.2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染"><span class="nav-number">1.3.</span> <span class="nav-text">渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制"><span class="nav-number">1.4.</span> <span class="nav-text">绘制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SystemChrome"><span class="nav-number">2.</span> <span class="nav-text">SystemChrome</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setPreferredOrientations"><span class="nav-number">2.1.</span> <span class="nav-text">setPreferredOrientations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setEnabledSystemUIOverlays"><span class="nav-number">2.2.</span> <span class="nav-text">setEnabledSystemUIOverlays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setSystemUIOverlayStyle"><span class="nav-number">2.3.</span> <span class="nav-text">setSystemUIOverlayStyle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MaterialApp"><span class="nav-number">3.</span> <span class="nav-text">MaterialApp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Title"><span class="nav-number">3.1.</span> <span class="nav-text">Title</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Home"><span class="nav-number">3.2.</span> <span class="nav-text">Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Theme"><span class="nav-number">3.3.</span> <span class="nav-text">Theme</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container"><span class="nav-number">4.</span> <span class="nav-text">Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SafeArea"><span class="nav-number">5.</span> <span class="nav-text">SafeArea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scaffold"><span class="nav-number">6.</span> <span class="nav-text">Scaffold</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#persistentFooterButtons"><span class="nav-number">6.1.</span> <span class="nav-text">persistentFooterButtons</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatefulWidget和StatelessWidget"><span class="nav-number">7.</span> <span class="nav-text">StatefulWidget和StatelessWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StatefulWidget"><span class="nav-number">7.1.</span> <span class="nav-text">StatefulWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">7.1.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与StatelessWidget区别"><span class="nav-number">7.1.2.</span> <span class="nav-text">与StatelessWidget区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">7.1.3.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2020/01/10/Flutter-杂记/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
