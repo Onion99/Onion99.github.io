@@ -245,7 +245,35 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mViewConfiguration : ViewConfiguration = ViewConfiguration.get(context)</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mMaxFlingVelocity = <span class="number">0</span></span><br><span class="line"><span class="comment">//触发fling的速度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mMinFlingVelocity = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">init &#123;</span><br><span class="line">    mMaxFlingVelocity = mViewConfiguration.scaledMaximumFlingVelocity</span><br><span class="line">    mMinFlingVelocity = mViewConfiguration.scaledMinimumFlingVelocity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Scroller"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller</h3><p>在 View 类里面，有两个和滚动相关的类 scrollTo() 和 scrollBy。这两个方法可以实现 View 内容的移动，比如说一个 TextView，如果使用 scrollTo()，那么移动的是里面的文字而不是位置，scrollBy() 也是一样的。那么为什么是移动，不是滚动呢？这是因为这两个方法都是瞬间完成，而不是带有滚动过程的滚动，所以说如果要实现效果比较好的滚动还是需要 Scroller</p>
-<p>常用API:<br>|API| 简介 |<br>|–|–|<br>| computeScrollOffset() | 判断当前的滑动动作是否完成的 |<br>| getCurrX()、getCurrY() | 获取当前滑动的坐标值 |<br>| getFinalX()、getFinalY() | 获取最终滑动停止时的坐标 |<br>| isFinished() | 用来判断当前滚动是否结束 |<br>| startScroll(int startX, int startY, int dx, int dy) | 用来开始滚动，这个是很重要的一个触发computeScroll()的方法，调用这个方法之后，我们就可以在computeScroll里面获取滚动的信息，然后完成我们的需要。这个还有一个带有滚动持续时间的重载函数，可以根据需求自由使用。特别要注意这四个参数，startX和startY是开始的坐标位置，正数左上，负数右下，dx、dy同理，当在computeScroll()获取getCurrX()的时候，变化范围就与这里地设置有关。 |</p>
+<p>常用API:</p>
+<table>
+<thead>
+<tr>
+<th align="center">API</th>
+<th align="center">简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">computeScrollOffset()</td>
+<td align="center">判断当前的滑动动作是否完成的</td>
+</tr>
+<tr>
+<td align="center">getCurrX()、getCurrY()</td>
+<td align="center">获取当前滑动的坐标值</td>
+</tr>
+<tr>
+<td align="center">getFinalX()、getFinalY()</td>
+<td align="center">获取最终滑动停止时的坐标</td>
+</tr>
+<tr>
+<td align="center">isFinished()</td>
+<td align="center">用来判断当前滚动是否结束</td>
+</tr>
+<tr>
+<td align="center">startScroll(int startX, int startY, int dx, int dy)</td>
+<td align="center">用来开始滚动，这个是很重要的一个触发computeScroll()的方法，调用这个方法之后，我们就可以在computeScroll里面获取滚动的信息，然后完成我们的需要。这个还有一个带有滚动持续时间的重载函数，可以根据需求自由使用。特别要注意这四个参数，startX和startY是开始的坐标位置，正数左上，负数右下，dx、dy同理，当在computeScroll()获取getCurrX()的时候，变化范围就与这里地设置有关。</td>
+</tr>
+</tbody></table>
 <h3 id="OverScroller"><a href="#OverScroller" class="headerlink" title="OverScroller"></a>OverScroller</h3><blockquote>
 <p>对超出滑动边界的情况的处理</p>
 </blockquote>
