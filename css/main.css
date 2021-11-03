@@ -1797,16 +1797,6 @@ pre code {
 .back-to-top.back-to-top-on {
   bottom: 19px;
 }
-.reading-progress-bar {
-  --progress: 0;
-  background: #37c6c0;
-  height: 3px;
-  position: fixed;
-  z-index: 1500;
-  width: var(--progress);
-  left: 0;
-  top: 0;
-}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -2684,7 +2674,7 @@ ul.breadcrumb li:last-child {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ecd4d1;
+  background: #ffd51a;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
