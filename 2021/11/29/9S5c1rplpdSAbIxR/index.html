@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion66.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+<meta name="description" content="首先看看ViewModel是怎么样实例化 12345678910111213protected open fun &lt;T : ViewModel?&gt; getFragmentScopeViewModel(modelClass: Class&lt;T&gt;): T &amp;#123;    if (!::fragmentProvider.isInitialized) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码学习-ViewModel">
+<meta property="og:url" content="http://onion66.gitee.io/blog/2021/11/29/9S5c1rplpdSAbIxR/index.html">
+<meta property="og:site_name" content="Stay hungry , Stay foolish">
+<meta property="og:description" content="首先看看ViewModel是怎么样实例化 12345678910111213protected open fun &lt;T : ViewModel?&gt; getFragmentScopeViewModel(modelClass: Class&lt;T&gt;): T &amp;#123;    if (!::fragmentProvider.isInitialized) &amp;#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.doutula.com/production/uploads/image/2019/06/06/20190606755268_TSvBec.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/I8L0jU.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/I8xIk4.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/IG8UgA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/IGEOT1.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/IGd3ff.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/08/IGwfKg.png">
+<meta property="article:published_time" content="2021-11-29T15:30:53.000Z">
+<meta property="article:modified_time" content="2021-11-29T15:30:31.000Z">
+<meta property="article:author" content="Onion99">
+<meta property="article:tag" content="源码解析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.doutula.com/production/uploads/image/2019/06/06/20190606755268_TSvBec.jpg">
+
+
+<link rel="canonical" href="http://onion66.gitee.io/blog/2021/11/29/9S5c1rplpdSAbIxR/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion66.gitee.io/blog/2021/11/29/9S5c1rplpdSAbIxR/","path":"2021/11/29/9S5c1rplpdSAbIxR/","title":"源码学习-ViewModel"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>源码学习-ViewModel | Stay hungry , Stay foolish</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activty%E4%B8%8EViewModel%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">Activty与ViewModel的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewModelProvider"><span class="nav-number">2.</span> <span class="nav-text">ViewModelProvider()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewModelStore"><span class="nav-number">2.1.</span> <span class="nav-text">ViewModelStore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewModelProviderFactory"><span class="nav-number">2.2.</span> <span class="nav-text">ViewModelProviderFactory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewModel%E7%9A%84%E6%9E%B6%E6%9E%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">ViewModel的架构作用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onion99</p>
+  <div class="site-description" itemprop="description">巴拉巴拉</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onion99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onion99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lijundong9999@gmail.com" title="E-Mail → mailto:lijundong9999@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Onion99" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/29/9S5c1rplpdSAbIxR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Onion99">
+      <meta itemprop="description" content="巴拉巴拉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry , Stay foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          源码学习-ViewModel
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-29 23:30:53 / 修改时间：23:30:31" itemprop="dateCreated datePublished" datetime="2021-11-29T23:30:53+08:00">2021-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>首先看看ViewModel是怎么样实例化</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel?&gt;</span> <span class="title">getFragmentScopeViewModel</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">    <span class="keyword">if</span> (!::fragmentProvider.isInitialized) &#123;</span><br><span class="line">        fragmentProvider = ViewModelProvider(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fragmentProvider.<span class="keyword">get</span>(modelClass)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel?&gt;</span> <span class="title">getActivityScopeViewModel</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">    <span class="keyword">if</span> (!::activityProvider.isInitialized) &#123;</span><br><span class="line">        activityProvider = ViewModelProvider(requireActivity())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> activityProvider.<span class="keyword">get</span>(modelClass)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我超,原来是通过一个ViewModelProvider去get到的,他妈的这是干什么的呢,为什么要通过ViewModelProvider获取呢<br><img src="http://img.doutula.com/production/uploads/image/2019/06/06/20190606755268_TSvBec.jpg"><br>我怎么知道,瞧瞧官方正儿八经的回答吧<br><code>ViewModel</code>:旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存<br><code>ViewModelProvider</code>: ViewModel的辅助程序类，该类负责为界面准备数据。在配置更改期间会自动保留 ViewModel 对象，以便它们存储的数据立即可供下一个 activity 或 fragment 实例使用</p>
+<span id="more"></span>
+<p>好家伙,原来是这对组合,以生命周期的方式耶,看看有什么不同</p>
+<h3 id="Activty与ViewModel的生命周期"><a href="#Activty与ViewModel的生命周期" class="headerlink" title="Activty与ViewModel的生命周期"></a>Activty与ViewModel的生命周期</h3><blockquote>
+<p>牛逼,战斗直至Finish</p>
+</blockquote>
+<p><img src="https://z3.ax1x.com/2021/11/08/I8L0jU.png" alt="I8L0jU.png"></p>
+<p>官方说:ViewModel对象存在的时间范围是获取 ViewModel 时传递给 ViewModelProvider 的Lifecycle。ViewModel将一直留在内存中，直到限定其存在时间范围的Lifecycle永久消失：对于activity，是在activity完成时；而对于fragment，是在 fragment分离时</p>
+<p>好了,来看看ViewModelProvider是怎样实现构造的</p>
+<h3 id="ViewModelProvider"><a href="#ViewModelProvider" class="headerlink" title="ViewModelProvider()"></a>ViewModelProvider()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ViewModelProvider</span><span class="params">(<span class="meta">@NonNull</span> ViewModelStoreOwner owner)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 尼玛的,偷偷调用另一构造函数</span></span><br><span class="line">        <span class="comment">// 1.创建用来存储ViewModel的ViewModelStore, 2. 创建用于实例化新ViewModel的Factory</span></span><br><span class="line">        <span class="keyword">this</span>(owner.getViewModelStore(), owner <span class="keyword">instanceof</span> HasDefaultViewModelProviderFactory</span><br><span class="line">                ? ((HasDefaultViewModelProviderFactory) owner).getDefaultViewModelProviderFactory()</span><br><span class="line">                : NewInstanceFactory.getInstance());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ViewModelStore"><a href="#ViewModelStore" class="headerlink" title="ViewModelStore"></a>ViewModelStore</h4><p>这个是接口何许玩意,原来到后面Activity,Fragment等都实现了这个接口,以来获取跟当前生命周期相关的ViewModelStore,看到没有,有图有真相<br><img src="https://z3.ax1x.com/2021/11/08/I8xIk4.png" alt="I8xIk4.png"><br>看看<code>ComponentActivity.getViewModelStore()</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ViewModelStore <span class="title">getViewModelStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (getApplication() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">&quot;Your activity is not yet attached to the &quot;</span></span><br><span class="line">                + <span class="string">&quot;Application instance. You can&#x27;t request ViewModel before onCreate call.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 叉,这里照我猜想肯定是实现ViewModelStore的单例</span></span><br><span class="line">    ensureViewModelStore();</span><br><span class="line">    <span class="comment">// 返回与此Activity关联的ViewModelStore</span></span><br><span class="line">    <span class="keyword">return</span> mViewModelStore;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>void ensureViewModelStore() &#123;
+    if (mViewModelStore == null) &#123;
+        // 检索先前由onRetainNonConfigurationInstance()返回的配置变更后的缓存配置
+        NonConfigurationInstances nc = (NonConfigurationInstances) getLastNonConfigurationInstance();
+        // 如果缓存配置不为空,则取缓存配置的viewModelStore
+        if (nc != null) &#123;
+            mViewModelStore = nc.viewModelStore;
+        &#125;
+        // 否则自己实例一个
+        if (mViewModelStore == null) &#123;
+            mViewModelStore = new ViewModelStore();
+        &#125;
+    &#125;
+&#125;    
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">嘿嘿,存储ViewModel的ViewModelStore,牛逼啊,用一个HashMap来缓存看到有木有:</span><br><span class="line">```java</span><br><span class="line">public class ViewModelStore &#123;</span><br><span class="line">    private final HashMap&lt;String, ViewModel&gt; mMap = new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    final void put(String key, ViewModel viewModel) &#123;</span><br><span class="line">        ViewModel oldViewModel = mMap.put(key, viewModel);</span><br><span class="line">        if (oldViewModel != null) oldViewModel.onCleared();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    final ViewModel get(String key) &#123;</span><br><span class="line">        return mMap.get(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Set&lt;String&gt; keys() &#123;</span><br><span class="line">        return new HashSet&lt;&gt;(mMap.keySet());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final void clear() &#123;</span><br><span class="line">        for (ViewModel vm : mMap.values()) &#123;</span><br><span class="line">            vm.clear();</span><br><span class="line">        &#125;</span><br><span class="line">        mMap.clear();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://z3.ax1x.com/2021/11/08/IG8UgA.png" alt="IG8UgA.png"></p>
+<h4 id="ViewModelProviderFactory"><a href="#ViewModelProviderFactory" class="headerlink" title="ViewModelProviderFactory"></a>ViewModelProviderFactory</h4><p>同样的后面Activity,Fragment等也实现了HasDefaultViewModelProviderFactory接口,实现自己创建ViewModel的ViewModelProviderFactory, 来看图<br><img src="https://z3.ax1x.com/2021/11/08/IGEOT1.png" alt="IGEOT1.png"><br>再来看看<code>ComponentActivity.getViewModelStore()</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ViewModelProvider.<span class="function">Factory <span class="title">getDefaultViewModelProviderFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (getApplication() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">&quot;Your activity is not yet attached to the &quot;</span></span><br><span class="line">                + <span class="string">&quot;Application instance. You can&#x27;t request ViewModel before onCreate call.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 妈的,就是这么简单,直接实例化</span></span><br><span class="line">    <span class="keyword">if</span> (mDefaultFactory == <span class="keyword">null</span>) &#123;</span><br><span class="line">        mDefaultFactory = <span class="keyword">new</span> SavedStateViewModelFactory(</span><br><span class="line">                getApplication(),</span><br><span class="line">                <span class="keyword">this</span>,</span><br><span class="line">                getIntent() != <span class="keyword">null</span> ? getIntent().getExtras() : <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mDefaultFactory;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有点东西,这样就实例<code>SavedStateViewModelFactory</code>了,看看具体怎么<code>get()</code>霍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步:小get</span></span><br><span class="line"><span class="keyword">public</span> &lt;T extends ViewModel&gt; <span class="function">T <span class="title">get</span><span class="params">(<span class="meta">@NonNull</span> Class&lt;T&gt; modelClass)</span> </span>&#123;</span><br><span class="line">    String canonicalName = modelClass.getCanonicalName();</span><br><span class="line">    <span class="comment">// 好家伙,看到没有,如果这里判断是局部类或者匿名类,就直接给crash了,谷歌就是牛逼</span></span><br><span class="line">    <span class="keyword">if</span> (canonicalName == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Local and anonymous classes can not be ViewModels&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 嘿,继续get下去</span></span><br><span class="line">    <span class="keyword">return</span> get(DEFAULT_KEY + <span class="string">&quot;:&quot;</span> + canonicalName, modelClass);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二步:大get</span></span><br><span class="line"><span class="keyword">public</span> &lt;T extends ViewModel&gt; <span class="function">T <span class="title">get</span><span class="params">(<span class="meta">@NonNull</span> String key, <span class="meta">@NonNull</span> Class&lt;T&gt; modelClass)</span> </span>&#123;</span><br><span class="line">    ViewModel viewModel = mViewModelStore.get(key);</span><br><span class="line">    <span class="comment">// 首先是判断是否有缓存</span></span><br><span class="line">    <span class="keyword">if</span> (modelClass.isInstance(viewModel)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mFactory <span class="keyword">instanceof</span> OnRequeryFactory) &#123;</span><br><span class="line">            ((OnRequeryFactory) mFactory).onRequery(viewModel);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (T) viewModel;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 然后如果为null,则通过具体工厂类去实例化ViewModel</span></span><br><span class="line">    <span class="keyword">if</span> (mFactory <span class="keyword">instanceof</span> KeyedFactory) &#123;</span><br><span class="line">        viewModel = ((KeyedFactory) mFactory).create(key, modelClass);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        viewModel = mFactory.create(modelClass);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 嘿嘿,放进缓存</span></span><br><span class="line">    mViewModelStore.put(key, viewModel);</span><br><span class="line">    <span class="keyword">return</span> (T) viewModel;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// ViewModel的实例化</span></span><br><span class="line"><span class="keyword">public</span> &lt;T extends ViewModel&gt; <span class="function">T <span class="title">create</span><span class="params">(<span class="meta">@NonNull</span> String key, <span class="meta">@NonNull</span> Class&lt;T&gt; modelClass)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> isAndroidViewModel = AndroidViewModel.class.isAssignableFrom(modelClass);</span><br><span class="line">    Constructor&lt;T&gt; constructor;</span><br><span class="line">    <span class="comment">// 通过反射,去找到当前ViewModel的构造函数</span></span><br><span class="line">    <span class="keyword">if</span> (isAndroidViewModel &amp;&amp; mApplication != <span class="keyword">null</span>) &#123;</span><br><span class="line">        constructor = findMatchingConstructor(modelClass, ANDROID_VIEWMODEL_SIGNATURE);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        constructor = findMatchingConstructor(modelClass, VIEWMODEL_SIGNATURE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (constructor == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mFactory.create(modelClass);</span><br><span class="line">    &#125;</span><br><span class="line">    SavedStateHandleController controller = SavedStateHandleController.create(</span><br><span class="line">            mSavedStateRegistry, mLifecycle, key, mDefaultArgs);</span><br><span class="line">    <span class="comment">// 嘿嘿,调用构造函数,实例化        </span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        T viewmodel;</span><br><span class="line">        <span class="keyword">if</span> (isAndroidViewModel &amp;&amp; mApplication != <span class="keyword">null</span>) &#123;</span><br><span class="line">            viewmodel = constructor.newInstance(mApplication, controller.getHandle());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            viewmodel = constructor.newInstance(controller.getHandle());</span><br><span class="line">        &#125;</span><br><span class="line">        viewmodel.setTagIfAbsent(TAG_SAVED_STATE_HANDLE_CONTROLLER, controller);</span><br><span class="line">        <span class="keyword">return</span> viewmodel;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Failed to access &quot;</span> + modelClass, e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;A &quot;</span> + modelClass + <span class="string">&quot; cannot be instantiated.&quot;</span>, e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;An exception happened in constructor of &quot;</span></span><br><span class="line">                + modelClass, e.getCause());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="ViewModel的架构作用"><a href="#ViewModel的架构作用" class="headerlink" title="ViewModel的架构作用"></a>ViewModel的架构作用</h3><p>向官方敬礼,懂不懂这张图的含金量,懂不懂MMVM<br><img src="https://z3.ax1x.com/2021/11/08/IGd3ff.png" alt="IGd3ff.png"><br><img src="https://z3.ax1x.com/2021/11/08/IGwfKg.png" alt="IGwfKg.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># 源码解析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/11/29/4diQitvVwGPnicN5/" rel="prev" title="源码学习-HashMap">
+                  <i class="fa fa-chevron-left"></i> 源码学习-HashMap
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onion99</span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/schemes/muse.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

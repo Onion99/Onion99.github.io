@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,6 +175,255 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/03/z3aQsRLVolBbFVsl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Onion99">
+      <meta itemprop="description" content="巴拉巴拉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry , Stay foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2021/11/03/z3aQsRLVolBbFVsl/" class="post-title-link" itemprop="url">自定义View(9) - 事件分发</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-03 22:07:31 / 修改时间：22:03:54" itemprop="dateCreated datePublished" datetime="2021-11-03T22:07:31+08:00">2021-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>事件分发的过程其实也就是事件传递过程。事件传递的顺序由Acticity传递到根View，这个根View 通常是一个ViewGroup(ViewGroup本身也是View的子类)，然后再传递给ViewGroup下的子View, 若事件在自上而下的传递过程中一直没有被消费，则事件会反向向上传递，此时父ViewGroup可以对事件进行消费，若仍然没有被消费的话，最后会回到Activity的onTouchEvent</p>
+</blockquote>
+<p>所以很多时候如果有冲突的话,最先消费的是最底部的子View<br><img src="https://z3.ax1x.com/2021/11/03/IE3gqf.png" alt="IE3gqf.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/11/03/z3aQsRLVolBbFVsl/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/03/p4CRfuQemJ4TOlAs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Onion99">
+      <meta itemprop="description" content="巴拉巴拉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry , Stay foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" class="post-title-link" itemprop="url">自定义View(8) - draw 绘制过程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-03 22:03:38 / 修改时间：22:03:06" itemprop="dateCreated datePublished" datetime="2021-11-03T22:03:38+08:00">2021-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住</p>
+</blockquote>
+<p><img src="https://z3.ax1x.com/2021/11/03/IES7KP.png" alt="IES7KP.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/03/ZyOr4iLxJj7nAQxR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Onion99">
+      <meta itemprop="description" content="巴拉巴拉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry , Stay foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" class="post-title-link" itemprop="url">自定义View(7) - layout 布局过程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-03 22:02:46 / 修改时间：22:01:26" itemprop="dateCreated datePublished" datetime="2021-11-03T22:02:46+08:00">2021-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://s2.ax1x.com/2019/12/06/QJQEcR.jpg" alt="viewasds"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -422,256 +671,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/03/VjI1fQxy8MSFqUqm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" class="post-title-link" itemprop="url">自定义View(3) - Text相关</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-03 21:57:48 / 修改时间：21:57:07" itemprop="dateCreated datePublished" datetime="2021-11-03T21:57:48+08:00">2021-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="文字绘制-Canvas"><a href="#文字绘制-Canvas" class="headerlink" title="文字绘制(Canvas)"></a>文字绘制(Canvas)</h3><h4 id="绘制方式"><a href="#绘制方式" class="headerlink" title="绘制方式"></a>绘制方式</h4><h5 id="drawText"><a href="#drawText" class="headerlink" title="drawText"></a>drawText</h5><p><img src="https://z3.ax1x.com/2021/11/02/IiheJA.png" alt="IiheJA.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/01/weRgrdLnBqIUWkcH/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" class="post-title-link" itemprop="url">自定义View(2) - Paint相关</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-01 22:19:10 / 修改时间：22:18:35" itemprop="dateCreated datePublished" datetime="2021-11-01T22:19:10+08:00">2021-11-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h3><h4 id="基本颜色"><a href="#基本颜色" class="headerlink" title="基本颜色"></a>基本颜色</h4><p>setColor(int color):</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paint.setColor(Color.parseColor(<span class="string">&quot;#009688&quot;</span>));</span><br><span class="line">canvas.drawRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">230</span>, <span class="number">180</span>, paint);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/11/01/weRgrdLnBqIUWkcH/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/" class="post-title-link" itemprop="url">自定义View(1) - 基本绘制</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-01 22:17:37 / 修改时间：22:17:06" itemprop="dateCreated datePublished" datetime="2021-11-01T22:17:37+08:00">2021-11-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>简单的绘制基本由<code>Canvas.drawxxx()</code>和Paint的配置组成</p>
-</blockquote>
-<p><img src="https://z3.ax1x.com/2021/11/01/IC9uZj.png" alt="IC9uZj.png"></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaintView</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span></span>(context: Context, attrs: AttributeSet? = <span class="literal">null</span>, defStyleAttr: <span class="built_in">Int</span> = <span class="number">0</span>) : View(context, attrs, defStyleAttr) &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> mPaint <span class="keyword">by</span> lazy &#123; Paint() &#125;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;  </span><br><span class="line">    <span class="keyword">super</span>.onDraw(canvas)</span><br><span class="line">    paint.setColor(Color.RED)<span class="comment">// 设置为红色</span></span><br><span class="line">    canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
