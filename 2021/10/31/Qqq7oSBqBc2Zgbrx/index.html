@@ -1,466 +1,583 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/blog/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/atom.xml" />
+<link rel="alternate" type="application/json" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"onion66.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="登录授权、TCP&#x2F;IP、HTTPS和代理登录：身份认证，确认你是你的过程。授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限">
-<meta property="og:type" content="article">
-<meta property="og:title" content="课程-登陆与授权">
-<meta property="og:url" content="http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/index.html">
-<meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="登录授权、TCP&#x2F;IP、HTTPS和代理登录：身份认证，确认你是你的过程。授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5qrP4f.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5qrmbn.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5qccSf.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5LRCDS.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5LRGCR.png">
-<meta property="article:published_time" content="2021-10-31T13:31:00.000Z">
-<meta property="article:modified_time" content="2021-10-31T13:30:32.000Z">
-<meta property="article:author" content="Onion99">
-<meta property="article:tag" content="课程学习">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://z3.ax1x.com/2021/10/28/5qrP4f.png">
+<link rel="stylesheet" href="/blog/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="课程学习" />
+
 
 <link rel="canonical" href="http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>课程-登陆与授权 | Stay hungry , Stay foolish</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+课程-登陆与授权 - Android |
+Yume Shoka = Stay hungry , Stay foolish = 一只巴甫洛夫的狗</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/blog/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">课程-登陆与授权
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-31 21:31:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-31T21:31:00+08:00">2021-10-31</time>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/blog/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
           
-
-          <div class="content post posts-expand">
-            
-
+  <div class="article wrap">
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/">
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/blog/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/blog/categories/Android/" itemprop="item" rel="index" title="In Android"><span itemprop="name">Android</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          课程-登陆与授权
-        </h1>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/blog/images/avatar.jpg">
+    <meta itemprop="name" content="Onion99">
+    <meta itemprop="description" content="一只巴甫洛夫的狗, 巴拉巴拉">
+  </span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Stay hungry , Stay foolish">
+  </span>
 
-              <time title="Created: 2021-10-31 21:31:00 / Modified: 21:30:32" itemprop="dateCreated datePublished" datetime="2021-10-31T21:31:00+08:00">2021-10-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
+  <div class="body md" itemprop="articleBody">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h2 id="登录授权、TCP-IP、HTTPS和代理"><a href="#登录授权、TCP-IP、HTTPS和代理" class="headerlink" title="登录授权、TCP/IP、HTTPS和代理"></a>登录授权、TCP/IP、HTTPS和代理</h2><p>登录：身份认证，确认你是你的过程。<br>授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限</p>
+    <h2 id="登录授权-tcpip-https和代理"><a class="markdownIt-Anchor" href="#登录授权-tcpip-https和代理">#</a> 登录授权、TCP/IP、HTTPS 和代理</h2>
+<p>登录：身份认证，确认你是你的过程。<br>
+授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限</p>
 <span id="more"></span>
-<h3 id="HTTP中授权方式"><a href="#HTTP中授权方式" class="headerlink" title="HTTP中授权方式"></a>HTTP中授权方式</h3><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><blockquote>
-<p>使用Cookie管理登录状态</p>
+<h3 id="http中授权方式"><a class="markdownIt-Anchor" href="#http中授权方式">#</a> HTTP 中授权方式</h3>
+<h4 id="cookie"><a class="markdownIt-Anchor" href="#cookie">#</a> Cookie</h4>
+<blockquote>
+<p>使用 Cookie 管理登录状态</p>
 </blockquote>
-<p><img src="https://z3.ax1x.com/2021/10/28/5qrP4f.png" alt="5qrP4f.png"></p>
-<p><img src="https://z3.ax1x.com/2021/10/28/5qrmbn.png" alt="5qrmbn.png"></p>
-<h5 id="Cookie工作机制"><a href="#Cookie工作机制" class="headerlink" title="Cookie工作机制"></a>Cookie工作机制</h5><ol>
-<li>服务器需要客户端保存的内容，放在Set-Cookie的headers里返回，客户端会自动保存。</li>
-<li>客户端保存的Cookies，会在之后的所有请求里都携带进Cookie header里发回给服务器。</li>
-<li>客户端保存Cookie是按照服务器域名来分类的，例如shop.com发回的Cookie保存下来以后，在之后向games.com的请求中并不会被携带。</li>
-<li>.客户端保存的Cookie在超时后会被删除，没有设置超时时间的Cookie（称作Session Cookie）在浏览器关闭后就会自动删除，另外，服务器也可以主动删除还未过期的客户端Cookies</li>
-<li>Cookie是由服务端管理的，客户端只是被动接受。</li>
+<p><img data-src="https://z3.ax1x.com/2021/10/28/5qrP4f.png" alt="5qrP4f.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/10/28/5qrmbn.png" alt="5qrmbn.png"></p>
+<h5 id="cookie工作机制"><a class="markdownIt-Anchor" href="#cookie工作机制">#</a> Cookie 工作机制</h5>
+<ol>
+<li>服务器需要客户端保存的内容，放在 Set-Cookie 的 headers 里返回，客户端会自动保存。</li>
+<li>客户端保存的 Cookies，会在之后的所有请求里都携带进 Cookie header 里发回给服务器。</li>
+<li>客户端保存 Cookie 是按照服务器域名来分类的，例如 shop.com 发回的 Cookie 保存下来以后，在之后向 games.com 的请求中并不会被携带。</li>
+<li>. 客户端保存的 Cookie 在超时后会被删除，没有设置超时时间的 Cookie（称作 Session Cookie）在浏览器关闭后就会自动删除，另外，服务器也可以主动删除还未过期的客户端 Cookies</li>
+<li>Cookie 是由服务端管理的，客户端只是被动接受。</li>
 </ol>
-<h4 id="Authorization-Header"><a href="#Authorization-Header" class="headerlink" title="Authorization Header"></a>Authorization Header</h4><blockquote>
+<h4 id="authorization-header"><a class="markdownIt-Anchor" href="#authorization-header">#</a> Authorization Header</h4>
+<blockquote>
 <p>两种主流方式 Basic 和 Beare</p>
 </blockquote>
-<h5 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h5><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>格式：Authorization: Basic&lt;username:password(Base64)&gt;</span><br><span class="line"><span class="number">2.</span>Basic认证过程</span><br><span class="line"><span class="number">1.</span>浏览器发送请求到服务器</span><br><span class="line">                GET / HTTP /<span class="number">1.1</span></span><br><span class="line">                Host:xxx.xxx.com</span><br><span class="line"><span class="number">2.</span>服务端发送验证请求<span class="number">401</span></span><br><span class="line">                HTTP/<span class="number">1.1</span> <span class="number">401</span> Unauthorised</span><br><span class="line">                Server: bfe/<span class="number">1.0</span><span class="number">.8</span><span class="number">.18</span></span><br><span class="line">                WWW-Authenticate: Basic realm=<span class="string">&quot;XXXXX.com&quot;</span></span><br><span class="line">                Content-<span class="built_in">Type</span>: text/html; charset=utf<span class="number">-8</span></span><br><span class="line"><span class="number">3.</span>客户端收到<span class="number">401</span>返回值后，将自动弹出登录窗口，等待用户输入用户名，密码</span><br><span class="line"><span class="number">4.</span>将用户名密码进行Base64编码后发送给服务端进行验证</span><br><span class="line">                GET / HTTP/<span class="number">1.1</span></span><br><span class="line">                Host: xxx.xxx.xxx.com</span><br><span class="line">                Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"><span class="number">5.</span>服务端取出Authorization中头信息，并与数据库进行比对，如果合法则返回<span class="number">200</span>，不合法，则返回<span class="number">401</span>。</span><br></pre></td></tr></table></figure>
-
-<h5 id="Bearer"><a href="#Bearer" class="headerlink" title="Bearer"></a>Bearer</h5><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>格式：Authorization: Bearer &lt;bearer token&gt;</span><br><span class="line"><span class="number">2.</span>bearer token 的获取方式：通过OAuth2的授权流程</span><br><span class="line"><span class="number">3.</span>OAuth2的流程</span><br><span class="line">            <span class="number">1.</span>第三方网站向授权网站申请授权合作，拿到client <span class="keyword">id</span>和client secret</span><br><span class="line">            <span class="number">2.</span>用户在使用第三方网站的时候，点击通过授权，第三方网站将跳转授权网站，并将clientid传递给授权网站。</span><br><span class="line">            <span class="number">4.</span>授权方网站根据clientid，将第三方网站的信息和第三方网站需要的用户权限展示给用户，询问用户是否同意授权。</span><br><span class="line">            <span class="number">5.</span>当用户点击同意授权，授权方网站返回第三方网站，并传入Authorization code作为用户认可的凭证。</span><br><span class="line">            <span class="number">6.</span>第三方网站将Authorization code上送给自己的服务器，服务器将Authorization code跟自己服务器端存储的client secret发送给授权方服务器，授权方服务器通过验证后，返回给access token，整个OAuth2流程结束。</span><br><span class="line">            <span class="number">7.</span>在整个OAuth流程结束后，第三方网站服务器可以试用access token 作用用户授权的token，用此来向授权方网站请求获取用户信息等操作。</span><br><span class="line">        </span><br><span class="line"><span class="number">4.</span>问题：</span><br><span class="line">            为什么OAuth认证要引入Authorization code，并且需要申请授权的第三方将Authorization code传给第三方服务器，并且通过第三方服务器将Authorization code传递给授权方服务器。然后再获取授权方服务器的access token。这样做的目的是为了通信安全，因为OAuth不强制使用HTTPS，因此需要保证通信路径中存在窃听者的时候，还能保证足够的安全。</span><br><span class="line">            </span><br><span class="line"><span class="number">5.</span>第三方APP通过微信登录的流程：</span><br><span class="line">            这是一个标准的OAuth2的流程。</span><br><span class="line">            <span class="number">1.</span>第三方APP向腾讯方申请合作，拿到client <span class="keyword">id</span> 和client secret</span><br><span class="line">            <span class="number">2.</span>当用户在第三方APP上需要微信登录的时候，第三方APP将使用微信SDK打开微信授权页面，并且传入client <span class="keyword">id</span>作为自己授权<span class="keyword">id</span>。</span><br><span class="line">            <span class="number">3.</span>微信拿到第三方app的client <span class="keyword">id</span>后，提交微信后台，验证成功，则返回给第三方app Authorization code。</span><br><span class="line">            <span class="number">4.</span>第三方app拿到Authorization code后，将Authorization code传递给自己的服务器，第三方app的服务端将Authorization code 与 client secret 传递给微信后台，微信后台验证后返回access token。</span><br><span class="line">            <span class="number">5.</span>第三方app后台通过access token 想微信后台请求获取用户信息，微信验证通过后，则返回用户信息。</span><br><span class="line">            <span class="number">6.</span>服务器接受到用户信息后，在自己的数据库中建立一个账户，并将从微信获取的用户信息填入数据库中。并创建用户<span class="keyword">id</span>，并将此<span class="keyword">id</span>与微信<span class="keyword">id</span>做好关联。</span><br><span class="line">            <span class="number">7.</span>当第三方app后台创建好用户后，想客户端的请求发出响应，并回传会刚刚创建的用户信息。</span><br><span class="line">            <span class="number">8.</span>客户端响应，获取用户信息，登录成功。</span><br><span class="line">            </span><br><span class="line"><span class="number">6.</span>在自家APP中使用Bearer token</span><br><span class="line">            部分app会在api设计中，将登录和授权设计出类似于OAuth2的过程，他会简化掉Authorization code的概念。既直接在接口请求成功后，返回access token，然后再之后的客户端的请求中，使用这个access token 作为Bearer token进行用户操作。</span><br><span class="line">            </span><br><span class="line"><span class="number">7.</span>Refresh token</span><br><span class="line">            Access token 都会有失效时间，当他失效后，第三方app的服务端会通过refresh token 接口传入refresh token 来获取新的access token。这样的的原因是安全，因为refresh token是放置在服务端的，即使access token被窃取，他也是有失效时间的。</span><br></pre></td></tr></table></figure>
-
-<h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h3><blockquote>
-<p>两台计算机之间的通讯是通过TCP/IP协议在因特网上进行的</p>
+<h5 id="basic"><a class="markdownIt-Anchor" href="#basic">#</a> Basic</h5>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>格式：Authorization: Basic&lt;username:password(Base64)&gt;</span><br><span class="line"><span class="number">2.</span>Basic认证过程</span><br><span class="line"><span class="number">1.</span>浏览器发送请求到服务器</span><br><span class="line">                GET / HTTP /<span class="number">1.1</span></span><br><span class="line">                Host:xxx.xxx.com</span><br><span class="line"><span class="number">2.</span>服务端发送验证请求<span class="number">401</span></span><br><span class="line">                HTTP/<span class="number">1.1</span> <span class="number">401</span> Unauthorised</span><br><span class="line">                Server: bfe/<span class="number">1.0</span><span class="number">.8</span><span class="number">.18</span></span><br><span class="line">                WWW-Authenticate: Basic realm=<span class="string">&quot;XXXXX.com&quot;</span></span><br><span class="line">                Content-<span class="built_in">Type</span>: text/html; charset=utf<span class="number">-8</span></span><br><span class="line"><span class="number">3.</span>客户端收到<span class="number">401</span>返回值后，将自动弹出登录窗口，等待用户输入用户名，密码</span><br><span class="line"><span class="number">4.</span>将用户名密码进行Base64编码后发送给服务端进行验证</span><br><span class="line">                GET / HTTP/<span class="number">1.1</span></span><br><span class="line">                Host: xxx.xxx.xxx.com</span><br><span class="line">                Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"><span class="number">5.</span>服务端取出Authorization中头信息，并与数据库进行比对，如果合法则返回<span class="number">200</span>，不合法，则返回<span class="number">401</span>。</span><br></pre></td></tr></table></figure>
+<h5 id="bearer"><a class="markdownIt-Anchor" href="#bearer">#</a> Bearer</h5>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>格式：Authorization: Bearer &lt;bearer token&gt;</span><br><span class="line"><span class="number">2.</span>bearer token 的获取方式：通过OAuth2的授权流程</span><br><span class="line"><span class="number">3.</span>OAuth2的流程</span><br><span class="line">            <span class="number">1.</span>第三方网站向授权网站申请授权合作，拿到client <span class="keyword">id</span>和client secret</span><br><span class="line">            <span class="number">2.</span>用户在使用第三方网站的时候，点击通过授权，第三方网站将跳转授权网站，并将clientid传递给授权网站。</span><br><span class="line">            <span class="number">4.</span>授权方网站根据clientid，将第三方网站的信息和第三方网站需要的用户权限展示给用户，询问用户是否同意授权。</span><br><span class="line">            <span class="number">5.</span>当用户点击同意授权，授权方网站返回第三方网站，并传入Authorization code作为用户认可的凭证。</span><br><span class="line">            <span class="number">6.</span>第三方网站将Authorization code上送给自己的服务器，服务器将Authorization code跟自己服务器端存储的client secret发送给授权方服务器，授权方服务器通过验证后，返回给access token，整个OAuth2流程结束。</span><br><span class="line">            <span class="number">7.</span>在整个OAuth流程结束后，第三方网站服务器可以试用access token 作用用户授权的token，用此来向授权方网站请求获取用户信息等操作。</span><br><span class="line">        </span><br><span class="line"><span class="number">4.</span>问题：</span><br><span class="line">            为什么OAuth认证要引入Authorization code，并且需要申请授权的第三方将Authorization code传给第三方服务器，并且通过第三方服务器将Authorization code传递给授权方服务器。然后再获取授权方服务器的access token。这样做的目的是为了通信安全，因为OAuth不强制使用HTTPS，因此需要保证通信路径中存在窃听者的时候，还能保证足够的安全。</span><br><span class="line">            </span><br><span class="line"><span class="number">5.</span>第三方APP通过微信登录的流程：</span><br><span class="line">            这是一个标准的OAuth2的流程。</span><br><span class="line">            <span class="number">1.</span>第三方APP向腾讯方申请合作，拿到client <span class="keyword">id</span> 和client secret</span><br><span class="line">            <span class="number">2.</span>当用户在第三方APP上需要微信登录的时候，第三方APP将使用微信SDK打开微信授权页面，并且传入client <span class="keyword">id</span>作为自己授权<span class="keyword">id</span>。</span><br><span class="line">            <span class="number">3.</span>微信拿到第三方app的client <span class="keyword">id</span>后，提交微信后台，验证成功，则返回给第三方app Authorization code。</span><br><span class="line">            <span class="number">4.</span>第三方app拿到Authorization code后，将Authorization code传递给自己的服务器，第三方app的服务端将Authorization code 与 client secret 传递给微信后台，微信后台验证后返回access token。</span><br><span class="line">            <span class="number">5.</span>第三方app后台通过access token 想微信后台请求获取用户信息，微信验证通过后，则返回用户信息。</span><br><span class="line">            <span class="number">6.</span>服务器接受到用户信息后，在自己的数据库中建立一个账户，并将从微信获取的用户信息填入数据库中。并创建用户<span class="keyword">id</span>，并将此<span class="keyword">id</span>与微信<span class="keyword">id</span>做好关联。</span><br><span class="line">            <span class="number">7.</span>当第三方app后台创建好用户后，想客户端的请求发出响应，并回传会刚刚创建的用户信息。</span><br><span class="line">            <span class="number">8.</span>客户端响应，获取用户信息，登录成功。</span><br><span class="line">            </span><br><span class="line"><span class="number">6.</span>在自家APP中使用Bearer token</span><br><span class="line">            部分app会在api设计中，将登录和授权设计出类似于OAuth2的过程，他会简化掉Authorization code的概念。既直接在接口请求成功后，返回access token，然后再之后的客户端的请求中，使用这个access token 作为Bearer token进行用户操作。</span><br><span class="line">            </span><br><span class="line"><span class="number">7.</span>Refresh token</span><br><span class="line">            Access token 都会有失效时间，当他失效后，第三方app的服务端会通过refresh token 接口传入refresh token 来获取新的access token。这样的的原因是安全，因为refresh token是放置在服务端的，即使access token被窃取，他也是有失效时间的。</span><br></pre></td></tr></table></figure>
+<h3 id="tcpip"><a class="markdownIt-Anchor" href="#tcpip">#</a> TCP/IP</h3>
+<blockquote>
+<p>两台计算机之间的通讯是通过 TCP/IP 协议在因特网上进行的</p>
 </blockquote>
-<p>TCP：Transmission Control Protocol 传输控制协议, 用于应用程序之间的通信<br>IP：Internet Protocol 网际协议, 用于计算机之间的通信</p>
-<h4 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h4><blockquote>
-<p>因为网络具有不稳定性,要保证通信正常</p>
+<p>TCP：Transmission Control Protocol 传输控制协议，用于应用程序之间的通信<br>
+ IP：Internet Protocol 网际协议，用于计算机之间的通信</p>
+<h4 id="分层"><a class="markdownIt-Anchor" href="#分层">#</a> 分层</h4>
+<blockquote>
+<p>因为网络具有不稳定性，要保证通信正常</p>
 </blockquote>
-<p><img src="https://z3.ax1x.com/2021/10/28/5qccSf.png" alt="5qccSf.png"></p>
-<h4 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h4><blockquote>
+<p><img data-src="https://z3.ax1x.com/2021/10/28/5qccSf.png" alt="5qccSf.png"></p>
+<h4 id="tcp连接"><a class="markdownIt-Anchor" href="#tcp连接">#</a> TCP 连接</h4>
+<blockquote>
 <p>通信双方建立确认「可以通信」，不会将对方的消息丢弃，即为「建立连接」</p>
 </blockquote>
-<h5 id="连接建立"><a href="#连接建立" class="headerlink" title="连接建立"></a>连接建立</h5><p><img src="https://z3.ax1x.com/2021/10/28/5LRCDS.png" alt="5LRCDS.png"></p>
-<h5 id="连接关闭"><a href="#连接关闭" class="headerlink" title="连接关闭"></a>连接关闭</h5><p><img src="https://z3.ax1x.com/2021/10/28/5LRGCR.png" alt="5LRGCR.png"></p>
-<h5 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h5><blockquote>
+<h5 id="连接建立"><a class="markdownIt-Anchor" href="#连接建立">#</a> 连接建立</h5>
+<p><img data-src="https://z3.ax1x.com/2021/10/28/5LRCDS.png" alt="5LRCDS.png"></p>
+<h5 id="连接关闭"><a class="markdownIt-Anchor" href="#连接关闭">#</a> 连接关闭</h5>
+<p><img data-src="https://z3.ax1x.com/2021/10/28/5LRGCR.png" alt="5LRGCR.png"></p>
+<h5 id="长连接"><a class="markdownIt-Anchor" href="#长连接">#</a> 长连接</h5>
+<blockquote>
 <p>强制不让连接的通道关闭</p>
 </blockquote>
 <ul>
-<li>TCP短连接<ul>
-<li>client向server发起连接请求，server接到请求，然后双方建立连接。client向server 发送消息，server回应client，然后一次读写就完成了</li>
-<li>一般的server不会回复完client后立即关闭连接的, 所以一般是client先发起close操作</li>
+<li>TCP 短连接
+<ul>
+<li>client 向 server 发起连接请求，server 接到请求，然后双方建立连接。client 向 server 发送消息，server 回应 client，然后一次读写就完成了</li>
+<li>一般的 server 不会回复完 client 后立即关闭连接的，所以一般是 client 先发起 close 操作</li>
 </ul>
 </li>
-<li>TCP长连接<ul>
-<li>client向server发起连接，server接受client连接，双方建立连接。Client与server完成一次读写之后，它们之间的连接并不会主动关闭，后续的读写操作会继续使用这个连接</li>
+<li>TCP 长连接
+<ul>
+<li>client 向 server 发起连接，server 接受 client 连接，双方建立连接。Client 与 server 完成一次读写之后，它们之间的连接并不会主动关闭，后续的读写操作会继续使用这个连接</li>
 </ul>
 </li>
 </ul>
-<p>怎样实现长连接？<br>⼼跳。即在一定间隔时间内，使⽤TCP连接发送超短无意义消息来让网关不能将⾃己定义为「空闲连接」，从而防止网关将⾃己的连接关闭</p>
-<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><blockquote>
-<p>HTTP over SSL的简称，即工作在SSL(或TLS)上的HTTP。是加密通信的HTTP</p>
+<p>怎样实现长连接？<br>
+⼼跳。即在一定间隔时间内，使⽤ TCP 连接发送超短无意义消息来让网关不能将⾃己定义为「空闲连接」，从而防止网关将⾃己的连接关闭</p>
+<h3 id="https"><a class="markdownIt-Anchor" href="#https">#</a> HTTPS</h3>
+<blockquote>
+<p>HTTP over SSL 的简称，即工作在 SSL (或 TLS) 上的 HTTP。是加密通信的 HTTP</p>
 </blockquote>
-<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><blockquote>
+<h4 id="工作原理"><a class="markdownIt-Anchor" href="#工作原理">#</a> 工作原理</h4>
+<blockquote>
 <p>在客户端和服务器之间协商出一套对称密钥，每次发送消息之前将内容加密，收到之后解密，达到内容的加密传输</p>
 </blockquote>
-<p>为什么不直接用非对称加密?<br>非对称加密由于使用了复杂的数学原理，因此计算相当复杂，如果完全使用非对称加密来加密通信内容，会严重影响网络通信的性能</p>
-<h4 id="HTTPS流程"><a href="#HTTPS流程" class="headerlink" title="HTTPS流程"></a>HTTPS流程</h4><ol>
-<li>客户端请求建立TLS连接</li>
+<p>为什么不直接用非对称加密？<br>
+ 非对称加密由于使用了复杂的数学原理，因此计算相当复杂，如果完全使用非对称加密来加密通信内容，会严重影响网络通信的性能</p>
+<h4 id="https流程"><a class="markdownIt-Anchor" href="#https流程">#</a> HTTPS 流程</h4>
+<ol>
+<li>客户端请求建立 TLS 连接</li>
 <li>服务器发回证书</li>
 <li>客户端验证服务器证书</li>
 <li>客户端信任服务器后，和服务器协商对称密钥</li>
 <li>使用对称密钥开始通信</li>
 </ol>
-<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a890d952461">登录授权、TCP/IP、HTTPS和代理</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/kimlllll/article/details/103041225">编码、加密、Hash、TCP/IP、HTTPS</a><br><a target="_blank" rel="noopener" href="https://github.com/hsicen/HencoderPlus/blob/master/note/04-TCPIP%E5%92%8CHTTPS.md">HencoderPlus/04-TCPIP和HTTPS</a></p>
+<h2 id="about"><a class="markdownIt-Anchor" href="#about">#</a> About</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8yYTg5MGQ5NTI0NjE=">登录授权、TCP/IP、HTTPS 和代理</span><br>
+<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tpbWxsbGxsL2FydGljbGUvZGV0YWlscy8xMDMwNDEyMjU=">编码、加密、Hash、TCP/IP、HTTPS</span><br>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hzaWNlbi9IZW5jb2RlclBsdXMvYmxvYi9tYXN0ZXIvbm90ZS8wNC1UQ1BJUCVFNSU5MiU4Q0hUVFBTLm1k">HencoderPlus/04-TCPIP 和 HTTPS</span></p>
+
+      <div class="tags">
+          <a href="/blog/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="ic i-tag"></i> 课程学习</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-31 21:30:32" itemprop="dateModified" datetime="2021-10-31T21:30:32+08:00">2021-10-31</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/blog/images/wechatpay.png" alt="Onion99 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/alipay.png" alt="Onion99 Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/paypal.png" alt="Onion99 PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Onion99 <i class="ic i-at"><em>@</em></i>Stay hungry , Stay foolish
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/" title="课程-登陆与授权">http://onion66.gitee.io/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/blog/2021/10/31/15jfHwStpctgCeeA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="源码学习-Glide">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>源码学习-Glide</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="课程-编码与加密">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>课程-编码与加密</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/blog/tags/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/" rel="tag"># 课程学习</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="prev" title="源码学习-Glide">
-      <i class="fa fa-chevron-left"></i> 源码学习-Glide
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="next" title="课程-编码与加密">
-      课程-编码与加密 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83-tcpip-https%E5%92%8C%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> 登录授权、TCP&#x2F;IP、HTTPS 和代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E4%B8%AD%E6%8E%88%E6%9D%83%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> HTTP 中授权方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie"><span class="toc-number">1.1.1.</span> <span class="toc-text"> Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#cookie%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> Cookie 工作机制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#authorization-header"><span class="toc-number">1.1.2.</span> <span class="toc-text"> Authorization Header</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#basic"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> Basic</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bearer"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> Bearer</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcpip"><span class="toc-number">1.2.</span> <span class="toc-text"> TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B1%82"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 分层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.2.</span> <span class="toc-text"> TCP 连接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 连接建立</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%85%B3%E9%97%AD"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 连接关闭</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.2.3.</span> <span class="toc-text"> 长连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https"><span class="toc-number">1.3.</span> <span class="toc-text"> HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#https%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text"> HTTPS 流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#about"><span class="toc-number">2.</span> <span class="toc-text"> About</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="bookmark" title="安卓优化-启动优化">安卓优化-启动优化</a></li><li><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="bookmark" title="安卓优化-内存优化">安卓优化-内存优化</a></li><li><a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="bookmark" title="安卓优化-卡顿优化">安卓优化-卡顿优化</a></li><li><a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="bookmark" title="安卓优化-包体积">安卓优化-包体积</a></li><li><a href="/blog/2021/10/31/6JN9JxpnRSjVeWry/" rel="bookmark" title="安卓优化-线程优化">安卓优化-线程优化</a></li><li><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="bookmark" title="安卓优化-布局优化">安卓优化-布局优化</a></li><li><a href="/blog/2021/10/31/4SVquTFcR8Wyv4GV/" rel="bookmark" title="源码学习-OkHttp">源码学习-OkHttp</a></li><li><a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="bookmark" title="源码学习-Glide">源码学习-Glide</a></li><li class="active"><a href="/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/" rel="bookmark" title="课程-登陆与授权">课程-登陆与授权</a></li><li><a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="bookmark" title="课程-编码与加密">课程-编码与加密</a></li><li><a href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/" rel="bookmark" title="自定义View(1) - 基本绘制">自定义View(1) - 基本绘制</a></li><li><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" rel="bookmark" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></li><li><a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" rel="bookmark" title="自定义View(3) - Text相关">自定义View(3) - Text相关</a></li><li><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" rel="bookmark" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></li><li><a href="/blog/2021/11/03/SA664RldODNgeCrz/" rel="bookmark" title="自定义View(5) - 动画">自定义View(5) - 动画</a></li><li><a href="/blog/2021/11/03/Qj9f1VMJJowv5Lfb/" rel="bookmark" title="自定义View(6) - measure 测量过程">自定义View(6) - measure 测量过程</a></li><li><a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" rel="bookmark" title="自定义View(7) - layout 布局过程">自定义View(7) - layout 布局过程</a></li><li><a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" rel="bookmark" title="自定义View(8) - draw 绘制过程">自定义View(8) - draw 绘制过程</a></li><li><a href="/blog/2021/11/03/z3aQsRLVolBbFVsl/" rel="bookmark" title="自定义View(9) - 事件分发">自定义View(9) - 事件分发</a></li><li><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" rel="bookmark" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></li><li><a href="/blog/2021/11/03/cNDSpE5p4avS2tOi/" rel="bookmark" title="自定义View(11) - 滚动速度和滚动计算">自定义View(11) - 滚动速度和滚动计算</a></li><li><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" rel="bookmark" title="Java并发(4) - CAS">Java并发(4) - CAS</a></li><li><a href="/blog/2021/11/29/hu0861X6Ltf32fYt/" rel="bookmark" title="源码学习-DataBinding">源码学习-DataBinding</a></li><li><a href="/blog/2021/11/29/9S5c1rplpdSAbIxR/" rel="bookmark" title="源码学习-ViewModel">源码学习-ViewModel</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Onion99"
+      data-src="/blog/images/avatar.jpg">
+  <p class="name" itemprop="name">Onion99</p>
+  <div class="description" itemprop="description">巴拉巴拉</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/blog/archives/">
+        <span class="count">32</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/blog/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/blog/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/blog/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83%E3%80%81TCP-IP%E3%80%81HTTPS%E5%92%8C%E4%BB%A3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">登录授权、TCP&#x2F;IP、HTTPS和代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E4%B8%AD%E6%8E%88%E6%9D%83%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP中授权方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookie"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Cookie工作机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Authorization-Header"><span class="nav-number">1.1.2.</span> <span class="nav-text">Authorization Header</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Basic"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Basic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bearer"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Bearer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP"><span class="nav-number">1.2.</span> <span class="nav-text">TCP&#x2F;IP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B1%82"><span class="nav-number">1.2.1.</span> <span class="nav-text">分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP连接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">连接建立</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%85%B3%E9%97%AD"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">连接关闭</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">长连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS"><span class="nav-number">1.3.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS%E6%B5%81%E7%A8%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">HTTPS流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About"><span class="nav-number">2.</span> <span class="nav-text">About</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Onion99</p>
-  <div class="site-description" itemprop="description">巴拉巴拉</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
-        
-          <span class="site-state-item-count">32</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Onion99</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+
+    <span><a href="/blog/2021/11/07/MpHTUCP7P1OgtydO/" title="Java并发(7) - ThreadLocal">Java并发(7) - ThreadLocal</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/Qj9f1VMJJowv5Lfb/" title="自定义View(6) - measure 测量过程">自定义View(6) - measure 测量过程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" title="安卓优化-布局优化">安卓优化-布局优化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/cNDSpE5p4avS2tOi/" title="自定义View(11) - 滚动速度和滚动计算">自定义View(11) - 滚动速度和滚动计算</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/SA664RldODNgeCrz/" title="自定义View(5) - 动画">自定义View(5) - 动画</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/07/FEETAEwJ336KYqim/" title="Java并发(2) - synchronize">Java并发(2) - synchronize</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" title="课程-编码与加密">课程-编码与加密</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/nOSSxZ51uxl6hUq8/" title="Java 理论">Java 理论</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/29/4diQitvVwGPnicN5/" title="源码学习-HashMap">源码学习-HashMap</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Onion99 @ Yume Shoka</span>
   </div>
-
-        
-
-
-
-
-
-
-
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/10/31/Qqq7oSBqBc2Zgbrx/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/muse.js"></script>
-
-
-<script src="/blog/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/blog/js/app.js?v=0.2.5"></script>
 
 
 
-  
-
-  
 
 <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

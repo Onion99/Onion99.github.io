@@ -1,435 +1,544 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/blog/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/atom.xml" />
+<link rel="alternate" type="application/json" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"onion66.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗   CPU：中央处理器（CPU，central processing unit）作为计算机系统的运算和控制核心，是信息处理、程序运行的最终执行单元 GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心,做图像和图形相关运">
-<meta property="og:type" content="article">
-<meta property="og:title" content="安卓优化-卡顿优化">
-<meta property="og:url" content="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/index.html">
-<meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗   CPU：中央处理器（CPU，central processing unit）作为计算机系统的运算和控制核心，是信息处理、程序运行的最终执行单元 GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心,做图像和图形相关运">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-31T12:47:12.000Z">
-<meta property="article:modified_time" content="2021-10-31T12:46:51.000Z">
-<meta property="article:author" content="Onion99">
-<meta property="article:tag" content="性能优化">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/blog/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="性能优化" />
+
 
 <link rel="canonical" href="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>安卓优化-卡顿优化 | Stay hungry , Stay foolish</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+安卓优化-卡顿优化 - Android |
+Yume Shoka = Stay hungry , Stay foolish = 一只巴甫洛夫的狗</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/blog/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">安卓优化-卡顿优化
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-31 20:47:12">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-31T20:47:12+08:00">2021-10-31</time>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/blog/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
           
-
-          <div class="content post posts-expand">
-            
-
+  <div class="article wrap">
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/">
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/blog/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/blog/categories/Android/" itemprop="item" rel="index" title="In Android"><span itemprop="name">Android</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          安卓优化-卡顿优化
-        </h1>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/blog/images/avatar.jpg">
+    <meta itemprop="name" content="Onion99">
+    <meta itemprop="description" content="一只巴甫洛夫的狗, 巴拉巴拉">
+  </span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Stay hungry , Stay foolish">
+  </span>
 
-              <time title="Created: 2021-10-31 20:47:12 / Modified: 20:46:51" itemprop="dateCreated datePublished" datetime="2021-10-31T20:47:12+08:00">2021-10-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
+  <div class="body md" itemprop="articleBody">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <blockquote>
-<p>卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗</p>
+    <blockquote>
+<p>卡顿产生的根本原因就是 CPU 和 GPU 没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗</p>
 </blockquote>
 <ul>
 <li>CPU：中央处理器（CPU，central processing unit）作为计算机系统的运算和控制核心，是信息处理、程序运行的最终执行单元</li>
-<li>GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心,做图像和图形相关运算工作的微处理器</li>
+<li>GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心，做图像和图形相关运算工作的微处理器</li>
 </ul>
-<h3 id="卡顿检测"><a href="#卡顿检测" class="headerlink" title="卡顿检测"></a>卡顿检测</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lmj623565791/article/details/58626355">Android UI性能优化 检测应用中的UI卡顿</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9e8f88eac490">Android性能优化-检测App卡顿 - 简书 (jianshu.com)</a></p>
+<h3 id="卡顿检测"><a class="markdownIt-Anchor" href="#卡顿检测">#</a> 卡顿检测</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xtajYyMzU2NTc5MS9hcnRpY2xlL2RldGFpbHMvNTg2MjYzNTU=">Android UI 性能优化 检测应用中的 UI 卡顿</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC85ZThmODhlYWM0OTA=">Android 性能优化 - 检测 App 卡顿 - 简书 (jianshu.com)</span></p>
 <span id="more"></span>
-<h4 id="用UI线程Looper打印的日志"><a href="#用UI线程Looper打印的日志" class="headerlink" title="用UI线程Looper打印的日志"></a>用UI线程Looper打印的日志</h4><p>开源工具:<br><a target="_blank" rel="noopener" href="https://github.com/Kyson/AndroidGodEye">Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/markzhai/AndroidPerformanceMonitor">markzhai/AndroidPerformanceMonitor: A transparent ui-block detection library for Android. (known as BlockCanary) </a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/BzCoder/BlockCanaryCompat">BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配Android O 以上系统 (github.com)</a></p>
-<h4 id="Choreographer"><a href="#Choreographer" class="headerlink" title="Choreographer"></a>Choreographer</h4><p>Android系统每隔16ms发出VSYNC信号，触发对UI进行渲染。开发者可以使用Choreographer#postFrameCallback设置自己的callback与Choreographer交互，你设置的FrameCallCack（doFrame方法）会在下一个frame被渲染时触发。理论上来说两次回调的时间周期应该在16ms，如果超过了16ms我们则认为发生了卡顿，我们主要就是利用两次回调间的时间周期来判断</p>
-<p>开源工具:<br><a target="_blank" rel="noopener" href="https://github.com/wasabeef/Takt">wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/friendlyrobotnyc/TinyDancer">friendlyrobotnyc/TinyDancer: An android library for displaying fps from the choreographer and percentage of time with two or more frames dropped </a></p>
-<h3 id="ANR分析"><a href="#ANR分析" class="headerlink" title="ANR分析"></a>ANR分析</h3><blockquote>
+<h4 id="用ui线程looper打印的日志"><a class="markdownIt-Anchor" href="#用ui线程looper打印的日志">#</a> 用 UI 线程 Looper 打印的日志</h4>
+<p>开源工具:<br>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0t5c29uL0FuZHJvaWRHb2RFeWU=">Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hcmt6aGFpL0FuZHJvaWRQZXJmb3JtYW5jZU1vbml0b3I=">markzhai/AndroidPerformanceMonitor: A transparent ui-block detection library for Android. (known as BlockCanary) </span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0J6Q29kZXIvQmxvY2tDYW5hcnlDb21wYXQ=">BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配 Android O 以上系统 (github.com)</span></p>
+<h4 id="choreographer"><a class="markdownIt-Anchor" href="#choreographer">#</a> Choreographer</h4>
+<p>Android 系统每隔 16ms 发出 VSYNC 信号，触发对 UI 进行渲染。开发者可以使用 Choreographer#postFrameCallback 设置自己的 callback 与 Choreographer 交互，你设置的 FrameCallCack（doFrame 方法）会在下一个 frame 被渲染时触发。理论上来说两次回调的时间周期应该在 16ms，如果超过了 16ms 我们则认为发生了卡顿，我们主要就是利用两次回调间的时间周期来判断</p>
+<p>开源工具:<br>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dhc2FiZWVmL1Rha3Q=">wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZyaWVuZGx5cm9ib3RueWMvVGlueURhbmNlcg==">friendlyrobotnyc/TinyDancer: An android library for displaying fps from the choreographer and percentage of time with two or more frames dropped </span></p>
+<h3 id="anr分析"><a class="markdownIt-Anchor" href="#anr分析">#</a> ANR 分析</h3>
+<blockquote>
 <p>Application Not Responding，也就是应用程序无响应</p>
 </blockquote>
-<h4 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h4><ul>
-<li>  InputDispatching Timeout：5秒内无法响应屏幕触摸事件或键盘输入事件</li>
-<li>  BroadcastQueue Timeout ：在执行前台广播（BroadcastReceiver）的<code>onReceive()</code>函数时10秒没有处理完成，后台为60秒</li>
-<li>  Service Timeout：前台服务20秒内，后台服务在200秒内没有执行完毕</li>
-<li>  ContentProvider Timeout：ContentProvider的publish在10s内没进行完</li>
-<li>其他<ul>
-<li> 主线程阻塞或主线程数据读取 </li>
-<li> CPU满负荷，I/O阻塞</li>
-<li> 内存不足</li>
+<h4 id="产生原因"><a class="markdownIt-Anchor" href="#产生原因">#</a> 产生原因</h4>
+<ul>
+<li>InputDispatching Timeout：5 秒内无法响应屏幕触摸事件或键盘输入事件</li>
+<li>BroadcastQueue Timeout ：在执行前台广播（BroadcastReceiver）的 <code>onReceive()</code>  函数时 10 秒没有处理完成，后台为 60 秒</li>
+<li>Service Timeout：前台服务 20 秒内，后台服务在 200 秒内没有执行完毕</li>
+<li>ContentProvider Timeout：ContentProvider 的 publish 在 10s 内没进行完</li>
+<li>其他
+<ul>
+<li>主线程阻塞或主线程数据读取</li>
+<li>CPU 满负荷，I/O 阻塞</li>
+<li>内存不足</li>
 </ul>
 </li>
 </ul>
 <p>分析:</p>
 <ul>
-<li>log上的anr reason</li>
-<li>adb 导出ANR日志<ul>
+<li>log 上的 anr reason</li>
+<li>adb 导出 ANR 日志
+<ul>
 <li><code>adb pull /data/anr/traces.txt</code></li>
 </ul>
 </li>
 </ul>
 
+      <div class="tags">
+          <a href="/blog/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"><i class="ic i-tag"></i> 性能优化</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-31 20:46:51" itemprop="dateModified" datetime="2021-10-31T20:46:51+08:00">2021-10-31</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/blog/images/wechatpay.png" alt="Onion99 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/alipay.png" alt="Onion99 Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/paypal.png" alt="Onion99 PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Onion99 <i class="ic i-at"><em>@</em></i>Stay hungry , Stay foolish
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/" title="安卓优化-卡顿优化">http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew28b65j20zk0m8hdt.jpg" title="安卓优化-内存优化">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>安卓优化-内存优化</h3>
+  </a>
+
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="安卓优化-包体积">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>安卓优化-包体积</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/blog/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"># 性能优化</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="prev" title="安卓优化-内存优化">
-      <i class="fa fa-chevron-left"></i> 安卓优化-内存优化
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="next" title="安卓优化-包体积">
-      安卓优化-包体积 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E9%A1%BF%E6%A3%80%E6%B5%8B"><span class="toc-number">1.</span> <span class="toc-text"> 卡顿检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8ui%E7%BA%BF%E7%A8%8Blooper%E6%89%93%E5%8D%B0%E7%9A%84%E6%97%A5%E5%BF%97"><span class="toc-number">1.1.</span> <span class="toc-text"> 用 UI 线程 Looper 打印的日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#choreographer"><span class="toc-number">1.2.</span> <span class="toc-text"> Choreographer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#anr%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> ANR 分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.1.</span> <span class="toc-text"> 产生原因</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="bookmark" title="安卓优化-启动优化">安卓优化-启动优化</a></li><li><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="bookmark" title="安卓优化-内存优化">安卓优化-内存优化</a></li><li class="active"><a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="bookmark" title="安卓优化-卡顿优化">安卓优化-卡顿优化</a></li><li><a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="bookmark" title="安卓优化-包体积">安卓优化-包体积</a></li><li><a href="/blog/2021/10/31/6JN9JxpnRSjVeWry/" rel="bookmark" title="安卓优化-线程优化">安卓优化-线程优化</a></li><li><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="bookmark" title="安卓优化-布局优化">安卓优化-布局优化</a></li><li><a href="/blog/2021/10/31/4SVquTFcR8Wyv4GV/" rel="bookmark" title="源码学习-OkHttp">源码学习-OkHttp</a></li><li><a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="bookmark" title="源码学习-Glide">源码学习-Glide</a></li><li><a href="/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/" rel="bookmark" title="课程-登陆与授权">课程-登陆与授权</a></li><li><a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="bookmark" title="课程-编码与加密">课程-编码与加密</a></li><li><a href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/" rel="bookmark" title="自定义View(1) - 基本绘制">自定义View(1) - 基本绘制</a></li><li><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" rel="bookmark" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></li><li><a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" rel="bookmark" title="自定义View(3) - Text相关">自定义View(3) - Text相关</a></li><li><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" rel="bookmark" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></li><li><a href="/blog/2021/11/03/SA664RldODNgeCrz/" rel="bookmark" title="自定义View(5) - 动画">自定义View(5) - 动画</a></li><li><a href="/blog/2021/11/03/Qj9f1VMJJowv5Lfb/" rel="bookmark" title="自定义View(6) - measure 测量过程">自定义View(6) - measure 测量过程</a></li><li><a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" rel="bookmark" title="自定义View(7) - layout 布局过程">自定义View(7) - layout 布局过程</a></li><li><a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" rel="bookmark" title="自定义View(8) - draw 绘制过程">自定义View(8) - draw 绘制过程</a></li><li><a href="/blog/2021/11/03/z3aQsRLVolBbFVsl/" rel="bookmark" title="自定义View(9) - 事件分发">自定义View(9) - 事件分发</a></li><li><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" rel="bookmark" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></li><li><a href="/blog/2021/11/03/cNDSpE5p4avS2tOi/" rel="bookmark" title="自定义View(11) - 滚动速度和滚动计算">自定义View(11) - 滚动速度和滚动计算</a></li><li><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" rel="bookmark" title="Java并发(4) - CAS">Java并发(4) - CAS</a></li><li><a href="/blog/2021/11/29/hu0861X6Ltf32fYt/" rel="bookmark" title="源码学习-DataBinding">源码学习-DataBinding</a></li><li><a href="/blog/2021/11/29/9S5c1rplpdSAbIxR/" rel="bookmark" title="源码学习-ViewModel">源码学习-ViewModel</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Onion99"
+      data-src="/blog/images/avatar.jpg">
+  <p class="name" itemprop="name">Onion99</p>
+  <div class="description" itemprop="description">巴拉巴拉</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/blog/archives/">
+        <span class="count">32</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/blog/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/blog/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/blog/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E9%A1%BF%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">卡顿检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8UI%E7%BA%BF%E7%A8%8BLooper%E6%89%93%E5%8D%B0%E7%9A%84%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.</span> <span class="nav-text">用UI线程Looper打印的日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Choreographer"><span class="nav-number">1.2.</span> <span class="nav-text">Choreographer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANR%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">ANR分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.1.</span> <span class="nav-text">产生原因</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Onion99</p>
-  <div class="site-description" itemprop="description">巴拉巴拉</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
-        
-          <span class="site-state-item-count">32</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Onion99</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+
+    <span><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" title="安卓优化-内存优化">安卓优化-内存优化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/29/9S5c1rplpdSAbIxR/" title="源码学习-ViewModel">源码学习-ViewModel</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/07/MpHTUCP7P1OgtydO/" title="Java并发(7) - ThreadLocal">Java并发(7) - ThreadLocal</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/07/HcJi8WdXZ8E3DBWS/" title="Java并发(3) - Lock">Java并发(3) - Lock</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" title="自定义View(3) - Text相关">自定义View(3) - Text相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" title="安卓优化-布局优化">安卓优化-布局优化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/4SVquTFcR8Wyv4GV/" title="源码学习-OkHttp">源码学习-OkHttp</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Onion99 @ Yume Shoka</span>
   </div>
-
-        
-
-
-
-
-
-
-
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/10/31/UYa5EEntsM9sKTYz/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/muse.js"></script>
-
-
-<script src="/blog/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/blog/js/app.js?v=0.2.5"></script>
 
 
 
-  
-
-  
 
 <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

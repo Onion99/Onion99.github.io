@@ -1,432 +1,538 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/blog/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/atom.xml" />
+<link rel="alternate" type="application/json" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"onion66.gitee.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="内存信息查看App内存优化实践：一步一步做内存分析与优化 查看每个App进程可以分配到的最大内存 1adb shell getprop | grep dalvik.vm.heapsize App的内存使用情况概览 1adb shell dumpsys meminfo 包名  优化工具 CPU Profiler Memory Analyzer（MAT） LeakCannary">
-<meta property="og:type" content="article">
-<meta property="og:title" content="安卓优化-内存优化">
-<meta property="og:url" content="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/index.html">
-<meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="内存信息查看App内存优化实践：一步一步做内存分析与优化 查看每个App进程可以分配到的最大内存 1adb shell getprop | grep dalvik.vm.heapsize App的内存使用情况概览 1adb shell dumpsys meminfo 包名  优化工具 CPU Profiler Memory Analyzer（MAT） LeakCannary">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-31T12:46:21.000Z">
-<meta property="article:modified_time" content="2021-10-31T12:45:36.000Z">
-<meta property="article:author" content="Onion99">
-<meta property="article:tag" content="性能优化">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/blog/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="性能优化" />
+
 
 <link rel="canonical" href="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
 
-  <title>安卓优化-内存优化 | Stay hungry , Stay foolish</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+安卓优化-内存优化 - Android |
+Yume Shoka = Stay hungry , Stay foolish = 一只巴甫洛夫的狗</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/blog/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">安卓优化-内存优化
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-31 20:46:21">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-31T20:46:21+08:00">2021-10-31</time>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/blog/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
           
-
-          <div class="content post posts-expand">
-            
-
+  <div class="article wrap">
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/">
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/blog/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/blog/categories/Android/" itemprop="item" rel="index" title="In Android"><span itemprop="name">Android</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Onion99">
-      <meta itemprop="description" content="巴拉巴拉">
-    </span>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay hungry , Stay foolish">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          安卓优化-内存优化
-        </h1>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/blog/images/avatar.jpg">
+    <meta itemprop="name" content="Onion99">
+    <meta itemprop="description" content="一只巴甫洛夫的狗, 巴拉巴拉">
+  </span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Stay hungry , Stay foolish">
+  </span>
 
-              <time title="Created: 2021-10-31 20:46:21 / Modified: 20:45:36" itemprop="dateCreated datePublished" datetime="2021-10-31T20:46:21+08:00">2021-10-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
+  <div class="body md" itemprop="articleBody">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h3 id="内存信息查看"><a href="#内存信息查看" class="headerlink" title="内存信息查看"></a>内存信息查看</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/28b9cd87e667">App内存优化实践：一步一步做内存分析与优化</a></p>
-<p>查看每个App进程可以分配到的最大内存</p>
+    <h3 id="内存信息查看"><a class="markdownIt-Anchor" href="#内存信息查看">#</a> 内存信息查看</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8yOGI5Y2Q4N2U2Njc=">App 内存优化实践：一步一步做内存分析与优化</span></p>
+<p>查看每个 App 进程可以分配到的最大内存</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell getprop | grep dalvik.vm.heapsize</span><br></pre></td></tr></table></figure>
-<p>App的内存使用情况概览</p>
+<p>App 的内存使用情况概览</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo 包名</span><br></pre></td></tr></table></figure>
-
-<h3 id="优化工具"><a href="#优化工具" class="headerlink" title="优化工具"></a>优化工具</h3><ul>
+<h3 id="优化工具"><a class="markdownIt-Anchor" href="#优化工具">#</a> 优化工具</h3>
+<ul>
 <li>CPU Profiler</li>
 <li>Memory Analyzer（MAT）</li>
 <li>LeakCannary</li>
 </ul>
 <span id="more"></span>
-<h3 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangjie1990/p/11327112.html">Android 如何优化APP内存 </a></p>
+<h3 id="优化方向"><a class="markdownIt-Anchor" href="#优化方向">#</a> 优化方向</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd2FuZ2ppZTE5OTAvcC8xMTMyNzExMi5odG1s">Android 如何优化 APP 内存 </span></p>
 <ul>
-<li>谨慎使用Services<ul>
-<li>启动一个Service时， 系统需要始终保持运行该Service的进程,该Service占用的RAM对其他进程不共享</li>
-<li>避免使用持久性服务,如<code>JobScheduler</code>之类</li>
+<li>谨慎使用 Services
+<ul>
+<li>启动一个 Service 时， 系统需要始终保持运行该 Service 的进程，该 Service 占用的 RAM 对其他进程不共享</li>
+<li>避免使用持久性服务，如 <code>JobScheduler</code>  之类</li>
 </ul>
 </li>
-<li>使用经过优化的多数据容器<ul>
-<li>如SparseArray，SparseBooleanArray和LongSparseArray</li>
+<li>使用经过优化的多数据容器
+<ul>
+<li>如 SparseArray，SparseBooleanArray 和 LongSparseArray</li>
 <li>如有必要，您可以随时切换到原始数组以获得精简的数据结构</li>
 </ul>
 </li>
-<li>使用nano protobufs进行序列化数据</li>
-<li>避免内存泄漏<ul>
-<li>内存泄露会导致大量的垃圾收集事件发生,从而导致系统执行其他内容(如渲染或者传输)的时间变少 </li>
+<li>使用 nano protobufs 进行序列化数据</li>
+<li>避免内存泄漏
+<ul>
+<li>内存泄露会导致大量的垃圾收集事件发生，从而导致系统执行其他内容 (如渲染或者传输) 的时间变少</li>
 </ul>
 </li>
-<li>移除内存密集型资源，以及lib库<ul>
-<li>减小APK的大小</li>
-<li>请使用不进行反射扫描的依赖注入库(Dagger2),频繁的反射需要更多的CPU和内存消耗</li>
-<li>谨慎使用外部库,外部库可能对同一个功能有不一样的实现,这可能导致预期之外的事情 </li>
+<li>移除内存密集型资源，以及 lib 库
+<ul>
+<li>减小 APK 的大小</li>
+<li>请使用不进行反射扫描的依赖注入库 (Dagger2), 频繁的反射需要更多的 CPU 和内存消耗</li>
+<li>谨慎使用外部库，外部库可能对同一个功能有不一样的实现，这可能导致预期之外的事情</li>
 </ul>
 </li>
 </ul>
 
+      <div class="tags">
+          <a href="/blog/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"><i class="ic i-tag"></i> 性能优化</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-31 20:45:36" itemprop="dateModified" datetime="2021-10-31T20:45:36+08:00">2021-10-31</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/blog/images/wechatpay.png" alt="Onion99 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/alipay.png" alt="Onion99 Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/blog/images/paypal.png" alt="Onion99 PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Onion99 <i class="ic i-at"><em>@</em></i>Stay hungry , Stay foolish
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/" title="安卓优化-内存优化">http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewr8iypj20zk0m8b29.jpg" title="安卓优化-启动优化">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>安卓优化-启动优化</h3>
+  </a>
+
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="安卓优化-卡顿优化">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Android</span>
+  <h3>安卓优化-卡顿优化</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/blog/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"># 性能优化</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="prev" title="安卓优化-启动优化">
-      <i class="fa fa-chevron-left"></i> 安卓优化-启动优化
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="next" title="安卓优化-卡顿优化">
-      安卓优化-卡顿优化 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.</span> <span class="toc-text"> 内存信息查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text"> 优化工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">3.</span> <span class="toc-text"> 优化方向</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="bookmark" title="安卓优化-启动优化">安卓优化-启动优化</a></li><li class="active"><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="bookmark" title="安卓优化-内存优化">安卓优化-内存优化</a></li><li><a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="bookmark" title="安卓优化-卡顿优化">安卓优化-卡顿优化</a></li><li><a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="bookmark" title="安卓优化-包体积">安卓优化-包体积</a></li><li><a href="/blog/2021/10/31/6JN9JxpnRSjVeWry/" rel="bookmark" title="安卓优化-线程优化">安卓优化-线程优化</a></li><li><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="bookmark" title="安卓优化-布局优化">安卓优化-布局优化</a></li><li><a href="/blog/2021/10/31/4SVquTFcR8Wyv4GV/" rel="bookmark" title="源码学习-OkHttp">源码学习-OkHttp</a></li><li><a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="bookmark" title="源码学习-Glide">源码学习-Glide</a></li><li><a href="/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/" rel="bookmark" title="课程-登陆与授权">课程-登陆与授权</a></li><li><a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="bookmark" title="课程-编码与加密">课程-编码与加密</a></li><li><a href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/" rel="bookmark" title="自定义View(1) - 基本绘制">自定义View(1) - 基本绘制</a></li><li><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" rel="bookmark" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></li><li><a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" rel="bookmark" title="自定义View(3) - Text相关">自定义View(3) - Text相关</a></li><li><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" rel="bookmark" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></li><li><a href="/blog/2021/11/03/SA664RldODNgeCrz/" rel="bookmark" title="自定义View(5) - 动画">自定义View(5) - 动画</a></li><li><a href="/blog/2021/11/03/Qj9f1VMJJowv5Lfb/" rel="bookmark" title="自定义View(6) - measure 测量过程">自定义View(6) - measure 测量过程</a></li><li><a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" rel="bookmark" title="自定义View(7) - layout 布局过程">自定义View(7) - layout 布局过程</a></li><li><a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" rel="bookmark" title="自定义View(8) - draw 绘制过程">自定义View(8) - draw 绘制过程</a></li><li><a href="/blog/2021/11/03/z3aQsRLVolBbFVsl/" rel="bookmark" title="自定义View(9) - 事件分发">自定义View(9) - 事件分发</a></li><li><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" rel="bookmark" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></li><li><a href="/blog/2021/11/03/cNDSpE5p4avS2tOi/" rel="bookmark" title="自定义View(11) - 滚动速度和滚动计算">自定义View(11) - 滚动速度和滚动计算</a></li><li><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" rel="bookmark" title="Java并发(4) - CAS">Java并发(4) - CAS</a></li><li><a href="/blog/2021/11/29/hu0861X6Ltf32fYt/" rel="bookmark" title="源码学习-DataBinding">源码学习-DataBinding</a></li><li><a href="/blog/2021/11/29/9S5c1rplpdSAbIxR/" rel="bookmark" title="源码学习-ViewModel">源码学习-ViewModel</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Onion99"
+      data-src="/blog/images/avatar.jpg">
+  <p class="name" itemprop="name">Onion99</p>
+  <div class="description" itemprop="description">巴拉巴拉</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/blog/archives/">
+        <span class="count">32</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/blog/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/blog/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/blog/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"><span class="nav-number">1.</span> <span class="nav-text">内存信息查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">优化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="nav-number">3.</span> <span class="nav-text">优化方向</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Onion99</p>
-  <div class="site-description" itemprop="description">巴拉巴拉</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
-        
-          <span class="site-state-item-count">32</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Onion99</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+
+    <span><a href="/blog/2021/11/07/WkWqwHwU8wgNL4cd/" title="Java并发(5) - 线程协作">Java并发(5) - 线程协作</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/29/hu0861X6Ltf32fYt/" title="源码学习-DataBinding">源码学习-DataBinding</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" title="安卓优化-包体积">安卓优化-包体积</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/15jfHwStpctgCeeA/" title="源码学习-Glide">源码学习-Glide</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/07/VqykJCDZZcenZo3O/" title="Java并发(1) - volatile">Java并发(1) - volatile</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/11/29/4diQitvVwGPnicN5/" title="源码学习-HashMap">源码学习-HashMap</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Java/" title="In Java">Java</a>
+</div>
+
+    <span><a href="/blog/2021/10/31/nOSSxZ51uxl6hUq8/" title="Java 理论">Java 理论</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/blog/categories/Android/" title="In Android">Android</a>
+</div>
+
+    <span><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" title="Java并发(4) - CAS">Java并发(4) - CAS</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Onion99 @ Yume Shoka</span>
   </div>
-
-        
-
-
-
-
-
-
-
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/10/31/T8ghe13OAeLx6NBP/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/muse.js"></script>
-
-
-<script src="/blog/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/blog/js/app.js?v=0.2.5"></script>
 
 
 
-  
-
-  
 
 <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Stay hungry , Stay foolish • Posts by &#34;理论学习&#34; tag</title>
+        <link>http://onion66.gitee.io/blog</link>
+        <description>巴拉巴拉</description>
+        <language>en</language>
+        <pubDate>Sun, 31 Oct 2021 21:33:20 +0800</pubDate>
+        <lastBuildDate>Sun, 31 Oct 2021 21:33:20 +0800</lastBuildDate>
+        <category>源码解析</category>
+        <category>性能优化</category>
+        <category>并发</category>
+        <category>图形绘制</category>
+        <category>课程学习</category>
+        <category>理论学习</category>
+        <item>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/10/31/nOSSxZ51uxl6hUq8/</guid>
+            <title>Java 理论</title>
+            <link>http://onion66.gitee.io/blog/2021/10/31/nOSSxZ51uxl6hUq8/</link>
+            <category>理论学习</category>
+            <pubDate>Sun, 31 Oct 2021 21:33:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;jvm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#jvm&#34;&gt;#&lt;/a&gt; JVM&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;即 Java 虚拟机，是 java 程序与 OS 之间的处理中介，屏蔽了与 OS 平台相关的具体信息。从而实现跨平台&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;JRE: java 运行环境&lt;br&gt;
+ JDK:java 开发工具包&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/29/5XeI1O.png&#34; alt=&#34;5XeI1O.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;组成:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;类装载子系统（ClassLoader）&lt;/li&gt;
+&lt;li&gt;运行时数据区&lt;/li&gt;
+&lt;li&gt;执行引擎&lt;/li&gt;
+&lt;li&gt;内存回收&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h3 id=&#34;面向对象和面向过程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#面向对象和面向过程&#34;&gt;#&lt;/a&gt; 面向对象和面向过程&lt;/h3&gt;
+&lt;p&gt;面向过程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将一个问题分解为具体过程的行为实现&lt;/li&gt;
+&lt;li&gt;性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源&lt;/li&gt;
+&lt;li&gt;没有面向对象易维护、易复用、易扩展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;面向对象&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将一个问题分解为通过不同对象的属性和功能来实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;refer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#refer&#34;&gt;#&lt;/a&gt; Refer&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MTYzMjQ0L2FydGljbGUvZGV0YWlscy8xMDk1NTEyMDU=&#34;&gt;Jvm 系列 - Jvm 概述（一）&lt;/span&gt;&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3M/X19iaXo9TXpVM05EWTROelF3TlE9PSZhbXA7bWlkPTIyNDc0ODM4MjAmYW1wO2lkeD0xJmFtcDtzbj04NDE4ZjBmNmE2MThiYjBmMGNhMDk4MGFmMDlhODE2ZiZhbXA7Y2hrc209ZmQyZmQwNmVjYTU4NTk3ODZhYjEyNGRkMjA0YTdlYzliMWFkM2VkMjMwYjliNTMxMDg2Y2M2NzI5YTI3N2EwNWQzZTgzMDdiN2UwZCZhbXA7bXBzaGFyZT0xJmFtcDtzY2VuZT0xJmFtcDtzcmNpZD0xMDI5OGszZTc4VTZFdkd3T0Z6ZGxTa2EmYW1wO3NoYXJlcl9zaGFyZXRpbWU9MTYzNTQ3NDMyODAwNyZhbXA7c2hhcmVyX3NoYXJlaWQ9N2NiM2I0YTQ0YTQ4YjI4YzIzMzdjNjhhZmUzODNkYTYmYW1wO2V4cG9ydGtleT1BN1YlMkIwQzF0R2FVS2d5Wkl4MUNMWmhVJTNEJmFtcDtwYXNzX3RpY2tldD1qZmVLZGJlOGhQdXhIU3lvVWE0TEszbjIyY28lMkIlMkJlSEFOc3pzaXdqUTIyRzZIcHpaWXI1TFglMkJheEx5enZ2dXRqJmFtcDt3eF9oZWFkZXI9MCNyZA==&#34;&gt;一张图看懂 JVM（升级版） (qq.com)&lt;/span&gt;&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbXJoZ3cvcC8xMDM0MTY2MC5odG1s&#34;&gt; JVM 原理摘要 - 有容乃大 - 博客园 (cnblogs.com)&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
