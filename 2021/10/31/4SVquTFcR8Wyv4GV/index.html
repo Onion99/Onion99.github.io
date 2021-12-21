@@ -1,159 +1,260 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#FFF">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
-
-<link rel="icon" type="image/ico" sizes="32x32" href="/blog/images/favicon.ico">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
 
 
-<link rel="alternate" type="application/rss+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/rss.xml" />
-<link rel="alternate" type="application/atom+xml" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/atom.xml" />
-<link rel="alternate" type="application/json" title="Stay hungry , Stay foolish" href="http://onion66.gitee.io/blog/feed.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="/blog/css/app.css?v=0.2.5">
 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="http 的连接本质上是个 socket，根据 http 协议，通过 socket 包装发送请求并获得返回结果  网路连接库一开始的样子如下代码所示，其实只要符合 Http 协议的请求，就可以和网络进行交互，类似于 OkHttp 的网络请求库，帮助开发者方便和屏蔽了 Http 协议中类似于请求头，重连、合并、代理、返回结果解析等等 Http 协议细节的应用层实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码学习-OkHttp">
+<meta property="og:url" content="http://onion99.github.io/2021/10/31/4SVquTFcR8Wyv4GV/index.html">
+<meta property="og:site_name" content="Stay hungry , Stay foolish">
+<meta property="og:description" content="http 的连接本质上是个 socket，根据 http 协议，通过 socket 包装发送请求并获得返回结果  网路连接库一开始的样子如下代码所示，其实只要符合 Http 协议的请求，就可以和网络进行交互，类似于 OkHttp 的网络请求库，帮助开发者方便和屏蔽了 Http 协议中类似于请求头，重连、合并、代理、返回结果解析等等 Http 协议细节的应用层实现。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/25/5hiy4O.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/25/5hbpJx.png">
+<meta property="article:published_time" content="2021-10-31T13:28:18.000Z">
+<meta property="article:modified_time" content="2021-10-31T13:27:51.000Z">
+<meta property="article:author" content="Onion99">
+<meta property="article:tag" content="源码解析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/10/25/5hiy4O.png">
+
+
+<link rel="canonical" href="http://onion99.github.io/2021/10/31/4SVquTFcR8Wyv4GV/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/10/31/4SVquTFcR8Wyv4GV/","path":"2021/10/31/4SVquTFcR8Wyv4GV/","title":"源码学习-OkHttp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>源码学习-OkHttp | Stay hungry , Stay foolish</title>
   
-  <meta name="keywords" content="源码解析" />
-
-
-<link rel="canonical" href="http://onion66.gitee.io/blog/2021/10/31/4SVquTFcR8Wyv4GV/">
 
 
 
-  <title>
-源码学习-OkHttp - Android |
-Yume Shoka = Stay hungry , Stay foolish = 一只巴甫洛夫的狗</title>
-<meta name="generator" content="Hexo 5.4.0"></head>
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div id="loading">
-    <div class="cat">
-      <div class="body"></div>
-      <div class="head">
-        <div class="face"></div>
-      </div>
-      <div class="foot">
-        <div class="tummy-end"></div>
-        <div class="bottom"></div>
-        <div class="legs left"></div>
-        <div class="legs right"></div>
-      </div>
-      <div class="paw">
-        <div class="hands left"></div>
-        <div class="hands right"></div>
-      </div>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
-  <div id="container">
-    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="inner">
-        <div id="brand">
-          <div class="pjax">
-          
-  <h1 itemprop="name headline">源码学习-OkHttp
-  </h1>
-  
-<div class="meta">
-  <span class="item" title="Created: 2021-10-31 21:28:18">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-10-31T21:28:18+08:00">2021-10-31</time>
-  </span>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-          </div>
-        </div>
-        <nav id="nav">
-  <div class="inner">
-    <div class="toggle">
-      <div class="lines" aria-label="Toggle navigation bar">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
-    </div>
-    <ul class="menu">
-      <li class="item title"><a href="/blog/" rel="start">Yume Shoka</a></li>
-    </ul>
-    <ul class="right">
-      <li class="item theme">
-        <i class="ic i-sun"></i>
-      </li>
-      <li class="item search">
-        <i class="ic i-search"></i>
-      </li>
-    </ul>
-  </div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
 </nav>
 
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text"> 整体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.1.</span> <span class="nav-text"> 连接建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#okhttpclient"><span class="nav-number">1.2.</span> <span class="nav-text"> OkHttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#request"><span class="nav-number">1.3.</span> <span class="nav-text"> Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call"><span class="nav-number">1.4.</span> <span class="nav-text"> Call</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#realcall"><span class="nav-number">1.4.1.</span> <span class="nav-text"> RealCall</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#asynctimeout"><span class="nav-number">1.4.1.1.</span> <span class="nav-text"> AsyncTimeout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#execute"><span class="nav-number">1.4.1.2.</span> <span class="nav-text"> execute</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#enqueue"><span class="nav-number">1.4.1.3.</span> <span class="nav-text"> enqueue</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dispatcher%E5%88%86%E5%8F%91%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text"> Dispatcher (分发器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text"> Interceptor (拦截器)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#chain"><span class="nav-number">1.6.1.</span> <span class="nav-text"> Chain</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#about"><span class="nav-number">1.7.</span> <span class="nav-text"> About</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onion99</p>
+  <div class="site-description" itemprop="description">巴拉巴拉</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
       </div>
-      <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
-        </ul>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
       </div>
-    </header>
-    <div id="waves">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" />
-          <use xlink:href="#gentle-wave" x="48" y="3" />
-          <use xlink:href="#gentle-wave" x="48" y="5" />
-          <use xlink:href="#gentle-wave" x="48" y="7" />
-        </g>
-      </svg>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onion99" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onion99" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lijundong9999@gmail.com" title="E-Mail → mailto:lijundong9999@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
     </div>
-    <main>
-      <div class="inner">
-        <div id="main" class="pjax">
-          
-  <div class="article wrap">
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
     
-<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-<i class="ic i-home"></i>
-<span><a href="/blog/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/blog/categories/Android/" itemprop="item" rel="index" title="In Android"><span itemprop="name">Android</span></a>
-<meta itemprop="position" content="1" /></span>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Onion99" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/10/31/4SVquTFcR8Wyv4GV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onion99">
+      <meta itemprop="description" content="巴拉巴拉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay hungry , Stay foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          源码学习-OkHttp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-31 21:28:18 / 修改时间：21:27:51" itemprop="dateCreated datePublished" datetime="2021-10-31T21:28:18+08:00">2021-10-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>10k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
 </div>
 
-    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="http://onion66.gitee.io/blog/2021/10/31/4SVquTFcR8Wyv4GV/">
+        </div>
+      </header>
 
-  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="image" content="/blog/images/avatar.jpg">
-    <meta itemprop="name" content="Onion99">
-    <meta itemprop="description" content="一只巴甫洛夫的狗, 巴拉巴拉">
-  </span>
-
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Stay hungry , Stay foolish">
-  </span>
-
-  <div class="body md" itemprop="articleBody">
     
-
-    <blockquote>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
 <p>http 的连接本质上是个 socket，根据 http 协议，通过 socket 包装发送请求并获得返回结果</p>
 </blockquote>
 <p>网路连接库一开始的样子如下代码所示，其实只要符合 Http 协议的请求，就可以和网络进行交互，类似于 OkHttp 的网络请求库，帮助开发者方便和屏蔽了 Http 协议中类似于请求头，重连、合并、代理、返回结果解析等等 Http 协议细节的应用层实现。</p>
@@ -161,7 +262,7 @@ Yume Shoka = Stay hungry , Stay foolish = 一只巴甫洛夫的狗</title>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">val path = <span class="string">&quot;http://www.baidu.com/&quot;</span></span><br><span class="line">        val host = <span class="string">&quot;www.baidu.com&quot;</span></span><br><span class="line">        <span class="keyword">var</span> socket: Socket? = <span class="keyword">null</span></span><br><span class="line">        <span class="keyword">var</span> streamWriter: OutputStreamWriter? = <span class="keyword">null</span></span><br><span class="line">        <span class="keyword">var</span> bufferedWriter: BufferedWriter? = <span class="keyword">null</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            socket = Socket(host, <span class="number">80</span>)</span><br><span class="line">            streamWriter = OutputStreamWriter(socket.getOutputStream())</span><br><span class="line">            bufferedWriter = BufferedWriter(streamWriter)</span><br><span class="line">            bufferedWriter.write(<span class="string">&quot;GET $path HTTP/1.1\r\n&quot;</span>)</span><br><span class="line">            bufferedWriter.write(<span class="string">&quot;Host: www.baidu.com\r\n&quot;</span>)</span><br><span class="line">            bufferedWriter.write(<span class="string">&quot;\r\n&quot;</span>)</span><br><span class="line">            bufferedWriter.flush()</span><br><span class="line">            val myRequest = BufferedReader(InputStreamReader(socket.getInputStream(), <span class="string">&quot;UTF-8&quot;</span>))</span><br><span class="line">            <span class="keyword">var</span> d = -<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> (myRequest.read().also(&#123; d = it &#125;) != -<span class="number">1</span>) &#123;</span><br><span class="line">                print(d.toChar())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: IOException) &#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="整体流程"><a class="markdownIt-Anchor" href="#整体流程">#</a> 整体流程</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetExample</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 核网络管理者 - 核心类</span></span><br><span class="line">  <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line">  <span class="function">String <span class="title">run</span><span class="params">(String url)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">// 请求搭建</span></span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">      阻塞式execute -&gt; 立即调用请求，并阻塞，直到响应可以处理或出现错误</span></span><br><span class="line"><span class="comment">      为了避免资源泄漏，调用者应该关闭Response，而Response又会关闭底层的ResponseBody。 //确保响应(和底层响应体)是关闭的</span></span><br><span class="line"><span class="comment">      注意，传输层的成功(接收HTTP响应代码、报头和正文)不一定表示应用层的成功:响应可能仍然表示不满意的HTTP响应代码，如404或500。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">try</span> (Response response = client.newCall(request).execute()) &#123;</span><br><span class="line">      <span class="keyword">return</span> response.body().string();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    GetExample example = <span class="keyword">new</span> GetExample();</span><br><span class="line">    String response = example.run(<span class="string">&quot;https://raw.github.com/square/okhttp/master/README.md&quot;</span>);</span><br><span class="line">    System.out.println(response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img data-src="https://z3.ax1x.com/2021/10/25/5hiy4O.png" alt="5hiy4O.png"></p>
+<p><img src="https://z3.ax1x.com/2021/10/25/5hiy4O.png" alt="5hiy4O.png"></p>
 <h3 id="连接建立"><a class="markdownIt-Anchor" href="#连接建立">#</a> 连接建立</h3>
 <p>Volley 等很多网络请求框架很多底层都是通过 HTTPURLConnection 来与服务端建立连接的，而 OkHttp 就比较优秀了。因为 HTTP 协议是建立在 TCP/IP 协议基础之上的，底层还是走的 Socket，所以 OkHttp 直接使用 Socket 来完成 HTTP 请求。</p>
 <h3 id="okhttpclient"><a class="markdownIt-Anchor" href="#okhttpclient">#</a> OkHttpClient</h3>
@@ -226,349 +327,96 @@ Interceptor 之间互相独立，每个 Interceptor 只负责自己关注的任�
 </blockquote>
 <p>Chain 被用来描述责任链，通过其中的 process 方法开始依次执行链上的每个节点，并返回处理后的 Response。<br>
 Chain 的唯一实现为 RealInterceptorChain（下文简称 RIC），RIC 可以称之为<strong>拦截器责任链</strong>，其中的节点由 RealCall 中添加进来的 Interceptor 们组成。由于 Interceptor 的互相独立性，RIC 中还会包含一些公共参数及共享的对象。</p>
-<p><img data-src="https://z3.ax1x.com/2021/10/25/5hbpJx.png" alt="5hbpJx.png"></p>
+<p><img src="https://z3.ax1x.com/2021/10/25/5hbpJx.png" alt="5hbpJx.png"></p>
 <h3 id="about"><a class="markdownIt-Anchor" href="#about">#</a> About</h3>
-<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMTY3Nzc4NjQ=">OkHttp 源码深度解析</span><br>
-<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMDQ4MTMwOTE="> OkHttp 源码解析</span><br>
-<span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MDIwMDI3ODMyOTc3ODUwMzgx"> OkHttp 源码原理</span></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/116777864">OkHttp 源码深度解析</a><br>
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104813091"> OkHttp 源码解析</a><br>
+<a target="_blank" rel="noopener" href="https://juejin.cn/post/7020027832977850381"> OkHttp 源码原理</a></p>
 
-      <div class="tags">
-          <a href="/blog/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"><i class="ic i-tag"></i> 源码解析</a>
-      </div>
-  </div>
+    </div>
 
-   <footer>
+    
+    
+    
 
-    <div class="meta">
-  <span class="item">
-    <span class="icon">
-      <i class="ic i-calendar-check"></i>
-    </span>
-    <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-31 21:27:51" itemprop="dateModified" datetime="2021-10-31T21:27:51+08:00">2021-10-31</time>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># 源码解析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="prev" title="安卓优化-布局优化">
+                  <i class="fa fa-chevron-left"></i> 安卓优化-布局优化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/31/15jfHwStpctgCeeA/" rel="next" title="源码学习-Glide">
+                  源码学习-Glide <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
+  <span class="author" itemprop="copyrightHolder">Onion99</span>
 </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">110k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:40</span>
+  </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
-      
-<div class="reward">
-  <button><i class="ic i-heartbeat"></i> Donate</button>
-  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
-  <div id="qr">
-      
-      <div>
-        <img data-src="/blog/images/wechatpay.png" alt="Onion99 WeChat Pay">
-        <p>WeChat Pay</p>
-      </div>
-      
-      <div>
-        <img data-src="/blog/images/alipay.png" alt="Onion99 Alipay">
-        <p>Alipay</p>
-      </div>
-      
-      <div>
-        <img data-src="/blog/images/paypal.png" alt="Onion99 PayPal">
-        <p>PayPal</p>
-      </div>
-  </div>
-</div>
 
-      
-
-<div id="copyright">
-<ul>
-  <li class="author">
-    <strong>Post author:  </strong>Onion99 <i class="ic i-at"><em>@</em></i>Stay hungry , Stay foolish
-  </li>
-  <li class="link">
-    <strong>Post link: </strong>
-    <a href="http://onion66.gitee.io/blog/2021/10/31/4SVquTFcR8Wyv4GV/" title="源码学习-OkHttp">http://onion66.gitee.io/blog/2021/10/31/4SVquTFcR8Wyv4GV/</a>
-  </li>
-  <li class="license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
-  </li>
-</ul>
-</div>
-
+    </div>
   </footer>
 
-</article>
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-  </div>
   
 
-<div class="post-nav">
-    <div class="item left">
-      
 
-  <a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhpw3lwj20zk0m8gvw.jpg" title="安卓优化-布局优化">
-  <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> Android</span>
-  <h3>安卓优化-布局优化</h3>
-  </a>
 
-    </div>
-    <div class="item right">
-      
 
-  <a href="/blog/2021/10/31/15jfHwStpctgCeeA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="源码学习-Glide">
-  <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> Android</span>
-  <h3>源码学习-Glide</h3>
-  </a>
-
-    </div>
-</div>
 
   
-  <div class="wrap" id="comments"></div>
-
-
-        </div>
-        <div id="sidebar">
-          
-
-<div class="inner">
-
-  <div class="panels">
-    <div class="inner">
-      <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text"> 整体流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> 连接建立</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#okhttpclient"><span class="toc-number">1.2.</span> <span class="toc-text"> OkHttpClient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#request"><span class="toc-number">1.3.</span> <span class="toc-text"> Request</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-number">1.4.</span> <span class="toc-text"> Call</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#realcall"><span class="toc-number">1.4.1.</span> <span class="toc-text"> RealCall</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#asynctimeout"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> AsyncTimeout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#execute"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> execute</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#enqueue"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> enqueue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatcher%E5%88%86%E5%8F%91%E5%99%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> Dispatcher (分发器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interceptor%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">1.6.</span> <span class="toc-text"> Interceptor (拦截器)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chain"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Chain</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#about"><span class="toc-number">1.7.</span> <span class="toc-text"> About</span></a></li></ol></li></ol>
-      </div>
-      <div class="related panel pjax" data-title="Related">
-        <ul>
-          <li><a href="/blog/2021/10/31/4LlbPfdOOCp58LMK/" rel="bookmark" title="安卓优化-启动优化">安卓优化-启动优化</a></li><li><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" rel="bookmark" title="安卓优化-内存优化">安卓优化-内存优化</a></li><li><a href="/blog/2021/10/31/UYa5EEntsM9sKTYz/" rel="bookmark" title="安卓优化-卡顿优化">安卓优化-卡顿优化</a></li><li><a href="/blog/2021/10/31/9LsQhIFgDkllFt0Q/" rel="bookmark" title="安卓优化-包体积">安卓优化-包体积</a></li><li><a href="/blog/2021/10/31/6JN9JxpnRSjVeWry/" rel="bookmark" title="安卓优化-线程优化">安卓优化-线程优化</a></li><li><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="bookmark" title="安卓优化-布局优化">安卓优化-布局优化</a></li><li class="active"><a href="/blog/2021/10/31/4SVquTFcR8Wyv4GV/" rel="bookmark" title="源码学习-OkHttp">源码学习-OkHttp</a></li><li><a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="bookmark" title="源码学习-Glide">源码学习-Glide</a></li><li><a href="/blog/2021/10/31/Qqq7oSBqBc2Zgbrx/" rel="bookmark" title="课程-登陆与授权">课程-登陆与授权</a></li><li><a href="/blog/2021/10/31/MgnT9VQ3PhWZOJAq/" rel="bookmark" title="课程-编码与加密">课程-编码与加密</a></li><li><a href="/blog/2021/11/01/K0uh0dFU4QBtZ8Wm/" rel="bookmark" title="自定义View(1) - 基本绘制">自定义View(1) - 基本绘制</a></li><li><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" rel="bookmark" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></li><li><a href="/blog/2021/11/03/VjI1fQxy8MSFqUqm/" rel="bookmark" title="自定义View(3) - Text相关">自定义View(3) - Text相关</a></li><li><a href="/blog/2021/11/03/ZOnr24kULe7cQgsc/" rel="bookmark" title="自定义View(4) - Canvas相关">自定义View(4) - Canvas相关</a></li><li><a href="/blog/2021/11/03/SA664RldODNgeCrz/" rel="bookmark" title="自定义View(5) - 动画">自定义View(5) - 动画</a></li><li><a href="/blog/2021/11/03/Qj9f1VMJJowv5Lfb/" rel="bookmark" title="自定义View(6) - measure 测量过程">自定义View(6) - measure 测量过程</a></li><li><a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" rel="bookmark" title="自定义View(7) - layout 布局过程">自定义View(7) - layout 布局过程</a></li><li><a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" rel="bookmark" title="自定义View(8) - draw 绘制过程">自定义View(8) - draw 绘制过程</a></li><li><a href="/blog/2021/11/03/z3aQsRLVolBbFVsl/" rel="bookmark" title="自定义View(9) - 事件分发">自定义View(9) - 事件分发</a></li><li><a href="/blog/2021/11/03/dY7a31QepeVitGkX/" rel="bookmark" title="自定义View(10) - GestureDetector">自定义View(10) - GestureDetector</a></li><li><a href="/blog/2021/11/03/cNDSpE5p4avS2tOi/" rel="bookmark" title="自定义View(11) - 滚动速度和滚动计算">自定义View(11) - 滚动速度和滚动计算</a></li><li><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" rel="bookmark" title="Java并发(4) - CAS">Java并发(4) - CAS</a></li><li><a href="/blog/2021/11/29/hu0861X6Ltf32fYt/" rel="bookmark" title="源码学习-DataBinding">源码学习-DataBinding</a></li><li><a href="/blog/2021/11/29/9S5c1rplpdSAbIxR/" rel="bookmark" title="源码学习-ViewModel">源码学习-ViewModel</a></li>
-        </ul>
-      </div>
-      <div class="overview panel" data-title="Overview">
-        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="image" itemprop="image" alt="Onion99"
-      data-src="/blog/images/avatar.jpg">
-  <p class="name" itemprop="name">Onion99</p>
-  <div class="description" itemprop="description">巴拉巴拉</div>
-</div>
-
-<nav class="state">
-    <div class="item posts">
-      <a href="/blog/archives/">
-        <span class="count">32</span>
-        <span class="name">posts</span>
-      </a>
-    </div>
-    <div class="item categories">
-      <a href="/blog/categories/">
-        <span class="count">2</span>
-        <span class="name">categories</span>
-      </a>
-    </div>
-    <div class="item tags">
-      <a href="/blog/tags/">
-        <span class="count">6</span>
-        <span class="name">tags</span>
-      </a>
-    </div>
-</nav>
-
-<div class="social">
-</div>
-
-<ul class="menu">
-  
-    
-  <li class="item">
-    <a href="/blog/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-
-</ul>
-
-      </div>
-    </div>
-  </div>
-
-  <ul id="quick">
-    <li class="prev pjax">
-        <a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
-    </li>
-    <li class="up"><i class="ic i-arrow-up"></i></li>
-    <li class="down"><i class="ic i-arrow-down"></i></li>
-    <li class="next pjax">
-        <a href="/blog/2021/10/31/15jfHwStpctgCeeA/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
-    </li>
-    <li class="percent"></li>
-  </ul>
-</div>
-
-
-        </div>
-        <div class="dimmer"></div>
-      </div>
-    </main>
-    <footer id="footer">
-      <div class="inner">
-        <div class="widgets">
-          
-<div class="rpost pjax">
-  <h2>Random Posts</h2>
-  <ul>
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Java/" title="In Java">Java</a>
-</div>
-
-    <span><a href="/blog/2021/11/29/4diQitvVwGPnicN5/" title="源码学习-HashMap">源码学习-HashMap</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Java/" title="In Java">Java</a>
-</div>
-
-    <span><a href="/blog/2021/11/07/MpHTUCP7P1OgtydO/" title="Java并发(7) - ThreadLocal">Java并发(7) - ThreadLocal</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Java/" title="In Java">Java</a>
-</div>
-
-    <span><a href="/blog/2021/11/07/WkWqwHwU8wgNL4cd/" title="Java并发(5) - 线程协作">Java并发(5) - 线程协作</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/11/07/qX2v7eB61IheaBrH/" title="Java并发(4) - CAS">Java并发(4) - CAS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/10/31/T8ghe13OAeLx6NBP/" title="安卓优化-内存优化">安卓优化-内存优化</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Java/" title="In Java">Java</a>
-</div>
-
-    <span><a href="/blog/2021/11/07/oizxmTtLdVsaXZrZ/" title="Java并发(6) - 线程池">Java并发(6) - 线程池</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/11/03/ZyOr4iLxJj7nAQxR/" title="自定义View(7) - layout 布局过程">自定义View(7) - layout 布局过程</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/11/03/p4CRfuQemJ4TOlAs/" title="自定义View(8) - draw 绘制过程">自定义View(8) - draw 绘制过程</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/10/31/5FIszA6Ut2OHE8Sg/" title="安卓优化-布局优化">安卓优化-布局优化</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/blog/categories/Android/" title="In Android">Android</a>
-</div>
-
-    <span><a href="/blog/2021/11/01/weRgrdLnBqIUWkcH/" title="自定义View(2) - Paint相关">自定义View(2) - Paint相关</a></span>
-  </li>
-
-  </ul>
-</div>
-<div>
-  <h2>Recent Comments</h2>
-  <ul class="leancloud-recent-comment"></ul>
-</div>
-
-        </div>
-        <div class="status">
-  <div class="copyright">
-    
-    &copy; 2010 – 
-    <span itemprop="copyrightYear">2021</span>
-    <span class="with-love">
-      <i class="ic i-sakura rotate"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Onion99 @ Yume Shoka</span>
-  </div>
-  <div class="powered-by">
-    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
-  </div>
-</div>
-
-      </div>
-    </footer>
-  </div>
-<script data-config type="text/javascript">
-  var LOCAL = {
-    path: '2021/10/31/4SVquTFcR8Wyv4GV/',
-    favicon: {
-      show: "（●´3｀●）Goooood",
-      hide: "(´Д｀)Booooom"
-    },
-    search : {
-      placeholder: "Search for Posts",
-      empty: "We didn't find any results for the search: ${query}",
-      stats: "${hits} results found in ${time} ms"
-    },
-    valine: true,fancybox: true,
-    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
-    ignores : [
-      function(uri) {
-        return uri.includes('#');
-      },
-      function(uri) {
-        return new RegExp(LOCAL.path+"$").test(uri);
-      }
-    ]
-  };
-</script>
-
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
-
-<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
-
-<script src="/blog/js/app.js?v=0.2.5"></script>
 
 
 
 
-<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":200,"height":400,"position":"right","hOffset":-30,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

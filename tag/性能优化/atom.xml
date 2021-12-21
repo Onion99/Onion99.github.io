@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://onion66.gitee.io/blog</id>
+    <id>http://onion99.github.io</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;性能优化&#34; tag</title>
-    <link href="http://onion66.gitee.io/blog" />
+    <link href="http://onion99.github.io" />
     <updated>2021-10-31T12:50:14.000Z</updated>
-    <category term="源码解析" />
     <category term="性能优化" />
+    <category term="源码解析" />
     <category term="并发" />
-    <category term="图形绘制" />
     <category term="课程学习" />
+    <category term="图形绘制" />
     <category term="理论学习" />
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/5FIszA6Ut2OHE8Sg/</id>
+        <id>http://onion99.github.io/2021/10/31/5FIszA6Ut2OHE8Sg/</id>
         <title>安卓优化-布局优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/5FIszA6Ut2OHE8Sg/"/>
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/5FIszA6Ut2OHE8Sg/"/>
         <content type="html">&lt;h3 id=&#34;布局耗时统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#布局耗时统计&#34;&gt;#&lt;/a&gt; 布局耗时统计&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;手动埋点&lt;/li&gt;
@@ -86,9 +86,9 @@
         <updated>2021-10-31T12:50:14.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/6JN9JxpnRSjVeWry/</id>
+        <id>http://onion99.github.io/2021/10/31/6JN9JxpnRSjVeWry/</id>
         <title>安卓优化-线程优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/6JN9JxpnRSjVeWry/"/>
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/6JN9JxpnRSjVeWry/"/>
         <content type="html">&lt;h3 id=&#34;线程调度&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#线程调度&#34;&gt;#&lt;/a&gt; 线程调度&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;任意时刻，只有一个线程占用 CPU，处于运行状态&lt;/p&gt;
@@ -155,10 +155,10 @@
         <updated>2021-10-31T12:48:51.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/9LsQhIFgDkllFt0Q/</id>
+        <id>http://onion99.github.io/2021/10/31/9LsQhIFgDkllFt0Q/</id>
         <title>安卓优化-包体积</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/9LsQhIFgDkllFt0Q/"/>
-        <content type="html">&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNDI1MzE4&#34;&gt;Android APP 终极瘦身指南&lt;/span&gt;&lt;/p&gt;
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/9LsQhIFgDkllFt0Q/"/>
+        <content type="html">&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1425318&#34;&gt;Android APP 终极瘦身指南&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;图片转 WebP&lt;/li&gt;
 &lt;li&gt;去掉不必要的 so 库&lt;/li&gt;
@@ -174,9 +174,9 @@
         <updated>2021-10-31T12:48:08.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/</id>
+        <id>http://onion99.github.io/2021/10/31/UYa5EEntsM9sKTYz/</id>
         <title>安卓优化-卡顿优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/UYa5EEntsM9sKTYz/"/>
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/UYa5EEntsM9sKTYz/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;卡顿产生的根本原因就是 CPU 和 GPU 没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -185,19 +185,19 @@
 &lt;li&gt;GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心，做图像和图形相关运算工作的微处理器&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;卡顿检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卡顿检测&#34;&gt;#&lt;/a&gt; 卡顿检测&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xtajYyMzU2NTc5MS9hcnRpY2xlL2RldGFpbHMvNTg2MjYzNTU=&#34;&gt;Android UI 性能优化 检测应用中的 UI 卡顿&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC85ZThmODhlYWM0OTA=&#34;&gt;Android 性能优化 - 检测 App 卡顿 - 简书 (jianshu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lmj623565791/article/details/58626355&#34;&gt;Android UI 性能优化 检测应用中的 UI 卡顿&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/9e8f88eac490&#34;&gt;Android 性能优化 - 检测 App 卡顿 - 简书 (jianshu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h4 id=&#34;用ui线程looper打印的日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用ui线程looper打印的日志&#34;&gt;#&lt;/a&gt; 用 UI 线程 Looper 打印的日志&lt;/h4&gt;
 &lt;p&gt;开源工具:&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0t5c29uL0FuZHJvaWRHb2RFeWU=&#34;&gt;Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL21hcmt6aGFpL0FuZHJvaWRQZXJmb3JtYW5jZU1vbml0b3I=&#34;&gt;markzhai/AndroidPerformanceMonitor: A transparent ui-block detection library for Android. (known as BlockCanary) &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0J6Q29kZXIvQmxvY2tDYW5hcnlDb21wYXQ=&#34;&gt;BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配 Android O 以上系统 (github.com)&lt;/span&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/Kyson/AndroidGodEye&#34;&gt;Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/markzhai/AndroidPerformanceMonitor&#34;&gt;markzhai/AndroidPerformanceMonitor: A transparent ui-block detection library for Android. (known as BlockCanary) &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/BzCoder/BlockCanaryCompat&#34;&gt;BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配 Android O 以上系统 (github.com)&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;choreographer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#choreographer&#34;&gt;#&lt;/a&gt; Choreographer&lt;/h4&gt;
 &lt;p&gt;Android 系统每隔 16ms 发出 VSYNC 信号，触发对 UI 进行渲染。开发者可以使用 Choreographer#postFrameCallback 设置自己的 callback 与 Choreographer 交互，你设置的 FrameCallCack（doFrame 方法）会在下一个 frame 被渲染时触发。理论上来说两次回调的时间周期应该在 16ms，如果超过了 16ms 我们则认为发生了卡顿，我们主要就是利用两次回调间的时间周期来判断&lt;/p&gt;
 &lt;p&gt;开源工具:&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3dhc2FiZWVmL1Rha3Q=&#34;&gt;wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZyaWVuZGx5cm9ib3RueWMvVGlueURhbmNlcg==&#34;&gt;friendlyrobotnyc/TinyDancer: An android library for displaying fps from the choreographer and percentage of time with two or more frames dropped &lt;/span&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/wasabeef/Takt&#34;&gt;wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/friendlyrobotnyc/TinyDancer&#34;&gt;friendlyrobotnyc/TinyDancer: An android library for displaying fps from the choreographer and percentage of time with two or more frames dropped &lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;anr分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#anr分析&#34;&gt;#&lt;/a&gt; ANR 分析&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Application Not Responding，也就是应用程序无响应&lt;/p&gt;
@@ -230,11 +230,11 @@
         <updated>2021-10-31T12:47:12.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/</id>
+        <id>http://onion99.github.io/2021/10/31/T8ghe13OAeLx6NBP/</id>
         <title>安卓优化-内存优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/T8ghe13OAeLx6NBP/"/>
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/T8ghe13OAeLx6NBP/"/>
         <content type="html">&lt;h3 id=&#34;内存信息查看&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存信息查看&#34;&gt;#&lt;/a&gt; 内存信息查看&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8yOGI5Y2Q4N2U2Njc=&#34;&gt;App 内存优化实践：一步一步做内存分析与优化&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/28b9cd87e667&#34;&gt;App 内存优化实践：一步一步做内存分析与优化&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;查看每个 App 进程可以分配到的最大内存&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;adb shell getprop | grep dalvik.vm.heapsize&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;App 的内存使用情况概览&lt;/p&gt;
@@ -247,7 +247,7 @@
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;优化方向&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#优化方向&#34;&gt;#&lt;/a&gt; 优化方向&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd2FuZ2ppZTE5OTAvcC8xMTMyNzExMi5odG1s&#34;&gt;Android 如何优化 APP 内存 &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/wangjie1990/p/11327112.html&#34;&gt;Android 如何优化 APP 内存 &lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;谨慎使用 Services
 &lt;ul&gt;
@@ -280,9 +280,9 @@
         <updated>2021-10-31T12:46:21.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/10/31/4LlbPfdOOCp58LMK/</id>
+        <id>http://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/</id>
         <title>安卓优化-启动优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/10/31/4LlbPfdOOCp58LMK/"/>
+        <link rel="alternate" href="http://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/"/>
         <content type="html">&lt;h3 id=&#34;启动流程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动流程&#34;&gt;#&lt;/a&gt; 启动流程&lt;/h3&gt;
 &lt;h4 id=&#34;相关&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#相关&#34;&gt;#&lt;/a&gt; 相关&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -305,9 +305,9 @@
 &lt;li&gt;ApplicationThreadProxy：ApplicationThread 在 AMS 服务中的代理类，负责与 ApplicationThread 通信&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#顺序&#34;&gt;#&lt;/a&gt; 顺序&lt;/h4&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h1YW5nbGluaXFuZy9hcnRpY2xlL2RldGFpbHMvODkzNjQwNjQ=&#34;&gt;APP 启动流程解析，墙裂推荐&lt;/span&gt;&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbm90Mi9wLzE0MzI2MDkwLmh0bWw=&#34;&gt; App 启动速度优化 T2&lt;/span&gt;&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h1YW5nbGluaXFuZy9hcnRpY2xlL2RldGFpbHMvODkzNjQwNjQ=&#34;&gt; 具体代码流程&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt;APP 启动流程解析，墙裂推荐&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.cnblogs.com/not2/p/14326090.html&#34;&gt; App 启动速度优化 T2&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt; 具体代码流程&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Launcher 通知 AMS, 要启动某一应用，并说明对应的 LauncherActivity&lt;/li&gt;
 &lt;li&gt;AMS 表示收到，等待 Launcher 进入 Pause 状态&lt;/li&gt;
@@ -321,13 +321,13 @@
 &lt;li&gt;某一应用通知 AMS 启动准备就绪&lt;/li&gt;
 &lt;li&gt;AMS 通知某一应用要启动的页面，某一应用启动对应页面&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/27/57Z1PJ.png&#34; alt=&#34;57Z1PJ.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57Z1PJ.png&#34; alt=&#34;57Z1PJ.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;启动分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动分类&#34;&gt;#&lt;/a&gt; 启动分类&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;冷启动
 &lt;ul&gt;
 &lt;li&gt;耗时最多，优化重点&lt;/li&gt;
-&lt;li&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/27/57ZxJJ.png&#34; alt=&#34;57ZxJJ.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57ZxJJ.png&#34; alt=&#34;57ZxJJ.png&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;热启动
@@ -346,7 +346,7 @@
 &lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;TraceCompat.beginSection(&lt;span class=&#34;string&#34;&gt;&amp;quot;sectionName&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;TraceCompat.endSection();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;code&gt;python systrace.py -t 10 [other-options] [categories]&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&#34;traceview&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#traceview&#34;&gt;#&lt;/a&gt; Traceview&lt;/h4&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/27/57llge.png&#34; alt=&#34;57llge.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57llge.png&#34; alt=&#34;57llge.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;使用方式&lt;/p&gt;
 &lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Debug.startMethodTracing(&lt;span class=&#34;string&#34;&gt;&amp;quot;fileName&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Debug.stopMethodTracing()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;运行之后可以在目录下生成文件：内部存储 /android/data/${application}/files/fileName.trace，此文件可以使用 Android Studio Profile 打开&lt;/p&gt;
@@ -365,9 +365,9 @@
  WaitTime : 应用进程的创建过程 + TotalTime&lt;/p&gt;
 &lt;h4 id=&#34;系统日志统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#系统日志统计&#34;&gt;#&lt;/a&gt; 系统日志统计&lt;/h4&gt;
 &lt;p&gt;过滤 &lt;code&gt;displayed&lt;/code&gt;  输出的启动日志&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/27/57mU4e.png&#34; alt=&#34;57mU4e.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57mU4e.png&#34; alt=&#34;57mU4e.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;冷启动优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#冷启动优化&#34;&gt;#&lt;/a&gt; 冷启动优化&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9qaXNodWluLnByb2dpbm4uY29tL3AvNzYzYmZiZDM0NWYw&#34;&gt; App 启动时间优化详解&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jishuin.proginn.com/p/763bfbd345f0&#34;&gt; App 启动时间优化详解&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;优化方向:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;延迟加载 / 懒加载&lt;/li&gt;

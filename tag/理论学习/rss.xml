@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>Stay hungry , Stay foolish • Posts by &#34;理论学习&#34; tag</title>
-        <link>http://onion66.gitee.io/blog</link>
+        <link>http://onion99.github.io</link>
         <description>巴拉巴拉</description>
-        <language>en</language>
+        <language>zh-CN</language>
         <pubDate>Sun, 31 Oct 2021 21:33:20 +0800</pubDate>
         <lastBuildDate>Sun, 31 Oct 2021 21:33:20 +0800</lastBuildDate>
-        <category>源码解析</category>
         <category>性能优化</category>
+        <category>源码解析</category>
         <category>并发</category>
-        <category>图形绘制</category>
         <category>课程学习</category>
+        <category>图形绘制</category>
         <category>理论学习</category>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/10/31/nOSSxZ51uxl6hUq8/</guid>
+            <guid isPermalink="true">http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/</guid>
             <title>Java 理论</title>
-            <link>http://onion66.gitee.io/blog/2021/10/31/nOSSxZ51uxl6hUq8/</link>
+            <link>http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/</link>
             <category>理论学习</category>
             <pubDate>Sun, 31 Oct 2021 21:33:20 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;jvm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#jvm&#34;&gt;#&lt;/a&gt; JVM&lt;/h2&gt;
@@ -25,7 +25,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;JRE: java 运行环境&lt;br&gt;
  JDK:java 开发工具包&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://z3.ax1x.com/2021/10/29/5XeI1O.png&#34; alt=&#34;5XeI1O.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/29/5XeI1O.png&#34; alt=&#34;5XeI1O.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;组成:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;类装载子系统（ClassLoader）&lt;/li&gt;
@@ -46,9 +46,9 @@
 &lt;li&gt;将一个问题分解为通过不同对象的属性和功能来实现&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;refer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#refer&#34;&gt;#&lt;/a&gt; Refer&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MTYzMjQ0L2FydGljbGUvZGV0YWlscy8xMDk1NTEyMDU=&#34;&gt;Jvm 系列 - Jvm 概述（一）&lt;/span&gt;&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3M/X19iaXo9TXpVM05EWTROelF3TlE9PSZhbXA7bWlkPTIyNDc0ODM4MjAmYW1wO2lkeD0xJmFtcDtzbj04NDE4ZjBmNmE2MThiYjBmMGNhMDk4MGFmMDlhODE2ZiZhbXA7Y2hrc209ZmQyZmQwNmVjYTU4NTk3ODZhYjEyNGRkMjA0YTdlYzliMWFkM2VkMjMwYjliNTMxMDg2Y2M2NzI5YTI3N2EwNWQzZTgzMDdiN2UwZCZhbXA7bXBzaGFyZT0xJmFtcDtzY2VuZT0xJmFtcDtzcmNpZD0xMDI5OGszZTc4VTZFdkd3T0Z6ZGxTa2EmYW1wO3NoYXJlcl9zaGFyZXRpbWU9MTYzNTQ3NDMyODAwNyZhbXA7c2hhcmVyX3NoYXJlaWQ9N2NiM2I0YTQ0YTQ4YjI4YzIzMzdjNjhhZmUzODNkYTYmYW1wO2V4cG9ydGtleT1BN1YlMkIwQzF0R2FVS2d5Wkl4MUNMWmhVJTNEJmFtcDtwYXNzX3RpY2tldD1qZmVLZGJlOGhQdXhIU3lvVWE0TEszbjIyY28lMkIlMkJlSEFOc3pzaXdqUTIyRzZIcHpaWXI1TFglMkJheEx5enZ2dXRqJmFtcDt3eF9oZWFkZXI9MCNyZA==&#34;&gt;一张图看懂 JVM（升级版） (qq.com)&lt;/span&gt;&lt;br&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbXJoZ3cvcC8xMDM0MTY2MC5odG1s&#34;&gt; JVM 原理摘要 - 有容乃大 - 博客园 (cnblogs.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_38163244/article/details/109551205&#34;&gt;Jvm 系列 - Jvm 概述（一）&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzU3NDY4NzQwNQ==&amp;amp;mid=2247483820&amp;amp;idx=1&amp;amp;sn=8418f0f6a618bb0f0ca0980af09a816f&amp;amp;chksm=fd2fd06eca5859786ab124dd204a7ec9b1ad3ed230b9b531086cc6729a277a05d3e8307b7e0d&amp;amp;mpshare=1&amp;amp;scene=1&amp;amp;srcid=10298k3e78U6EvGwOFzdlSka&amp;amp;sharer_sharetime=1635474328007&amp;amp;sharer_shareid=7cb3b4a44a48b28c2337c68afe383da6&amp;amp;exportkey=A7V%2B0C1tGaUKgyZIx1CLZhU%3D&amp;amp;pass_ticket=jfeKdbe8hPuxHSyoUa4LK3n22co%2B%2BeHANszsiwjQ22G6HpzZYr5LX%2BaxLyzvvutj&amp;amp;wx_header=0#rd&#34;&gt;一张图看懂 JVM（升级版） (qq.com)&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.cnblogs.com/mrhgw/p/10341660.html&#34;&gt; JVM 原理摘要 - 有容乃大 - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
