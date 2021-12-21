@@ -23,7 +23,7 @@
 <meta name="description" content="巴拉巴拉">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Stay hungry , Stay foolish">
-<meta property="og:url" content="http://onion99.github.io/page/6/index.html">
+<meta property="og:url" content="https://onion99.github.io/page/6/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
 <meta property="og:description" content="巴拉巴拉">
 <meta property="og:locale" content="zh_CN">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://onion99.github.io/page/6/">
+<link rel="canonical" href="https://onion99.github.io/page/6/">
 
 
 
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/10/31/T8ghe13OAeLx6NBP/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/10/31/T8ghe13OAeLx6NBP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -228,7 +228,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>551</span>
+      <span>548</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -246,14 +246,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="内存信息查看"><a class="markdownIt-Anchor" href="#内存信息查看">#</a> 内存信息查看</h3>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/28b9cd87e667">App 内存优化实践：一步一步做内存分析与优化</a></p>
-<p>查看每个 App 进程可以分配到的最大内存</p>
+          <h3 id="内存信息查看"><a href="#内存信息查看" class="headerlink" title="内存信息查看"></a>内存信息查看</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/28b9cd87e667">App内存优化实践：一步一步做内存分析与优化</a></p>
+<p>查看每个App进程可以分配到的最大内存</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell getprop | grep dalvik.vm.heapsize</span><br></pre></td></tr></table></figure>
-<p>App 的内存使用情况概览</p>
+<p>App的内存使用情况概览</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo 包名</span><br></pre></td></tr></table></figure>
-<h3 id="优化工具"><a class="markdownIt-Anchor" href="#优化工具">#</a> 优化工具</h3>
-<ul>
+
+<h3 id="优化工具"><a href="#优化工具" class="headerlink" title="优化工具"></a>优化工具</h3><ul>
 <li>CPU Profiler</li>
 <li>Memory Analyzer（MAT）</li>
 <li>LeakCannary</li>
@@ -291,7 +290,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -353,16 +352,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="启动流程"><a class="markdownIt-Anchor" href="#启动流程">#</a> 启动流程</h3>
-<h4 id="相关"><a class="markdownIt-Anchor" href="#相关">#</a> 相关</h4>
-<blockquote>
+          <h3 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h3><h4 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h4><blockquote>
 <p>启动的流程就是通过这六个大类在这三个进程之间不断通信的过程</p>
 </blockquote>
-<h5 id="三个进程"><a class="markdownIt-Anchor" href="#三个进程">#</a> 三个进程</h5>
-<ul>
-<li>Launcher 进程：整个 App 启动流程的起点，负责处理桌面与用户之间的交互事件，可以想象为一个桌面启动器</li>
-<li>SystemServer 进程: Android 中的所有 SystemServer 都由其孵化 (Fork) 出来，例如 AMS,WindowsMannager,PackageManagerService 等</li>
-<li>App 进程：启动的 App 所在的进程</li>
+<h5 id="三个进程"><a href="#三个进程" class="headerlink" title="三个进程"></a>三个进程</h5><ul>
+<li>Launcher进程: 整个App启动流程的起点,负责处理桌面与用户之间的交互事件,可以想象为一个桌面启动器</li>
+<li>SystemServer进程: Android中的所有SystemServer都由其孵化(Fork)出来,例如AMS,WindowsMannager,PackageManagerService等</li>
+<li>App进程: 启动的App所在的进程</li>
 </ul>
           <!--noindex-->
             <div class="post-button">

@@ -23,7 +23,7 @@
 <meta name="description" content="Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(8) - draw 绘制过程">
-<meta property="og:url" content="http://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
 <meta property="og:description" content="Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住">
 <meta property="og:locale" content="zh_CN">
@@ -40,11 +40,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/03/IES7KP.png">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/">
+<link rel="canonical" href="https://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/","path":"2021/11/03/p4CRfuQemJ4TOlAs/","title":"自定义View(8) - draw 绘制过程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/","path":"2021/11/03/p4CRfuQemJ4TOlAs/","title":"自定义View(8) - draw 绘制过程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>自定义View(8) - draw 绘制过程 | Stay hungry , Stay foolish</title>
@@ -124,7 +124,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text"> draw 过程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">1.1.</span> <span class="nav-text"> draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text"> 总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">draw 过程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">1.1.</span> <span class="nav-text">draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/03/p4CRfuQemJ4TOlAs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -262,29 +262,25 @@
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/03/IES7KP.png" alt="IES7KP.png"></p>
 <span id="more"></span>
-<h3 id="draw-过程解析"><a class="markdownIt-Anchor" href="#draw-过程解析">#</a> draw 过程解析</h3>
-<p>一个完整的绘制过程会依次绘制以下几个内容：<br>
-<img src="https://z3.ax1x.com/2021/11/03/IEp3Ie.png" alt="IEp3Ie.png"></p>
+
+<h3 id="draw-过程解析"><a href="#draw-过程解析" class="headerlink" title="draw 过程解析"></a>draw 过程解析</h3><p> 一个完整的绘制过程会依次绘制以下几个内容：<br> <img src="https://z3.ax1x.com/2021/11/03/IEp3Ie.png" alt="IEp3Ie.png"></p>
 <ul>
-<li><code>drawBackground()</code>  绘制背景
-<ul>
+<li><code>drawBackground()</code>绘制背景<ul>
 <li>这个方法是 private 的，不能重写，你如果要设置背景，只能用自带的 API 去设置</li>
 </ul>
 </li>
-<li><code>onDraw()</code>  绘制主体
-<ul>
+<li><code>onDraw()</code>绘制主体<ul>
 <li>这个方法在 View 和 ViewGroup 里都是空实现，因此自定义时需要复写</li>
 </ul>
 </li>
-<li><code>dispatchDraw()</code>  绘制子 View
-<ul>
+<li><code>dispatchDraw()</code>绘制子 View<ul>
 <li>在于单一 View 中无子 View，故在 View 中此方法默认为空实</li>
-<li>在 ViewGroup 中系统已经复写好此方法对其子视图进行绘制因此我们不需要复写</li>
+<li>在 ViewGroup中系统已经复写好此方法对其子视图进行绘制因此我们不需要复写</li>
 </ul>
 </li>
-<li><code>onDrawForeground()</code>  滑动边缘渐变和滑动条以及前景</li>
+<li><code>onDrawForeground()</code>滑动边缘渐变和滑动条以及前景</li>
 </ul>
-<p>ViewGroup 中的 <code>dispatchDraw()</code> :</p>
+<p>ViewGroup中的<code>dispatchDraw()</code>:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> usingRenderNodeProperties = canvas.isRecordingFor(mRenderNode);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> childrenCount = mChildrenCount;</span><br><span class="line">    <span class="keyword">final</span> View[] children = mChildren;</span><br><span class="line">    <span class="keyword">int</span> flags = mGroupFlags;</span><br><span class="line">    <span class="comment">// 动画处理</span></span><br><span class="line">    <span class="keyword">if</span> ((flags &amp; FLAG_RUN_ANIMATION) != <span class="number">0</span> &amp;&amp; canAnimate()) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">boolean</span> buildCache = !isHardwareAccelerated();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childrenCount; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> View child = children[i];</span><br><span class="line">            <span class="keyword">if</span> ((child.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE) &#123;</span><br><span class="line">                <span class="keyword">final</span> LayoutParams params = child.getLayoutParams();</span><br><span class="line">                attachLayoutAnimationParameters(child, params, i, childrenCount);</span><br><span class="line">                bindLayoutAnimation(child);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">        controller.start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 间距处理</span></span><br><span class="line">    <span class="keyword">int</span> clipSaveCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> clipToPadding = (flags &amp; CLIP_TO_PADDING_MASK) == CLIP_TO_PADDING_MASK;</span><br><span class="line">    <span class="keyword">if</span> (clipToPadding) &#123;</span><br><span class="line">        clipSaveCount = canvas.save(Canvas.CLIP_SAVE_FLAG);</span><br><span class="line">        canvas.clipRect(mScrollX + mPaddingLeft, mScrollY + mPaddingTop,</span><br><span class="line">                mScrollX + mRight - mLeft - mPaddingRight,</span><br><span class="line">                mScrollY + mBottom - mTop - mPaddingBottom);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 遍历子View</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childrenCount; i++) &#123;</span><br></pre></td></tr></table></figure>
 <pre><code>            if ((transientChild.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE ||transientChild.getAnimation() != null) &#123;
                 // // 2. 绘制子View视图    
@@ -295,22 +291,13 @@
 &#125;
 </code></pre>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### draw顺序</span><br><span class="line"></span><br><span class="line">####  onDraw() </span><br><span class="line"></span><br><span class="line">&gt; 自定义绘制最基本的形态：继承 View 类，在 onDraw() 中完全自定义它的绘制</span><br><span class="line"></span><br><span class="line">定义 View 时，绘制代码写在 super.onDraw() 的上面还是下面都无所谓,但基于已有控件的自定义绘制，就不能不考虑 `super.onDraw()` 了，你需要根据自己的需求，判断出你绘制的内容需要盖住控件原有的内容还是需要被控件原有的内容盖住，从而确定你的绘制代码是应该写在 super.onDraw() 的上面还是下面。</span><br><span class="line"></span><br><span class="line">|上面| 下面 |</span><br><span class="line">|:--:|:--:|</span><br><span class="line">| ![IEFrgH.png](https://z3.ax1x.com/2021/11/03/IEFrgH.png)  | ![IEFHrn.png](https://z3.ax1x.com/2021/11/03/IEFHrn.png) |</span><br><span class="line"></span><br><span class="line">#### dispatchDraw()</span><br><span class="line"></span><br><span class="line">&gt;  如果想在一个ViewGroup中按上面的做法在下面添加绘制内容则是不行的,因为在绘制过程中每一个 ViewGroup 会先调用自己的 onDraw() 来绘制完自己的主体之后再去绘制它的子 View,会覆盖其主体</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![IEEpH1.png](https://z3.ax1x.com/2021/11/03/IEEpH1.png)</span><br></pre></td></tr></table></figure>
-<p>public class SpottedLinearLayout extends LinearLayout {<br>
-…<br>
-// 把 onDraw () 换成了 dispatchDraw ()<br>
-protected void dispatchDraw(Canvas canvas) {<br>
-super.dispatchDraw(canvas);<br>
-… // 绘制斑点<br>
-}<br>
-}</p>
+<p>public class SpottedLinearLayout extends LinearLayout {<br>    …<br>    // 把 onDraw() 换成了 dispatchDraw()<br>    protected void dispatchDraw(Canvas canvas) {<br>       super.dispatchDraw(canvas);<br>       … // 绘制斑点<br>    }<br>}</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">虽然 View 和 ViewGroup 都有 dispatchDraw() 方法，不过由于 View 是没有子 View 的，所以一般来说 dispatchDraw() 这个方法只对 ViewGroup（以及它的子类）有意义。</span><br><span class="line"></span><br><span class="line">#### onDrawForeground()</span><br><span class="line"></span><br><span class="line">&gt; 前景前后处理</span><br><span class="line"></span><br><span class="line">在 super.onDrawForeground() 的上面</span><br><span class="line">```java</span><br><span class="line">public class AppImageView extends ImageView &#123;</span><br><span class="line">    ...</span><br><span class="line">    public void onDrawForeground(Canvas canvas) &#123;</span><br><span class="line">       ... // 绘制「New」标签</span><br><span class="line">       super.onDrawForeground(canvas);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://z3.ax1x.com/2021/11/03/IEVgSS.png" alt="IEVgSS.png"></p>
-<p>在 super.onDrawForeground () 的下面:</p>
+<p>在 super.onDrawForeground() 的下面:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppImageView</span> <span class="keyword">extends</span> <span class="title">ImageView</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawForeground</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onDrawForeground(canvas);</span><br><span class="line">       ... <span class="comment">// 绘制「New」标签</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://z3.ax1x.com/2021/11/03/IEZV0A.png" alt="IEZV0A.png"></p>
-<h4 id="draw"><a class="markdownIt-Anchor" href="#draw">#</a> draw()</h4>
-<h3 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h3>
-<p><img src="https://z3.ax1x.com/2021/11/03/IEZ1XQ.png" alt="IEZ1XQ.png"></p>
+<h4 id="draw"><a href="#draw" class="headerlink" title="draw()"></a>draw()</h4><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://z3.ax1x.com/2021/11/03/IEZ1XQ.png" alt="IEZ1XQ.png"></p>
 
     </div>
 

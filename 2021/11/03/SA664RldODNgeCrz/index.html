@@ -23,7 +23,7 @@
 <meta name="description" content="三者性能是一样的，因为 ViewPropertyAnimator 和 ObjectAnimator 的内部实现其实都是 ValueAnimator，ObjectAnimator 更是本来就是 ValueAnimator 的子类，差别只是使用的便捷性以及功能的灵活性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(5) - 动画">
-<meta property="og:url" content="http://onion99.github.io/2021/11/03/SA664RldODNgeCrz/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/11/03/SA664RldODNgeCrz/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
 <meta property="og:description" content="三者性能是一样的，因为 ViewPropertyAnimator 和 ObjectAnimator 的内部实现其实都是 ValueAnimator，ObjectAnimator 更是本来就是 ValueAnimator 的子类，差别只是使用的便捷性以及功能的灵活性。">
 <meta property="og:locale" content="zh_CN">
@@ -36,11 +36,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/02/IFf4h9.gif">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/11/03/SA664RldODNgeCrz/">
+<link rel="canonical" href="https://onion99.github.io/2021/11/03/SA664RldODNgeCrz/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/11/03/SA664RldODNgeCrz/","path":"2021/11/03/SA664RldODNgeCrz/","title":"自定义View(5) - 动画"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/11/03/SA664RldODNgeCrz/","path":"2021/11/03/SA664RldODNgeCrz/","title":"自定义View(5) - 动画"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>自定义View(5) - 动画 | Stay hungry , Stay foolish</title>
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#viewpropertyanimator"><span class="nav-number">1.</span> <span class="nav-text"> ViewPropertyAnimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#objectanimator"><span class="nav-number">2.</span> <span class="nav-text"> ObjectAnimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#valueanimator"><span class="nav-number">3.</span> <span class="nav-text"> ValueAnimator</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewPropertyAnimator"><span class="nav-number">1.</span> <span class="nav-text">ViewPropertyAnimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObjectAnimator"><span class="nav-number">2.</span> <span class="nav-text">ObjectAnimator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ValueAnimator"><span class="nav-number">3.</span> <span class="nav-text">ValueAnimator</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/03/SA664RldODNgeCrz/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/03/SA664RldODNgeCrz/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -234,7 +234,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>745</span>
+      <span>742</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -257,15 +257,12 @@
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/02/IFf4h9.gif" alt="IFf4h9.gif"></p>
 <span id="more"></span>
-<h3 id="viewpropertyanimator"><a class="markdownIt-Anchor" href="#viewpropertyanimator">#</a> ViewPropertyAnimator</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">view.animate()</span><br><span class="line">        .scaleX(<span class="number">1</span>)</span><br><span class="line">        .scaleY(<span class="number">1</span>)</span><br><span class="line">        .alpha(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="objectanimator"><a class="markdownIt-Anchor" href="#objectanimator">#</a> ObjectAnimator</h3>
-<blockquote>
+<h3 id="ViewPropertyAnimator"><a href="#ViewPropertyAnimator" class="headerlink" title="ViewPropertyAnimator"></a>ViewPropertyAnimator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">view.animate()</span><br><span class="line">        .scaleX(<span class="number">1</span>)</span><br><span class="line">        .scaleY(<span class="number">1</span>)</span><br><span class="line">        .alpha(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="ObjectAnimator"><a href="#ObjectAnimator" class="headerlink" title="ObjectAnimator"></a>ObjectAnimator</h3><blockquote>
 <p>多个动画配合执行</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PropertyValuesHolder holder1 = PropertyValuesHolder.ofFloat(<span class="string">&quot;scaleX&quot;</span>, <span class="number">1</span>);</span><br><span class="line">PropertyValuesHolder holder2 = PropertyValuesHolder.ofFloat(<span class="string">&quot;scaleY&quot;</span>, <span class="number">1</span>);</span><br><span class="line">PropertyValuesHolder holder3 = PropertyValuesHolder.ofFloat(<span class="string">&quot;alpha&quot;</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(view, holder1, holder2, holder3)</span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
-<h3 id="valueanimator"><a class="markdownIt-Anchor" href="#valueanimator">#</a> ValueAnimator</h3>
-<blockquote>
+<h3 id="ValueAnimator"><a href="#ValueAnimator" class="headerlink" title="ValueAnimator"></a>ValueAnimator</h3><blockquote>
 <p>ValueAnimator 本身不作用于任何一个属性，也不提供任何一种动画。它就是一个数值发生器，可以产生想要的各种数值</p>
 </blockquote>
 <p>ValueAnimator 并不常用，因为它的功能太基础了。ValueAnimator 是 ObjectAnimator 的父类，实际上，ValueAnimator 就是一个不能指定目标对象版本的 ObjectAnimato</p>

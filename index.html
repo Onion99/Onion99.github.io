@@ -23,7 +23,7 @@
 <meta name="description" content="巴拉巴拉">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Stay hungry , Stay foolish">
-<meta property="og:url" content="http://onion99.github.io/index.html">
+<meta property="og:url" content="https://onion99.github.io/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
 <meta property="og:description" content="巴拉巴拉">
 <meta property="og:locale" content="zh_CN">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://onion99.github.io/">
+<link rel="canonical" href="https://onion99.github.io/">
 
 
 
@@ -184,7 +184,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/29/9S5c1rplpdSAbIxR/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/29/9S5c1rplpdSAbIxR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -246,13 +246,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>首先看看 ViewModel 是怎么样实例化</p>
+          <p>首先看看ViewModel是怎么样实例化</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel?&gt;</span> <span class="title">getFragmentScopeViewModel</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">    <span class="keyword">if</span> (!::fragmentProvider.isInitialized) &#123;</span><br><span class="line">        fragmentProvider = ViewModelProvider(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fragmentProvider.<span class="keyword">get</span>(modelClass)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel?&gt;</span> <span class="title">getActivityScopeViewModel</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">    <span class="keyword">if</span> (!::activityProvider.isInitialized) &#123;</span><br><span class="line">        activityProvider = ViewModelProvider(requireActivity())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> activityProvider.<span class="keyword">get</span>(modelClass)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我超，原来是通过一个 ViewModelProvider 去 get 到的，他妈的这是干什么的呢，为什么要通过 ViewModelProvider 获取呢<br>
-<img src="http://img.doutula.com/production/uploads/image/2019/06/06/20190606755268_TSvBec.jpg" alt=""><br>
-我怎么知道，瞧瞧官方正儿八经的回答吧<br>
- <code>ViewModel</code> : 旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存<br>
- <code>ViewModelProvider</code> : ViewModel 的辅助程序类，该类负责为界面准备数据。在配置更改期间会自动保留 ViewModel 对象，以便它们存储的数据立即可供下一个 activity 或 fragment 实例使用</p>
+<p>我超,原来是通过一个ViewModelProvider去get到的,他妈的这是干什么的呢,为什么要通过ViewModelProvider获取呢<br><img src="http://img.doutula.com/production/uploads/image/2019/06/06/20190606755268_TSvBec.jpg"><br>我怎么知道,瞧瞧官方正儿八经的回答吧<br><code>ViewModel</code>:旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存<br><code>ViewModelProvider</code>: ViewModel的辅助程序类，该类负责为界面准备数据。在配置更改期间会自动保留 ViewModel 对象，以便它们存储的数据立即可供下一个 activity 或 fragment 实例使用</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/29/9S5c1rplpdSAbIxR/#more" rel="contents">
@@ -286,7 +282,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/29/4diQitvVwGPnicN5/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/29/4diQitvVwGPnicN5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -349,12 +345,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>Map 是什么，可以是一个键到值的 Object, 可以是一个键值对的集合，是函数抽象的数学模型</p>
+<p>Map是什么,可以是一个键到值的Object,可以是一个键值对的集合, 是函数抽象的数学模型</p>
 </blockquote>
-<p>似不似？</p>
-<p>HashMap 就是 Map 实现的佼佼者，它使用哈希表作为底层数据结构</p>
+<p>似不似?</p>
+<p>HashMap就是Map实现的佼佼者,它使用哈希表作为底层数据结构</p>
 <blockquote>
-<p>注意哦，作为性能的最上层，HashMap 是不考虑线程安全的，这是上层人的优越，多线程情况下，可以选用 <code>ConcurrentHashMap</code>  &gt;  <code>Collections.synchronizedMap(HashMap&lt;&gt;())</code></p>
+<p>注意哦,作为性能的最上层,HashMap是不考虑线程安全的,这是上层人的优越,多线程情况下,可以选用<code>ConcurrentHashMap</code> &gt; <code>Collections.synchronizedMap(HashMap&lt;&gt;())</code></p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -389,7 +385,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/29/hu0861X6Ltf32fYt/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/29/hu0861X6Ltf32fYt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -451,17 +447,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="sameple"><a class="markdownIt-Anchor" href="#sameple">#</a> Sameple</h3>
-<p>首先，我们来看看 DataBinding 使用:</p>
+          <h3 id="Sameple"><a href="#Sameple" class="headerlink" title="Sameple"></a>Sameple</h3><p>首先,我们来看看DataBinding使用:</p>
 <ol>
-<li>给 layout 文件套娃:</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">androidx.viewpager.widget.ViewPager</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/home_pager&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">com.flyco.tablayout.SlidingTabLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/home_tab&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>在 Fragment 或者 View 中获取 binding 对象</li>
-</ol>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binding = DataBindingUtil.inflate(inflater,layoutRes,container,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<p>超，就是这么简单，来从 <code>inflate</code>  开始解析</p>
+<li>给layout文件套娃:<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">androidx.viewpager.widget.ViewPager</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/home_pager&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">com.flyco.tablayout.SlidingTabLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/home_tab&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在Fragment或者View中获取binding对象<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binding = DataBindingUtil.inflate(inflater,layoutRes,container,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+超,就是这么简单,来从<code>inflate</code>开始解析
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/29/hu0861X6Ltf32fYt/#more" rel="contents">
@@ -495,7 +485,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/07/MpHTUCP7P1OgtydO/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/07/MpHTUCP7P1OgtydO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -594,7 +584,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/07/oizxmTtLdVsaXZrZ/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/07/oizxmTtLdVsaXZrZ/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -656,9 +646,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>线程池对比 new Thread ()</p>
+          <p>线程池对比new Thread()</p>
 <ul>
-<li>重用存在的线程，减少线程创建、消亡的开销，性能佳。</li>
+<li>重用存在的线程，减少线程创建、消亡的开销，性能佳。 </li>
 <li>可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞</li>
 <li>提供定时执行、定期执行、单线程、并发数控制等功能</li>
 </ul>
@@ -666,41 +656,39 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">构造参数</th>
-<th style="text-align:right">描述</th>
+<th align="center">构造参数</th>
+<th align="right">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">corePoolSize</td>
-<td style="text-align:right">核心线程的数量，默认情况下，即使核心线程没有任务在执行它也存在的，我们固定一定数量的核心线程且它一直存活，这样就避免了一般情况下 CPU 创建和销毁线程带来的开销。</td>
+<tbody><tr>
+<td align="center">corePoolSize</td>
+<td align="right">核心线程的数量,默认情况下,即使核心线程没有任务在执行它也存在的,我们固定一定数量的核心线程且它一直存活,这样就避免了一般情况下CPU创建和销毁线程带来的开销。</td>
 </tr>
 <tr>
-<td style="text-align:center">maximumPoolSize</td>
-<td style="text-align:right">最大线程数，当任务数量超过最大线程数时其它任务可能就会被阻塞。最大线程数 = 核心线程 + 非核心线程。非核心线程只有当核心线程不够用且线程池有空余时才会被创建，执行完任务后非核心线程会被销毁。</td>
+<td align="center">maximumPoolSize</td>
+<td align="right">最大线程数，当任务数量超过最大线程数时其它任务可能就会被阻塞。最大线程数 = 核心线程 + 非核心线程。非核心线程只有当核心线程不够用且线程池有空余时才会被创建，执行完任务后非核心线程会被销毁。</td>
 </tr>
 <tr>
-<td style="text-align:center">keepAliveTime</td>
-<td style="text-align:right">非核心线程的超时时长，当执行时间超过这个时间时，非核心线程就会被回收。当 allowCoreThreadTimeOut 设置为 true 时，此属性也作用在核心线程上</td>
+<td align="center">keepAliveTime</td>
+<td align="right">非核心线程的超时时长,当执行时间超过这个时间时,非核心线程就会被回收。当 allowCoreThreadTimeOut设置为true时,此属性也作用在核心线程上</td>
 </tr>
 <tr>
-<td style="text-align:center">unit</td>
-<td style="text-align:right">时间单位</td>
+<td align="center">unit</td>
+<td align="right">时间单位</td>
 </tr>
 <tr>
-<td style="text-align:center">workQueue</td>
-<td style="text-align:right">任务队列，我们提交给线程池的 runnable 会被存储在这个对象上</td>
+<td align="center">workQueue</td>
+<td align="right">任务队列,我们提交给线程池的 runnable 会被存储在这个对象上</td>
 </tr>
 <tr>
-<td style="text-align:center">threadFactory</td>
-<td style="text-align:right">线程工厂，用于指定为线程池创建新线程的方式</td>
+<td align="center">threadFactory</td>
+<td align="right">线程工厂,用于指定为线程池创建新线程的方式</td>
 </tr>
 <tr>
-<td style="text-align:center">handler</td>
-<td style="text-align:right">拒绝策略</td>
+<td align="center">handler</td>
+<td align="right">拒绝策略</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/07/oizxmTtLdVsaXZrZ/#more" rel="contents">
@@ -734,7 +722,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/07/WkWqwHwU8wgNL4cd/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/07/WkWqwHwU8wgNL4cd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -795,8 +783,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="线程状态"><a class="markdownIt-Anchor" href="#线程状态">#</a> 线程状态</h3>
-<p><img src="https://z3.ax1x.com/2021/11/05/InuMpd.png" alt="InuMpd.png"></p>
+          <h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><p><img src="https://z3.ax1x.com/2021/11/05/InuMpd.png" alt="InuMpd.png"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/07/WkWqwHwU8wgNL4cd/#more" rel="contents">

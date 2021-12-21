@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="# JVM  即 Java 虚拟机，是 java 程序与 OS 之间的处理中介，屏蔽了与 OS 平台相关的具体信息。从而实现跨平台  JRE: java 运行环境  JDK:java 开发工具包  组成:  类装载子系统（ClassLoader） 运行时数据区 执行引擎 内存回收">
+<meta name="description" content="JVM 即Java虚拟机,是java程序与OS之间的处理中介,屏蔽了与OS平台相关的具体信息.从而实现跨平台  JRE: java运行环境JDK:java开发工具包  组成:  类装载子系统（ClassLoader） 运行时数据区 执行引擎 内存回收">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 理论">
-<meta property="og:url" content="http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="# JVM  即 Java 虚拟机，是 java 程序与 OS 之间的处理中介，屏蔽了与 OS 平台相关的具体信息。从而实现跨平台  JRE: java 运行环境  JDK:java 开发工具包  组成:  类装载子系统（ClassLoader） 运行时数据区 执行引擎 内存回收">
+<meta property="og:description" content="JVM 即Java虚拟机,是java程序与OS之间的处理中介,屏蔽了与OS平台相关的具体信息.从而实现跨平台  JRE: java运行环境JDK:java开发工具包  组成:  类装载子系统（ClassLoader） 运行时数据区 执行引擎 内存回收">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/10/29/5XeI1O.png">
 <meta property="article:published_time" content="2021-10-31T13:33:20.000Z">
@@ -36,11 +36,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/10/29/5XeI1O.png">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/">
+<link rel="canonical" href="https://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/","path":"2021/10/31/nOSSxZ51uxl6hUq8/","title":"Java 理论"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/","path":"2021/10/31/nOSSxZ51uxl6hUq8/","title":"Java 理论"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Java 理论 | Stay hungry , Stay foolish</title>
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jvm"><span class="nav-number">1.</span> <span class="nav-text"> JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text"> 面向对象和面向过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#refer"><span class="nav-number">2.</span> <span class="nav-text"> Refer</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-number">1.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">面向对象和面向过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refer"><span class="nav-number">2.</span> <span class="nav-text">Refer</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/10/31/nOSSxZ51uxl6hUq8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -235,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>293</span>
+      <span>290</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -253,23 +253,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="jvm"><a class="markdownIt-Anchor" href="#jvm">#</a> JVM</h2>
-<blockquote>
-<p>即 Java 虚拟机，是 java 程序与 OS 之间的处理中介，屏蔽了与 OS 平台相关的具体信息。从而实现跨平台</p>
+        <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><blockquote>
+<p>即Java虚拟机,是java程序与OS之间的处理中介,屏蔽了与OS平台相关的具体信息.从而实现跨平台</p>
 </blockquote>
-<p>JRE: java 运行环境<br>
- JDK:java 开发工具包</p>
+<p>JRE: java运行环境<br>JDK:java开发工具包</p>
 <p><img src="https://z3.ax1x.com/2021/10/29/5XeI1O.png" alt="5XeI1O.png"></p>
 <p>组成:</p>
 <ul>
 <li>类装载子系统（ClassLoader）</li>
 <li>运行时数据区</li>
 <li>执行引擎</li>
-<li>内存回收</li>
+<li>内存回收<span id="more"></span>
+<h3 id="面向对象和面向过程"><a href="#面向对象和面向过程" class="headerlink" title="面向对象和面向过程"></a>面向对象和面向过程</h3></li>
 </ul>
-<span id="more"></span>
-<h3 id="面向对象和面向过程"><a class="markdownIt-Anchor" href="#面向对象和面向过程">#</a> 面向对象和面向过程</h3>
-<p>面向过程</p>
+<p>面向过程 </p>
 <ul>
 <li>将一个问题分解为具体过程的行为实现</li>
 <li>性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源</li>
@@ -279,10 +276,7 @@
 <ul>
 <li>将一个问题分解为通过不同对象的属性和功能来实现</li>
 </ul>
-<h2 id="refer"><a class="markdownIt-Anchor" href="#refer">#</a> Refer</h2>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38163244/article/details/109551205">Jvm 系列 - Jvm 概述（一）</a><br>
-<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3NDY4NzQwNQ==&amp;mid=2247483820&amp;idx=1&amp;sn=8418f0f6a618bb0f0ca0980af09a816f&amp;chksm=fd2fd06eca5859786ab124dd204a7ec9b1ad3ed230b9b531086cc6729a277a05d3e8307b7e0d&amp;mpshare=1&amp;scene=1&amp;srcid=10298k3e78U6EvGwOFzdlSka&amp;sharer_sharetime=1635474328007&amp;sharer_shareid=7cb3b4a44a48b28c2337c68afe383da6&amp;exportkey=A7V%2B0C1tGaUKgyZIx1CLZhU%3D&amp;pass_ticket=jfeKdbe8hPuxHSyoUa4LK3n22co%2B%2BeHANszsiwjQ22G6HpzZYr5LX%2BaxLyzvvutj&amp;wx_header=0#rd">一张图看懂 JVM（升级版） (qq.com)</a><br>
-<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mrhgw/p/10341660.html"> JVM 原理摘要 - 有容乃大 - 博客园 (cnblogs.com)</a></p>
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38163244/article/details/109551205">Jvm系列-Jvm概述（一）</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3NDY4NzQwNQ==&mid=2247483820&idx=1&sn=8418f0f6a618bb0f0ca0980af09a816f&chksm=fd2fd06eca5859786ab124dd204a7ec9b1ad3ed230b9b531086cc6729a277a05d3e8307b7e0d&mpshare=1&scene=1&srcid=10298k3e78U6EvGwOFzdlSka&sharer_sharetime=1635474328007&sharer_shareid=7cb3b4a44a48b28c2337c68afe383da6&exportkey=A7V+0C1tGaUKgyZIx1CLZhU=&pass_ticket=jfeKdbe8hPuxHSyoUa4LK3n22co++eHANszsiwjQ22G6HpzZYr5LX+axLyzvvutj&wx_header=0#rd">一张图看懂JVM（升级版） (qq.com)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mrhgw/p/10341660.html">JVM原理摘要 - 有容乃大 - 博客园 (cnblogs.com)</a></p>
 
     </div>
 

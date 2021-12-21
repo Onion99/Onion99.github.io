@@ -23,7 +23,7 @@
 <meta name="description" content="锁机制问题:  在多线程竞争下，加锁、释放锁会导致比较多的上下文切换和调度延时，引起性能问题 一个线程持有锁会导致其它所有需要此锁的线程挂起 如果一个优先级高的线程等待一个优先级低的线程释放锁会导致优先级倒置，引起性能风险  volatile 是不错的机制，但是 volatile 不能保证原子性，因此对于同步最终还是要回到锁机制上来。独占锁是一种悲观锁，synchronized 就是一种独占锁，会">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发(4) - CAS">
-<meta property="og:url" content="http://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
 <meta property="og:description" content="锁机制问题:  在多线程竞争下，加锁、释放锁会导致比较多的上下文切换和调度延时，引起性能问题 一个线程持有锁会导致其它所有需要此锁的线程挂起 如果一个优先级高的线程等待一个优先级低的线程释放锁会导致优先级倒置，引起性能风险  volatile 是不错的机制，但是 volatile 不能保证原子性，因此对于同步最终还是要回到锁机制上来。独占锁是一种悲观锁，synchronized 就是一种独占锁，会">
 <meta property="og:locale" content="zh_CN">
@@ -36,11 +36,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/04/Ie5YA1.png">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/">
+<link rel="canonical" href="https://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/","path":"2021/11/07/qX2v7eB61IheaBrH/","title":"Java并发(4) - CAS"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/","path":"2021/11/07/qX2v7eB61IheaBrH/","title":"Java并发(4) - CAS"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Java并发(4) - CAS | Stay hungry , Stay foolish</title>
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text"> 原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text"> CAS 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas%E7%BC%BA%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text"> CAS 缺点</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">CAS 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS%E7%BC%BA%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">CAS缺点</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/07/qX2v7eB61IheaBrH/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -235,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>804</span>
+      <span>801</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -264,21 +264,20 @@
 <p>乐观锁即总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和 CAS 算法实现</p>
 </blockquote>
 <span id="more"></span>
-<h3 id="原子操作"><a class="markdownIt-Anchor" href="#原子操作">#</a> 原子操作</h3>
-<blockquote>
-<p>所谓 “原子” 操作，是指一组不可分割的操作：操作者对目标对象进行操作时，要么完成所有操作后其他操作者才能操作；要么这个操作者不能进行任何操作</p>
+
+<h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><blockquote>
+<p>所谓“原子”操作，是指一组不可分割的操作：操作者对目标对象进行操作时，要么完成所有操作后其他操作者才能操作；要么这个操作者不能进行任何操作</p>
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/04/Ie5YA1.png" alt="Ie5YA1.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class TestAtomic &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        // 实例化了一个AtomicInteger类的对象atomic并定义初始值为1</span><br><span class="line">        AtomicInteger atomic = new AtomicInteger(1);</span><br><span class="line">        // 进行atomic的原子化操作：增加1并且获取这个增加后的新值</span><br><span class="line">        atomic.incrementAndGet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="cas-原理"><a class="markdownIt-Anchor" href="#cas-原理">#</a> CAS 原理</h3>
-<blockquote>
+
+<h3 id="CAS-原理"><a href="#CAS-原理" class="headerlink" title="CAS 原理"></a>CAS 原理</h3><blockquote>
 <p>CAS 的思想很简单，三个参数：当前内存值 V、旧的预期值 A、即将更新的值 B，当且仅当预期值 A 和内存值 V 相同时，将内存值修改为 B 并返回 true，否则什么都不做，并返回 false。我们拿 AtomicInteger 类来分析，先来看看 AtomicInteger 静态代码块片段</p>
 </blockquote>
-<h3 id="cas缺点"><a class="markdownIt-Anchor" href="#cas缺点">#</a> CAS 缺点</h3>
-<ul>
+<h3 id="CAS缺点"><a href="#CAS缺点" class="headerlink" title="CAS缺点"></a>CAS缺点</h3><ul>
 <li>循环时间长开销很大</li>
 <li>只能保证一个共享变量的原子操作</li>
-<li>ABA 问题</li>
+<li>ABA问题</li>
 </ul>
 
     </div>

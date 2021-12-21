@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="# 范围裁切 # clipRect  1234567canvas.clipRect(left, top, right, bottom);canvas.drawBitmap(bitmap, x, y, paint);&#x2F;&#x2F; 加上 Canvas.save() 和 Canvas.restore() 来及时恢复绘制范围canvas.save();canvas.clipRect(left, top, righ">
+<meta name="description" content="范围裁切clipRect 1234567canvas.clipRect(left, top, right, bottom);canvas.drawBitmap(bitmap, x, y, paint);&#x2F;&#x2F; 加上 Canvas.save() 和 Canvas.restore() 来及时恢复绘制范围canvas.save();canvas.clipRect(left, top, right, bot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(4) - Canvas相关">
-<meta property="og:url" content="http://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="# 范围裁切 # clipRect  1234567canvas.clipRect(left, top, right, bottom);canvas.drawBitmap(bitmap, x, y, paint);&#x2F;&#x2F; 加上 Canvas.save() 和 Canvas.restore() 来及时恢复绘制范围canvas.save();canvas.clipRect(left, top, righ">
+<meta property="og:description" content="范围裁切clipRect 1234567canvas.clipRect(left, top, right, bottom);canvas.drawBitmap(bitmap, x, y, paint);&#x2F;&#x2F; 加上 Canvas.save() 和 Canvas.restore() 来及时恢复绘制范围canvas.save();canvas.clipRect(left, top, right, bot">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/02/IFKTER.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/02/IFM9UI.md.png">
@@ -40,11 +40,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/02/IFKTER.png">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/">
+<link rel="canonical" href="https://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/","path":"2021/11/03/ZOnr24kULe7cQgsc/","title":"自定义View(4) - Canvas相关"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/","path":"2021/11/03/ZOnr24kULe7cQgsc/","title":"自定义View(4) - Canvas相关"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>自定义View(4) - Canvas相关 | Stay hungry , Stay foolish</title>
@@ -124,7 +124,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E8%A3%81%E5%88%87"><span class="nav-number">1.</span> <span class="nav-text"> 范围裁切</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cliprect"><span class="nav-number">1.1.</span> <span class="nav-text"> clipRect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clippath"><span class="nav-number">1.2.</span> <span class="nav-text"> clipPath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text"> 几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text"> 二维变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matrix%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text"> Matrix 变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#camera"><span class="nav-number">2.3.</span> <span class="nav-text"> Camera</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#camerarotate"><span class="nav-number">2.3.1.</span> <span class="nav-text"> Camera.rotate*</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cameratranslate"><span class="nav-number">2.3.2.</span> <span class="nav-text"> Camera.translate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#camerasetlocation"><span class="nav-number">2.3.3.</span> <span class="nav-text"> Camera.setLocation</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E8%A3%81%E5%88%87"><span class="nav-number">1.</span> <span class="nav-text">范围裁切</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#clipRect"><span class="nav-number">1.1.</span> <span class="nav-text">clipRect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clipPath"><span class="nav-number">1.2.</span> <span class="nav-text">clipPath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">二维变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix%E5%8F%98%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">Matrix变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Camera"><span class="nav-number">2.3.</span> <span class="nav-text">Camera</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Camera-rotate"><span class="nav-number">2.3.1.</span> <span class="nav-text">Camera.rotate*</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Camera-translate"><span class="nav-number">2.3.2.</span> <span class="nav-text">Camera.translate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Camera-setLocation"><span class="nav-number">2.3.3.</span> <span class="nav-text">Camera.setLocation</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/03/ZOnr24kULe7cQgsc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -257,56 +257,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="范围裁切"><a class="markdownIt-Anchor" href="#范围裁切">#</a> 范围裁切</h3>
-<h4 id="cliprect"><a class="markdownIt-Anchor" href="#cliprect">#</a> clipRect</h4>
-<p><img src="https://z3.ax1x.com/2021/11/02/IFKTER.png" alt="IFKTER.png"></p>
+        <h3 id="范围裁切"><a href="#范围裁切" class="headerlink" title="范围裁切"></a>范围裁切</h3><h4 id="clipRect"><a href="#clipRect" class="headerlink" title="clipRect"></a>clipRect</h4><p><img src="https://z3.ax1x.com/2021/11/02/IFKTER.png" alt="IFKTER.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">canvas.clipRect(left, top, right, bottom);</span><br><span class="line">canvas.drawBitmap(bitmap, x, y, paint);</span><br><span class="line"><span class="comment">// 加上 Canvas.save() 和 Canvas.restore() 来及时恢复绘制范围</span></span><br><span class="line">canvas.save();</span><br><span class="line">canvas.clipRect(left, top, right, bottom);</span><br><span class="line">canvas.drawBitmap(bitmap, x, y, paint);</span><br><span class="line">canvas.restore();</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h4 id="clippath"><a class="markdownIt-Anchor" href="#clippath">#</a> clipPath</h4>
-<p><img src="https://z3.ax1x.com/2021/11/02/IFM9UI.md.png" alt="IFM9UI.md.png"></p>
+<h4 id="clipPath"><a href="#clipPath" class="headerlink" title="clipPath"></a>clipPath</h4><p><img src="https://z3.ax1x.com/2021/11/02/IFM9UI.md.png" alt="IFM9UI.md.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">canvas.save();</span><br><span class="line">canvas.clipPath(path1);</span><br><span class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</span><br><span class="line">canvas.restore();</span><br><span class="line"></span><br><span class="line">canvas.save();</span><br><span class="line">canvas.clipPath(path2);</span><br><span class="line">canvas.drawBitmap(bitmap, point2.x, point2.y, paint);</span><br><span class="line">canvas.restore();</span><br></pre></td></tr></table></figure>
-<h3 id="几何变换"><a class="markdownIt-Anchor" href="#几何变换">#</a> 几何变换</h3>
-<h4 id="二维变换"><a class="markdownIt-Anchor" href="#二维变换">#</a> 二维变换</h4>
-<blockquote>
+
+<h3 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h3><h4 id="二维变换"><a href="#二维变换" class="headerlink" title="二维变换"></a>二维变换</h4><blockquote>
 <p>处理常见的二维变换</p>
 </blockquote>
 <ul>
-<li><code>Canvas.translate()</code>  平移</li>
-<li><code>Canvas.rotate()</code>  旋转</li>
-<li><code>Canvas.scale()</code>  缩放</li>
-<li><code>Canvas.skew()</code>  错切</li>
+<li><code>Canvas.translate()</code> 平移</li>
+<li><code>Canvas.rotate()</code> 旋转</li>
+<li><code>Canvas.scale()</code> 缩放</li>
+<li><code>Canvas.skew()</code> 错切</li>
 </ul>
-<h4 id="matrix变换"><a class="markdownIt-Anchor" href="#matrix变换">#</a> Matrix 变换</h4>
-<blockquote>
+<h4 id="Matrix变换"><a href="#Matrix变换" class="headerlink" title="Matrix变换"></a>Matrix变换</h4><blockquote>
 <p>用来处理不常见的二维变换</p>
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/02/IFn6qs.png" alt="IFn6qs.png"></p>
 <ul>
-<li><code>Canvas.setMatrix(matrix)</code>
-<ul>
-<li>用  <code>Matrix</code>  直接替换  <code>Canvas</code>  当前的变换矩阵，即抛弃  <code>Canvas</code>  当前的变换</li>
+<li><code>Canvas.setMatrix(matrix)</code><ul>
+<li>用 <code>Matrix</code> 直接替换 <code>Canvas</code> 当前的变换矩阵，即抛弃 <code>Canvas</code> 当前的变换</li>
 </ul>
 </li>
-<li><code>Canvas.concat(matrix)</code>
-<ul>
-<li>用  <code>Canvas</code>  当前的变换矩阵和  <code>Matrix</code>  相乘，即基于  <code>Canvas</code>  当前的变换，叠加上  <code>Matrix</code>  中的变换</li>
+<li><code>Canvas.concat(matrix)</code><ul>
+<li>用 <code>Canvas</code> 当前的变换矩阵和 <code>Matrix</code> 相乘，即基于 <code>Canvas</code> 当前的变换，叠加上 <code>Matrix</code> 中的变换</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line"><span class="keyword">float</span> pointsSrc = &#123;left, top, right, top, left, bottom, right, bottom&#125;;</span><br><span class="line"><span class="keyword">float</span> pointsDst = &#123;left - <span class="number">10</span>, top + <span class="number">50</span>, right + <span class="number">120</span>, top - <span class="number">90</span>, left + <span class="number">20</span>, bottom + <span class="number">30</span>, right + <span class="number">20</span>, bottom + <span class="number">60</span>&#125;;</span><br><span class="line">...</span><br><span class="line">matrix.reset();</span><br><span class="line">matrix.setPolyToPoly(pointsSrc, <span class="number">0</span>, pointsDst, <span class="number">0</span>, <span class="number">4</span>);</span><br><span class="line">canvas.save();</span><br><span class="line">canvas.concat(matrix);</span><br><span class="line">canvas.drawBitmap(bitmap, x, y, paint);</span><br><span class="line">canvas.restore();</span><br></pre></td></tr></table></figure>
-<h4 id="camera"><a class="markdownIt-Anchor" href="#camera">#</a> Camera</h4>
-<blockquote>
+
+<h4 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h4><blockquote>
 <p>处理三维旋转</p>
 </blockquote>
-<h5 id="camerarotate"><a class="markdownIt-Anchor" href="#camerarotate">#</a> Camera.rotate*</h5>
-<p><img src="https://z3.ax1x.com/2021/11/02/IFZoMd.md.png" alt="IFZoMd.md.png"></p>
+<h5 id="Camera-rotate"><a href="#Camera-rotate" class="headerlink" title="Camera.rotate*"></a>Camera.rotate*</h5><p><img src="https://z3.ax1x.com/2021/11/02/IFZoMd.md.png" alt="IFZoMd.md.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Camera camera =  <span class="keyword">new</span>  Camera();</span><br><span class="line">Point point1 = <span class="keyword">new</span> Point(<span class="number">200</span>, <span class="number">100</span>);</span><br><span class="line">Point point2 = <span class="keyword">new</span> Point(<span class="number">600</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">   canvas.save();</span><br><span class="line">   camera.save(); <span class="comment">// 保存 Camera 的状态</span></span><br><span class="line">   camera.rotateX(<span class="number">30</span>); <span class="comment">// 旋转 Camera 的三维空间</span></span><br><span class="line">   camera.applyToCanvas(canvas); <span class="comment">// 把旋转投影到 Canvas</span></span><br><span class="line">   camera.restore(); <span class="comment">// 恢复 Camera 的状态</span></span><br><span class="line">   canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</span><br><span class="line">   canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>居中处理:<br>
-<img src="https://z3.ax1x.com/2021/11/02/IFesfS.png" alt="IFesfS.png"></p>
+
+<p>居中处理:<br><img src="https://z3.ax1x.com/2021/11/02/IFesfS.png" alt="IFesfS.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> bitmapWidth = bitmap.getWidth();</span><br><span class="line"><span class="keyword">int</span> bitmapHeight = bitmap.getHeight();</span><br><span class="line"><span class="keyword">int</span> center1X = point1.x + bitmapWidth / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> center1Y = point1.y + bitmapHeight / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> center2X = point2.x + bitmapWidth / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> center2Y = point2.y + bitmapHeight / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">camera.save();</span><br><span class="line">matrix.reset();</span><br><span class="line">camera.rotateX(<span class="number">30</span>);</span><br><span class="line">camera.getMatrix(matrix);</span><br><span class="line">camera.restore();</span><br><span class="line">matrix.preTranslate(-center1X, -center1Y);</span><br><span class="line">matrix.postTranslate(center1X, center1Y);</span><br><span class="line">canvas.save();</span><br><span class="line">canvas.concat(matrix);</span><br><span class="line">canvas.drawBitmap(bitmap, point1.x, point1.y, paint);</span><br><span class="line">canvas.restore();</span><br></pre></td></tr></table></figure>
-<h5 id="cameratranslate"><a class="markdownIt-Anchor" href="#cameratranslate">#</a> Camera.translate</h5>
-<h5 id="camerasetlocation"><a class="markdownIt-Anchor" href="#camerasetlocation">#</a> Camera.setLocation</h5>
-<blockquote>
+<h5 id="Camera-translate"><a href="#Camera-translate" class="headerlink" title="Camera.translate"></a>Camera.translate</h5><h5 id="Camera-setLocation"><a href="#Camera-setLocation" class="headerlink" title="Camera.setLocation"></a>Camera.setLocation</h5><blockquote>
 <p>设置虚拟相机的位置</p>
 </blockquote>
 

@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="# Color # 基本颜色 setColor(int color): 12paint.setColor(Color.parseColor(&quot;#009688&quot;));canvas.drawRect(30, 30, 230, 180, paint);">
+<meta name="description" content="Color基本颜色setColor(int color): 12paint.setColor(Color.parseColor(&quot;#009688&quot;));canvas.drawRect(30, 30, 230, 180, paint);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(2) - Paint相关">
-<meta property="og:url" content="http://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/index.html">
+<meta property="og:url" content="https://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="# Color # 基本颜色 setColor(int color): 12paint.setColor(Color.parseColor(&quot;#009688&quot;));canvas.drawRect(30, 30, 230, 180, paint);">
+<meta property="og:description" content="Color基本颜色setColor(int color): 12paint.setColor(Color.parseColor(&quot;#009688&quot;));canvas.drawRect(30, 30, 230, 180, paint);">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/01/ICK7e1.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/01/ICuIVP.png">
@@ -66,11 +66,11 @@
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/01/ICK7e1.png">
 
 
-<link rel="canonical" href="http://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/">
+<link rel="canonical" href="https://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/","path":"2021/11/01/weRgrdLnBqIUWkcH/","title":"自定义View(2) - Paint相关"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/","path":"2021/11/01/weRgrdLnBqIUWkcH/","title":"自定义View(2) - Paint相关"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>自定义View(2) - Paint相关 | Stay hungry , Stay foolish</title>
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#color"><span class="nav-number">1.</span> <span class="nav-text"> Color</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%A2%9C%E8%89%B2"><span class="nav-number">1.1.</span> <span class="nav-text"> 基本颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shader"><span class="nav-number">1.2.</span> <span class="nav-text"> Shader</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lineargradient%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.1.</span> <span class="nav-text"> LinearGradient (线性渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#radialgradient%E8%BE%90%E5%B0%84%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.2.</span> <span class="nav-text"> RadialGradient (辐射渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sweepgradient%E6%89%AB%E6%8F%8F%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.3.</span> <span class="nav-text"> SweepGradient (扫描渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitmapshader"><span class="nav-number">1.2.4.</span> <span class="nav-text"> BitmapShader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#composeshader-%E6%B7%B7%E5%90%88%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text"> ComposeShader 混合着色器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#porterduff"><span class="nav-number">1.3.</span> <span class="nav-text"> PorterDuff</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patheffect"><span class="nav-number">2.</span> <span class="nav-text"> PathEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#style"><span class="nav-number">2.1.</span> <span class="nav-text"> Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">2.2.</span> <span class="nav-text"> Filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#effect"><span class="nav-number">2.3.</span> <span class="nav-text"> Effect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shadowlayer"><span class="nav-number">2.4.</span> <span class="nav-text"> ShadowLayer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maskfilter"><span class="nav-number">2.5.</span> <span class="nav-text"> MaskFilter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getpath"><span class="nav-number">2.6.</span> <span class="nav-text"> getPath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#refer"><span class="nav-number">3.</span> <span class="nav-text"> Refer</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Color"><span class="nav-number">1.</span> <span class="nav-text">Color</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E9%A2%9C%E8%89%B2"><span class="nav-number">1.1.</span> <span class="nav-text">基本颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shader"><span class="nav-number">1.2.</span> <span class="nav-text">Shader</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#LinearGradient-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">LinearGradient(线性渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RadialGradient-%E8%BE%90%E5%B0%84%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.2.</span> <span class="nav-text">RadialGradient(辐射渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SweepGradient-%E6%89%AB%E6%8F%8F%E6%B8%90%E5%8F%98"><span class="nav-number">1.2.3.</span> <span class="nav-text">SweepGradient(扫描渐变)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BitmapShader"><span class="nav-number">1.2.4.</span> <span class="nav-text">BitmapShader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ComposeShader-%E6%B7%B7%E5%90%88%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text">ComposeShader 混合着色器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PorterDuff"><span class="nav-number">1.3.</span> <span class="nav-text">PorterDuff</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PathEffect"><span class="nav-number">2.</span> <span class="nav-text">PathEffect</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Style"><span class="nav-number">2.1.</span> <span class="nav-text">Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Filter"><span class="nav-number">2.2.</span> <span class="nav-text">Filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Effect"><span class="nav-number">2.3.</span> <span class="nav-text">Effect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ShadowLayer"><span class="nav-number">2.4.</span> <span class="nav-text">ShadowLayer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaskFilter"><span class="nav-number">2.5.</span> <span class="nav-text">MaskFilter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getPath"><span class="nav-number">2.6.</span> <span class="nav-text">getPath</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Refer"><span class="nav-number">3.</span> <span class="nav-text">Refer</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -221,7 +221,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/">
+    <link itemprop="mainEntityOfPage" href="https://onion99.github.io/2021/11/01/weRgrdLnBqIUWkcH/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -265,7 +265,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -283,155 +283,137 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="color"><a class="markdownIt-Anchor" href="#color">#</a> Color</h3>
-<h4 id="基本颜色"><a class="markdownIt-Anchor" href="#基本颜色">#</a> 基本颜色</h4>
-<p>setColor(int color):</p>
+        <h3 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h3><h4 id="基本颜色"><a href="#基本颜色" class="headerlink" title="基本颜色"></a>基本颜色</h4><p>setColor(int color):</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paint.setColor(Color.parseColor(<span class="string">&quot;#009688&quot;</span>));</span><br><span class="line">canvas.drawRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">230</span>, <span class="number">180</span>, paint);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p>setARGB(int a, int r, int g, int b)</p>
+<p> setARGB(int a, int r, int g, int b)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paint.setARGB(<span class="number">100</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">canvas.drawLine(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>, paint);</span><br></pre></td></tr></table></figure>
-<h4 id="shader"><a class="markdownIt-Anchor" href="#shader">#</a> Shader</h4>
-<h5 id="lineargradient线性渐变"><a class="markdownIt-Anchor" href="#lineargradient线性渐变">#</a> LinearGradient (线性渐变)</h5>
-<p><img src="https://z3.ax1x.com/2021/11/01/ICK7e1.png" alt="ICK7e1.png"></p>
+
+<h4 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h4><h5 id="LinearGradient-线性渐变"><a href="#LinearGradient-线性渐变" class="headerlink" title="LinearGradient(线性渐变)"></a>LinearGradient(线性渐变)</h5><p><img src="https://z3.ax1x.com/2021/11/01/ICK7e1.png" alt="ICK7e1.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Shader shader = <span class="keyword">new</span> LinearGradient(<span class="number">100</span>, <span class="number">100</span>, <span class="number">500</span>, <span class="number">500</span>, Color.parseColor(<span class="string">&quot;#E91E63&quot;</span>),</span><br><span class="line">        Color.parseColor(<span class="string">&quot;#2196F3&quot;</span>), Shader.TileMode.CLAMP);</span><br><span class="line">paint.setShader(shader);</span><br><span class="line">...</span><br><span class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:center">CLAMP</th>
-<th style="text-align:center">MIRROR</th>
-<th style="text-align:center">REPEAT</th>
+<th align="center">CLAMP</th>
+<th align="center">MIRROR</th>
+<th align="center">REPEAT</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICuIVP.png" alt="ICuIVP.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICKWJU.png" alt="ICKWJU.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICK5QJ.png" alt="ICK5QJ.png"></td>
+<tbody><tr>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICuIVP.png" alt="ICuIVP.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICKWJU.png" alt="ICKWJU.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICK5QJ.png" alt="ICK5QJ.png"></td>
 </tr>
-</tbody>
-</table>
-<h5 id="radialgradient辐射渐变"><a class="markdownIt-Anchor" href="#radialgradient辐射渐变">#</a> RadialGradient (辐射渐变)</h5>
-<p><img src="https://z3.ax1x.com/2021/11/01/IClQRU.png" alt="IClQRU.png"></p>
+</tbody></table>
+<h5 id="RadialGradient-辐射渐变"><a href="#RadialGradient-辐射渐变" class="headerlink" title="RadialGradient(辐射渐变)"></a>RadialGradient(辐射渐变)</h5><p><img src="https://z3.ax1x.com/2021/11/01/IClQRU.png" alt="IClQRU.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Shader shader = <span class="keyword">new</span> RadialGradient(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, Color.parseColor(<span class="string">&quot;#E91E63&quot;</span>),</span><br><span class="line">        Color.parseColor(<span class="string">&quot;#2196F3&quot;</span>), Shader.TileMode.CLAMP);</span><br><span class="line">paint.setShader(shader);</span><br><span class="line">...</span><br><span class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);  </span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:center">CLAMP</th>
-<th style="text-align:center">MIRROR</th>
-<th style="text-align:center">REPEAT</th>
+<th align="center">CLAMP</th>
+<th align="center">MIRROR</th>
+<th align="center">REPEAT</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/IClfW8.png" alt="IClfW8.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/IC1SOJ.png" alt="IC1SOJ.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/IC1SOJ.png" alt="IC1SOJ.png"></td>
+<tbody><tr>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/IClfW8.png" alt="IClfW8.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/IC1SOJ.png" alt="IC1SOJ.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/IC1SOJ.png" alt="IC1SOJ.png"></td>
 </tr>
-</tbody>
-</table>
-<h5 id="sweepgradient扫描渐变"><a class="markdownIt-Anchor" href="#sweepgradient扫描渐变">#</a> SweepGradient (扫描渐变)</h5>
-<p><img src="https://z3.ax1x.com/2021/11/01/IC3N8K.png" alt="IC3N8K.png">]</p>
+</tbody></table>
+<h5 id="SweepGradient-扫描渐变"><a href="#SweepGradient-扫描渐变" class="headerlink" title="SweepGradient(扫描渐变)"></a>SweepGradient(扫描渐变)</h5><p><img src="https://z3.ax1x.com/2021/11/01/IC3N8K.png" alt="IC3N8K.png">]</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Shader shader = <span class="keyword">new</span> SweepGradient(<span class="number">300</span>, <span class="number">300</span>, Color.parseColor(<span class="string">&quot;#E91E63&quot;</span>),</span><br><span class="line">        Color.parseColor(<span class="string">&quot;#2196F3&quot;</span>));</span><br><span class="line">paint.setShader(shader);</span><br><span class="line">...</span><br><span class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</span><br></pre></td></tr></table></figure>
-<h5 id="bitmapshader"><a class="markdownIt-Anchor" href="#bitmapshader">#</a> BitmapShader</h5>
-<p><img src="https://z3.ax1x.com/2021/11/01/IC8dJ0.png" alt="IC8dJ0.png"></p>
+
+<h5 id="BitmapShader"><a href="#BitmapShader" class="headerlink" title="BitmapShader"></a>BitmapShader</h5><p><img src="https://z3.ax1x.com/2021/11/01/IC8dJ0.png" alt="IC8dJ0.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.batman);</span><br><span class="line">Shader shader = <span class="keyword">new</span> BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</span><br><span class="line">paint.setShader(shader);</span><br><span class="line">...</span><br><span class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:center">CLAMP</th>
-<th style="text-align:center">MIRROR</th>
-<th style="text-align:center">REPEAT</th>
+<th align="center">CLAMP</th>
+<th align="center">MIRROR</th>
+<th align="center">REPEAT</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICGhAs.png" alt="ICGhAs.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICG7cT.png" alt="ICG7cT.png"></td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICGLB4.png" alt="ICGLB4.png"></td>
+<tbody><tr>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICGhAs.png" alt="ICGhAs.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICG7cT.png" alt="ICG7cT.png"></td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICGLB4.png" alt="ICGLB4.png"></td>
 </tr>
-</tbody>
-</table>
-<h5 id="composeshader-混合着色器"><a class="markdownIt-Anchor" href="#composeshader-混合着色器">#</a> ComposeShader 混合着色器</h5>
-<blockquote>
+</tbody></table>
+<h5 id="ComposeShader-混合着色器"><a href="#ComposeShader-混合着色器" class="headerlink" title="ComposeShader 混合着色器"></a>ComposeShader 混合着色器</h5><blockquote>
 <p>所谓混合，就是把两个 Shader 一起使用。</p>
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICUmdg.png" alt="ICUmdg.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一个 Shader：头像的 Bitmap</span></span><br><span class="line">Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);</span><br><span class="line">Shader shader1 = <span class="keyword">new</span> BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</span><br><span class="line"><span class="comment">// 第二个 Shader：从上到下的线性渐变（由透明到黑色）</span></span><br><span class="line">Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.batman_logo);</span><br><span class="line">Shader shader2 = <span class="keyword">new</span> BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</span><br><span class="line"><span class="comment">// ComposeShader：结合两个 Shader</span></span><br><span class="line">Shader shader = <span class="keyword">new</span> ComposeShader(shader1, shader2, PorterDuff.Mode.SRC_OVER);</span><br><span class="line">paint.setShader(shader);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">300</span>, paint);</span><br></pre></td></tr></table></figure>
-<h4 id="porterduff"><a class="markdownIt-Anchor" href="#porterduff">#</a> PorterDuff</h4>
-<h3 id="patheffect"><a class="markdownIt-Anchor" href="#patheffect">#</a> PathEffect</h3>
-<h4 id="style"><a class="markdownIt-Anchor" href="#style">#</a> Style</h4>
-<p><code>Paint.setStrokeWidth</code> : 线条宽度<br>
-<img src="https://z3.ax1x.com/2021/11/01/ICvqQe.png" alt="ICvqQe.png"></p>
+
+
+<h4 id="PorterDuff"><a href="#PorterDuff" class="headerlink" title="PorterDuff"></a>PorterDuff</h4><h3 id="PathEffect"><a href="#PathEffect" class="headerlink" title="PathEffect"></a>PathEffect</h3><h4 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h4><p><code>Paint.setStrokeWidth</code>:线条宽度<br><img src="https://z3.ax1x.com/2021/11/01/ICvqQe.png" alt="ICvqQe.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">paint.setStyle(Paint.Style.STROKE);</span><br><span class="line">paint.setStrokeWidth(<span class="number">1</span>);</span><br><span class="line">canvas.drawCircle(<span class="number">150</span>, <span class="number">125</span>, <span class="number">100</span>, paint);</span><br><span class="line">paint.setStrokeWidth(<span class="number">5</span>);</span><br><span class="line">canvas.drawCircle(<span class="number">400</span>, <span class="number">125</span>, <span class="number">100</span>, paint);</span><br><span class="line">paint.setStrokeWidth(<span class="number">40</span>);</span><br><span class="line">canvas.drawCircle(<span class="number">650</span>, <span class="number">125</span>, <span class="number">100</span>, paint);</span><br></pre></td></tr></table></figure>
-<p><code>Paint.setStrokeCap</code> : 线条形状</p>
+
+<p><code>Paint.setStrokeCap</code>:线条形状</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICxkLj.png" alt="ICxkLj.png"></p>
-<p><code>Paint.setStrokeJoin</code> : 拐角形状</p>
+<p><code>Paint.setStrokeJoin</code>:拐角形状</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICxQlF.png" alt="ICxQlF.png"></p>
-<p><code>Paint.setStrokeMiter</code> : 拐角边缘</p>
+<p><code>Paint.setStrokeMiter</code>:拐角边缘</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICzenH.png" alt="image"></p>
-<h4 id="filter"><a class="markdownIt-Anchor" href="#filter">#</a> Filter</h4>
-<p><code>PathEffect.setDither()</code> : 图像抖动<br>
-<img src="https://z3.ax1x.com/2021/11/01/ICL31H.png" alt="ICL31H.png"></p>
-<p><code>PathEffect.setFilterBitmap()</code> : 双线性过滤<br>
-<img src="https://z3.ax1x.com/2021/11/01/ICvZ8O.png" alt="ICvZ8O.png"></p>
-<h4 id="effect"><a class="markdownIt-Anchor" href="#effect">#</a> Effect</h4>
-<table>
+<h4 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h4><p><code>PathEffect.setDither()</code>:图像抖动<br><img src="https://z3.ax1x.com/2021/11/01/ICL31H.png" alt="ICL31H.png"></p>
+<p><code>PathEffect.setFilterBitmap()</code>:双线性过滤<br><img src="https://z3.ax1x.com/2021/11/01/ICvZ8O.png" alt="ICvZ8O.png"></p>
+<h4 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">Name</th>
-<th style="text-align:center">Effect</th>
+<th align="center">Name</th>
+<th align="center">Effect</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">CornerPathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICgRkq.png" alt="ICgRkq.png"></td>
+<tbody><tr>
+<td align="center">CornerPathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICgRkq.png" alt="ICgRkq.png"></td>
 </tr>
 <tr>
-<td style="text-align:center">DiscretePathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICgGOH.png" alt="ICgGOH.png"></td>
+<td align="center">DiscretePathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICgGOH.png" alt="ICgGOH.png"></td>
 </tr>
 <tr>
-<td style="text-align:center">DashPathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICcXQg.png" alt="ICcXQg.png"></td>
+<td align="center">DashPathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICcXQg.png" alt="ICcXQg.png"></td>
 </tr>
 <tr>
-<td style="text-align:center">PathDashPathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/IC6T8U.png" alt="IC6T8U.png"></td>
+<td align="center">PathDashPathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/IC6T8U.png" alt="IC6T8U.png"></td>
 </tr>
 <tr>
-<td style="text-align:center">SumPathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICyBpF.png" alt="ICyBpF.png"></td>
+<td align="center">SumPathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICyBpF.png" alt="ICyBpF.png"></td>
 </tr>
 <tr>
-<td style="text-align:center">ComposePathEffect</td>
-<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/01/ICy8yj.png" alt="ICy8yj.png"></td>
+<td align="center">ComposePathEffect</td>
+<td align="center"><img src="https://z3.ax1x.com/2021/11/01/ICy8yj.png" alt="ICy8yj.png"></td>
 </tr>
-</tbody>
-</table>
-<h4 id="shadowlayer"><a class="markdownIt-Anchor" href="#shadowlayer">#</a> ShadowLayer</h4>
-<blockquote>
+</tbody></table>
+<h4 id="ShadowLayer"><a href="#ShadowLayer" class="headerlink" title="ShadowLayer"></a>ShadowLayer</h4><blockquote>
 <p>绘制层下方的阴影效果</p>
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICstPO.png" alt="ICstPO.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paint.setShadowLayer(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>, Color.RED);</span><br><span class="line">canvas.drawText(text, <span class="number">80</span>, <span class="number">300</span>, paint);</span><br></pre></td></tr></table></figure>
-<h4 id="maskfilter"><a class="markdownIt-Anchor" href="#maskfilter">#</a> MaskFilter</h4>
-<blockquote>
+
+<h4 id="MaskFilter"><a href="#MaskFilter" class="headerlink" title="MaskFilter"></a>MaskFilter</h4><blockquote>
 <p>绘制层上方的附加效果</p>
 </blockquote>
-<p>BlurMaskFilter (模糊效果):</p>
+<p>BlurMaskFilter(模糊效果):</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICrhE6.md.png" alt="ICrhE6.md.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paint.setMaskFilter(<span class="keyword">new</span> BlurMaskFilter(<span class="number">50</span>, BlurMaskFilter.Blur.NORMAL));</span><br><span class="line">canvas.drawBitmap(bitmap, <span class="number">100</span>, <span class="number">100</span>, paint);</span><br></pre></td></tr></table></figure>
-<p>EmbossMaskFilter (浮雕效果):<br>
-<img src="https://z3.ax1x.com/2021/11/01/ICr0EV.png" alt="ICr0EV.png"></p>
+
+<p>EmbossMaskFilter(浮雕效果):<br><img src="https://z3.ax1x.com/2021/11/01/ICr0EV.png" alt="ICr0EV.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组:光源方向,光强度,炫光系数,应用光线范围 </span></span><br><span class="line">paint.setMaskFilter(<span class="keyword">new</span> EmbossMaskFilter(<span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, <span class="number">0.2f</span>, <span class="number">8</span>, <span class="number">10</span>));</span><br><span class="line">canvas.drawBitmap(bitmap, <span class="number">100</span>, <span class="number">100</span>, paint);</span><br></pre></td></tr></table></figure>
-<h4 id="getpath"><a class="markdownIt-Anchor" href="#getpath">#</a> getPath</h4>
-<p><code>PathEffect.getFillPath()</code>  获取图形 Path</p>
+
+<h4 id="getPath"><a href="#getPath" class="headerlink" title="getPath"></a>getPath</h4><p><code>PathEffect.getFillPath()</code>获取图形Path</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICDOtU.md.png" alt="ICDOtU.md.png"></p>
-<p><code>PathEffect.getTextPath()</code>  获取图形 Path</p>
+<p><code>PathEffect.getTextPath()</code>获取图形Path</p>
 <p><img src="https://z3.ax1x.com/2021/11/01/ICDAQs.png" alt="ICDAQs.png"></p>
-<h3 id="refer"><a class="markdownIt-Anchor" href="#refer">#</a> Refer</h3>
-<p><a target="_blank" rel="noopener" href="https://rengwuxian.com/ui-1-2/">HenCoder Android 开发进阶：自定义 View 1-2 Paint 详解 (rengwuxian.com)</a></p>
+<h3 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h3><p><a target="_blank" rel="noopener" href="https://rengwuxian.com/ui-1-2/">HenCoder Android 开发进阶: 自定义 View 1-2 Paint 详解 (rengwuxian.com)</a></p>
 
     </div>
 
