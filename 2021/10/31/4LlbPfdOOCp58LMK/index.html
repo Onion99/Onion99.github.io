@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="启动流程相关 启动的流程就是通过这六个大类在这三个进程之间不断通信的过程  三个进程 Launcher进程: 整个App启动流程的起点,负责处理桌面与用户之间的交互事件,可以想象为一个桌面启动器 SystemServer进程: Android中的所有SystemServer都由其孵化(Fork)出来,例如AMS,WindowsMannager,PackageManagerService等 App进">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="# 启动流程 # 相关  启动的流程就是通过这六个大类在这三个进程之间不断通信的过程  # 三个进程  Launcher 进程：整个 App 启动流程的起点，负责处理桌面与用户之间的交互事件，可以想象为一个桌面启动器 SystemServer 进程: Android 中的所有 SystemServer 都由其孵化 (Fork) 出来，例如 AMS,WindowsMannager,PackageMa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓优化-启动优化">
 <meta property="og:url" content="https://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="启动流程相关 启动的流程就是通过这六个大类在这三个进程之间不断通信的过程  三个进程 Launcher进程: 整个App启动流程的起点,负责处理桌面与用户之间的交互事件,可以想象为一个桌面启动器 SystemServer进程: Android中的所有SystemServer都由其孵化(Fork)出来,例如AMS,WindowsMannager,PackageManagerService等 App进">
+<meta property="og:description" content="# 启动流程 # 相关  启动的流程就是通过这六个大类在这三个进程之间不断通信的过程  # 三个进程  Launcher 进程：整个 App 启动流程的起点，负责处理桌面与用户之间的交互事件，可以想象为一个桌面启动器 SystemServer 进程: Android 中的所有 SystemServer 都由其孵化 (Fork) 出来，例如 AMS,WindowsMannager,PackageMa">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/10/27/57Z1PJ.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/10/27/57ZxJJ.png">
@@ -75,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -92,6 +92,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -123,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3"><span class="nav-number">1.1.</span> <span class="nav-text">相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">三个进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AD%E4%B8%AA%E5%A4%A7%E7%B1%BB"><span class="nav-number">1.1.2.</span> <span class="nav-text">六个大类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">启动分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%80%97%E6%97%B6%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">耗时统计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Systrace"><span class="nav-number">3.1.</span> <span class="nav-text">Systrace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Traceview"><span class="nav-number">3.2.</span> <span class="nav-text">Traceview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adb-%E5%91%BD%E4%BB%A4%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.3.</span> <span class="nav-text">Adb 命令统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.4.</span> <span class="nav-text">系统日志统计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%B7%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">冷启动优化</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text"> 启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3"><span class="nav-number">1.1.</span> <span class="nav-text"> 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 三个进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AD%E4%B8%AA%E5%A4%A7%E7%B1%BB"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 六个大类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text"> 顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text"> 启动分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%80%97%E6%97%B6%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text"> 耗时统计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#systrace"><span class="nav-number">3.1.</span> <span class="nav-text"> Systrace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#traceview"><span class="nav-number">3.2.</span> <span class="nav-text"> Traceview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adb-%E5%91%BD%E4%BB%A4%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.3.</span> <span class="nav-text"> Adb 命令统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.4.</span> <span class="nav-text"> 系统日志统计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%B7%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text"> 冷启动优化</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,77 +258,99 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h3><h4 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h4><blockquote>
+        <h3 id="启动流程"><a class="markdownIt-Anchor" href="#启动流程">#</a> 启动流程</h3>
+<h4 id="相关"><a class="markdownIt-Anchor" href="#相关">#</a> 相关</h4>
+<blockquote>
 <p>启动的流程就是通过这六个大类在这三个进程之间不断通信的过程</p>
 </blockquote>
-<h5 id="三个进程"><a href="#三个进程" class="headerlink" title="三个进程"></a>三个进程</h5><ul>
-<li>Launcher进程: 整个App启动流程的起点,负责处理桌面与用户之间的交互事件,可以想象为一个桌面启动器</li>
-<li>SystemServer进程: Android中的所有SystemServer都由其孵化(Fork)出来,例如AMS,WindowsMannager,PackageManagerService等</li>
-<li>App进程: 启动的App所在的进程</li>
+<h5 id="三个进程"><a class="markdownIt-Anchor" href="#三个进程">#</a> 三个进程</h5>
+<ul>
+<li>Launcher 进程：整个 App 启动流程的起点，负责处理桌面与用户之间的交互事件，可以想象为一个桌面启动器</li>
+<li>SystemServer 进程: Android 中的所有 SystemServer 都由其孵化 (Fork) 出来，例如 AMS,WindowsMannager,PackageManagerService 等</li>
+<li>App 进程：启动的 App 所在的进程</li>
 </ul>
 <span id="more"></span>
-<h5 id="六个大类"><a href="#六个大类" class="headerlink" title="六个大类"></a>六个大类</h5><ul>
-<li>ActivityManagerService:  即AMS,负责管理系统中四大组件的启动,切换,调度以及应用进程的管理</li>
+<h5 id="六个大类"><a class="markdownIt-Anchor" href="#六个大类">#</a> 六个大类</h5>
+<ul>
+<li>ActivityManagerService:  即 AMS, 负责管理系统中四大组件的启动，切换，调度以及应用进程的管理</li>
 <li>Instrumentation: 监控应用程序和系统的交互</li>
-<li>ActivityThread: 应用的入口类，通过调用main方法，开启消息循环队列。ActivityThread所在的线程被称为主线程</li>
-<li>ApplicationThread: 提供Binder通讯接口，AMS则通过代理调用此App进程的本地方法</li>
-<li>ActivityManagerProxy：AMS服务在当前进程的代理类，负责与AMS通信</li>
-<li>ApplicationThreadProxy：ApplicationThread在AMS服务中的代理类，负责与ApplicationThread通信</li>
+<li>ActivityThread: 应用的入口类，通过调用 main 方法，开启消息循环队列。ActivityThread 所在的线程被称为主线程</li>
+<li>ApplicationThread: 提供 Binder 通讯接口，AMS 则通过代理调用此 App 进程的本地方法</li>
+<li>ActivityManagerProxy：AMS 服务在当前进程的代理类，负责与 AMS 通信</li>
+<li>ApplicationThreadProxy：ApplicationThread 在 AMS 服务中的代理类，负责与 ApplicationThread 通信</li>
 </ul>
-<h4 id="顺序"><a href="#顺序" class="headerlink" title="顺序"></a>顺序</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangliniqng/article/details/89364064">APP启动流程解析,墙裂推荐</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/not2/p/14326090.html">App启动速度优化 T2</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangliniqng/article/details/89364064">具体代码流程</a></p>
+<h4 id="顺序"><a class="markdownIt-Anchor" href="#顺序">#</a> 顺序</h4>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangliniqng/article/details/89364064">APP 启动流程解析，墙裂推荐</a><br>
+<a target="_blank" rel="noopener" href="https://www.cnblogs.com/not2/p/14326090.html"> App 启动速度优化 T2</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/huangliniqng/article/details/89364064"> 具体代码流程</a></p>
 <ol>
-<li>Launcher通知AMS, 要启动某一应用,并说明对应的LauncherActivity</li>
-<li>AMS表示收到, 等待Launcher进入Pause状态</li>
-<li>Launcher进入Pause状态, 通知AMS可以启动某一应用了</li>
-<li>AMS开始检查某一应用是否启动<ul>
-<li>是,则直接启动,流程终止</li>
-<li>否,AMS则在的进程中创建ActivityThread对象,并启动main函数</li>
+<li>Launcher 通知 AMS, 要启动某一应用，并说明对应的 LauncherActivity</li>
+<li>AMS 表示收到，等待 Launcher 进入 Pause 状态</li>
+<li>Launcher 进入 Pause 状态，通知 AMS 可以启动某一应用了</li>
+<li>AMS 开始检查某一应用是否启动
+<ul>
+<li>是，则直接启动，流程终止</li>
+<li>否，AMS 则在的进程中创建 ActivityThread 对象，并启动 main 函数</li>
 </ul>
 </li>
-<li>某一应用通知AMS启动准备就绪</li>
-<li>AMS通知某一应用要启动的页面,某一应用启动对应页面</li>
+<li>某一应用通知 AMS 启动准备就绪</li>
+<li>AMS 通知某一应用要启动的页面，某一应用启动对应页面</li>
 </ol>
 <p><img src="https://z3.ax1x.com/2021/10/27/57Z1PJ.png" alt="57Z1PJ.png"></p>
-<h3 id="启动分类"><a href="#启动分类" class="headerlink" title="启动分类"></a>启动分类</h3><ul>
-<li>冷启动<ul>
-<li>耗时最多,优化重点</li>
+<h3 id="启动分类"><a class="markdownIt-Anchor" href="#启动分类">#</a> 启动分类</h3>
+<ul>
+<li>冷启动
+<ul>
+<li>耗时最多，优化重点</li>
 <li><img src="https://z3.ax1x.com/2021/10/27/57ZxJJ.png" alt="57ZxJJ.png"></li>
 </ul>
 </li>
-<li>热启动<ul>
-<li>最快.即后台到前台的切换</li>
+<li>热启动
+<ul>
+<li>最快。即后台到前台的切换</li>
 </ul>
 </li>
-<li>温启动<ul>
-<li>较快,只重走Activity的生命周期,即销毁后重建</li>
+<li>温启动
+<ul>
+<li>较快，只重走 Activity 的生命周期，即销毁后重建</li>
 </ul>
 </li>
 </ul>
-<h3 id="耗时统计"><a href="#耗时统计" class="headerlink" title="耗时统计"></a>耗时统计</h3><h4 id="Systrace"><a href="#Systrace" class="headerlink" title="Systrace"></a>Systrace</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TraceCompat.beginSection(<span class="string">&quot;sectionName&quot;</span>)</span><br><span class="line">TraceCompat.endSection();</span><br></pre></td></tr></table></figure>
-<p> <code>python systrace.py -t 10 [other-options] [categories]</code></p>
-<h4 id="Traceview"><a href="#Traceview" class="headerlink" title="Traceview"></a>Traceview</h4><p><img src="https://z3.ax1x.com/2021/10/27/57llge.png" alt="57llge.png"></p>
+<h3 id="耗时统计"><a class="markdownIt-Anchor" href="#耗时统计">#</a> 耗时统计</h3>
+<h4 id="systrace"><a class="markdownIt-Anchor" href="#systrace">#</a> Systrace</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">TraceCompat</span><span class="token punctuation">.</span><span class="token function">beginSection</span><span class="token punctuation">(</span><span class="token string">"sectionName"</span><span class="token punctuation">)</span>
+<span class="token class-name">TraceCompat</span><span class="token punctuation">.</span><span class="token function">endSection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>python systrace.py -t 10 [other-options] [categories]</code></p>
+<h4 id="traceview"><a class="markdownIt-Anchor" href="#traceview">#</a> Traceview</h4>
+<p><img src="https://z3.ax1x.com/2021/10/27/57llge.png" alt="57llge.png"></p>
 <p>使用方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Debug.startMethodTracing(<span class="string">&quot;fileName&quot;</span>)</span><br><span class="line">Debug.stopMethodTracing()</span><br></pre></td></tr></table></figure>
-<p>运行之后可以在目录下生成文件：内部存储/android/data/${application}/files/fileName.trace，此文件可以使用Android Studio Profile打开</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">startMethodTracing</span><span class="token punctuation">(</span><span class="token string">"fileName"</span><span class="token punctuation">)</span>
+<span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">stopMethodTracing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>运行之后可以在目录下生成文件：内部存储 /android/data/${application}/files/fileName.trace，此文件可以使用 Android Studio Profile 打开</p>
 <ul>
 <li>Wall Clock time : 是线程真正执行的时间</li>
-<li>Thread time : CPU执行的时间,比Wall Clock Time少,不包含锁时间,等待时间</li>
-<li>Top Down:就是函数的调用列表</li>
-<li>Call Chart: 系统Api黄色，应用调用的方法绿色，第三方Api(java sdk也属于第三方)蓝色</li>
-<li>Flame Chart:  主要的作用是收集调用方法的时间，比如多次调用LayoutInflate.inflate，Flame Chart会把他们都收集到一起。</li>
-<li>Bottom Up: 和Top Down是相反的</li>
+<li>Thread time : CPU 执行的时间，比 Wall Clock Time 少，不包含锁时间，等待时间</li>
+<li>Top Down: 就是函数的调用列表</li>
+<li>Call Chart: 系统 Api 黄色，应用调用的方法绿色，第三方 Api (java sdk 也属于第三方) 蓝色</li>
+<li>Flame Chart:  主要的作用是收集调用方法的时间，比如多次调用 LayoutInflate.inflate，Flame Chart 会把他们都收集到一起。</li>
+<li>Bottom Up: 和 Top Down 是相反的</li>
 </ul>
-<h4 id="Adb-命令统计"><a href="#Adb-命令统计" class="headerlink" title="Adb 命令统计"></a>Adb 命令统计</h4><p><code>adb shell am start -S -W 包名/启动类的全限定名</code></p>
-<p>ThisTime : 最后一个 Activity 的启动耗时<br>TotalTime : 启动一连串的 Activity 总耗时<br>WaitTime : 应用进程的创建过程 + TotalTime</p>
-<h4 id="系统日志统计"><a href="#系统日志统计" class="headerlink" title="系统日志统计"></a>系统日志统计</h4><p>过滤<code>displayed</code>输出的启动日志</p>
+<h4 id="adb-命令统计"><a class="markdownIt-Anchor" href="#adb-命令统计">#</a> Adb 命令统计</h4>
+<p><code>adb shell am start -S -W 包名/启动类的全限定名</code></p>
+<p>ThisTime : 最后一个 Activity 的启动耗时<br>
+ TotalTime : 启动一连串的 Activity 总耗时<br>
+ WaitTime : 应用进程的创建过程 + TotalTime</p>
+<h4 id="系统日志统计"><a class="markdownIt-Anchor" href="#系统日志统计">#</a> 系统日志统计</h4>
+<p>过滤 <code>displayed</code>  输出的启动日志</p>
 <p><img src="https://z3.ax1x.com/2021/10/27/57mU4e.png" alt="57mU4e.png"></p>
-<h3 id="冷启动优化"><a href="#冷启动优化" class="headerlink" title="冷启动优化"></a>冷启动优化</h3><p><a target="_blank" rel="noopener" href="https://jishuin.proginn.com/p/763bfbd345f0"> App 启动时间优化详解</a></p>
+<h3 id="冷启动优化"><a class="markdownIt-Anchor" href="#冷启动优化">#</a> 冷启动优化</h3>
+<p><a target="_blank" rel="noopener" href="https://jishuin.proginn.com/p/763bfbd345f0"> App 启动时间优化详解</a></p>
 <p>优化方向:</p>
 <ul>
-<li>  延迟加载 / 懒加载</li>
-<li>  异步线程执行耗时操作，如图片加载、网络访问、IO操作等</li>
-<li>  ViewStub的使用</li>
-<li>  减少布局层次和嵌套布局</li>
+<li>延迟加载 / 懒加载</li>
+<li>异步线程执行耗时操作，如图片加载、网络访问、IO 操作等</li>
+<li>ViewStub 的使用</li>
+<li>减少布局层次和嵌套布局</li>
 </ul>
 
     </div>
@@ -380,13 +404,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 

@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="VelocityTracker 跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="# VelocityTracker  跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(11) - 滚动速度和滚动计算">
 <meta property="og:url" content="https://onion99.github.io/2021/11/03/cNDSpE5p4avS2tOi/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="VelocityTracker 跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度">
+<meta property="og:description" content="# VelocityTracker  跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-03T14:09:36.000Z">
 <meta property="article:modified_time" content="2021-11-03T14:09:07.000Z">
@@ -70,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -87,6 +87,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -118,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#VelocityTracker"><span class="nav-number">1.</span> <span class="nav-text">VelocityTracker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scroller"><span class="nav-number">2.</span> <span class="nav-text">Scroller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OverScroller"><span class="nav-number">3.</span> <span class="nav-text">OverScroller</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#velocitytracker"><span class="nav-number">1.</span> <span class="nav-text"> VelocityTracker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroller"><span class="nav-number">2.</span> <span class="nav-text"> Scroller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overscroller"><span class="nav-number">3.</span> <span class="nav-text"> OverScroller</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -251,45 +253,96 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="VelocityTracker"><a href="#VelocityTracker" class="headerlink" title="VelocityTracker"></a>VelocityTracker</h3><blockquote>
+        <h3 id="velocitytracker"><a class="markdownIt-Anchor" href="#velocitytracker">#</a> VelocityTracker</h3>
+<blockquote>
 <p>跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度</p>
 </blockquote>
 <span id="more"></span>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VelocityTrackerTestView</span>(<span class="title">context</span>: <span class="title">Context</span>?, <span class="title">attrs</span>: <span class="title">AttributeSet</span>?) : <span class="title">View</span>(<span class="title">context</span>, <span class="title">attrs</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//1、创建实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mVelocityTracker = VelocityTracker.obtain()</span><br><span class="line">    <span class="meta">@SuppressLint(&quot;ClickableViewAccessibility&quot;)</span></span><br><span class="line">    <span class="function">override fun <span class="title">onTouchEvent</span><span class="params">(event: MotionEvent)</span>: Boolean </span>&#123;</span><br><span class="line">        <span class="comment">//2、重置</span></span><br><span class="line">        <span class="keyword">if</span> (event.actionMasked == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">            mVelocityTracker.clear()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3、开始追踪</span></span><br><span class="line">        mVelocityTracker.addMovement(event)</span><br><span class="line"> </span><br><span class="line">        when (event.actionMasked) &#123;</span><br><span class="line">            MotionEvent.ACTION_DOWN -&gt; &#123;</span><br><span class="line">                <span class="comment">//...</span></span><br><span class="line">            &#125;</span><br><span class="line">            MotionEvent.ACTION_MOVE -&gt; &#123;</span><br><span class="line">                <span class="comment">//o...</span></span><br><span class="line">            &#125;</span><br><span class="line">            MotionEvent.ACTION_UP -&gt; &#123;</span><br><span class="line">                <span class="comment">//速度 = （ 终点位置(px) - 起点位置(px) ）/ 时间段(ms)</span></span><br><span class="line">                <span class="comment">//4、设置时间段</span></span><br><span class="line">                mVelocityTracker.computeCurrentVelocity(<span class="number">1000</span>)</span><br><span class="line">                <span class="comment">//5、获取x方向、y方向的速度</span></span><br><span class="line">                <span class="comment">//其中getXVelocity、getYVelocity方法的参数是pointerId，用于多指触控。不考虑多指时，可以不用传参数</span></span><br><span class="line">                <span class="keyword">var</span> xVelocity = mVelocityTracker.getXVelocity(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">var</span> yVelocity = mVelocityTracker.getYVelocity(<span class="number">0</span>)</span><br><span class="line">                <span class="comment">//...</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function">override fun <span class="title">onDetachedFromWindow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//6、当不需要使用时，重置并回收内存</span></span><br><span class="line">        mVelocityTracker.clear()</span><br><span class="line">        mVelocityTracker.recycle()</span><br><span class="line">        <span class="keyword">super</span>.onDetachedFromWindow()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">VelocityTrackerTestView</span><span class="token punctuation">(</span>context<span class="token operator">:</span> <span class="token class-name">Context</span><span class="token operator">?</span><span class="token punctuation">,</span> attrs<span class="token operator">:</span> <span class="token class-name">AttributeSet</span><span class="token operator">?</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token class-name">View</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//1、创建实例</span>
+    <span class="token keyword">private</span> <span class="token keyword">var</span> mVelocityTracker <span class="token operator">=</span> <span class="token class-name">VelocityTracker</span><span class="token punctuation">.</span><span class="token function">obtain</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"ClickableViewAccessibility"</span><span class="token punctuation">)</span>
+    override fun <span class="token function">onTouchEvent</span><span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token class-name">MotionEvent</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token class-name">Boolean</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//2、重置</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>actionMasked <span class="token operator">==</span> <span class="token class-name">MotionEvent</span><span class="token punctuation">.</span>ACTION_DOWN<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            mVelocityTracker<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//3、开始追踪</span>
+        mVelocityTracker<span class="token punctuation">.</span><span class="token function">addMovement</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span>
+ 
+        when <span class="token punctuation">(</span>event<span class="token punctuation">.</span>actionMasked<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">MotionEvent</span><span class="token punctuation">.</span>ACTION_DOWN <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">//...</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token class-name">MotionEvent</span><span class="token punctuation">.</span>ACTION_MOVE <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">//o...</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token class-name">MotionEvent</span><span class="token punctuation">.</span>ACTION_UP <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 速度 = （ 终点位置 (px) - 起点位置 (px) ）/ 时间段 (ms)</span>
+                <span class="token comment">//4、设置时间段</span>
+                mVelocityTracker<span class="token punctuation">.</span><span class="token function">computeCurrentVelocity</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+                <span class="token comment">//5、获取 x 方向、y 方向的速度</span>
+                <span class="token comment">// 其中 getXVelocity、getYVelocity 方法的参数是 pointerId，用于多指触控。不考虑多指时，可以不用传参数</span>
+                <span class="token keyword">var</span> xVelocity <span class="token operator">=</span> mVelocityTracker<span class="token punctuation">.</span><span class="token function">getXVelocity</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">var</span> yVelocity <span class="token operator">=</span> mVelocityTracker<span class="token punctuation">.</span><span class="token function">getYVelocity</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token comment">//...</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span>
+ 
+    override fun <span class="token function">onDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//6、当不需要使用时，重置并回收内存</span>
+        mVelocityTracker<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        mVelocityTracker<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>VelocityTracker 一般用来判断当前是否达到一定的滑动速度来触发 Fling 的效果，这个滑动速度我们可以自己设置，也可以通过系统提供的来获取</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mViewConfiguration : ViewConfiguration = ViewConfiguration.get(context)</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mMaxFlingVelocity = <span class="number">0</span></span><br><span class="line"><span class="comment">//触发fling的速度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> mMinFlingVelocity = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">init &#123;</span><br><span class="line">    mMaxFlingVelocity = mViewConfiguration.scaledMaximumFlingVelocity</span><br><span class="line">    mMinFlingVelocity = mViewConfiguration.scaledMinimumFlingVelocity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">var</span> mViewConfiguration <span class="token operator">:</span> <span class="token class-name">ViewConfiguration</span> <span class="token operator">=</span> <span class="token class-name">ViewConfiguration</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token keyword">var</span> mMaxFlingVelocity <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment">// 触发 fling 的速度</span>
+<span class="token keyword">private</span> <span class="token keyword">var</span> mMinFlingVelocity <span class="token operator">=</span> <span class="token number">0</span>
 
-<h3 id="Scroller"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller</h3><p>在 View 类里面，有两个和滚动相关的类 scrollTo() 和 scrollBy。这两个方法可以实现 View 内容的移动，比如说一个 TextView，如果使用 scrollTo()，那么移动的是里面的文字而不是位置，scrollBy() 也是一样的。那么为什么是移动，不是滚动呢？这是因为这两个方法都是瞬间完成，而不是带有滚动过程的滚动，所以说如果要实现效果比较好的滚动还是需要 Scroller</p>
-<p>常用API:</p>
+init <span class="token punctuation">&#123;</span>
+    mMaxFlingVelocity <span class="token operator">=</span> mViewConfiguration<span class="token punctuation">.</span>scaledMaximumFlingVelocity
+    mMinFlingVelocity <span class="token operator">=</span> mViewConfiguration<span class="token punctuation">.</span>scaledMinimumFlingVelocity
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="scroller"><a class="markdownIt-Anchor" href="#scroller">#</a> Scroller</h3>
+<p>在 View 类里面，有两个和滚动相关的类 scrollTo () 和 scrollBy。这两个方法可以实现 View 内容的移动，比如说一个 TextView，如果使用 scrollTo ()，那么移动的是里面的文字而不是位置，scrollBy () 也是一样的。那么为什么是移动，不是滚动呢？这是因为这两个方法都是瞬间完成，而不是带有滚动过程的滚动，所以说如果要实现效果比较好的滚动还是需要 Scroller</p>
+<p>常用 API:</p>
 <table>
 <thead>
 <tr>
-<th align="center">API</th>
-<th align="center">简介</th>
+<th style="text-align:center">API</th>
+<th style="text-align:center">简介</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">computeScrollOffset()</td>
-<td align="center">判断当前的滑动动作是否完成的</td>
+<tbody>
+<tr>
+<td style="text-align:center">computeScrollOffset()</td>
+<td style="text-align:center">判断当前的滑动动作是否完成的</td>
 </tr>
 <tr>
-<td align="center">getCurrX()、getCurrY()</td>
-<td align="center">获取当前滑动的坐标值</td>
+<td style="text-align:center">getCurrX()、getCurrY()</td>
+<td style="text-align:center">获取当前滑动的坐标值</td>
 </tr>
 <tr>
-<td align="center">getFinalX()、getFinalY()</td>
-<td align="center">获取最终滑动停止时的坐标</td>
+<td style="text-align:center">getFinalX()、getFinalY()</td>
+<td style="text-align:center">获取最终滑动停止时的坐标</td>
 </tr>
 <tr>
-<td align="center">isFinished()</td>
-<td align="center">用来判断当前滚动是否结束</td>
+<td style="text-align:center">isFinished()</td>
+<td style="text-align:center">用来判断当前滚动是否结束</td>
 </tr>
 <tr>
-<td align="center">startScroll(int startX, int startY, int dx, int dy)</td>
-<td align="center">用来开始滚动，这个是很重要的一个触发computeScroll()的方法，调用这个方法之后，我们就可以在computeScroll里面获取滚动的信息，然后完成我们的需要。这个还有一个带有滚动持续时间的重载函数，可以根据需求自由使用。特别要注意这四个参数，startX和startY是开始的坐标位置，正数左上，负数右下，dx、dy同理，当在computeScroll()获取getCurrX()的时候，变化范围就与这里地设置有关。</td>
+<td style="text-align:center">startScroll(int startX, int startY, int dx, int dy)</td>
+<td style="text-align:center">用来开始滚动，这个是很重要的一个触发 computeScroll () 的方法，调用这个方法之后，我们就可以在 computeScroll 里面获取滚动的信息，然后完成我们的需要。这个还有一个带有滚动持续时间的重载函数，可以根据需求自由使用。特别要注意这四个参数，startX 和 startY 是开始的坐标位置，正数左上，负数右下，dx、dy 同理，当在 computeScroll () 获取 getCurrX () 的时候，变化范围就与这里地设置有关。</td>
 </tr>
-</tbody></table>
-<h3 id="OverScroller"><a href="#OverScroller" class="headerlink" title="OverScroller"></a>OverScroller</h3><blockquote>
+</tbody>
+</table>
+<h3 id="overscroller"><a class="markdownIt-Anchor" href="#overscroller">#</a> OverScroller</h3>
+<blockquote>
 <p>对超出滑动边界的情况的处理</p>
 </blockquote>
 
@@ -347,13 +400,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 

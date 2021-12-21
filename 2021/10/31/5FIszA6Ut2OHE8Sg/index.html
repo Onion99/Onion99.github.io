@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="布局耗时统计 手动埋点 AOP&#x2F;ArtHook     切入Activity的setContentView    布局加载优化 代码写布局  Java代码写布局  Anko  JetpackCompose   X2C Litho">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="# 布局耗时统计  手动埋点 AOP&#x2F;ArtHook  切入 Activity 的 setContentView    # 布局加载优化  代码写布局  Java 代码写布局 Anko JetpackCompose   X2C Litho">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓优化-布局优化">
 <meta property="og:url" content="https://onion99.github.io/2021/10/31/5FIszA6Ut2OHE8Sg/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="布局耗时统计 手动埋点 AOP&#x2F;ArtHook     切入Activity的setContentView    布局加载优化 代码写布局  Java代码写布局  Anko  JetpackCompose   X2C Litho">
+<meta property="og:description" content="# 布局耗时统计  手动埋点 AOP&#x2F;ArtHook  切入 Activity 的 setContentView    # 布局加载优化  代码写布局  Java 代码写布局 Anko JetpackCompose   X2C Litho">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-31T12:50:14.000Z">
 <meta property="article:modified_time" content="2021-10-31T12:49:54.000Z">
@@ -70,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -87,6 +87,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -118,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E8%80%97%E6%97%B6%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">布局耗时统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">布局加载优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%BB%98%E5%88%B6%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">视图绘制优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Include"><span class="nav-number">3.1.</span> <span class="nav-text">Include</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Merge"><span class="nav-number">3.2.</span> <span class="nav-text">Merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewStub"><span class="nav-number">3.3.</span> <span class="nav-text">ViewStub</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E8%80%97%E6%97%B6%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text"> 布局耗时统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text"> 布局加载优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%BB%98%E5%88%B6%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text"> 视图绘制优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include"><span class="nav-number">3.1.</span> <span class="nav-text"> Include</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">3.2.</span> <span class="nav-text"> Merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#viewstub"><span class="nav-number">3.3.</span> <span class="nav-text"> ViewStub</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -251,66 +253,90 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="布局耗时统计"><a href="#布局耗时统计" class="headerlink" title="布局耗时统计"></a>布局耗时统计</h3><ul>
+        <h3 id="布局耗时统计"><a class="markdownIt-Anchor" href="#布局耗时统计">#</a> 布局耗时统计</h3>
+<ul>
 <li>手动埋点</li>
-<li>AOP/ArtHook    <ul>
-<li>切入Activity的setContentView</li>
+<li>AOP/ArtHook
+<ul>
+<li>切入 Activity 的 setContentView</li>
 </ul>
 </li>
 </ul>
-<h3 id="布局加载优化"><a href="#布局加载优化" class="headerlink" title="布局加载优化"></a>布局加载优化</h3><ul>
-<li>代码写布局<ul>
-<li> Java代码写布局</li>
-<li> Anko</li>
-<li> JetpackCompose</li>
+<h3 id="布局加载优化"><a class="markdownIt-Anchor" href="#布局加载优化">#</a> 布局加载优化</h3>
+<ul>
+<li>代码写布局
+<ul>
+<li>Java 代码写布局</li>
+<li>Anko</li>
+<li>JetpackCompose</li>
 </ul>
 </li>
 <li>X2C</li>
 <li>Litho</li>
 </ul>
 <span id="more"></span>
-<h3 id="视图绘制优化"><a href="#视图绘制优化" class="headerlink" title="视图绘制优化"></a>视图绘制优化</h3><ul>
-<li>优化布局层级以及嵌套<ul>
-<li>使用ConstraintLayout</li>
+<h3 id="视图绘制优化"><a class="markdownIt-Anchor" href="#视图绘制优化">#</a> 视图绘制优化</h3>
+<ul>
+<li>优化布局层级以及嵌套
+<ul>
+<li>使用 ConstraintLayout</li>
 </ul>
 </li>
-<li>避免过度绘制,自定义View避免多次调用 onDraw,onMeasure</li>
-<li>其他<ul>
-<li> ViewStub: 延迟初始化</li>
-<li> onDraw,onMeasure中避免创建大对象,耗时操作</li>
+<li>避免过度绘制，自定义 View 避免多次调用 onDraw,onMeasure</li>
+<li>其他
+<ul>
+<li>ViewStub: 延迟初始化</li>
+<li>onDraw,onMeasure 中避免创建大对象，耗时操作</li>
 </ul>
 </li>
 </ul>
-<h4 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h4><blockquote>
+<h4 id="include"><a class="markdownIt-Anchor" href="#include">#</a> Include</h4>
+<blockquote>
 <p>提高布局复用性</p>
 </blockquote>
 <p>login.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">include</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;40dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">layout</span>=<span class="string">&quot;@layout/titlebar&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>include所在的layout的布局有给其设置id, 而include标签里面又给自己的根容器设置id,最好两个id都相同,否则findview时拿到空对象</p>
-<h4 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h4><blockquote>
-<p>帮助include标签排除多余的一层ViewGroup容器，减少view hierarchy的结构，提升UI渲染的性能</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>40dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name">layout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@layout/titlebar<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>include 所在的 layout 的布局有给其设置 id, 而 include 标签里面又给自己的根容器设置 id, 最好两个 id 都相同，否则 findview 时拿到空对象</p>
+<h4 id="merge"><a class="markdownIt-Anchor" href="#merge">#</a> Merge</h4>
+<blockquote>
+<p>帮助 include 标签排除多余的一层 ViewGroup 容器，减少 view hierarchy 的结构，提升 UI 渲染的性能</p>
 </blockquote>
 <p>titlebar.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">merge</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">Button</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span>  </span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;标题&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">merge</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>merge</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span> 
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>  
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>  
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_marginLeft</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20dp<span class="token punctuation">"</span></span>  
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_marginRight</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20dp<span class="token punctuation">"</span></span>  
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>标题<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>merge</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>因为merge标签并不是View,所以在通过LayoutInflate.inflate()方法渲染的时候,第二个参数必须指定一个父容器(parent),且第三个参数(attachToRoot)必须为true</li>
-<li>merge标签必须使用在根布局，并且ViewStub标签中的layout布局不能使用merge标签</li>
+<li>因为 merge 标签并不是 View, 所以在通过 LayoutInflate.inflate () 方法渲染的时候，第二个参数必须指定一个父容器 (parent), 且第三个参数 (attachToRoot) 必须为 true</li>
+<li>merge 标签必须使用在根布局，并且 ViewStub 标签中的 layout 布局不能使用 merge 标签</li>
 </ul>
-<h4 id="ViewStub"><a href="#ViewStub" class="headerlink" title="ViewStub"></a>ViewStub</h4><blockquote>
-<p>延迟绘制View</p>
+<h4 id="viewstub"><a class="markdownIt-Anchor" href="#viewstub">#</a> ViewStub</h4>
+<blockquote>
+<p>延迟绘制 View</p>
 </blockquote>
 <p>layout.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ViewStub</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/viewstub&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout</span>=<span class="string">&quot;@layout/info&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ViewStub</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/viewstub<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@layout/info<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>activity.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ViewStub stub = ((ViewStub) findViewById(R.id.viewstub));</span><br><span class="line"><span class="keyword">if</span>(stub!=<span class="keyword">null</span>)&#123;</span><br><span class="line">    View stubView = stub.inflate();</span><br><span class="line">    EditText editText = (EditText) stubView.findViewById(R.id.edit_password);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ViewStub</span> stub <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ViewStub</span><span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>viewstub<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>stub<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">View</span> stubView <span class="token operator">=</span> stub<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">EditText</span> editText <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">EditText</span><span class="token punctuation">)</span> stubView<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>edit_password<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>ViewStub标签不支持merge标签</li>
-<li>ViewStub的inflate只能被调用一次,第二次调用会抛出异常</li>
-<li>虽然ViewStub是不占用任何空间的，但是每个布局都必须要指定layout_width和layout_height属性，否则运行就会报错</li>
+<li>ViewStub 标签不支持 merge 标签</li>
+<li>ViewStub 的 inflate 只能被调用一次，第二次调用会抛出异常</li>
+<li>虽然 ViewStub 是不占用任何空间的，但是每个布局都必须要指定 layout_width 和 layout_height 属性，否则运行就会报错</li>
 </ul>
 
     </div>
@@ -367,13 +393,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 

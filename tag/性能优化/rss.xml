@@ -19,66 +19,90 @@
             <link>https://onion99.github.io/2021/10/31/5FIszA6Ut2OHE8Sg/</link>
             <category>性能优化</category>
             <pubDate>Sun, 31 Oct 2021 20:50:14 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;布局耗时统计&#34;&gt;&lt;a href=&#34;#布局耗时统计&#34; class=&#34;headerlink&#34; title=&#34;布局耗时统计&#34;&gt;&lt;/a&gt;布局耗时统计&lt;/h3&gt;&lt;ul&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;布局耗时统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#布局耗时统计&#34;&gt;#&lt;/a&gt; 布局耗时统计&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;手动埋点&lt;/li&gt;
-&lt;li&gt;AOP/ArtHook    &lt;ul&gt;
-&lt;li&gt;切入Activity的setContentView&lt;/li&gt;
+&lt;li&gt;AOP/ArtHook
+&lt;ul&gt;
+&lt;li&gt;切入 Activity 的 setContentView&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;布局加载优化&#34;&gt;&lt;a href=&#34;#布局加载优化&#34; class=&#34;headerlink&#34; title=&#34;布局加载优化&#34;&gt;&lt;/a&gt;布局加载优化&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;代码写布局&lt;ul&gt;
-&lt;li&gt; Java代码写布局&lt;/li&gt;
-&lt;li&gt; Anko&lt;/li&gt;
-&lt;li&gt; JetpackCompose&lt;/li&gt;
+&lt;h3 id=&#34;布局加载优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#布局加载优化&#34;&gt;#&lt;/a&gt; 布局加载优化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;代码写布局
+&lt;ul&gt;
+&lt;li&gt;Java 代码写布局&lt;/li&gt;
+&lt;li&gt;Anko&lt;/li&gt;
+&lt;li&gt;JetpackCompose&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;X2C&lt;/li&gt;
 &lt;li&gt;Litho&lt;/li&gt;
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h3 id=&#34;视图绘制优化&#34;&gt;&lt;a href=&#34;#视图绘制优化&#34; class=&#34;headerlink&#34; title=&#34;视图绘制优化&#34;&gt;&lt;/a&gt;视图绘制优化&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;优化布局层级以及嵌套&lt;ul&gt;
-&lt;li&gt;使用ConstraintLayout&lt;/li&gt;
+&lt;h3 id=&#34;视图绘制优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#视图绘制优化&#34;&gt;#&lt;/a&gt; 视图绘制优化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;优化布局层级以及嵌套
+&lt;ul&gt;
+&lt;li&gt;使用 ConstraintLayout&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;避免过度绘制,自定义View避免多次调用 onDraw,onMeasure&lt;/li&gt;
-&lt;li&gt;其他&lt;ul&gt;
-&lt;li&gt; ViewStub: 延迟初始化&lt;/li&gt;
-&lt;li&gt; onDraw,onMeasure中避免创建大对象,耗时操作&lt;/li&gt;
+&lt;li&gt;避免过度绘制，自定义 View 避免多次调用 onDraw,onMeasure&lt;/li&gt;
+&lt;li&gt;其他
+&lt;ul&gt;
+&lt;li&gt;ViewStub: 延迟初始化&lt;/li&gt;
+&lt;li&gt;onDraw,onMeasure 中避免创建大对象，耗时操作&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;Include&#34;&gt;&lt;a href=&#34;#Include&#34; class=&#34;headerlink&#34; title=&#34;Include&#34;&gt;&lt;/a&gt;Include&lt;/h4&gt;&lt;blockquote&gt;
+&lt;h4 id=&#34;include&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#include&#34;&gt;#&lt;/a&gt; Include&lt;/h4&gt;
+&lt;blockquote&gt;
 &lt;p&gt;提高布局复用性&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;login.xml&lt;/p&gt;
-&lt;figure class=&#34;highlight xml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;include&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;40dp&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;layout&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;@layout/titlebar&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;include所在的layout的布局有给其设置id, 而include标签里面又给自己的根容器设置id,最好两个id都相同,否则findview时拿到空对象&lt;/p&gt;
-&lt;h4 id=&#34;Merge&#34;&gt;&lt;a href=&#34;#Merge&#34; class=&#34;headerlink&#34; title=&#34;Merge&#34;&gt;&lt;/a&gt;Merge&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;帮助include标签排除多余的一层ViewGroup容器，减少view hierarchy的结构，提升UI渲染的性能&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-xml&#34; data-language=&#34;xml&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;include&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_width&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;match_parent&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_height&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;40dp&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;layout&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;@layout/titlebar&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;include 所在的 layout 的布局有给其设置 id, 而 include 标签里面又给自己的根容器设置 id, 最好两个 id 都相同，否则 findview 时拿到空对象&lt;/p&gt;
+&lt;h4 id=&#34;merge&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#merge&#34;&gt;#&lt;/a&gt; Merge&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;帮助 include 标签排除多余的一层 ViewGroup 容器，减少 view hierarchy 的结构，提升 UI 渲染的性能&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;titlebar.xml&lt;/p&gt;
-&lt;figure class=&#34;highlight xml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;merge&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;xmlns:android&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     &lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;Button&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;android:layout_marginLeft&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;20dp&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;android:layout_marginRight&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;20dp&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;android:text&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;标题&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;merge&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+&lt;pre class=&#34;line-numbers language-xml&#34; data-language=&#34;xml&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;merge&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;xmlns:&lt;/span&gt;android&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;http://schemas.android.com/apk/res/android&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+     &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;Button&lt;/span&gt; 
+        &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_width&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;match_parent&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;  
+        &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_height&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;wrap_content&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;  
+        &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_marginLeft&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;20dp&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;  
+        &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_marginRight&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;20dp&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;  
+        &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;text&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;标题&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;  
+&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;merge&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
-&lt;li&gt;因为merge标签并不是View,所以在通过LayoutInflate.inflate()方法渲染的时候,第二个参数必须指定一个父容器(parent),且第三个参数(attachToRoot)必须为true&lt;/li&gt;
-&lt;li&gt;merge标签必须使用在根布局，并且ViewStub标签中的layout布局不能使用merge标签&lt;/li&gt;
+&lt;li&gt;因为 merge 标签并不是 View, 所以在通过 LayoutInflate.inflate () 方法渲染的时候，第二个参数必须指定一个父容器 (parent), 且第三个参数 (attachToRoot) 必须为 true&lt;/li&gt;
+&lt;li&gt;merge 标签必须使用在根布局，并且 ViewStub 标签中的 layout 布局不能使用 merge 标签&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;ViewStub&#34;&gt;&lt;a href=&#34;#ViewStub&#34; class=&#34;headerlink&#34; title=&#34;ViewStub&#34;&gt;&lt;/a&gt;ViewStub&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;延迟绘制View&lt;/p&gt;
+&lt;h4 id=&#34;viewstub&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#viewstub&#34;&gt;#&lt;/a&gt; ViewStub&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;延迟绘制 View&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;layout.xml&lt;/p&gt;
-&lt;figure class=&#34;highlight xml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;ViewStub&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:id&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;@+id/viewstub&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;android:layout&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;@layout/info&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+&lt;pre class=&#34;line-numbers language-xml&#34; data-language=&#34;xml&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;ViewStub&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;id&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;@+id/viewstub&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_width&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;match_parent&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout_height&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;wrap_content&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token attr-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;android:&lt;/span&gt;layout&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;@layout/info&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;activity.java&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ViewStub stub = ((ViewStub) findViewById(R.id.viewstub));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(stub!=&lt;span class=&#34;keyword&#34;&gt;null&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    View stubView = stub.inflate();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    EditText editText = (EditText) stubView.findViewById(R.id.edit_password);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+&lt;pre class=&#34;line-numbers language-java&#34; data-language=&#34;java&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;token class-name&#34;&gt;ViewStub&lt;/span&gt; stub &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;ViewStub&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;findViewById&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;id&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;viewstub&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;stub&lt;span class=&#34;token operator&#34;&gt;!=&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token class-name&#34;&gt;View&lt;/span&gt; stubView &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; stub&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;inflate&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;token class-name&#34;&gt;EditText&lt;/span&gt; editText &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;EditText&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; stubView&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;findViewById&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;id&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;edit_password&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;  
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
-&lt;li&gt;ViewStub标签不支持merge标签&lt;/li&gt;
-&lt;li&gt;ViewStub的inflate只能被调用一次,第二次调用会抛出异常&lt;/li&gt;
-&lt;li&gt;虽然ViewStub是不占用任何空间的，但是每个布局都必须要指定layout_width和layout_height属性，否则运行就会报错&lt;/li&gt;
+&lt;li&gt;ViewStub 标签不支持 merge 标签&lt;/li&gt;
+&lt;li&gt;ViewStub 的 inflate 只能被调用一次，第二次调用会抛出异常&lt;/li&gt;
+&lt;li&gt;虽然 ViewStub 是不占用任何空间的，但是每个布局都必须要指定 layout_width 和 layout_height 属性，否则运行就会报错&lt;/li&gt;
 &lt;/ul&gt;
  ]]></description>
         </item>
@@ -88,51 +112,67 @@
             <link>https://onion99.github.io/2021/10/31/6JN9JxpnRSjVeWry/</link>
             <category>性能优化</category>
             <pubDate>Sun, 31 Oct 2021 20:48:51 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;线程调度&#34;&gt;&lt;a href=&#34;#线程调度&#34; class=&#34;headerlink&#34; title=&#34;线程调度&#34;&gt;&lt;/a&gt;线程调度&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;任意时刻，只有一个线程占用CPU，处于运行状态&lt;/p&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;线程调度&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#线程调度&#34;&gt;#&lt;/a&gt; 线程调度&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;任意时刻，只有一个线程占用 CPU，处于运行状态&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;多线程并发：轮流获取cpu使用权&lt;br&gt;JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
-&lt;h4 id=&#34;调度模型&#34;&gt;&lt;a href=&#34;#调度模型&#34; class=&#34;headerlink&#34; title=&#34;调度模型&#34;&gt;&lt;/a&gt;调度模型&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;分时调度模型: 轮流获取,均匀分配cpu时间&lt;/li&gt;
-&lt;li&gt;抢占式调度模型:  按照优先级来&lt;/li&gt;
+&lt;p&gt;多线程并发：轮流获取 cpu 使用权&lt;br&gt;
+ JVM 负责线程调度：按照特定调度模型分配 CPU 使用权&lt;/p&gt;
+&lt;h4 id=&#34;调度模型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调度模型&#34;&gt;#&lt;/a&gt; 调度模型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;分时调度模型：轮流获取，均匀分配 cpu 时间&lt;/li&gt;
+&lt;li&gt;抢占式调度模型：按照优先级来&lt;/li&gt;
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h3 id=&#34;Android异步方式&#34;&gt;&lt;a href=&#34;#Android异步方式&#34; class=&#34;headerlink&#34; title=&#34;Android异步方式&#34;&gt;&lt;/a&gt;Android异步方式&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Thread&lt;ul&gt;
-&lt;li&gt; 最简单、常见的方式  &lt;/li&gt;
-&lt;li&gt; 不易复用，频繁创建销毁开销大&lt;/li&gt;
+&lt;h3 id=&#34;android异步方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#android异步方式&#34;&gt;#&lt;/a&gt; Android 异步方式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Thread
+&lt;ul&gt;
+&lt;li&gt;最简单、常见的方式&lt;/li&gt;
+&lt;li&gt;不易复用，频繁创建销毁开销大&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;HandlerThread&lt;ul&gt;
-&lt;li&gt; 自带消息循环的线程&lt;/li&gt;
-&lt;li&gt; 串行执行,长时间运行，不断从队列中获取任务&lt;/li&gt;
+&lt;li&gt;HandlerThread
+&lt;ul&gt;
+&lt;li&gt;自带消息循环的线程&lt;/li&gt;
+&lt;li&gt;串行执行，长时间运行，不断从队列中获取任务&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;IntentService&lt;ul&gt;
-&lt;li&gt;继承自Service在内部创建HandlerThread  &lt;/li&gt;
-&lt;li&gt;异步、不占用主线程  &lt;/li&gt;
-&lt;li&gt;优先级高，不易被系统kil&lt;/li&gt;
+&lt;li&gt;IntentService
+&lt;ul&gt;
+&lt;li&gt;继承自 Service 在内部创建 HandlerThread&lt;/li&gt;
+&lt;li&gt;异步、不占用主线程&lt;/li&gt;
+&lt;li&gt;优先级高，不易被系统 kil&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;AsyncTask&lt;ul&gt;
-&lt;li&gt;Android提供的工具类  &lt;/li&gt;
+&lt;li&gt;AsyncTask
+&lt;ul&gt;
+&lt;li&gt;Android 提供的工具类&lt;/li&gt;
 &lt;li&gt;无需自己处理线程切换&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;线程池&lt;ul&gt;
-&lt;li&gt;jdk提供的线程池  &lt;/li&gt;
-&lt;li&gt;易复用，减少频繁创建、销毁的时间  &lt;/li&gt;
+&lt;li&gt;线程池
+&lt;ul&gt;
+&lt;li&gt;jdk 提供的线程池&lt;/li&gt;
+&lt;li&gt;易复用，减少频繁创建、销毁的时间&lt;/li&gt;
 &lt;li&gt;功能强大：定时、任务列队、并发数控制等&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;RxJava&lt;ul&gt;
-&lt;li&gt;由强大的Scheduler集合提供  &lt;/li&gt;
-&lt;li&gt;不同类型的区分：IO密集型、CPU密集型&lt;/li&gt;
+&lt;li&gt;RxJava
+&lt;ul&gt;
+&lt;li&gt;由强大的 Scheduler 集合提供&lt;/li&gt;
+&lt;li&gt;不同类型的区分：IO 密集型、CPU 密集型&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;协程&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;线程使用准则&#34;&gt;&lt;a href=&#34;#线程使用准则&#34; class=&#34;headerlink&#34; title=&#34;线程使用准则&#34;&gt;&lt;/a&gt;线程使用准则&lt;/h3&gt;&lt;p&gt;1、严禁使用new Thread,因为这样不便控制,可能产生预期之外的事情&lt;br&gt;2、提供基础线程池供各个业务栈使用（避免各个业务栈各自维护一套线程池，导致线程数过多）&lt;br&gt;3、根据任务类型选择合适的异步方式（优先级低长时间执行-HandlerThread，定时执行-线程池）&lt;br&gt;4、创建线程必须命名（方便定位线程归属，运行期Thread.currentThread().setName修改名字）&lt;br&gt;5、关键异步任务监控（异步不等于不耗时，AOP的方式来做监控）&lt;br&gt;6、重视优先级的设置（Process.setThreadPriority(),可以设置多次）&lt;/p&gt;
+&lt;h3 id=&#34;线程使用准则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#线程使用准则&#34;&gt;#&lt;/a&gt; 线程使用准则&lt;/h3&gt;
+&lt;p&gt;1、严禁使用 new Thread, 因为这样不便控制，可能产生预期之外的事情&lt;br&gt;
+ 2、提供基础线程池供各个业务栈使用（避免各个业务栈各自维护一套线程池，导致线程数过多）&lt;br&gt;
+3、根据任务类型选择合适的异步方式（优先级低长时间执行 - HandlerThread，定时执行 - 线程池）&lt;br&gt;
+4、创建线程必须命名（方便定位线程归属，运行期 Thread.currentThread ().setName 修改名字）&lt;br&gt;
+5、关键异步任务监控（异步不等于不耗时，AOP 的方式来做监控）&lt;br&gt;
+6、重视优先级的设置（Process.setThreadPriority (), 可以设置多次）&lt;/p&gt;
  ]]></description>
         </item>
         <item>
@@ -143,14 +183,14 @@
             <pubDate>Sun, 31 Oct 2021 20:48:08 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1425318&#34;&gt;Android APP 终极瘦身指南&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;图片转WebP&lt;/li&gt;
-&lt;li&gt;去掉不必要的so库&lt;/li&gt;
-&lt;li&gt;开启shrinkResources去除无用资源&lt;/li&gt;
-&lt;li&gt;开启minifyEnabled混淆代码&lt;/li&gt;
+&lt;li&gt;图片转 WebP&lt;/li&gt;
+&lt;li&gt;去掉不必要的 so 库&lt;/li&gt;
+&lt;li&gt;开启 shrinkResources 去除无用资源&lt;/li&gt;
+&lt;li&gt;开启 minifyEnabled 混淆代码&lt;/li&gt;
 &lt;li&gt;删除无用的语言资源&lt;/li&gt;
 &lt;li&gt;使用微信资源压缩打包工具&lt;/li&gt;
-&lt;li&gt;避免重复库,以及避免不同版本的库&lt;/li&gt;
-&lt;li&gt;AndroidManifest中 -&amp;gt; android:extractNativeLibs=”true”&lt;/li&gt;
+&lt;li&gt;避免重复库，以及避免不同版本的库&lt;/li&gt;
+&lt;li&gt;AndroidManifest 中 -&amp;gt; android:extractNativeLibs=“true”&lt;/li&gt;
 &lt;/ul&gt;
  ]]></description>
         </item>
@@ -161,40 +201,49 @@
             <category>性能优化</category>
             <pubDate>Sun, 31 Oct 2021 20:47:12 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
-&lt;p&gt;卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗&lt;/p&gt;
+&lt;p&gt;卡顿产生的根本原因就是 CPU 和 GPU 没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;CPU：中央处理器（CPU，central processing unit）作为计算机系统的运算和控制核心，是信息处理、程序运行的最终执行单元&lt;/li&gt;
-&lt;li&gt;GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心,做图像和图形相关运算工作的微处理器&lt;/li&gt;
+&lt;li&gt;GPU：图形处理器（英语：Graphics Processing Unit，缩写：GPU），又称显示核心，做图像和图形相关运算工作的微处理器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;卡顿检测&#34;&gt;&lt;a href=&#34;#卡顿检测&#34; class=&#34;headerlink&#34; title=&#34;卡顿检测&#34;&gt;&lt;/a&gt;卡顿检测&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lmj623565791/article/details/58626355&#34;&gt;Android UI性能优化 检测应用中的UI卡顿&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/9e8f88eac490&#34;&gt;Android性能优化-检测App卡顿 - 简书 (jianshu.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;卡顿检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卡顿检测&#34;&gt;#&lt;/a&gt; 卡顿检测&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lmj623565791/article/details/58626355&#34;&gt;Android UI 性能优化 检测应用中的 UI 卡顿&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/9e8f88eac490&#34;&gt;Android 性能优化 - 检测 App 卡顿 - 简书 (jianshu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h4 id=&#34;用UI线程Looper打印的日志&#34;&gt;&lt;a href=&#34;#用UI线程Looper打印的日志&#34; class=&#34;headerlink&#34; title=&#34;用UI线程Looper打印的日志&#34;&gt;&lt;/a&gt;用UI线程Looper打印的日志&lt;/h4&gt;&lt;p&gt;开源工具:&lt;br&gt;&lt;a href=&#34;https://github.com/Kyson/AndroidGodEye&#34;&gt;Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;用ui线程looper打印的日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用ui线程looper打印的日志&#34;&gt;#&lt;/a&gt; 用 UI 线程 Looper 打印的日志&lt;/h4&gt;
+&lt;p&gt;开源工具:&lt;br&gt;
+&lt;a href=&#34;https://github.com/Kyson/AndroidGodEye&#34;&gt;Kyson/AndroidGodEye: An app performance monitor(APM) , like “Android Studio profiler”, you can easily monitor the performance of your app real time in browser (github.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/markzhai/AndroidPerformanceMonitor&#34;&gt;markzhai/AndroidPerformanceMonitor: A transparent ui-block detection library for Android. (known as BlockCanary) &lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/BzCoder/BlockCanaryCompat&#34;&gt;BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配Android O 以上系统 (github.com)&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;Choreographer&#34;&gt;&lt;a href=&#34;#Choreographer&#34; class=&#34;headerlink&#34; title=&#34;Choreographer&#34;&gt;&lt;/a&gt;Choreographer&lt;/h4&gt;&lt;p&gt;Android系统每隔16ms发出VSYNC信号，触发对UI进行渲染。开发者可以使用Choreographer#postFrameCallback设置自己的callback与Choreographer交互，你设置的FrameCallCack（doFrame方法）会在下一个frame被渲染时触发。理论上来说两次回调的时间周期应该在16ms，如果超过了16ms我们则认为发生了卡顿，我们主要就是利用两次回调间的时间周期来判断&lt;/p&gt;
-&lt;p&gt;开源工具:&lt;br&gt;&lt;a href=&#34;https://github.com/wasabeef/Takt&#34;&gt;wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/BzCoder/BlockCanaryCompat&#34;&gt;BzCoder/BlockCanaryCompat: 卡顿监控，BlockCanary 适配 Android O 以上系统 (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;choreographer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#choreographer&#34;&gt;#&lt;/a&gt; Choreographer&lt;/h4&gt;
+&lt;p&gt;Android 系统每隔 16ms 发出 VSYNC 信号，触发对 UI 进行渲染。开发者可以使用 Choreographer#postFrameCallback 设置自己的 callback 与 Choreographer 交互，你设置的 FrameCallCack（doFrame 方法）会在下一个 frame 被渲染时触发。理论上来说两次回调的时间周期应该在 16ms，如果超过了 16ms 我们则认为发生了卡顿，我们主要就是利用两次回调间的时间周期来判断&lt;/p&gt;
+&lt;p&gt;开源工具:&lt;br&gt;
+&lt;a href=&#34;https://github.com/wasabeef/Takt&#34;&gt;wasabeef/Takt: Takt is Android library for measuring the FPS using Choreographer&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/friendlyrobotnyc/TinyDancer&#34;&gt;friendlyrobotnyc/TinyDancer: An android library for displaying fps from the choreographer and percentage of time with two or more frames dropped &lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;ANR分析&#34;&gt;&lt;a href=&#34;#ANR分析&#34; class=&#34;headerlink&#34; title=&#34;ANR分析&#34;&gt;&lt;/a&gt;ANR分析&lt;/h3&gt;&lt;blockquote&gt;
+&lt;h3 id=&#34;anr分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#anr分析&#34;&gt;#&lt;/a&gt; ANR 分析&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Application Not Responding，也就是应用程序无响应&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;产生原因&#34;&gt;&lt;a href=&#34;#产生原因&#34; class=&#34;headerlink&#34; title=&#34;产生原因&#34;&gt;&lt;/a&gt;产生原因&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;  InputDispatching Timeout：5秒内无法响应屏幕触摸事件或键盘输入事件&lt;/li&gt;
-&lt;li&gt;  BroadcastQueue Timeout ：在执行前台广播（BroadcastReceiver）的&lt;code&gt;onReceive()&lt;/code&gt;函数时10秒没有处理完成，后台为60秒&lt;/li&gt;
-&lt;li&gt;  Service Timeout：前台服务20秒内，后台服务在200秒内没有执行完毕&lt;/li&gt;
-&lt;li&gt;  ContentProvider Timeout：ContentProvider的publish在10s内没进行完&lt;/li&gt;
-&lt;li&gt;其他&lt;ul&gt;
-&lt;li&gt; 主线程阻塞或主线程数据读取 &lt;/li&gt;
-&lt;li&gt; CPU满负荷，I/O阻塞&lt;/li&gt;
-&lt;li&gt; 内存不足&lt;/li&gt;
+&lt;h4 id=&#34;产生原因&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#产生原因&#34;&gt;#&lt;/a&gt; 产生原因&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;InputDispatching Timeout：5 秒内无法响应屏幕触摸事件或键盘输入事件&lt;/li&gt;
+&lt;li&gt;BroadcastQueue Timeout ：在执行前台广播（BroadcastReceiver）的 &lt;code&gt;onReceive()&lt;/code&gt;  函数时 10 秒没有处理完成，后台为 60 秒&lt;/li&gt;
+&lt;li&gt;Service Timeout：前台服务 20 秒内，后台服务在 200 秒内没有执行完毕&lt;/li&gt;
+&lt;li&gt;ContentProvider Timeout：ContentProvider 的 publish 在 10s 内没进行完&lt;/li&gt;
+&lt;li&gt;其他
+&lt;ul&gt;
+&lt;li&gt;主线程阻塞或主线程数据读取&lt;/li&gt;
+&lt;li&gt;CPU 满负荷，I/O 阻塞&lt;/li&gt;
+&lt;li&gt;内存不足&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;分析:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;log上的anr reason&lt;/li&gt;
-&lt;li&gt;adb 导出ANR日志&lt;ul&gt;
+&lt;li&gt;log 上的 anr reason&lt;/li&gt;
+&lt;li&gt;adb 导出 ANR 日志
+&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;adb pull /data/anr/traces.txt&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -207,39 +256,45 @@
             <link>https://onion99.github.io/2021/10/31/T8ghe13OAeLx6NBP/</link>
             <category>性能优化</category>
             <pubDate>Sun, 31 Oct 2021 20:46:21 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;内存信息查看&#34;&gt;&lt;a href=&#34;#内存信息查看&#34; class=&#34;headerlink&#34; title=&#34;内存信息查看&#34;&gt;&lt;/a&gt;内存信息查看&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/28b9cd87e667&#34;&gt;App内存优化实践：一步一步做内存分析与优化&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;查看每个App进程可以分配到的最大内存&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;adb shell getprop | grep dalvik.vm.heapsize&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;App的内存使用情况概览&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;adb shell dumpsys meminfo 包名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h3 id=&#34;优化工具&#34;&gt;&lt;a href=&#34;#优化工具&#34; class=&#34;headerlink&#34; title=&#34;优化工具&#34;&gt;&lt;/a&gt;优化工具&lt;/h3&gt;&lt;ul&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;内存信息查看&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存信息查看&#34;&gt;#&lt;/a&gt; 内存信息查看&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/28b9cd87e667&#34;&gt;App 内存优化实践：一步一步做内存分析与优化&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;查看每个 App 进程可以分配到的最大内存&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-undefined&#34; data-language=&#34;undefined&#34;&gt;&lt;code class=&#34;language-undefined&#34;&gt;adb shell getprop | grep dalvik.vm.heapsize&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;App 的内存使用情况概览&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-undefined&#34; data-language=&#34;undefined&#34;&gt;&lt;code class=&#34;language-undefined&#34;&gt;adb shell dumpsys meminfo 包名&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;优化工具&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#优化工具&#34;&gt;#&lt;/a&gt; 优化工具&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;CPU Profiler&lt;/li&gt;
 &lt;li&gt;Memory Analyzer（MAT）&lt;/li&gt;
 &lt;li&gt;LeakCannary&lt;/li&gt;
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h3 id=&#34;优化方向&#34;&gt;&lt;a href=&#34;#优化方向&#34; class=&#34;headerlink&#34; title=&#34;优化方向&#34;&gt;&lt;/a&gt;优化方向&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/wangjie1990/p/11327112.html&#34;&gt;Android 如何优化APP内存 &lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化方向&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#优化方向&#34;&gt;#&lt;/a&gt; 优化方向&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/wangjie1990/p/11327112.html&#34;&gt;Android 如何优化 APP 内存 &lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;谨慎使用Services&lt;ul&gt;
-&lt;li&gt;启动一个Service时， 系统需要始终保持运行该Service的进程,该Service占用的RAM对其他进程不共享&lt;/li&gt;
-&lt;li&gt;避免使用持久性服务,如&lt;code&gt;JobScheduler&lt;/code&gt;之类&lt;/li&gt;
+&lt;li&gt;谨慎使用 Services
+&lt;ul&gt;
+&lt;li&gt;启动一个 Service 时， 系统需要始终保持运行该 Service 的进程，该 Service 占用的 RAM 对其他进程不共享&lt;/li&gt;
+&lt;li&gt;避免使用持久性服务，如 &lt;code&gt;JobScheduler&lt;/code&gt;  之类&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;使用经过优化的多数据容器&lt;ul&gt;
-&lt;li&gt;如SparseArray，SparseBooleanArray和LongSparseArray&lt;/li&gt;
+&lt;li&gt;使用经过优化的多数据容器
+&lt;ul&gt;
+&lt;li&gt;如 SparseArray，SparseBooleanArray 和 LongSparseArray&lt;/li&gt;
 &lt;li&gt;如有必要，您可以随时切换到原始数组以获得精简的数据结构&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;使用nano protobufs进行序列化数据&lt;/li&gt;
-&lt;li&gt;避免内存泄漏&lt;ul&gt;
-&lt;li&gt;内存泄露会导致大量的垃圾收集事件发生,从而导致系统执行其他内容(如渲染或者传输)的时间变少 &lt;/li&gt;
+&lt;li&gt;使用 nano protobufs 进行序列化数据&lt;/li&gt;
+&lt;li&gt;避免内存泄漏
+&lt;ul&gt;
+&lt;li&gt;内存泄露会导致大量的垃圾收集事件发生，从而导致系统执行其他内容 (如渲染或者传输) 的时间变少&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;移除内存密集型资源，以及lib库&lt;ul&gt;
-&lt;li&gt;减小APK的大小&lt;/li&gt;
-&lt;li&gt;请使用不进行反射扫描的依赖注入库(Dagger2),频繁的反射需要更多的CPU和内存消耗&lt;/li&gt;
-&lt;li&gt;谨慎使用外部库,外部库可能对同一个功能有不一样的实现,这可能导致预期之外的事情 &lt;/li&gt;
+&lt;li&gt;移除内存密集型资源，以及 lib 库
+&lt;ul&gt;
+&lt;li&gt;减小 APK 的大小&lt;/li&gt;
+&lt;li&gt;请使用不进行反射扫描的依赖注入库 (Dagger2), 频繁的反射需要更多的 CPU 和内存消耗&lt;/li&gt;
+&lt;li&gt;谨慎使用外部库，外部库可能对同一个功能有不一样的实现，这可能导致预期之外的事情&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -251,77 +306,99 @@
             <link>https://onion99.github.io/2021/10/31/4LlbPfdOOCp58LMK/</link>
             <category>性能优化</category>
             <pubDate>Sun, 31 Oct 2021 20:43:04 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;启动流程&#34;&gt;&lt;a href=&#34;#启动流程&#34; class=&#34;headerlink&#34; title=&#34;启动流程&#34;&gt;&lt;/a&gt;启动流程&lt;/h3&gt;&lt;h4 id=&#34;相关&#34;&gt;&lt;a href=&#34;#相关&#34; class=&#34;headerlink&#34; title=&#34;相关&#34;&gt;&lt;/a&gt;相关&lt;/h4&gt;&lt;blockquote&gt;
+            <description><![CDATA[ &lt;h3 id=&#34;启动流程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动流程&#34;&gt;#&lt;/a&gt; 启动流程&lt;/h3&gt;
+&lt;h4 id=&#34;相关&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#相关&#34;&gt;#&lt;/a&gt; 相关&lt;/h4&gt;
+&lt;blockquote&gt;
 &lt;p&gt;启动的流程就是通过这六个大类在这三个进程之间不断通信的过程&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h5 id=&#34;三个进程&#34;&gt;&lt;a href=&#34;#三个进程&#34; class=&#34;headerlink&#34; title=&#34;三个进程&#34;&gt;&lt;/a&gt;三个进程&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;Launcher进程: 整个App启动流程的起点,负责处理桌面与用户之间的交互事件,可以想象为一个桌面启动器&lt;/li&gt;
-&lt;li&gt;SystemServer进程: Android中的所有SystemServer都由其孵化(Fork)出来,例如AMS,WindowsMannager,PackageManagerService等&lt;/li&gt;
-&lt;li&gt;App进程: 启动的App所在的进程&lt;/li&gt;
+&lt;h5 id=&#34;三个进程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三个进程&#34;&gt;#&lt;/a&gt; 三个进程&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Launcher 进程：整个 App 启动流程的起点，负责处理桌面与用户之间的交互事件，可以想象为一个桌面启动器&lt;/li&gt;
+&lt;li&gt;SystemServer 进程: Android 中的所有 SystemServer 都由其孵化 (Fork) 出来，例如 AMS,WindowsMannager,PackageManagerService 等&lt;/li&gt;
+&lt;li&gt;App 进程：启动的 App 所在的进程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h5 id=&#34;六个大类&#34;&gt;&lt;a href=&#34;#六个大类&#34; class=&#34;headerlink&#34; title=&#34;六个大类&#34;&gt;&lt;/a&gt;六个大类&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;ActivityManagerService:  即AMS,负责管理系统中四大组件的启动,切换,调度以及应用进程的管理&lt;/li&gt;
+&lt;h5 id=&#34;六个大类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#六个大类&#34;&gt;#&lt;/a&gt; 六个大类&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;ActivityManagerService:  即 AMS, 负责管理系统中四大组件的启动，切换，调度以及应用进程的管理&lt;/li&gt;
 &lt;li&gt;Instrumentation: 监控应用程序和系统的交互&lt;/li&gt;
-&lt;li&gt;ActivityThread: 应用的入口类，通过调用main方法，开启消息循环队列。ActivityThread所在的线程被称为主线程&lt;/li&gt;
-&lt;li&gt;ApplicationThread: 提供Binder通讯接口，AMS则通过代理调用此App进程的本地方法&lt;/li&gt;
-&lt;li&gt;ActivityManagerProxy：AMS服务在当前进程的代理类，负责与AMS通信&lt;/li&gt;
-&lt;li&gt;ApplicationThreadProxy：ApplicationThread在AMS服务中的代理类，负责与ApplicationThread通信&lt;/li&gt;
+&lt;li&gt;ActivityThread: 应用的入口类，通过调用 main 方法，开启消息循环队列。ActivityThread 所在的线程被称为主线程&lt;/li&gt;
+&lt;li&gt;ApplicationThread: 提供 Binder 通讯接口，AMS 则通过代理调用此 App 进程的本地方法&lt;/li&gt;
+&lt;li&gt;ActivityManagerProxy：AMS 服务在当前进程的代理类，负责与 AMS 通信&lt;/li&gt;
+&lt;li&gt;ApplicationThreadProxy：ApplicationThread 在 AMS 服务中的代理类，负责与 ApplicationThread 通信&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;顺序&#34;&gt;&lt;a href=&#34;#顺序&#34; class=&#34;headerlink&#34; title=&#34;顺序&#34;&gt;&lt;/a&gt;顺序&lt;/h4&gt;&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt;APP启动流程解析,墙裂推荐&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://www.cnblogs.com/not2/p/14326090.html&#34;&gt;App启动速度优化 T2&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt;具体代码流程&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#顺序&#34;&gt;#&lt;/a&gt; 顺序&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt;APP 启动流程解析，墙裂推荐&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.cnblogs.com/not2/p/14326090.html&#34;&gt; App 启动速度优化 T2&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://blog.csdn.net/huangliniqng/article/details/89364064&#34;&gt; 具体代码流程&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Launcher通知AMS, 要启动某一应用,并说明对应的LauncherActivity&lt;/li&gt;
-&lt;li&gt;AMS表示收到, 等待Launcher进入Pause状态&lt;/li&gt;
-&lt;li&gt;Launcher进入Pause状态, 通知AMS可以启动某一应用了&lt;/li&gt;
-&lt;li&gt;AMS开始检查某一应用是否启动&lt;ul&gt;
-&lt;li&gt;是,则直接启动,流程终止&lt;/li&gt;
-&lt;li&gt;否,AMS则在的进程中创建ActivityThread对象,并启动main函数&lt;/li&gt;
+&lt;li&gt;Launcher 通知 AMS, 要启动某一应用，并说明对应的 LauncherActivity&lt;/li&gt;
+&lt;li&gt;AMS 表示收到，等待 Launcher 进入 Pause 状态&lt;/li&gt;
+&lt;li&gt;Launcher 进入 Pause 状态，通知 AMS 可以启动某一应用了&lt;/li&gt;
+&lt;li&gt;AMS 开始检查某一应用是否启动
+&lt;ul&gt;
+&lt;li&gt;是，则直接启动，流程终止&lt;/li&gt;
+&lt;li&gt;否，AMS 则在的进程中创建 ActivityThread 对象，并启动 main 函数&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;某一应用通知AMS启动准备就绪&lt;/li&gt;
-&lt;li&gt;AMS通知某一应用要启动的页面,某一应用启动对应页面&lt;/li&gt;
+&lt;li&gt;某一应用通知 AMS 启动准备就绪&lt;/li&gt;
+&lt;li&gt;AMS 通知某一应用要启动的页面，某一应用启动对应页面&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57Z1PJ.png&#34; alt=&#34;57Z1PJ.png&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;启动分类&#34;&gt;&lt;a href=&#34;#启动分类&#34; class=&#34;headerlink&#34; title=&#34;启动分类&#34;&gt;&lt;/a&gt;启动分类&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;冷启动&lt;ul&gt;
-&lt;li&gt;耗时最多,优化重点&lt;/li&gt;
+&lt;h3 id=&#34;启动分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动分类&#34;&gt;#&lt;/a&gt; 启动分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;冷启动
+&lt;ul&gt;
+&lt;li&gt;耗时最多，优化重点&lt;/li&gt;
 &lt;li&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57ZxJJ.png&#34; alt=&#34;57ZxJJ.png&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;热启动&lt;ul&gt;
-&lt;li&gt;最快.即后台到前台的切换&lt;/li&gt;
+&lt;li&gt;热启动
+&lt;ul&gt;
+&lt;li&gt;最快。即后台到前台的切换&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;温启动&lt;ul&gt;
-&lt;li&gt;较快,只重走Activity的生命周期,即销毁后重建&lt;/li&gt;
+&lt;li&gt;温启动
+&lt;ul&gt;
+&lt;li&gt;较快，只重走 Activity 的生命周期，即销毁后重建&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;耗时统计&#34;&gt;&lt;a href=&#34;#耗时统计&#34; class=&#34;headerlink&#34; title=&#34;耗时统计&#34;&gt;&lt;/a&gt;耗时统计&lt;/h3&gt;&lt;h4 id=&#34;Systrace&#34;&gt;&lt;a href=&#34;#Systrace&#34; class=&#34;headerlink&#34; title=&#34;Systrace&#34;&gt;&lt;/a&gt;Systrace&lt;/h4&gt;&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;TraceCompat.beginSection(&lt;span class=&#34;string&#34;&gt;&amp;quot;sectionName&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;TraceCompat.endSection();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; &lt;code&gt;python systrace.py -t 10 [other-options] [categories]&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;Traceview&#34;&gt;&lt;a href=&#34;#Traceview&#34; class=&#34;headerlink&#34; title=&#34;Traceview&#34;&gt;&lt;/a&gt;Traceview&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57llge.png&#34; alt=&#34;57llge.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;耗时统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#耗时统计&#34;&gt;#&lt;/a&gt; 耗时统计&lt;/h3&gt;
+&lt;h4 id=&#34;systrace&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#systrace&#34;&gt;#&lt;/a&gt; Systrace&lt;/h4&gt;
+&lt;pre class=&#34;line-numbers language-java&#34; data-language=&#34;java&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;token class-name&#34;&gt;TraceCompat&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;beginSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;sectionName&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;token class-name&#34;&gt;TraceCompat&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;endSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;python systrace.py -t 10 [other-options] [categories]&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;traceview&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#traceview&#34;&gt;#&lt;/a&gt; Traceview&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57llge.png&#34; alt=&#34;57llge.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;使用方式&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Debug.startMethodTracing(&lt;span class=&#34;string&#34;&gt;&amp;quot;fileName&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Debug.stopMethodTracing()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;运行之后可以在目录下生成文件：内部存储/android/data/${application}/files/fileName.trace，此文件可以使用Android Studio Profile打开&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-java&#34; data-language=&#34;java&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;token class-name&#34;&gt;Debug&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;startMethodTracing&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;fileName&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;token class-name&#34;&gt;Debug&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;stopMethodTracing&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行之后可以在目录下生成文件：内部存储 /android/data/${application}/files/fileName.trace，此文件可以使用 Android Studio Profile 打开&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Wall Clock time : 是线程真正执行的时间&lt;/li&gt;
-&lt;li&gt;Thread time : CPU执行的时间,比Wall Clock Time少,不包含锁时间,等待时间&lt;/li&gt;
-&lt;li&gt;Top Down:就是函数的调用列表&lt;/li&gt;
-&lt;li&gt;Call Chart: 系统Api黄色，应用调用的方法绿色，第三方Api(java sdk也属于第三方)蓝色&lt;/li&gt;
-&lt;li&gt;Flame Chart:  主要的作用是收集调用方法的时间，比如多次调用LayoutInflate.inflate，Flame Chart会把他们都收集到一起。&lt;/li&gt;
-&lt;li&gt;Bottom Up: 和Top Down是相反的&lt;/li&gt;
+&lt;li&gt;Thread time : CPU 执行的时间，比 Wall Clock Time 少，不包含锁时间，等待时间&lt;/li&gt;
+&lt;li&gt;Top Down: 就是函数的调用列表&lt;/li&gt;
+&lt;li&gt;Call Chart: 系统 Api 黄色，应用调用的方法绿色，第三方 Api (java sdk 也属于第三方) 蓝色&lt;/li&gt;
+&lt;li&gt;Flame Chart:  主要的作用是收集调用方法的时间，比如多次调用 LayoutInflate.inflate，Flame Chart 会把他们都收集到一起。&lt;/li&gt;
+&lt;li&gt;Bottom Up: 和 Top Down 是相反的&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;Adb-命令统计&#34;&gt;&lt;a href=&#34;#Adb-命令统计&#34; class=&#34;headerlink&#34; title=&#34;Adb 命令统计&#34;&gt;&lt;/a&gt;Adb 命令统计&lt;/h4&gt;&lt;p&gt;&lt;code&gt;adb shell am start -S -W 包名/启动类的全限定名&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;ThisTime : 最后一个 Activity 的启动耗时&lt;br&gt;TotalTime : 启动一连串的 Activity 总耗时&lt;br&gt;WaitTime : 应用进程的创建过程 + TotalTime&lt;/p&gt;
-&lt;h4 id=&#34;系统日志统计&#34;&gt;&lt;a href=&#34;#系统日志统计&#34; class=&#34;headerlink&#34; title=&#34;系统日志统计&#34;&gt;&lt;/a&gt;系统日志统计&lt;/h4&gt;&lt;p&gt;过滤&lt;code&gt;displayed&lt;/code&gt;输出的启动日志&lt;/p&gt;
+&lt;h4 id=&#34;adb-命令统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#adb-命令统计&#34;&gt;#&lt;/a&gt; Adb 命令统计&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;adb shell am start -S -W 包名/启动类的全限定名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;ThisTime : 最后一个 Activity 的启动耗时&lt;br&gt;
+ TotalTime : 启动一连串的 Activity 总耗时&lt;br&gt;
+ WaitTime : 应用进程的创建过程 + TotalTime&lt;/p&gt;
+&lt;h4 id=&#34;系统日志统计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#系统日志统计&#34;&gt;#&lt;/a&gt; 系统日志统计&lt;/h4&gt;
+&lt;p&gt;过滤 &lt;code&gt;displayed&lt;/code&gt;  输出的启动日志&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/27/57mU4e.png&#34; alt=&#34;57mU4e.png&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;冷启动优化&#34;&gt;&lt;a href=&#34;#冷启动优化&#34; class=&#34;headerlink&#34; title=&#34;冷启动优化&#34;&gt;&lt;/a&gt;冷启动优化&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://jishuin.proginn.com/p/763bfbd345f0&#34;&gt; App 启动时间优化详解&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;冷启动优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#冷启动优化&#34;&gt;#&lt;/a&gt; 冷启动优化&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://jishuin.proginn.com/p/763bfbd345f0&#34;&gt; App 启动时间优化详解&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;优化方向:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;  延迟加载 / 懒加载&lt;/li&gt;
-&lt;li&gt;  异步线程执行耗时操作，如图片加载、网络访问、IO操作等&lt;/li&gt;
-&lt;li&gt;  ViewStub的使用&lt;/li&gt;
-&lt;li&gt;  减少布局层次和嵌套布局&lt;/li&gt;
+&lt;li&gt;延迟加载 / 懒加载&lt;/li&gt;
+&lt;li&gt;异步线程执行耗时操作，如图片加载、网络访问、IO 操作等&lt;/li&gt;
+&lt;li&gt;ViewStub 的使用&lt;/li&gt;
+&lt;li&gt;减少布局层次和嵌套布局&lt;/li&gt;
 &lt;/ul&gt;
  ]]></description>
         </item>

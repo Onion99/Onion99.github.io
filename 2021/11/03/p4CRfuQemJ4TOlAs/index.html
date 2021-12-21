@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(8) - draw 绘制过程">
@@ -76,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -93,6 +93,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -124,7 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">draw 过程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">1.1.</span> <span class="nav-text">draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text"> draw 过程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">1.1.</span> <span class="nav-text"> draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text"> 总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -262,26 +264,60 @@
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/03/IES7KP.png" alt="IES7KP.png"></p>
 <span id="more"></span>
-
-<h3 id="draw-过程解析"><a href="#draw-过程解析" class="headerlink" title="draw 过程解析"></a>draw 过程解析</h3><p> 一个完整的绘制过程会依次绘制以下几个内容：<br> <img src="https://z3.ax1x.com/2021/11/03/IEp3Ie.png" alt="IEp3Ie.png"></p>
+<h3 id="draw-过程解析"><a class="markdownIt-Anchor" href="#draw-过程解析">#</a> draw 过程解析</h3>
+<p>一个完整的绘制过程会依次绘制以下几个内容：<br>
+<img src="https://z3.ax1x.com/2021/11/03/IEp3Ie.png" alt="IEp3Ie.png"></p>
 <ul>
-<li><code>drawBackground()</code>绘制背景<ul>
+<li><code>drawBackground()</code>  绘制背景
+<ul>
 <li>这个方法是 private 的，不能重写，你如果要设置背景，只能用自带的 API 去设置</li>
 </ul>
 </li>
-<li><code>onDraw()</code>绘制主体<ul>
+<li><code>onDraw()</code>  绘制主体
+<ul>
 <li>这个方法在 View 和 ViewGroup 里都是空实现，因此自定义时需要复写</li>
 </ul>
 </li>
-<li><code>dispatchDraw()</code>绘制子 View<ul>
+<li><code>dispatchDraw()</code>  绘制子 View
+<ul>
 <li>在于单一 View 中无子 View，故在 View 中此方法默认为空实</li>
-<li>在 ViewGroup中系统已经复写好此方法对其子视图进行绘制因此我们不需要复写</li>
+<li>在 ViewGroup 中系统已经复写好此方法对其子视图进行绘制因此我们不需要复写</li>
 </ul>
 </li>
-<li><code>onDrawForeground()</code>滑动边缘渐变和滑动条以及前景</li>
+<li><code>onDrawForeground()</code>  滑动边缘渐变和滑动条以及前景</li>
 </ul>
-<p>ViewGroup中的<code>dispatchDraw()</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> usingRenderNodeProperties = canvas.isRecordingFor(mRenderNode);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> childrenCount = mChildrenCount;</span><br><span class="line">    <span class="keyword">final</span> View[] children = mChildren;</span><br><span class="line">    <span class="keyword">int</span> flags = mGroupFlags;</span><br><span class="line">    <span class="comment">// 动画处理</span></span><br><span class="line">    <span class="keyword">if</span> ((flags &amp; FLAG_RUN_ANIMATION) != <span class="number">0</span> &amp;&amp; canAnimate()) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">boolean</span> buildCache = !isHardwareAccelerated();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childrenCount; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> View child = children[i];</span><br><span class="line">            <span class="keyword">if</span> ((child.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE) &#123;</span><br><span class="line">                <span class="keyword">final</span> LayoutParams params = child.getLayoutParams();</span><br><span class="line">                attachLayoutAnimationParameters(child, params, i, childrenCount);</span><br><span class="line">                bindLayoutAnimation(child);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">        controller.start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 间距处理</span></span><br><span class="line">    <span class="keyword">int</span> clipSaveCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> clipToPadding = (flags &amp; CLIP_TO_PADDING_MASK) == CLIP_TO_PADDING_MASK;</span><br><span class="line">    <span class="keyword">if</span> (clipToPadding) &#123;</span><br><span class="line">        clipSaveCount = canvas.save(Canvas.CLIP_SAVE_FLAG);</span><br><span class="line">        canvas.clipRect(mScrollX + mPaddingLeft, mScrollY + mPaddingTop,</span><br><span class="line">                mScrollX + mRight - mLeft - mPaddingRight,</span><br><span class="line">                mScrollY + mBottom - mTop - mPaddingBottom);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 遍历子View</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childrenCount; i++) &#123;</span><br></pre></td></tr></table></figure>
+<p>ViewGroup 中的 <code>dispatchDraw()</code> :</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">dispatchDraw</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">boolean</span> usingRenderNodeProperties <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">isRecordingFor</span><span class="token punctuation">(</span>mRenderNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> <span class="token keyword">int</span> childrenCount <span class="token operator">=</span> mChildrenCount<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> <span class="token class-name">View</span><span class="token punctuation">[</span><span class="token punctuation">]</span> children <span class="token operator">=</span> mChildren<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> flags <span class="token operator">=</span> mGroupFlags<span class="token punctuation">;</span>
+    <span class="token comment">// 动画处理</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>flags <span class="token operator">&amp;</span> FLAG_RUN_ANIMATION<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token function">canAnimate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">final</span> <span class="token keyword">boolean</span> buildCache <span class="token operator">=</span> <span class="token operator">!</span><span class="token function">isHardwareAccelerated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childrenCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">final</span> <span class="token class-name">View</span> child <span class="token operator">=</span> children<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>child<span class="token punctuation">.</span>mViewFlags <span class="token operator">&amp;</span> VISIBILITY_MASK<span class="token punctuation">)</span> <span class="token operator">==</span> VISIBLE<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">final</span> <span class="token class-name">LayoutParams</span> params <span class="token operator">=</span> child<span class="token punctuation">.</span><span class="token function">getLayoutParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">attachLayoutAnimationParameters</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> params<span class="token punctuation">,</span> i<span class="token punctuation">,</span> childrenCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">bindLayoutAnimation</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        controller<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 间距处理</span>
+    <span class="token keyword">int</span> clipSaveCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> <span class="token keyword">boolean</span> clipToPadding <span class="token operator">=</span> <span class="token punctuation">(</span>flags <span class="token operator">&amp;</span> CLIP_TO_PADDING_MASK<span class="token punctuation">)</span> <span class="token operator">==</span> CLIP_TO_PADDING_MASK<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>clipToPadding<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        clipSaveCount <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span><span class="token punctuation">.</span>CLIP_SAVE_FLAG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span><span class="token function">clipRect</span><span class="token punctuation">(</span>mScrollX <span class="token operator">+</span> mPaddingLeft<span class="token punctuation">,</span> mScrollY <span class="token operator">+</span> mPaddingTop<span class="token punctuation">,</span>
+                mScrollX <span class="token operator">+</span> mRight <span class="token operator">-</span> mLeft <span class="token operator">-</span> mPaddingRight<span class="token punctuation">,</span>
+                mScrollY <span class="token operator">+</span> mBottom <span class="token operator">-</span> mTop <span class="token operator">-</span> mPaddingBottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token comment">// 遍历子 View</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childrenCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>            if ((transientChild.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE ||transientChild.getAnimation() != null) &#123;
                 // // 2. 绘制子View视图    
                 more |= drawChild(canvas, transientChild, drawingTime);
@@ -290,14 +326,62 @@
     &#125;
 &#125;
 </code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### draw顺序</span><br><span class="line"></span><br><span class="line">####  onDraw() </span><br><span class="line"></span><br><span class="line">&gt; 自定义绘制最基本的形态：继承 View 类，在 onDraw() 中完全自定义它的绘制</span><br><span class="line"></span><br><span class="line">定义 View 时，绘制代码写在 super.onDraw() 的上面还是下面都无所谓,但基于已有控件的自定义绘制，就不能不考虑 `super.onDraw()` 了，你需要根据自己的需求，判断出你绘制的内容需要盖住控件原有的内容还是需要被控件原有的内容盖住，从而确定你的绘制代码是应该写在 super.onDraw() 的上面还是下面。</span><br><span class="line"></span><br><span class="line">|上面| 下面 |</span><br><span class="line">|:--:|:--:|</span><br><span class="line">| ![IEFrgH.png](https://z3.ax1x.com/2021/11/03/IEFrgH.png)  | ![IEFHrn.png](https://z3.ax1x.com/2021/11/03/IEFHrn.png) |</span><br><span class="line"></span><br><span class="line">#### dispatchDraw()</span><br><span class="line"></span><br><span class="line">&gt;  如果想在一个ViewGroup中按上面的做法在下面添加绘制内容则是不行的,因为在绘制过程中每一个 ViewGroup 会先调用自己的 onDraw() 来绘制完自己的主体之后再去绘制它的子 View,会覆盖其主体</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![IEEpH1.png](https://z3.ax1x.com/2021/11/03/IEEpH1.png)</span><br></pre></td></tr></table></figure>
-<p>public class SpottedLinearLayout extends LinearLayout {<br>    …<br>    // 把 onDraw() 换成了 dispatchDraw()<br>    protected void dispatchDraw(Canvas canvas) {<br>       super.dispatchDraw(canvas);<br>       … // 绘制斑点<br>    }<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">虽然 View 和 ViewGroup 都有 dispatchDraw() 方法，不过由于 View 是没有子 View 的，所以一般来说 dispatchDraw() 这个方法只对 ViewGroup（以及它的子类）有意义。</span><br><span class="line"></span><br><span class="line">#### onDrawForeground()</span><br><span class="line"></span><br><span class="line">&gt; 前景前后处理</span><br><span class="line"></span><br><span class="line">在 super.onDrawForeground() 的上面</span><br><span class="line">```java</span><br><span class="line">public class AppImageView extends ImageView &#123;</span><br><span class="line">    ...</span><br><span class="line">    public void onDrawForeground(Canvas canvas) &#123;</span><br><span class="line">       ... // 绘制「New」标签</span><br><span class="line">       super.onDrawForeground(canvas);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">
+### draw顺序
+
+####  onDraw() 
+
+&gt; 自定义绘制最基本的形态：继承 View 类，在 onDraw() 中完全自定义它的绘制
+
+定义 View 时，绘制代码写在 super.onDraw() 的上面还是下面都无所谓,但基于已有控件的自定义绘制，就不能不考虑 &#96;super.onDraw()&#96; 了，你需要根据自己的需求，判断出你绘制的内容需要盖住控件原有的内容还是需要被控件原有的内容盖住，从而确定你的绘制代码是应该写在 super.onDraw() 的上面还是下面。
+
+|上面| 下面 |
+|:--:|:--:|
+| ![IEFrgH.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEFrgH.png)  | ![IEFHrn.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEFHrn.png) |
+
+#### dispatchDraw()
+
+&gt;  如果想在一个ViewGroup中按上面的做法在下面添加绘制内容则是不行的,因为在绘制过程中每一个 ViewGroup 会先调用自己的 onDraw() 来绘制完自己的主体之后再去绘制它的子 View,会覆盖其主体
+
+
+![IEEpH1.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEEpH1.png)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>public class SpottedLinearLayout extends LinearLayout {<br>
+…<br>
+// 把 onDraw () 换成了 dispatchDraw ()<br>
+protected void dispatchDraw(Canvas canvas) {<br>
+super.dispatchDraw(canvas);<br>
+… // 绘制斑点<br>
+}<br>
+}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+虽然 View 和 ViewGroup 都有 dispatchDraw() 方法，不过由于 View 是没有子 View 的，所以一般来说 dispatchDraw() 这个方法只对 ViewGroup（以及它的子类）有意义。
+
+#### onDrawForeground()
+
+&gt; 前景前后处理
+
+在 super.onDrawForeground() 的上面
+&#96;&#96;&#96;java
+public class AppImageView extends ImageView &#123;
+    ...
+    public void onDrawForeground(Canvas canvas) &#123;
+       ... &#x2F;&#x2F; 绘制「New」标签
+       super.onDrawForeground(canvas);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://z3.ax1x.com/2021/11/03/IEVgSS.png" alt="IEVgSS.png"></p>
-<p>在 super.onDrawForeground() 的下面:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppImageView</span> <span class="keyword">extends</span> <span class="title">ImageView</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawForeground</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onDrawForeground(canvas);</span><br><span class="line">       ... <span class="comment">// 绘制「New」标签</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 super.onDrawForeground () 的下面:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppImageView</span> <span class="token keyword">extends</span> <span class="token class-name">ImageView</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDrawForeground</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDrawForeground</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// 绘制「New」标签</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://z3.ax1x.com/2021/11/03/IEZV0A.png" alt="IEZV0A.png"></p>
-<h4 id="draw"><a href="#draw" class="headerlink" title="draw()"></a>draw()</h4><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://z3.ax1x.com/2021/11/03/IEZ1XQ.png" alt="IEZ1XQ.png"></p>
+<h4 id="draw"><a class="markdownIt-Anchor" href="#draw">#</a> draw()</h4>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h3>
+<p><img src="https://z3.ax1x.com/2021/11/03/IEZ1XQ.png" alt="IEZ1XQ.png"></p>
 
     </div>
 
@@ -353,13 +437,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 

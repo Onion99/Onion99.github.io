@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="GestureDetector   监听器 简介    OnContextClickListener 这个很容易让人联想到ContextMenu，然而它和ContextMenu并没有什么关系，它是在Android6.0(API 23)才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。   OnDoubleTapListener 双击事件，有三个回">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="# GestureDetector    监听器 简介     OnContextClickListener 这个很容易让人联想到 ContextMenu，然而它和 ContextMenu 并没有什么关系，它是在 Android6.0 (API 23) 才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。   OnDoubleTapListener">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View(10) - GestureDetector">
 <meta property="og:url" content="https://onion99.github.io/2021/11/03/dY7a31QepeVitGkX/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="GestureDetector   监听器 简介    OnContextClickListener 这个很容易让人联想到ContextMenu，然而它和ContextMenu并没有什么关系，它是在Android6.0(API 23)才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。   OnDoubleTapListener 双击事件，有三个回">
+<meta property="og:description" content="# GestureDetector    监听器 简介     OnContextClickListener 这个很容易让人联想到 ContextMenu，然而它和 ContextMenu 并没有什么关系，它是在 Android6.0 (API 23) 才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。   OnDoubleTapListener">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-03T14:08:39.000Z">
 <meta property="article:modified_time" content="2021-11-03T14:07:49.000Z">
@@ -70,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -87,6 +87,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -118,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GestureDetector"><span class="nav-number">1.</span> <span class="nav-text">GestureDetector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ScaleGestureDetector"><span class="nav-number">2.</span> <span class="nav-text">ScaleGestureDetector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample"><span class="nav-number">2.1.</span> <span class="nav-text">sample</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gesturedetector"><span class="nav-number">1.</span> <span class="nav-text"> GestureDetector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scalegesturedetector"><span class="nav-number">2.</span> <span class="nav-text"> ScaleGestureDetector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sample"><span class="nav-number">2.1.</span> <span class="nav-text"> sample</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.2k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -251,38 +253,98 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="GestureDetector"><a href="#GestureDetector" class="headerlink" title="GestureDetector"></a>GestureDetector</h3><table>
+        <h3 id="gesturedetector"><a class="markdownIt-Anchor" href="#gesturedetector">#</a> GestureDetector</h3>
+<table>
 <thead>
 <tr>
 <th>监听器</th>
 <th>简介</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>OnContextClickListener</td>
-<td>这个很容易让人联想到ContextMenu，然而它和ContextMenu并没有什么关系，它是在Android6.0(API 23)才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。</td>
+<td>这个很容易让人联想到 ContextMenu，然而它和 ContextMenu 并没有什么关系，它是在 Android6.0 (API 23) 才添加的一个选项，是用于检测外部设备上的按钮是否按下的，例如蓝牙触控笔上的按钮，一般情况下，忽略即可。</td>
 </tr>
 <tr>
 <td>OnDoubleTapListener</td>
-<td>双击事件，有三个回调类型：双击(DoubleTap)、单击确认(SingleTapConfirmed) 和 双击事件回调(DoubleTapEvent)</td>
+<td>双击事件，有三个回调类型：双击 (DoubleTap)、单击确认 (SingleTapConfirmed) 和 双击事件回调 (DoubleTapEvent)</td>
 </tr>
 <tr>
 <td>OnGestureListener</td>
-<td>手势检测，主要有以下类型事件：按下(Down)、 一扔(Fling)、长按(LongPress)、滚动(Scroll)、触摸反馈(ShowPress) 和 单击抬起(SingleTapUp)</td>
+<td>手势检测，主要有以下类型事件：按下 (Down)、 一扔 (Fling)、长按 (LongPress)、滚动 (Scroll)、触摸反馈 (ShowPress) 和 单击抬起 (SingleTapUp)</td>
 </tr>
 <tr>
 <td>SimpleOnGestureListener</td>
 <td>这个是上述三个接口的空实现，一般情况下使用这个比较多，也比较方便</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <span id="more"></span>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.创建一个监听回调</span></span><br><span class="line">SimpleOnGestureListener listener = <span class="keyword">new</span> SimpleOnGestureListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onDoubleTap</span><span class="params">(MotionEvent e)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">&quot;双击666&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onDoubleTap(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 2.创建一个检测器</span></span><br><span class="line"><span class="keyword">final</span> GestureDetector detector = <span class="keyword">new</span> GestureDetector(<span class="keyword">this</span>, listener);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 3.给监听器设置数据源</span></span><br><span class="line">view.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> detector.onTouchEvent(event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ScaleGestureDetector"><a href="#ScaleGestureDetector" class="headerlink" title="ScaleGestureDetector"></a>ScaleGestureDetector</h3><blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 1. 创建一个监听回调</span>
+<span class="token class-name">SimpleOnGestureListener</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleOnGestureListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onDoubleTap</span><span class="token punctuation">(</span><span class="token class-name">MotionEvent</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"双击666"</span><span class="token punctuation">,</span> <span class="token class-name">Toast</span><span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDoubleTap</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+ 
+<span class="token comment">// 2. 创建一个检测器</span>
+<span class="token keyword">final</span> <span class="token class-name">GestureDetector</span> detector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GestureDetector</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token comment">// 3. 给监听器设置数据源</span>
+view<span class="token punctuation">.</span><span class="token function">setOnTouchListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnTouchListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onTouch</span><span class="token punctuation">(</span><span class="token class-name">View</span> v<span class="token punctuation">,</span> <span class="token class-name">MotionEvent</span> event<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> detector<span class="token punctuation">.</span><span class="token function">onTouchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="scalegesturedetector"><a class="markdownIt-Anchor" href="#scalegesturedetector">#</a> ScaleGestureDetector</h3>
+<blockquote>
 <p>Android 缩放手势检测 ScaleGestureDetector，在大多数的情况下缩放手势都不是单独存在的，需要配合其它的手势来使用</p>
 </blockquote>
-<h4 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScaleGestureDemoView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">&quot;ScaleGestureDemoView&quot;</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> ScaleGestureDetector mScaleGestureDetector;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScaleGestureDemoView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScaleGestureDemoView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        initScaleGestureDetector();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initScaleGestureDetector</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mScaleGestureDetector = <span class="keyword">new</span> ScaleGestureDetector(getContext(), </span><br><span class="line">                <span class="keyword">new</span> ScaleGestureDetector.SimpleOnScaleGestureListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onScaleBegin</span><span class="params">(ScaleGestureDetector detector)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onScale</span><span class="params">(ScaleGestureDetector detector)</span> </span>&#123;</span><br><span class="line">                Log.i(TAG, <span class="string">&quot;focusX = &quot;</span> + detector.getFocusX());       <span class="comment">// 缩放中心，x坐标</span></span><br><span class="line">                Log.i(TAG, <span class="string">&quot;focusY = &quot;</span> + detector.getFocusY());       <span class="comment">// 缩放中心y坐标</span></span><br><span class="line">                Log.i(TAG, <span class="string">&quot;scale = &quot;</span> + detector.getScaleFactor());   <span class="comment">// 缩放因子</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScaleEnd</span><span class="params">(ScaleGestureDetector detector)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        mScaleGestureDetector.onTouchEvent(event);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="sample"><a class="markdownIt-Anchor" href="#sample">#</a> sample</h4>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ScaleGestureDemoView</span> <span class="token keyword">extends</span> <span class="token class-name">View</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> TAG <span class="token operator">=</span> <span class="token string">"ScaleGestureDemoView"</span><span class="token punctuation">;</span>
+ 
+    <span class="token keyword">private</span> <span class="token class-name">ScaleGestureDetector</span> mScaleGestureDetector<span class="token punctuation">;</span>
+ 
+    <span class="token keyword">public</span> <span class="token class-name">ScaleGestureDemoView</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+ 
+    <span class="token keyword">public</span> <span class="token class-name">ScaleGestureDemoView</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">AttributeSet</span> attrs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initScaleGestureDetector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+ 
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initScaleGestureDetector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        mScaleGestureDetector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ScaleGestureDetector</span><span class="token punctuation">(</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                <span class="token keyword">new</span> <span class="token class-name">ScaleGestureDetector<span class="token punctuation">.</span>SimpleOnScaleGestureListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onScaleBegin</span><span class="token punctuation">(</span><span class="token class-name">ScaleGestureDetector</span> detector<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+ 
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onScale</span><span class="token punctuation">(</span><span class="token class-name">ScaleGestureDetector</span> detector<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"focusX = "</span> <span class="token operator">+</span> detector<span class="token punctuation">.</span><span class="token function">getFocusX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 缩放中心，x 坐标</span>
+                <span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"focusY = "</span> <span class="token operator">+</span> detector<span class="token punctuation">.</span><span class="token function">getFocusY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 缩放中心 y 坐标</span>
+                <span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"scale = "</span> <span class="token operator">+</span> detector<span class="token punctuation">.</span><span class="token function">getScaleFactor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 缩放因子</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+ 
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onScaleEnd</span><span class="token punctuation">(</span><span class="token class-name">ScaleGestureDetector</span> detector<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+ 
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onTouchEvent</span><span class="token punctuation">(</span><span class="token class-name">MotionEvent</span> event<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        mScaleGestureDetector<span class="token punctuation">.</span><span class="token function">onTouchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
 
@@ -338,13 +400,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 

@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="线程调度 任意时刻，只有一个线程占用CPU，处于运行状态  多线程并发：轮流获取cpu使用权JVM负责线程调度：按照特定调度模型分配CPU使用权 调度模型 分时调度模型: 轮流获取,均匀分配cpu时间 抢占式调度模型:  按照优先级来">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onion99.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="# 线程调度  任意时刻，只有一个线程占用 CPU，处于运行状态  多线程并发：轮流获取 cpu 使用权  JVM 负责线程调度：按照特定调度模型分配 CPU 使用权 # 调度模型  分时调度模型：轮流获取，均匀分配 cpu 时间 抢占式调度模型：按照优先级来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓优化-线程优化">
 <meta property="og:url" content="https://onion99.github.io/2021/10/31/6JN9JxpnRSjVeWry/index.html">
 <meta property="og:site_name" content="Stay hungry , Stay foolish">
-<meta property="og:description" content="线程调度 任意时刻，只有一个线程占用CPU，处于运行状态  多线程并发：轮流获取cpu使用权JVM负责线程调度：按照特定调度模型分配CPU使用权 调度模型 分时调度模型: 轮流获取,均匀分配cpu时间 抢占式调度模型:  按照优先级来">
+<meta property="og:description" content="# 线程调度  任意时刻，只有一个线程占用 CPU，处于运行状态  多线程并发：轮流获取 cpu 使用权  JVM 负责线程调度：按照特定调度模型分配 CPU 使用权 # 调度模型  分时调度模型：轮流获取，均匀分配 cpu 时间 抢占式调度模型：按照优先级来">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-31T12:48:51.000Z">
 <meta property="article:modified_time" content="2021-10-31T12:48:38.000Z">
@@ -70,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Stay hungry , Stay foolish</h1>
+      <p class="site-title">Stay hungry , Stay foolish</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">一只巴甫洛夫的狗</p>
@@ -87,6 +87,8 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
@@ -118,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">线程调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">调度模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E5%BC%82%E6%AD%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Android异步方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%87%86%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">线程使用准则</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text"> 线程调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text"> 调度模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android%E5%BC%82%E6%AD%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text"> Android 异步方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%87%86%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text"> 线程使用准则</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +235,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>649</span>
+      <span>653</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -251,51 +253,67 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><blockquote>
-<p>任意时刻，只有一个线程占用CPU，处于运行状态</p>
+        <h3 id="线程调度"><a class="markdownIt-Anchor" href="#线程调度">#</a> 线程调度</h3>
+<blockquote>
+<p>任意时刻，只有一个线程占用 CPU，处于运行状态</p>
 </blockquote>
-<p>多线程并发：轮流获取cpu使用权<br>JVM负责线程调度：按照特定调度模型分配CPU使用权</p>
-<h4 id="调度模型"><a href="#调度模型" class="headerlink" title="调度模型"></a>调度模型</h4><ul>
-<li>分时调度模型: 轮流获取,均匀分配cpu时间</li>
-<li>抢占式调度模型:  按照优先级来</li>
+<p>多线程并发：轮流获取 cpu 使用权<br>
+ JVM 负责线程调度：按照特定调度模型分配 CPU 使用权</p>
+<h4 id="调度模型"><a class="markdownIt-Anchor" href="#调度模型">#</a> 调度模型</h4>
+<ul>
+<li>分时调度模型：轮流获取，均匀分配 cpu 时间</li>
+<li>抢占式调度模型：按照优先级来</li>
 </ul>
 <span id="more"></span>
-<h3 id="Android异步方式"><a href="#Android异步方式" class="headerlink" title="Android异步方式"></a>Android异步方式</h3><ul>
-<li>Thread<ul>
-<li> 最简单、常见的方式  </li>
-<li> 不易复用，频繁创建销毁开销大</li>
+<h3 id="android异步方式"><a class="markdownIt-Anchor" href="#android异步方式">#</a> Android 异步方式</h3>
+<ul>
+<li>Thread
+<ul>
+<li>最简单、常见的方式</li>
+<li>不易复用，频繁创建销毁开销大</li>
 </ul>
 </li>
-<li>HandlerThread<ul>
-<li> 自带消息循环的线程</li>
-<li> 串行执行,长时间运行，不断从队列中获取任务</li>
+<li>HandlerThread
+<ul>
+<li>自带消息循环的线程</li>
+<li>串行执行，长时间运行，不断从队列中获取任务</li>
 </ul>
 </li>
-<li>IntentService<ul>
-<li>继承自Service在内部创建HandlerThread  </li>
-<li>异步、不占用主线程  </li>
-<li>优先级高，不易被系统kil</li>
+<li>IntentService
+<ul>
+<li>继承自 Service 在内部创建 HandlerThread</li>
+<li>异步、不占用主线程</li>
+<li>优先级高，不易被系统 kil</li>
 </ul>
 </li>
-<li>AsyncTask<ul>
-<li>Android提供的工具类  </li>
+<li>AsyncTask
+<ul>
+<li>Android 提供的工具类</li>
 <li>无需自己处理线程切换</li>
 </ul>
 </li>
-<li>线程池<ul>
-<li>jdk提供的线程池  </li>
-<li>易复用，减少频繁创建、销毁的时间  </li>
+<li>线程池
+<ul>
+<li>jdk 提供的线程池</li>
+<li>易复用，减少频繁创建、销毁的时间</li>
 <li>功能强大：定时、任务列队、并发数控制等</li>
 </ul>
 </li>
-<li>RxJava<ul>
-<li>由强大的Scheduler集合提供  </li>
-<li>不同类型的区分：IO密集型、CPU密集型</li>
+<li>RxJava
+<ul>
+<li>由强大的 Scheduler 集合提供</li>
+<li>不同类型的区分：IO 密集型、CPU 密集型</li>
 </ul>
 </li>
 <li>协程</li>
 </ul>
-<h3 id="线程使用准则"><a href="#线程使用准则" class="headerlink" title="线程使用准则"></a>线程使用准则</h3><p>1、严禁使用new Thread,因为这样不便控制,可能产生预期之外的事情<br>2、提供基础线程池供各个业务栈使用（避免各个业务栈各自维护一套线程池，导致线程数过多）<br>3、根据任务类型选择合适的异步方式（优先级低长时间执行-HandlerThread，定时执行-线程池）<br>4、创建线程必须命名（方便定位线程归属，运行期Thread.currentThread().setName修改名字）<br>5、关键异步任务监控（异步不等于不耗时，AOP的方式来做监控）<br>6、重视优先级的设置（Process.setThreadPriority(),可以设置多次）</p>
+<h3 id="线程使用准则"><a class="markdownIt-Anchor" href="#线程使用准则">#</a> 线程使用准则</h3>
+<p>1、严禁使用 new Thread, 因为这样不便控制，可能产生预期之外的事情<br>
+ 2、提供基础线程池供各个业务栈使用（避免各个业务栈各自维护一套线程池，导致线程数过多）<br>
+3、根据任务类型选择合适的异步方式（优先级低长时间执行 - HandlerThread，定时执行 - 线程池）<br>
+4、创建线程必须命名（方便定位线程归属，运行期 Thread.currentThread ().setName 修改名字）<br>
+5、关键异步任务监控（异步不等于不耗时，AOP 的方式来做监控）<br>
+6、重视优先级的设置（Process.setThreadPriority (), 可以设置多次）</p>
 
     </div>
 
@@ -351,13 +369,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">110k</span>
+    <span title="站点总字数">105k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:35</span>
   </span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
 
