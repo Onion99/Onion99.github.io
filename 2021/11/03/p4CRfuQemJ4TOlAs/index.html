@@ -29,6 +29,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IES7KP.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEp3Ie.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEFrgH.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEFHrn.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEEpH1.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEVgSS.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEZV0A.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/11/03/IEZ1XQ.png">
@@ -126,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text"> draw 过程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">1.1.</span> <span class="nav-text"> draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text"> 总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#draw-%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text"> draw 过程解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#draw%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text"> draw 顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ondraw"><span class="nav-number">2.1.</span> <span class="nav-text"> onDraw()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dispatchdraw"><span class="nav-number">2.2.</span> <span class="nav-text"> dispatchDraw()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondrawforeground"><span class="nav-number">2.3.</span> <span class="nav-text"> onDrawForeground()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#draw"><span class="nav-number">2.4.</span> <span class="nav-text"> draw()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text"> 总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -241,14 +244,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
+      <span>2.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -315,60 +318,61 @@
                 mScrollX <span class="token operator">+</span> mRight <span class="token operator">-</span> mLeft <span class="token operator">-</span> mPaddingRight<span class="token punctuation">,</span>
                 mScrollY <span class="token operator">+</span> mBottom <span class="token operator">-</span> mTop <span class="token operator">-</span> mPaddingBottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
     <span class="token comment">// 遍历子 View</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childrenCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre><code>            if ((transientChild.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE ||transientChild.getAnimation() != null) &#123;
-                // // 2. 绘制子View视图    
-                more |= drawChild(canvas, transientChild, drawingTime);
-            &#125;
-        ...
-    &#125;
-&#125;
-</code></pre>
-<pre class="line-numbers language-none"><code class="language-none">
-### draw顺序
-
-####  onDraw() 
-
-&gt; 自定义绘制最基本的形态：继承 View 类，在 onDraw() 中完全自定义它的绘制
-
-定义 View 时，绘制代码写在 super.onDraw() 的上面还是下面都无所谓,但基于已有控件的自定义绘制，就不能不考虑 &#96;super.onDraw()&#96; 了，你需要根据自己的需求，判断出你绘制的内容需要盖住控件原有的内容还是需要被控件原有的内容盖住，从而确定你的绘制代码是应该写在 super.onDraw() 的上面还是下面。
-
-|上面| 下面 |
-|:--:|:--:|
-| ![IEFrgH.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEFrgH.png)  | ![IEFHrn.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEFHrn.png) |
-
-#### dispatchDraw()
-
-&gt;  如果想在一个ViewGroup中按上面的做法在下面添加绘制内容则是不行的,因为在绘制过程中每一个 ViewGroup 会先调用自己的 onDraw() 来绘制完自己的主体之后再去绘制它的子 View,会覆盖其主体
-
-
-![IEEpH1.png](https:&#x2F;&#x2F;z3.ax1x.com&#x2F;2021&#x2F;11&#x2F;03&#x2F;IEEpH1.png)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>public class SpottedLinearLayout extends LinearLayout {<br>
-…<br>
-// 把 onDraw () 换成了 dispatchDraw ()<br>
-protected void dispatchDraw(Canvas canvas) {<br>
-super.dispatchDraw(canvas);<br>
-… // 绘制斑点<br>
-}<br>
-}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-虽然 View 和 ViewGroup 都有 dispatchDraw() 方法，不过由于 View 是没有子 View 的，所以一般来说 dispatchDraw() 这个方法只对 ViewGroup（以及它的子类）有意义。
-
-#### onDrawForeground()
-
-&gt; 前景前后处理
-
-在 super.onDrawForeground() 的上面
-&#96;&#96;&#96;java
-public class AppImageView extends ImageView &#123;
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childrenCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>transientChild<span class="token punctuation">.</span>mViewFlags <span class="token operator">&amp;</span> VISIBILITY_MASK<span class="token punctuation">)</span> <span class="token operator">==</span> VISIBLE <span class="token operator">||</span>transientChild<span class="token punctuation">.</span><span class="token function">getAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 2. 绘制子 View 视图    </span>
+                more <span class="token operator">|=</span> <span class="token function">drawChild</span><span class="token punctuation">(</span>canvas<span class="token punctuation">,</span> transientChild<span class="token punctuation">,</span> drawingTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="draw顺序"><a class="markdownIt-Anchor" href="#draw顺序">#</a> draw 顺序</h3>
+<h4 id="ondraw"><a class="markdownIt-Anchor" href="#ondraw">#</a> onDraw()</h4>
+<blockquote>
+<p>自定义绘制最基本的形态：继承 View 类，在 onDraw () 中完全自定义它的绘制</p>
+</blockquote>
+<p>定义 View 时，绘制代码写在 super.onDraw () 的上面还是下面都无所谓，但基于已有控件的自定义绘制，就不能不考虑  <code>super.onDraw()</code>  了，你需要根据自己的需求，判断出你绘制的内容需要盖住控件原有的内容还是需要被控件原有的内容盖住，从而确定你的绘制代码是应该写在 super.onDraw () 的上面还是下面。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">上面</th>
+<th style="text-align:center">下面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/03/IEFrgH.png" alt="IEFrgH.png"></td>
+<td style="text-align:center"><img src="https://z3.ax1x.com/2021/11/03/IEFHrn.png" alt="IEFHrn.png"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="dispatchdraw"><a class="markdownIt-Anchor" href="#dispatchdraw">#</a> dispatchDraw()</h4>
+<blockquote>
+<p>如果想在一个 ViewGroup 中按上面的做法在下面添加绘制内容则是不行的，因为在绘制过程中每一个 ViewGroup 会先调用自己的 onDraw () 来绘制完自己的主体之后再去绘制它的子 View, 会覆盖其主体</p>
+</blockquote>
+<p><img src="https://z3.ax1x.com/2021/11/03/IEEpH1.png" alt="IEEpH1.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">public class SpottedLinearLayout extends LinearLayout &#123;
     ...
-    public void onDrawForeground(Canvas canvas) &#123;
-       ... &#x2F;&#x2F; 绘制「New」标签
-       super.onDrawForeground(canvas);
+    &#x2F;&#x2F; 把 onDraw() 换成了 dispatchDraw()
+    protected void dispatchDraw(Canvas canvas) &#123;
+       super.dispatchDraw(canvas);
+       ... &#x2F;&#x2F; 绘制斑点
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>虽然 View 和 ViewGroup 都有 dispatchDraw () 方法，不过由于 View 是没有子 View 的，所以一般来说 dispatchDraw () 这个方法只对 ViewGroup（以及它的子类）有意义。</p>
+<h4 id="ondrawforeground"><a class="markdownIt-Anchor" href="#ondrawforeground">#</a> onDrawForeground()</h4>
+<blockquote>
+<p>前景前后处理</p>
+</blockquote>
+<p>在 super.onDrawForeground () 的上面</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppImageView</span> <span class="token keyword">extends</span> <span class="token class-name">ImageView</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDrawForeground</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// 绘制「New」标签</span>
+       <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDrawForeground</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://z3.ax1x.com/2021/11/03/IEVgSS.png" alt="IEVgSS.png"></p>
 <p>在 super.onDrawForeground () 的下面:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppImageView</span> <span class="token keyword">extends</span> <span class="token class-name">ImageView</span> <span class="token punctuation">&#123;</span>
