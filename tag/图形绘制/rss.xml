@@ -505,7 +505,7 @@ view&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&
                 &lt;span class=&#34;token function&#34;&gt;bindLayoutAnimation&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;child&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
             &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
         &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
-        &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;
+        &lt;span class=&#34;token comment&#34;&gt;//...&lt;/span&gt;
         controller&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
     &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
     &lt;span class=&#34;token comment&#34;&gt;// 间距处理&lt;/span&gt;
