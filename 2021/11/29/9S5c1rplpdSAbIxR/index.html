@@ -115,7 +115,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -128,6 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#activty%E4%B8%8Eviewmodel%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text"> Activty 与 ViewModel 的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#viewmodelprovider"><span class="nav-number">2.</span> <span class="nav-text"> ViewModelProvider()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#viewmodelstore"><span class="nav-number">2.1.</span> <span class="nav-text"> ViewModelStore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#viewmodelproviderfactory"><span class="nav-number">2.2.</span> <span class="nav-text"> ViewModelProviderFactory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#viewmodel%E7%9A%84%E6%9E%B6%E6%9E%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text"> ViewModel 的架构作用</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,15 +281,15 @@
  <code>ViewModel</code> : 旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存<br>
  <code>ViewModelProvider</code> : ViewModel 的辅助程序类，该类负责为界面准备数据。在配置更改期间会自动保留 ViewModel 对象，以便它们存储的数据立即可供下一个 activity 或 fragment 实例使用</p>
 <span id="more"></span>
-<p>好家伙，原来是这对组合，以生命周期的方式耶，看看有什么不同<br>
- ###Activty 与 ViewModel 的生命周期</p>
+<p>好家伙，原来是这对组合，以生命周期的方式耶，看看有什么不同</p>
+<h3 id="activty与viewmodel的生命周期"><a class="markdownIt-Anchor" href="#activty与viewmodel的生命周期">#</a> Activty 与 ViewModel 的生命周期</h3>
 <blockquote>
 <p>牛逼，战斗直至 Finish</p>
 </blockquote>
 <p><img src="https://z3.ax1x.com/2021/11/08/I8L0jU.png" alt="I8L0jU.png"></p>
 <p>官方说：ViewModel 对象存在的时间范围是获取 ViewModel 时传递给 ViewModelProvider 的 Lifecycle。ViewModel 将一直留在内存中，直到限定其存在时间范围的 Lifecycle 永久消失：对于 activity，是在 activity 完成时；而对于 fragment，是在 fragment 分离时</p>
 <p>好了，来看看 ViewModelProvider 是怎样实现构造的</p>
-<p>###ViewModelProvider()</p>
+<h3 id="viewmodelprovider"><a class="markdownIt-Anchor" href="#viewmodelprovider">#</a> ViewModelProvider()</h3>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ViewModelProvider</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewModelStoreOwner</span> owner<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// 尼玛的，偷偷调用另一构造函数</span>
         <span class="token comment">// 1. 创建用来存储 ViewModel 的 ViewModelStore, 2. 创建用于实例化新 ViewModel 的 Factory</span>
@@ -296,7 +297,7 @@
                 <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">HasDefaultViewModelProviderFactory</span><span class="token punctuation">)</span> owner<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDefaultViewModelProviderFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token operator">:</span> <span class="token class-name">NewInstanceFactory</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>####ViewModelStore</p>
+<h4 id="viewmodelstore"><a class="markdownIt-Anchor" href="#viewmodelstore">#</a> ViewModelStore</h4>
 <p>这个是接口何许玩意，原来到后面 Activity,Fragment 等都实现了这个接口，以来获取跟当前生命周期相关的 ViewModelStore, 看到没有，有图有真相<br>
 <img src="https://z3.ax1x.com/2021/11/08/I8xIk4.png" alt="I8xIk4.png"><br>
  看看 <code>ComponentActivity.getViewModelStore()</code> :</p>
@@ -352,7 +353,7 @@ public class ViewModelStore &#123;
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://z3.ax1x.com/2021/11/08/IG8UgA.png" alt="IG8UgA.png"></p>
-<p>####ViewModelProviderFactory</p>
+<h4 id="viewmodelproviderfactory"><a class="markdownIt-Anchor" href="#viewmodelproviderfactory">#</a> ViewModelProviderFactory</h4>
 <p>同样的后面 Activity,Fragment 等也实现了 HasDefaultViewModelProviderFactory 接口，实现自己创建 ViewModel 的 ViewModelProviderFactory, 来看图<br>
 <img src="https://z3.ax1x.com/2021/11/08/IGEOT1.png" alt="IGEOT1.png"><br>
  再来看看 <code>ComponentActivity.getViewModelStore()</code> :</p>
@@ -435,7 +436,7 @@ public class ViewModelStore &#123;
                 <span class="token operator">+</span> modelClass<span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>###ViewModel 的架构作用</p>
+<h3 id="viewmodel的架构作用"><a class="markdownIt-Anchor" href="#viewmodel的架构作用">#</a> ViewModel 的架构作用</h3>
 <p>向官方敬礼，懂不懂这张图的含金量，懂不懂 MMVM<br>
 <img src="https://z3.ax1x.com/2021/11/08/IGd3ff.png" alt="IGd3ff.png"><br>
 <img src="https://z3.ax1x.com/2021/11/08/IGwfKg.png" alt="IGwfKg.png"></p>
