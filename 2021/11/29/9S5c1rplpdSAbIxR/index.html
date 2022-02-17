@@ -243,7 +243,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.8k</span>
+      <span>5.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -313,47 +313,46 @@
     <span class="token comment">// 返回与此 Activity 关联的 ViewModelStore</span>
     <span class="token keyword">return</span> mViewModelStore<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre><code>void ensureViewModelStore() &#123;
-    if (mViewModelStore == null) &#123;
-        // 检索先前由onRetainNonConfigurationInstance()返回的配置变更后的缓存配置
-        NonConfigurationInstances nc = (NonConfigurationInstances) getLastNonConfigurationInstance();
-        // 如果缓存配置不为空,则取缓存配置的viewModelStore
-        if (nc != null) &#123;
-            mViewModelStore = nc.viewModelStore;
-        &#125;
-        // 否则自己实例一个
-        if (mViewModelStore == null) &#123;
-            mViewModelStore = new ViewModelStore();
-        &#125;
-    &#125;
-&#125;    
-</code></pre>
-<pre class="line-numbers language-none"><code class="language-none">嘿嘿,存储ViewModel的ViewModelStore,牛逼啊,用一个HashMap来缓存看到有木有:
-&#96;&#96;&#96;java
-public class ViewModelStore &#123;
-    private final HashMap&lt;String, ViewModel&gt; mMap &#x3D; new HashMap&lt;&gt;();
 
-    final void put(String key, ViewModel viewModel) &#123;
-        ViewModel oldViewModel &#x3D; mMap.put(key, viewModel);
-        if (oldViewModel !&#x3D; null) oldViewModel.onCleared();
-    &#125;
+<span class="token comment">//```</span>
+<span class="token keyword">void</span> <span class="token function">ensureViewModelStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mViewModelStore <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 检索先前由 onRetainNonConfigurationInstance () 返回的配置变更后的缓存配置</span>
+        <span class="token class-name">NonConfigurationInstances</span> nc <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">NonConfigurationInstances</span><span class="token punctuation">)</span> <span class="token function">getLastNonConfigurationInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果缓存配置不为空，则取缓存配置的 viewModelStore</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nc <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            mViewModelStore <span class="token operator">=</span> nc<span class="token punctuation">.</span>viewModelStore<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 否则自己实例一个</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mViewModelStore <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            mViewModelStore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ViewModelStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嘿嘿，存储 ViewModel 的 ViewModelStore, 牛逼啊，用一个 HashMap 来缓存看到有木有:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ViewModelStore</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ViewModel</span><span class="token punctuation">></span></span> mMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    final ViewModel get(String key) &#123;
-        return mMap.get(key);
-    &#125;
+    <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">,</span> <span class="token class-name">ViewModel</span> viewModel<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ViewModel</span> oldViewModel <span class="token operator">=</span> mMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> viewModel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>oldViewModel <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> oldViewModel<span class="token punctuation">.</span><span class="token function">onCleared</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    Set&lt;String&gt; keys() &#123;
-        return new HashSet&lt;&gt;(mMap.keySet());
-    &#125;
+    <span class="token keyword">final</span> <span class="token class-name">ViewModel</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> mMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    public final void clear() &#123;
-        for (ViewModel vm : mMap.values()) &#123;
-            vm.clear();
-        &#125;
-        mMap.clear();
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>mMap<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ViewModel</span> vm <span class="token operator">:</span> mMap<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            vm<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        mMap<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://z3.ax1x.com/2021/11/08/IG8UgA.png" alt="IG8UgA.png"></p>
 <h4 id="viewmodelproviderfactory"><a class="markdownIt-Anchor" href="#viewmodelproviderfactory">#</a> ViewModelProviderFactory</h4>
 <p>同样的后面 Activity,Fragment 等也实现了 HasDefaultViewModelProviderFactory 接口，实现自己创建 ViewModel 的 ViewModelProviderFactory, 来看图<br>
