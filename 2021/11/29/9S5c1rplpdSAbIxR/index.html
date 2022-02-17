@@ -289,7 +289,7 @@
 <p><img src="https://z3.ax1x.com/2021/11/08/I8L0jU.png" alt="I8L0jU.png"></p>
 <p>官方说：ViewModel 对象存在的时间范围是获取 ViewModel 时传递给 ViewModelProvider 的 Lifecycle。ViewModel 将一直留在内存中，直到限定其存在时间范围的 Lifecycle 永久消失：<br>
 对于 activity，是在 activity 完成时；<br>
-而对于 fragment，是在 fragment 分离时</p>
+对于 fragment，是在 fragment 分离时</p>
 <p>好了，来看看 ViewModelProvider 是怎样实现构造的</p>
 <h3 id="viewmodelprovider"><a class="markdownIt-Anchor" href="#viewmodelprovider">#</a> ViewModelProvider()</h3>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ViewModelProvider</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewModelStoreOwner</span> owner<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -313,8 +313,7 @@
     <span class="token comment">// 返回与此 Activity 关联的 ViewModelStore</span>
     <span class="token keyword">return</span> mViewModelStore<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-
-<span class="token comment">//```</span>
+<span class="token comment">//...</span>
 <span class="token keyword">void</span> <span class="token function">ensureViewModelStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>mViewModelStore <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// 检索先前由 onRetainNonConfigurationInstance () 返回的配置变更后的缓存配置</span>
@@ -328,7 +327,7 @@
             mViewModelStore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ViewModelStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>嘿嘿，存储 ViewModel 的 ViewModelStore, 牛逼啊，用一个 HashMap 来缓存看到有木有:</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ViewModelStore</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ViewModel</span><span class="token punctuation">></span></span> mMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
