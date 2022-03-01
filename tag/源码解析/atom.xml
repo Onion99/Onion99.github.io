@@ -14,10 +14,11 @@
         <id>https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/</id>
         <title>源码学习-Lifecycle</title>
         <link rel="alternate" href="https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/"/>
-        <content type="html">&lt;p&gt;![bQ1f9s.png](&lt;img src=&#34;https://developer.android.google.cn/images/topic/libraries/architecture/lifecycle-states.svg&#34; alt=&#34;生命周期状态示意图&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+        <content type="html">&lt;p&gt;&lt;img src=&#34;https://s4.ax1x.com/2022/03/01/blNKTx.png&#34; alt=&#34;space&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Jetpack Lifecycle 提供了可用于构建生命周期感知型组件的类和接口,从而根据 Activity 或 Fragment 的当前生命周期状态自动调整其行为,记住我们要解析的是Jet Pack Lifecycle ,而不是 原有Activity/Fragment的生命周期流程&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;使用&#34;&gt;使用&lt;a title=&#34;#使用&#34; href=&#34;#使用&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;通过-defaultlifecycleobserver-实现&#34;&gt;通过 DefaultLifecycleObserver 实现&lt;a title=&#34;#通过-defaultlifecycleobserver-实现&#34; href=&#34;#通过-defaultlifecycleobserver-实现&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;blockquote&gt;
