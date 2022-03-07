@@ -7,9 +7,10 @@
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="课程学习" />
     <category term="图形绘制" />
+    <category term="课程学习" />
     <category term="理论学习" />
+    <category term="黑科技" />
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/04/cNDSpE5p4avS2tOi/</id>
         <title>自定义View(11) - 滚动速度和滚动计算</title>

@@ -7,12 +7,13 @@
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="课程学习" />
     <category term="图形绘制" />
+    <category term="课程学习" />
     <category term="理论学习" />
+    <category term="黑科技" />
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/</id>
-        <title>Java 理论</title>
+        <title>Java 理论 - JVM</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/"/>
         <content type="html">&lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;a title=&#34;#jvm&#34; href=&#34;#jvm&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;

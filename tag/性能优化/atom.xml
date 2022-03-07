@@ -7,12 +7,13 @@
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="课程学习" />
     <category term="图形绘制" />
+    <category term="课程学习" />
     <category term="理论学习" />
+    <category term="黑科技" />
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/5FIszA6Ut2OHE8Sg/</id>
-        <title>安卓优化-布局优化</title>
+        <title>安卓优化 - 布局优化</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/5FIszA6Ut2OHE8Sg/"/>
         <content type="html">&lt;h3 id=&#34;布局耗时统计&#34;&gt;布局耗时统计&lt;a title=&#34;#布局耗时统计&#34; href=&#34;#布局耗时统计&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
@@ -87,7 +88,7 @@
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/6JN9JxpnRSjVeWry/</id>
-        <title>安卓优化-线程优化</title>
+        <title>安卓优化 - 线程优化</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/6JN9JxpnRSjVeWry/"/>
         <content type="html">&lt;h3 id=&#34;线程调度&#34;&gt;线程调度&lt;a title=&#34;#线程调度&#34; href=&#34;#线程调度&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -156,7 +157,7 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/9LsQhIFgDkllFt0Q/</id>
-        <title>安卓优化-包体积</title>
+        <title>安卓优化 - 包体积</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/9LsQhIFgDkllFt0Q/"/>
         <content type="html">&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1425318&#34; target=&#34;_blank&#34;&gt;Android APP 终极瘦身指南&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -175,7 +176,7 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/UYa5EEntsM9sKTYz/</id>
-        <title>安卓优化-卡顿优化</title>
+        <title>安卓优化 - 卡顿优化</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/UYa5EEntsM9sKTYz/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗&lt;/p&gt;
@@ -231,7 +232,7 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/T8ghe13OAeLx6NBP/</id>
-        <title>安卓优化-内存优化</title>
+        <title>安卓优化 - 内存优化</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/T8ghe13OAeLx6NBP/"/>
         <content type="html">&lt;h3 id=&#34;内存信息查看&#34;&gt;内存信息查看&lt;a title=&#34;#内存信息查看&#34; href=&#34;#内存信息查看&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/28b9cd87e667&#34; target=&#34;_blank&#34;&gt;App内存优化实践：一步一步做内存分析与优化&lt;/a&gt;&lt;/p&gt;
@@ -281,7 +282,7 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/4LlbPfdOOCp58LMK/</id>
-        <title>安卓优化-启动优化</title>
+        <title>安卓优化 - 启动优化</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/4LlbPfdOOCp58LMK/"/>
         <content type="html">&lt;h3 id=&#34;启动流程&#34;&gt;启动流程&lt;a title=&#34;#启动流程&#34; href=&#34;#启动流程&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;相关&#34;&gt;相关&lt;a title=&#34;#相关&#34; href=&#34;#相关&#34;&gt;&lt;/a&gt;&lt;/h4&gt;

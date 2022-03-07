@@ -7,12 +7,13 @@
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="课程学习" />
     <category term="图形绘制" />
+    <category term="课程学习" />
     <category term="理论学习" />
+    <category term="黑科技" />
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/</id>
-        <title>课程-编码与加密</title>
+        <title>课程 - 编码与加密</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/"/>
         <content type="html">&lt;h2 id=&#34;加密&#34;&gt;加密&lt;a title=&#34;#加密&#34; href=&#34;#加密&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -134,7 +135,7 @@
     </entry>
     <entry>
         <id>http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/</id>
-        <title>课程-登陆与授权</title>
+        <title>课程 - 登陆与授权</title>
         <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/"/>
         <content type="html">&lt;h2 id=&#34;登录授权、tcp/ip、https和代理&#34;&gt;登录授权、TCP/IP、HTTPS和代理&lt;a title=&#34;#登录授权、tcp/ip、https和代理&#34; href=&#34;#登录授权、tcp/ip、https和代理&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;登录：身份认证，确认你是你的过程。&lt;br&gt;
