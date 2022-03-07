@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://onion66.gitee.io/blog</id>
+    <id>https://onion99.github.io</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;理论学习&#34; tag</title>
-    <link href="http://onion66.gitee.io/blog" />
+    <link href="https://onion99.github.io" />
     <updated>2021-10-31T21:33:20.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
@@ -12,9 +12,9 @@
     <category term="理论学习" />
     <category term="黑科技" />
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/</id>
+        <id>https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/</id>
         <title>Java 理论 - JVM</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/"/>
         <content type="html">&lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;a title=&#34;#jvm&#34; href=&#34;#jvm&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;即Java虚拟机,是java程序与OS之间的处理中介,屏蔽了与OS平台相关的具体信息.从而实现跨平台&lt;/p&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Stay hungry , Stay foolish • Posts by &#34;黑科技&#34; tag</title>
-        <link>http://onion66.gitee.io/blog</link>
+        <link>https://onion99.github.io</link>
         <description>巴拉巴拉</description>
         <language>zh-Hans</language>
         <pubDate>Tue, 08 Mar 2022 06:46:11 +0800</pubDate>
@@ -15,9 +15,9 @@
         <category>理论学习</category>
         <category>黑科技</category>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2022/03/08/yriIudTcpjYyMHli/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2022/03/08/yriIudTcpjYyMHli/</guid>
             <title>Android黑科技 - 插件化</title>
-            <link>http://onion66.gitee.io/blog/2022/03/08/yriIudTcpjYyMHli/</link>
+            <link>https://onion99.github.io/2022/03/08/yriIudTcpjYyMHli/</link>
             <category>黑科技</category>
             <pubDate>Tue, 08 Mar 2022 06:46:11 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;插件化技术最初源于免安装运行apk的想法，这个免安装的apk可以理解为插件。支持插件化的app可以在运行时加载和运行插件，这样便可以将app中一些不常用的功能模块做成插件，一方面减小了安装包的大小，另一方面可以实现app功能的动态扩展。&lt;/p&gt;
@@ -90,9 +90,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2022/03/08/phzbEh3JEzAC0XwD/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2022/03/08/phzbEh3JEzAC0XwD/</guid>
             <title>Android黑科技 - 热修复</title>
-            <link>http://onion66.gitee.io/blog/2022/03/08/phzbEh3JEzAC0XwD/</link>
+            <link>https://onion99.github.io/2022/03/08/phzbEh3JEzAC0XwD/</link>
             <category>黑科技</category>
             <pubDate>Tue, 08 Mar 2022 06:38:05 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -190,9 +190,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2022/03/08/ukYPIjylHjywfytF/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2022/03/08/ukYPIjylHjywfytF/</guid>
             <title>Android黑科技 - 热修复和插件化基础</title>
-            <link>http://onion66.gitee.io/blog/2022/03/08/ukYPIjylHjywfytF/</link>
+            <link>https://onion99.github.io/2022/03/08/ukYPIjylHjywfytF/</link>
             <category>黑科技</category>
             <pubDate>Tue, 08 Mar 2022 06:31:41 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;dalvik和-art&#34;&gt;Dalvik和 ART&lt;a title=&#34;#dalvik和-art&#34; href=&#34;#dalvik和-art&#34;&gt;&lt;/a&gt;&lt;/h3&gt;

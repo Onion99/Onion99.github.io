@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Stay hungry , Stay foolish • Posts by &#34;java&#34; category</title>
-        <link>http://onion66.gitee.io/blog</link>
+        <link>https://onion99.github.io</link>
         <description>巴拉巴拉</description>
         <language>zh-Hans</language>
         <pubDate>Tue, 30 Nov 2021 07:28:47 +0800</pubDate>
@@ -15,9 +15,9 @@
         <category>理论学习</category>
         <category>黑科技</category>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</guid>
             <title>源码学习 - HashMap</title>
-            <link>http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</link>
+            <link>https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</link>
             <category>源码解析</category>
             <pubDate>Tue, 30 Nov 2021 07:28:47 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -45,9 +45,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/08/MpHTUCP7P1OgtydO/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/08/MpHTUCP7P1OgtydO/</guid>
             <title>Java并发(7) - ThreadLocal</title>
-            <link>http://onion66.gitee.io/blog/2021/11/08/MpHTUCP7P1OgtydO/</link>
+            <link>https://onion99.github.io/2021/11/08/MpHTUCP7P1OgtydO/</link>
             <category>并发</category>
             <pubDate>Mon, 08 Nov 2021 03:06:09 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -85,9 +85,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/08/oizxmTtLdVsaXZrZ/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/08/oizxmTtLdVsaXZrZ/</guid>
             <title>Java并发(6) - 线程池</title>
-            <link>http://onion66.gitee.io/blog/2021/11/08/oizxmTtLdVsaXZrZ/</link>
+            <link>https://onion99.github.io/2021/11/08/oizxmTtLdVsaXZrZ/</link>
             <category>并发</category>
             <pubDate>Mon, 08 Nov 2021 03:05:17 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;线程池对比new Thread()&lt;/p&gt;
@@ -252,9 +252,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/08/WkWqwHwU8wgNL4cd/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/08/WkWqwHwU8wgNL4cd/</guid>
             <title>Java并发(5) - 线程协作</title>
-            <link>http://onion66.gitee.io/blog/2021/11/08/WkWqwHwU8wgNL4cd/</link>
+            <link>https://onion99.github.io/2021/11/08/WkWqwHwU8wgNL4cd/</link>
             <category>并发</category>
             <pubDate>Mon, 08 Nov 2021 03:04:05 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;线程状态&#34;&gt;线程状态&lt;a title=&#34;#线程状态&#34; href=&#34;#线程状态&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -287,9 +287,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/08/HcJi8WdXZ8E3DBWS/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/08/HcJi8WdXZ8E3DBWS/</guid>
             <title>Java并发(3) - Lock</title>
-            <link>http://onion66.gitee.io/blog/2021/11/08/HcJi8WdXZ8E3DBWS/</link>
+            <link>https://onion99.github.io/2021/11/08/HcJi8WdXZ8E3DBWS/</link>
             <category>并发</category>
             <pubDate>Mon, 08 Nov 2021 02:59:09 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -461,9 +461,9 @@
 &lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; ReentrantReadWriteLock lock = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; ReentrantReadWriteLock();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 读读共享情况,输出可以发现两个线程几乎可以同时运行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            lock.readLock().lock();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            System.out.println(&lt;span class=&#34;string&#34;&gt;&amp;quot;获得读锁&amp;quot;&lt;/span&gt; + Thread.currentThread().getName()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    + &lt;span class=&#34;string&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; + System.currentTimeMillis());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Thread.sleep(&lt;span class=&#34;number&#34;&gt;10000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125; &lt;span class=&#34;keyword&#34;&gt;finally&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            lock.readLock().unlock();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (InterruptedException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// TODO Auto-generated catch block&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/08/FEETAEwJ336KYqim/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/08/FEETAEwJ336KYqim/</guid>
             <title>Java并发(2) - synchronize</title>
-            <link>http://onion66.gitee.io/blog/2021/11/08/FEETAEwJ336KYqim/</link>
+            <link>https://onion99.github.io/2021/11/08/FEETAEwJ336KYqim/</link>
             <category>并发</category>
             <pubDate>Mon, 08 Nov 2021 02:55:09 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -544,9 +544,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/07/VqykJCDZZcenZo3O/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/07/VqykJCDZZcenZo3O/</guid>
             <title>Java并发(1) - volatile</title>
-            <link>http://onion66.gitee.io/blog/2021/11/07/VqykJCDZZcenZo3O/</link>
+            <link>https://onion99.github.io/2021/11/07/VqykJCDZZcenZo3O/</link>
             <category>并发</category>
             <pubDate>Sun, 07 Nov 2021 23:50:26 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;java内存模型&#34;&gt;JAVA内存模型&lt;a title=&#34;#java内存模型&#34; href=&#34;#java内存模型&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -613,9 +613,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/</guid>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/</guid>
             <title>Java 理论 - JVM</title>
-            <link>http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/</link>
+            <link>https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/</link>
             <category>理论学习</category>
             <pubDate>Mon, 01 Nov 2021 05:33:20 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;a title=&#34;#jvm&#34; href=&#34;#jvm&#34;&gt;&lt;/a&gt;&lt;/h2&gt;

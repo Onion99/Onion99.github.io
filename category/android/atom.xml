@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://onion66.gitee.io/blog</id>
+    <id>https://onion99.github.io</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;android&#34; category</title>
-    <link href="http://onion66.gitee.io/blog" />
+    <link href="https://onion99.github.io" />
     <updated>2022-03-07T22:46:11.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
@@ -12,9 +12,9 @@
     <category term="理论学习" />
     <category term="黑科技" />
     <entry>
-        <id>http://onion66.gitee.io/blog/2022/03/08/yriIudTcpjYyMHli/</id>
+        <id>https://onion99.github.io/2022/03/08/yriIudTcpjYyMHli/</id>
         <title>Android黑科技 - 插件化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/08/yriIudTcpjYyMHli/"/>
+        <link rel="alternate" href="https://onion99.github.io/2022/03/08/yriIudTcpjYyMHli/"/>
         <content type="html">&lt;p&gt;插件化技术最初源于免安装运行apk的想法，这个免安装的apk可以理解为插件。支持插件化的app可以在运行时加载和运行插件，这样便可以将app中一些不常用的功能模块做成插件，一方面减小了安装包的大小，另一方面可以实现app功能的动态扩展。&lt;/p&gt;
 &lt;p&gt;想要实现插件化，主要是解决下面三个问题：&lt;/p&gt;
 &lt;ul&gt;
@@ -87,9 +87,9 @@
         <updated>2022-03-07T22:46:11.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2022/03/08/phzbEh3JEzAC0XwD/</id>
+        <id>https://onion99.github.io/2022/03/08/phzbEh3JEzAC0XwD/</id>
         <title>Android黑科技 - 热修复</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/08/phzbEh3JEzAC0XwD/"/>
+        <link rel="alternate" href="https://onion99.github.io/2022/03/08/phzbEh3JEzAC0XwD/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;热修复本质就是将错误的代码替换成正确的代码,但这里的替换不是改写原有的代码,而是提供一份新的正确的代码,让应用运行时绕过错误的代码,从而执行正确的代码&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -187,9 +187,9 @@
         <updated>2022-03-07T22:38:05.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2022/03/08/ukYPIjylHjywfytF/</id>
+        <id>https://onion99.github.io/2022/03/08/ukYPIjylHjywfytF/</id>
         <title>Android黑科技 - 热修复和插件化基础</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/08/ukYPIjylHjywfytF/"/>
+        <link rel="alternate" href="https://onion99.github.io/2022/03/08/ukYPIjylHjywfytF/"/>
         <content type="html">&lt;h3 id=&#34;dalvik和-art&#34;&gt;Dalvik和 ART&lt;a title=&#34;#dalvik和-art&#34; href=&#34;#dalvik和-art&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;DVM也是实现了JVM规范的一个虚拟器，默认使用CMS垃圾回收器，但是与JVM运行 Class 字节码不同，DVM 执行 Dex(Dalvik Executable Format) ——专为 Dalvik 设计的一种压缩格式。Dex 文件是很多 .class 文件处理压缩后的产物，最终可以在 Android 运行时环境执行。&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
@@ -242,9 +242,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2022-03-07T22:31:41.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/</id>
+        <id>https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</id>
         <title>源码学习 - LiveData</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/"/>
+        <link rel="alternate" href="https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.android.google.cn/reference/androidx/lifecycle/LiveData&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LiveData&lt;/code&gt;&lt;/a&gt; 是一种可观察的数据存储器类。与常规的可观察类不同，LiveData 具有生命周期感知能力，意指它遵循其他应用组件（如 Activity、Fragment 或 Service）的生命周期。这种感知能力可确保 LiveData 仅更新处于活跃生命周期状态的应用组件观察者&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -322,9 +322,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2022-03-02T17:47:39.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/</id>
+        <id>https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/</id>
         <title>源码学习 - Lifecycle</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/"/>
+        <link rel="alternate" href="https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Jetpack Lifecycle 提供了可用于构建生命周期感知型组件的类和接口,从而根据 Activity 或 Fragment 的当前生命周期状态自动调整其行为,记住我们要解析的是Jet Pack Lifecycle ,而不是 原有Activity/Fragment的生命周期流程&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -374,9 +374,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2022-03-01T17:33:23.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/</id>
+        <id>https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/</id>
         <title>源码学习 - ViewModel</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;ViewModel 类旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存,将视图和数据进行了分离解耦，为视图层提供数据&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -456,9 +456,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-29T23:30:53.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/</id>
+        <id>https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/</id>
         <title>源码学习 - DataBinding</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/"/>
         <content type="html">&lt;h3 id=&#34;sameple&#34;&gt;Sameple&lt;a title=&#34;#sameple&#34; href=&#34;#sameple&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;首先,我们来看看DataBinding使用:&lt;/p&gt;
 &lt;ol&gt;
@@ -494,9 +494,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-29T23:27:07.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/qX2v7eB61IheaBrH/</id>
+        <id>https://onion99.github.io/2021/11/08/qX2v7eB61IheaBrH/</id>
         <title>Java并发(4) - CAS</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/qX2v7eB61IheaBrH/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/qX2v7eB61IheaBrH/"/>
         <content type="html">&lt;p&gt;锁机制问题:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在多线程竞争下，加锁、释放锁会导致比较多的上下文切换和调度延时，引起性能问题&lt;/li&gt;
@@ -529,9 +529,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-07T18:59:57.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/cNDSpE5p4avS2tOi/</id>
+        <id>https://onion99.github.io/2021/11/04/cNDSpE5p4avS2tOi/</id>
         <title>自定义View(11) - 滚动速度和滚动计算</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/cNDSpE5p4avS2tOi/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/cNDSpE5p4avS2tOi/"/>
         <content type="html">&lt;h3 id=&#34;velocitytracker&#34;&gt;VelocityTracker&lt;a title=&#34;#velocitytracker&#34; href=&#34;#velocitytracker&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度&lt;/p&gt;
@@ -580,9 +580,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:09:36.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/dY7a31QepeVitGkX/</id>
+        <id>https://onion99.github.io/2021/11/04/dY7a31QepeVitGkX/</id>
         <title>自定义View(10) - GestureDetector</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/dY7a31QepeVitGkX/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/dY7a31QepeVitGkX/"/>
         <content type="html">&lt;h3 id=&#34;gesturedetector&#34;&gt;GestureDetector&lt;a title=&#34;#gesturedetector&#34; href=&#34;#gesturedetector&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;div class=&#34;φbq&#34;&gt;&lt;div class=&#34;φbs&#34;&gt;&lt;table&gt;&lt;thead&gt;
 &lt;tr&gt;
@@ -621,9 +621,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:08:39.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/z3aQsRLVolBbFVsl/</id>
+        <id>https://onion99.github.io/2021/11/04/z3aQsRLVolBbFVsl/</id>
         <title>自定义View(9) - 事件分发</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/z3aQsRLVolBbFVsl/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/z3aQsRLVolBbFVsl/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;事件分发的过程其实也就是事件传递过程。事件传递的顺序由Acticity传递到根View，这个根View 通常是一个ViewGroup(ViewGroup本身也是View的子类)，然后再传递给ViewGroup下的子View, 若事件在自上而下的传递过程中一直没有被消费，则事件会反向向上传递，此时父ViewGroup可以对事件进行消费，若仍然没有被消费的话，最后会回到Activity的onTouchEvent&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -694,9 +694,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:07:31.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/p4CRfuQemJ4TOlAs/</id>
+        <id>https://onion99.github.io/2021/11/04/p4CRfuQemJ4TOlAs/</id>
         <title>自定义View(8) - draw 绘制过程</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/p4CRfuQemJ4TOlAs/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/p4CRfuQemJ4TOlAs/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -769,9 +769,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:03:38.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/ZyOr4iLxJj7nAQxR/</id>
+        <id>https://onion99.github.io/2021/11/04/ZyOr4iLxJj7nAQxR/</id>
         <title>自定义View(7) - layout 布局过程</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/ZyOr4iLxJj7nAQxR/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/ZyOr4iLxJj7nAQxR/"/>
         <content type="html">&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/12/06/QJQEcR.jpg&#34; alt=&#34;viewasds&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;layout-类型&#34;&gt;layout 类型&lt;a title=&#34;#layout-类型&#34; href=&#34;#layout-类型&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -805,9 +805,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:02:46.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/Qj9f1VMJJowv5Lfb/</id>
+        <id>https://onion99.github.io/2021/11/04/Qj9f1VMJJowv5Lfb/</id>
         <title>自定义View(6) - measure 测量过程</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/Qj9f1VMJJowv5Lfb/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/Qj9f1VMJJowv5Lfb/"/>
         <content type="html">&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/12/06/QJQEcR.jpg&#34; alt=&#34;QJQEcR.jpg&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;measurespec&#34;&gt;MeasureSpec&lt;a title=&#34;#measurespec&#34; href=&#34;#measurespec&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -905,9 +905,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T22:00:58.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/SA664RldODNgeCrz/</id>
+        <id>https://onion99.github.io/2021/11/04/SA664RldODNgeCrz/</id>
         <title>自定义View(5) - 动画</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/SA664RldODNgeCrz/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/SA664RldODNgeCrz/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;三者性能是一样的，因为 ViewPropertyAnimator 和 ObjectAnimator 的内部实现其实都是 ValueAnimator，ObjectAnimator 更是本来就是 ValueAnimator 的子类，差别只是使用的便捷性以及功能的灵活性。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -930,9 +930,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T21:59:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/ZOnr24kULe7cQgsc/</id>
+        <id>https://onion99.github.io/2021/11/04/ZOnr24kULe7cQgsc/</id>
         <title>自定义View(4) - Canvas相关</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/ZOnr24kULe7cQgsc/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/ZOnr24kULe7cQgsc/"/>
         <content type="html">&lt;h3 id=&#34;范围裁切&#34;&gt;范围裁切&lt;a title=&#34;#范围裁切&#34; href=&#34;#范围裁切&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;cliprect&#34;&gt;clipRect&lt;a title=&#34;#cliprect&#34; href=&#34;#cliprect&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/11/02/IFKTER.png&#34; alt=&#34;IFKTER.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
@@ -990,9 +990,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T21:58:53.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/04/VjI1fQxy8MSFqUqm/</id>
+        <id>https://onion99.github.io/2021/11/04/VjI1fQxy8MSFqUqm/</id>
         <title>自定义View(3) - Text相关</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/VjI1fQxy8MSFqUqm/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/04/VjI1fQxy8MSFqUqm/"/>
         <content type="html">&lt;h3 id=&#34;文字绘制(canvas)&#34;&gt;文字绘制(Canvas)&lt;a title=&#34;#文字绘制(canvas)&#34; href=&#34;#文字绘制(canvas)&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;绘制方式&#34;&gt;绘制方式&lt;a title=&#34;#绘制方式&#34; href=&#34;#绘制方式&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;h5 id=&#34;drawtext&#34;&gt;drawText&lt;a title=&#34;#drawtext&#34; href=&#34;#drawtext&#34;&gt;&lt;/a&gt;&lt;/h5&gt;
@@ -1072,9 +1072,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-03T21:57:48.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/02/weRgrdLnBqIUWkcH/</id>
+        <id>https://onion99.github.io/2021/11/02/weRgrdLnBqIUWkcH/</id>
         <title>自定义View(2) - Paint相关</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/02/weRgrdLnBqIUWkcH/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/02/weRgrdLnBqIUWkcH/"/>
         <content type="html">&lt;h3 id=&#34;color&#34;&gt;Color&lt;a title=&#34;#color&#34; href=&#34;#color&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;基本颜色&#34;&gt;基本颜色&lt;a title=&#34;#基本颜色&#34; href=&#34;#基本颜色&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;setColor(int color):&lt;/p&gt;
@@ -1221,9 +1221,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-01T22:19:10.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/02/K0uh0dFU4QBtZ8Wm/</id>
+        <id>https://onion99.github.io/2021/11/02/K0uh0dFU4QBtZ8Wm/</id>
         <title>自定义View(1) - 基本绘制</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/02/K0uh0dFU4QBtZ8Wm/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/02/K0uh0dFU4QBtZ8Wm/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;简单的绘制基本由&lt;code&gt;Canvas.drawxxx()&lt;/code&gt;和Paint的配置组成&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1315,9 +1315,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-11-01T22:17:37.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/</id>
+        <id>https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/</id>
         <title>课程 - 编码与加密</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/"/>
         <content type="html">&lt;h2 id=&#34;加密&#34;&gt;加密&lt;a title=&#34;#加密&#34; href=&#34;#加密&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;加密(整容)是通过Intranet、Extranet和Internet进行安全的信息交换的基础&lt;/p&gt;
@@ -1437,9 +1437,9 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         <updated>2021-10-31T21:32:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/</id>
+        <id>https://onion99.github.io/2021/11/01/Qqq7oSBqBc2Zgbrx/</id>
         <title>课程 - 登陆与授权</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/Qqq7oSBqBc2Zgbrx/"/>
         <content type="html">&lt;h2 id=&#34;登录授权、tcp/ip、https和代理&#34;&gt;登录授权、TCP/IP、HTTPS和代理&lt;a title=&#34;#登录授权、tcp/ip、https和代理&#34; href=&#34;#登录授权、tcp/ip、https和代理&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;登录：身份认证，确认你是你的过程。&lt;br&gt;
 授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限&lt;/p&gt;
@@ -1532,9 +1532,9 @@ IP：Internet Protocol 网际协议, 用于计算机之间的通信&lt;/p&gt;
         <updated>2021-10-31T21:31:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/</id>
+        <id>https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/</id>
         <title>源码学习 - Glide</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/"/>
         <content type="html">&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Glide.with(fragment)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .load(myUrl)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .into(imageView);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/26/5oUW5R.png&#34; alt=&#34;5oUW5R.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;with()&#34;&gt;with()&lt;a title=&#34;#with()&#34; href=&#34;#with()&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -1680,9 +1680,9 @@ Engine负责执行图片加载和管理活动资源和缓存资源。&lt;/p&gt;
         <updated>2021-10-31T21:29:17.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/</id>
+        <id>https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/</id>
         <title>源码学习 - OkHttp</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;http的连接本质上是个socket，根据http协议，通过socket包装发送请求并获得返回结果&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1766,9 +1766,9 @@ Chain 的唯一实现为 RealInterceptorChain（下文简称 RIC），RIC 可以
         <updated>2021-10-31T21:28:18.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/5FIszA6Ut2OHE8Sg/</id>
+        <id>https://onion99.github.io/2021/11/01/5FIszA6Ut2OHE8Sg/</id>
         <title>安卓优化 - 布局优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/5FIszA6Ut2OHE8Sg/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/5FIszA6Ut2OHE8Sg/"/>
         <content type="html">&lt;h3 id=&#34;布局耗时统计&#34;&gt;布局耗时统计&lt;a title=&#34;#布局耗时统计&#34; href=&#34;#布局耗时统计&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;手动埋点&lt;/li&gt;
@@ -1841,9 +1841,9 @@ Chain 的唯一实现为 RealInterceptorChain（下文简称 RIC），RIC 可以
         <updated>2021-10-31T20:50:14.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/6JN9JxpnRSjVeWry/</id>
+        <id>https://onion99.github.io/2021/11/01/6JN9JxpnRSjVeWry/</id>
         <title>安卓优化 - 线程优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/6JN9JxpnRSjVeWry/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/6JN9JxpnRSjVeWry/"/>
         <content type="html">&lt;h3 id=&#34;线程调度&#34;&gt;线程调度&lt;a title=&#34;#线程调度&#34; href=&#34;#线程调度&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;任意时刻，只有一个线程占用CPU，处于运行状态&lt;/p&gt;
@@ -1910,9 +1910,9 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
         <updated>2021-10-31T20:48:51.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/9LsQhIFgDkllFt0Q/</id>
+        <id>https://onion99.github.io/2021/11/01/9LsQhIFgDkllFt0Q/</id>
         <title>安卓优化 - 包体积</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/9LsQhIFgDkllFt0Q/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/9LsQhIFgDkllFt0Q/"/>
         <content type="html">&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1425318&#34; target=&#34;_blank&#34;&gt;Android APP 终极瘦身指南&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;图片转WebP&lt;/li&gt;
@@ -1929,9 +1929,9 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
         <updated>2021-10-31T20:48:08.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/UYa5EEntsM9sKTYz/</id>
+        <id>https://onion99.github.io/2021/11/01/UYa5EEntsM9sKTYz/</id>
         <title>安卓优化 - 卡顿优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/UYa5EEntsM9sKTYz/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/UYa5EEntsM9sKTYz/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;卡顿产生的根本原因就是CPU和GPU没有及时处理好数据，针对卡顿的优化就有思路了：尽可能减少 CPU 和 GPU 资源的消耗&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1985,9 +1985,9 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
         <updated>2021-10-31T20:47:12.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/T8ghe13OAeLx6NBP/</id>
+        <id>https://onion99.github.io/2021/11/01/T8ghe13OAeLx6NBP/</id>
         <title>安卓优化 - 内存优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/T8ghe13OAeLx6NBP/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/T8ghe13OAeLx6NBP/"/>
         <content type="html">&lt;h3 id=&#34;内存信息查看&#34;&gt;内存信息查看&lt;a title=&#34;#内存信息查看&#34; href=&#34;#内存信息查看&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/28b9cd87e667&#34; target=&#34;_blank&#34;&gt;App内存优化实践：一步一步做内存分析与优化&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;查看每个App进程可以分配到的最大内存&lt;/p&gt;
@@ -2035,9 +2035,9 @@ JVM负责线程调度：按照特定调度模型分配CPU使用权&lt;/p&gt;
         <updated>2021-10-31T20:46:21.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/4LlbPfdOOCp58LMK/</id>
+        <id>https://onion99.github.io/2021/11/01/4LlbPfdOOCp58LMK/</id>
         <title>安卓优化 - 启动优化</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/4LlbPfdOOCp58LMK/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/4LlbPfdOOCp58LMK/"/>
         <content type="html">&lt;h3 id=&#34;启动流程&#34;&gt;启动流程&lt;a title=&#34;#启动流程&#34; href=&#34;#启动流程&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;相关&#34;&gt;相关&lt;a title=&#34;#相关&#34; href=&#34;#相关&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;blockquote&gt;

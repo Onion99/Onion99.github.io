@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://onion66.gitee.io/blog</id>
+    <id>https://onion99.github.io</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;java&#34; category</title>
-    <link href="http://onion66.gitee.io/blog" />
+    <link href="https://onion99.github.io" />
     <updated>2021-11-29T23:28:47.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
@@ -12,9 +12,9 @@
     <category term="理论学习" />
     <category term="黑科技" />
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</id>
+        <id>https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</id>
         <title>源码学习 - HashMap</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Map是什么,可以是一个键到值的Object,可以是一个键值对的集合, 是函数抽象的数学模型&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -42,9 +42,9 @@
         <updated>2021-11-29T23:28:47.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/MpHTUCP7P1OgtydO/</id>
+        <id>https://onion99.github.io/2021/11/08/MpHTUCP7P1OgtydO/</id>
         <title>Java并发(7) - ThreadLocal</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/MpHTUCP7P1OgtydO/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/MpHTUCP7P1OgtydO/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;ThreadLocal 是一个关于创建线程局部变量的类。通常情况下，我们创建的变量是可以被任何一个线程访问并修改的。而使用 ThreadLocal 建的变量只能被当前线程访问，其他线程则无法访问和修改&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -82,9 +82,9 @@
         <updated>2021-11-07T19:06:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/oizxmTtLdVsaXZrZ/</id>
+        <id>https://onion99.github.io/2021/11/08/oizxmTtLdVsaXZrZ/</id>
         <title>Java并发(6) - 线程池</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/oizxmTtLdVsaXZrZ/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/oizxmTtLdVsaXZrZ/"/>
         <content type="html">&lt;p&gt;线程池对比new Thread()&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;重用存在的线程，减少线程创建、消亡的开销，性能佳。&lt;/li&gt;
@@ -249,9 +249,9 @@
         <updated>2021-11-07T19:05:17.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/WkWqwHwU8wgNL4cd/</id>
+        <id>https://onion99.github.io/2021/11/08/WkWqwHwU8wgNL4cd/</id>
         <title>Java并发(5) - 线程协作</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/WkWqwHwU8wgNL4cd/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/WkWqwHwU8wgNL4cd/"/>
         <content type="html">&lt;h3 id=&#34;线程状态&#34;&gt;线程状态&lt;a title=&#34;#线程状态&#34; href=&#34;#线程状态&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/11/05/InuMpd.png&#34; alt=&#34;InuMpd.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
@@ -284,9 +284,9 @@
         <updated>2021-11-07T19:04:05.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/HcJi8WdXZ8E3DBWS/</id>
+        <id>https://onion99.github.io/2021/11/08/HcJi8WdXZ8E3DBWS/</id>
         <title>Java并发(3) - Lock</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/HcJi8WdXZ8E3DBWS/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/HcJi8WdXZ8E3DBWS/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;锁是用于通过多个线程控制对共享资源的访问的工具&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -458,9 +458,9 @@
         <updated>2021-11-07T18:59:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/08/FEETAEwJ336KYqim/</id>
+        <id>https://onion99.github.io/2021/11/08/FEETAEwJ336KYqim/</id>
         <title>Java并发(2) - synchronize</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/08/FEETAEwJ336KYqim/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/08/FEETAEwJ336KYqim/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;在 Java 中，关键字 synchronized 可以保证在同一个时刻，只有一个线程可以执行某个方法或者某个代码块,也可以保证一个线程的变化(主要是共享数据的变化)被其他线程所看到&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -541,9 +541,9 @@
         <updated>2021-11-07T18:55:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/07/VqykJCDZZcenZo3O/</id>
+        <id>https://onion99.github.io/2021/11/07/VqykJCDZZcenZo3O/</id>
         <title>Java并发(1) - volatile</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/07/VqykJCDZZcenZo3O/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/07/VqykJCDZZcenZo3O/"/>
         <content type="html">&lt;h3 id=&#34;java内存模型&#34;&gt;JAVA内存模型&lt;a title=&#34;#java内存模型&#34; href=&#34;#java内存模型&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/11/04/IZ6xs0.png&#34; alt=&#34;IZ6xs0.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Java 内存模型规定了所有的变量都存储在主内存中。每条线程有自己的工作内存，线程的工作内存保存了被该线程所使用到的变量（从主内存中拷贝而来）。线程对变量的所有操作（读取，赋值）都必须在工作内存中进行。不同线程之间也无法直接访问对方工作内存中的变量，线程间变量值的传递均需要通过主内存来完成&lt;/p&gt;
@@ -610,9 +610,9 @@
         <updated>2021-11-07T15:50:26.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/</id>
+        <id>https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/</id>
         <title>Java 理论 - JVM</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/nOSSxZ51uxl6hUq8/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/nOSSxZ51uxl6hUq8/"/>
         <content type="html">&lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;a title=&#34;#jvm&#34; href=&#34;#jvm&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;即Java虚拟机,是java程序与OS之间的处理中介,屏蔽了与OS平台相关的具体信息.从而实现跨平台&lt;/p&gt;

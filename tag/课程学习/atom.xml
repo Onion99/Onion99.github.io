@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://onion66.gitee.io/blog</id>
+    <id>https://onion99.github.io</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;课程学习&#34; tag</title>
-    <link href="http://onion66.gitee.io/blog" />
+    <link href="https://onion99.github.io" />
     <updated>2021-10-31T21:32:00.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
@@ -12,9 +12,9 @@
     <category term="理论学习" />
     <category term="黑科技" />
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/</id>
+        <id>https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/</id>
         <title>课程 - 编码与加密</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/MgnT9VQ3PhWZOJAq/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/"/>
         <content type="html">&lt;h2 id=&#34;加密&#34;&gt;加密&lt;a title=&#34;#加密&#34; href=&#34;#加密&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;加密(整容)是通过Intranet、Extranet和Internet进行安全的信息交换的基础&lt;/p&gt;
@@ -134,9 +134,9 @@
         <updated>2021-10-31T21:32:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/</id>
+        <id>https://onion99.github.io/2021/11/01/Qqq7oSBqBc2Zgbrx/</id>
         <title>课程 - 登陆与授权</title>
-        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/Qqq7oSBqBc2Zgbrx/"/>
+        <link rel="alternate" href="https://onion99.github.io/2021/11/01/Qqq7oSBqBc2Zgbrx/"/>
         <content type="html">&lt;h2 id=&#34;登录授权、tcp/ip、https和代理&#34;&gt;登录授权、TCP/IP、HTTPS和代理&lt;a title=&#34;#登录授权、tcp/ip、https和代理&#34; href=&#34;#登录授权、tcp/ip、https和代理&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;登录：身份认证，确认你是你的过程。&lt;br&gt;
 授权：由身份或持有的令牌确认享有某些权限（例如获取用户信息）。登录过程实质上的目的也是为了确认权限&lt;/p&gt;
