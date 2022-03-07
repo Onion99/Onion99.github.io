@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Stay hungry , Stay foolish • Posts by &#34;源码解析&#34; tag</title>
-        <link>https://onion99.github.io</link>
+        <link>http://onion66.gitee.io/blog</link>
         <description>巴拉巴拉</description>
         <language>zh-Hans</language>
         <pubDate>Thu, 03 Mar 2022 01:47:39 +0800</pubDate>
@@ -10,13 +10,13 @@
         <category>源码解析</category>
         <category>性能优化</category>
         <category>并发</category>
-        <category>图形绘制</category>
         <category>课程学习</category>
+        <category>图形绘制</category>
         <category>理论学习</category>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/</guid>
             <title>源码学习-LiveData</title>
-            <link>https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</link>
+            <link>http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/</link>
             <category>源码解析</category>
             <pubDate>Thu, 03 Mar 2022 01:47:39 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -94,9 +94,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/</guid>
             <title>源码学习-Lifecycle</title>
-            <link>https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/</link>
+            <link>http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/</link>
             <category>源码解析</category>
             <pubDate>Wed, 02 Mar 2022 01:33:23 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -146,9 +146,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/</guid>
             <title>源码学习-ViewModel</title>
-            <link>https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/</link>
+            <link>http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/</link>
             <category>源码解析</category>
             <pubDate>Tue, 30 Nov 2021 07:30:53 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -228,9 +228,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</guid>
             <title>源码学习-HashMap</title>
-            <link>https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</link>
+            <link>http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</link>
             <category>源码解析</category>
             <pubDate>Tue, 30 Nov 2021 07:28:47 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
@@ -258,9 +258,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/</guid>
             <title>源码学习-DataBinding</title>
-            <link>https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/</link>
+            <link>http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/</link>
             <category>源码解析</category>
             <pubDate>Tue, 30 Nov 2021 07:27:07 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;sameple&#34;&gt;Sameple&lt;a title=&#34;#sameple&#34; href=&#34;#sameple&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -296,9 +296,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/</guid>
             <title>源码学习-Glide</title>
-            <link>https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/</link>
+            <link>http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/</link>
             <category>源码解析</category>
             <pubDate>Mon, 01 Nov 2021 05:29:17 +0800</pubDate>
             <description><![CDATA[ &lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Glide.with(fragment)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .load(myUrl)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .into(imageView);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -444,9 +444,9 @@ Engine负责执行图片加载和管理活动资源和缓存资源。&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/</guid>
+            <guid isPermalink="true">http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/</guid>
             <title>源码学习-OkHttp</title>
-            <link>https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/</link>
+            <link>http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/</link>
             <category>源码解析</category>
             <pubDate>Mon, 01 Nov 2021 05:28:18 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://onion99.github.io</id>
+    <id>http://onion66.gitee.io/blog</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;源码解析&#34; tag</title>
-    <link href="https://onion99.github.io" />
+    <link href="http://onion66.gitee.io/blog" />
     <updated>2022-03-02T17:47:39.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="图形绘制" />
     <category term="课程学习" />
+    <category term="图形绘制" />
     <category term="理论学习" />
     <entry>
-        <id>https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</id>
+        <id>http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/</id>
         <title>源码学习-LiveData</title>
-        <link rel="alternate" href="https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/03/p2ie22dC9NcVwpEH/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.android.google.cn/reference/androidx/lifecycle/LiveData&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LiveData&lt;/code&gt;&lt;/a&gt; 是一种可观察的数据存储器类。与常规的可观察类不同，LiveData 具有生命周期感知能力，意指它遵循其他应用组件（如 Activity、Fragment 或 Service）的生命周期。这种感知能力可确保 LiveData 仅更新处于活跃生命周期状态的应用组件观察者&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -91,9 +91,9 @@
         <updated>2022-03-02T17:47:39.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/</id>
+        <id>http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/</id>
         <title>源码学习-Lifecycle</title>
-        <link rel="alternate" href="https://onion99.github.io/2022/03/02/uVaapTCHAYrYDaHP/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2022/03/02/uVaapTCHAYrYDaHP/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Jetpack Lifecycle 提供了可用于构建生命周期感知型组件的类和接口,从而根据 Activity 或 Fragment 的当前生命周期状态自动调整其行为,记住我们要解析的是Jet Pack Lifecycle ,而不是 原有Activity/Fragment的生命周期流程&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -143,9 +143,9 @@
         <updated>2022-03-01T17:33:23.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/</id>
         <title>源码学习-ViewModel</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/30/9S5c1rplpdSAbIxR/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/9S5c1rplpdSAbIxR/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;ViewModel 类旨在以注重生命周期的方式存储和管理界面相关的数据。ViewModel 类让数据可在发生屏幕旋转等配置更改后继续留存,将视图和数据进行了分离解耦，为视图层提供数据&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -225,9 +225,9 @@
         <updated>2021-11-29T23:30:53.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/</id>
         <title>源码学习-HashMap</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/30/4diQitvVwGPnicN5/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/4diQitvVwGPnicN5/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Map是什么,可以是一个键到值的Object,可以是一个键值对的集合, 是函数抽象的数学模型&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -255,9 +255,9 @@
         <updated>2021-11-29T23:28:47.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/</id>
         <title>源码学习-DataBinding</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/30/hu0861X6Ltf32fYt/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/30/hu0861X6Ltf32fYt/"/>
         <content type="html">&lt;h3 id=&#34;sameple&#34;&gt;Sameple&lt;a title=&#34;#sameple&#34; href=&#34;#sameple&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;首先,我们来看看DataBinding使用:&lt;/p&gt;
 &lt;ol&gt;
@@ -293,9 +293,9 @@
         <updated>2021-11-29T23:27:07.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/</id>
         <title>源码学习-Glide</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/01/15jfHwStpctgCeeA/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/15jfHwStpctgCeeA/"/>
         <content type="html">&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Glide.with(fragment)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .load(myUrl)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    .into(imageView);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/26/5oUW5R.png&#34; alt=&#34;5oUW5R.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;with()&#34;&gt;with()&lt;a title=&#34;#with()&#34; href=&#34;#with()&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -441,9 +441,9 @@ Engine负责执行图片加载和管理活动资源和缓存资源。&lt;/p&gt;
         <updated>2021-10-31T21:29:17.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/</id>
         <title>源码学习-OkHttp</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/01/4SVquTFcR8Wyv4GV/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/01/4SVquTFcR8Wyv4GV/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;http的连接本质上是个socket，根据http协议，通过socket包装发送请求并获得返回结果&lt;/p&gt;
 &lt;/blockquote&gt;

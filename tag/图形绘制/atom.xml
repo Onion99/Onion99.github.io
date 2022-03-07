@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://onion99.github.io</id>
+    <id>http://onion66.gitee.io/blog</id>
     <title>Stay hungry , Stay foolish • Posts by &#34;图形绘制&#34; tag</title>
-    <link href="https://onion99.github.io" />
+    <link href="http://onion66.gitee.io/blog" />
     <updated>2021-11-03T22:09:36.000Z</updated>
     <category term="源码解析" />
     <category term="性能优化" />
     <category term="并发" />
-    <category term="图形绘制" />
     <category term="课程学习" />
+    <category term="图形绘制" />
     <category term="理论学习" />
     <entry>
-        <id>https://onion99.github.io/2021/11/04/cNDSpE5p4avS2tOi/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/cNDSpE5p4avS2tOi/</id>
         <title>自定义View(11) - 滚动速度和滚动计算</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/cNDSpE5p4avS2tOi/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/cNDSpE5p4avS2tOi/"/>
         <content type="html">&lt;h3 id=&#34;velocitytracker&#34;&gt;VelocityTracker&lt;a title=&#34;#velocitytracker&#34; href=&#34;#velocitytracker&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;跟踪手指在滑动过程中的速度，包括水平和竖直方向的速度&lt;/p&gt;
@@ -62,9 +62,9 @@
         <updated>2021-11-03T22:09:36.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/dY7a31QepeVitGkX/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/dY7a31QepeVitGkX/</id>
         <title>自定义View(10) - GestureDetector</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/dY7a31QepeVitGkX/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/dY7a31QepeVitGkX/"/>
         <content type="html">&lt;h3 id=&#34;gesturedetector&#34;&gt;GestureDetector&lt;a title=&#34;#gesturedetector&#34; href=&#34;#gesturedetector&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;div class=&#34;φbq&#34;&gt;&lt;div class=&#34;φbs&#34;&gt;&lt;table&gt;&lt;thead&gt;
 &lt;tr&gt;
@@ -103,9 +103,9 @@
         <updated>2021-11-03T22:08:39.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/z3aQsRLVolBbFVsl/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/z3aQsRLVolBbFVsl/</id>
         <title>自定义View(9) - 事件分发</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/z3aQsRLVolBbFVsl/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/z3aQsRLVolBbFVsl/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;事件分发的过程其实也就是事件传递过程。事件传递的顺序由Acticity传递到根View，这个根View 通常是一个ViewGroup(ViewGroup本身也是View的子类)，然后再传递给ViewGroup下的子View, 若事件在自上而下的传递过程中一直没有被消费，则事件会反向向上传递，此时父ViewGroup可以对事件进行消费，若仍然没有被消费的话，最后会回到Activity的onTouchEvent&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -176,9 +176,9 @@
         <updated>2021-11-03T22:07:31.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/p4CRfuQemJ4TOlAs/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/p4CRfuQemJ4TOlAs/</id>
         <title>自定义View(8) - draw 绘制过程</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/p4CRfuQemJ4TOlAs/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/p4CRfuQemJ4TOlAs/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Android 里面的绘制都是按顺序的，先绘制的内容会被后绘制的盖住&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -251,9 +251,9 @@
         <updated>2021-11-03T22:03:38.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/ZyOr4iLxJj7nAQxR/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/ZyOr4iLxJj7nAQxR/</id>
         <title>自定义View(7) - layout 布局过程</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/ZyOr4iLxJj7nAQxR/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/ZyOr4iLxJj7nAQxR/"/>
         <content type="html">&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/12/06/QJQEcR.jpg&#34; alt=&#34;viewasds&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;layout-类型&#34;&gt;layout 类型&lt;a title=&#34;#layout-类型&#34; href=&#34;#layout-类型&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -287,9 +287,9 @@
         <updated>2021-11-03T22:02:46.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/Qj9f1VMJJowv5Lfb/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/Qj9f1VMJJowv5Lfb/</id>
         <title>自定义View(6) - measure 测量过程</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/Qj9f1VMJJowv5Lfb/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/Qj9f1VMJJowv5Lfb/"/>
         <content type="html">&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/12/06/QJQEcR.jpg&#34; alt=&#34;QJQEcR.jpg&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h3 id=&#34;measurespec&#34;&gt;MeasureSpec&lt;a title=&#34;#measurespec&#34; href=&#34;#measurespec&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -387,9 +387,9 @@
         <updated>2021-11-03T22:00:58.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/SA664RldODNgeCrz/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/SA664RldODNgeCrz/</id>
         <title>自定义View(5) - 动画</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/SA664RldODNgeCrz/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/SA664RldODNgeCrz/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;三者性能是一样的，因为 ViewPropertyAnimator 和 ObjectAnimator 的内部实现其实都是 ValueAnimator，ObjectAnimator 更是本来就是 ValueAnimator 的子类，差别只是使用的便捷性以及功能的灵活性。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -412,9 +412,9 @@
         <updated>2021-11-03T21:59:44.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/ZOnr24kULe7cQgsc/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/ZOnr24kULe7cQgsc/</id>
         <title>自定义View(4) - Canvas相关</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/ZOnr24kULe7cQgsc/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/ZOnr24kULe7cQgsc/"/>
         <content type="html">&lt;h3 id=&#34;范围裁切&#34;&gt;范围裁切&lt;a title=&#34;#范围裁切&#34; href=&#34;#范围裁切&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;cliprect&#34;&gt;clipRect&lt;a title=&#34;#cliprect&#34; href=&#34;#cliprect&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/11/02/IFKTER.png&#34; alt=&#34;IFKTER.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
@@ -472,9 +472,9 @@
         <updated>2021-11-03T21:58:53.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/04/VjI1fQxy8MSFqUqm/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/04/VjI1fQxy8MSFqUqm/</id>
         <title>自定义View(3) - Text相关</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/04/VjI1fQxy8MSFqUqm/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/04/VjI1fQxy8MSFqUqm/"/>
         <content type="html">&lt;h3 id=&#34;文字绘制(canvas)&#34;&gt;文字绘制(Canvas)&lt;a title=&#34;#文字绘制(canvas)&#34; href=&#34;#文字绘制(canvas)&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;绘制方式&#34;&gt;绘制方式&lt;a title=&#34;#绘制方式&#34; href=&#34;#绘制方式&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;h5 id=&#34;drawtext&#34;&gt;drawText&lt;a title=&#34;#drawtext&#34; href=&#34;#drawtext&#34;&gt;&lt;/a&gt;&lt;/h5&gt;
@@ -554,9 +554,9 @@
         <updated>2021-11-03T21:57:48.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/02/weRgrdLnBqIUWkcH/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/02/weRgrdLnBqIUWkcH/</id>
         <title>自定义View(2) - Paint相关</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/02/weRgrdLnBqIUWkcH/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/02/weRgrdLnBqIUWkcH/"/>
         <content type="html">&lt;h3 id=&#34;color&#34;&gt;Color&lt;a title=&#34;#color&#34; href=&#34;#color&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;基本颜色&#34;&gt;基本颜色&lt;a title=&#34;#基本颜色&#34; href=&#34;#基本颜色&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;setColor(int color):&lt;/p&gt;
@@ -703,9 +703,9 @@
         <updated>2021-11-01T22:19:10.000Z</updated>
     </entry>
     <entry>
-        <id>https://onion99.github.io/2021/11/02/K0uh0dFU4QBtZ8Wm/</id>
+        <id>http://onion66.gitee.io/blog/2021/11/02/K0uh0dFU4QBtZ8Wm/</id>
         <title>自定义View(1) - 基本绘制</title>
-        <link rel="alternate" href="https://onion99.github.io/2021/11/02/K0uh0dFU4QBtZ8Wm/"/>
+        <link rel="alternate" href="http://onion66.gitee.io/blog/2021/11/02/K0uh0dFU4QBtZ8Wm/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;简单的绘制基本由&lt;code&gt;Canvas.drawxxx()&lt;/code&gt;和Paint的配置组成&lt;/p&gt;
 &lt;/blockquote&gt;
