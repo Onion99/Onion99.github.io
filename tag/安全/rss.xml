@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Stay hungry , Stay foolish • Posts by &#34;安全&#34; tag</title>
+        <link>https://onion99.github.io</link>
+        <description>巴拉巴拉</description>
+        <language>zh-Hans</language>
+        <pubDate>Mon, 01 Nov 2021 05:32:00 +0800</pubDate>
+        <lastBuildDate>Mon, 01 Nov 2021 05:32:00 +0800</lastBuildDate>
+        <category>源码解析</category>
+        <category>AOP</category>
+        <category>性能优化</category>
+        <category>并发</category>
+        <category>图形绘制</category>
+        <category>计算机基础</category>
+        <category>安全</category>
+        <category>网络</category>
+        <category>理论学习</category>
+        <category>黑科技</category>
+        <item>
+            <guid isPermalink="true">https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/</guid>
+            <title>CS理论 - 编码与加密</title>
+            <link>https://onion99.github.io/2021/11/01/MgnT9VQ3PhWZOJAq/</link>
+            <category>计算机基础</category>
+            <category>安全</category>
+            <pubDate>Mon, 01 Nov 2021 05:32:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;加密&#34;&gt;加密&lt;a title=&#34;#加密&#34; href=&#34;#加密&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;加密(整容)是通过Intranet、Extranet和Internet进行安全的信息交换的基础&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;常用加密&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对称加密算法&lt;/li&gt;
+&lt;li&gt;非对称加密算法&lt;/li&gt;
+&lt;li&gt;哈希算法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h3 id=&#34;对称加密&#34;&gt;对称加密&lt;a title=&#34;#对称加密&#34; href=&#34;#对称加密&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使⽤用密钥和加密算法对数据进行转换，得到的无意义数据即为密⽂; 使用密钥和解密算法对密⽂进行逆向转换，得到原数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5bxS8f.png&#34; alt=&#34;5bxS8f.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;算法：DES、AES&lt;/p&gt;
+&lt;h3 id=&#34;非对称加密&#34;&gt;非对称加密&lt;a title=&#34;#非对称加密&#34; href=&#34;#非对称加密&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使⽤公钥对数据进行加密得到密文;使⽤用私钥对数据进⾏解密得到原数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5bxDZd.png&#34; alt=&#34;5bxDZd.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;算法：RSA、DSA&lt;/p&gt;
+&lt;p&gt;完整的非对称加密过程:&lt;br&gt;
+&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5qdbl9.png&#34; alt=&#34;5qdbl9.png&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+对数据进行签名时，实际上，是对数据的hash值（摘要）进行签名（加密），解密时，是对原数据进行hash，得到摘要，再将加密过的摘要进行解密，将得到的两者对比，如果一致就验证通过&lt;/p&gt;
+&lt;h4 id=&#34;公钥与私钥&#34;&gt;公钥与私钥&lt;a title=&#34;#公钥与私钥&#34; href=&#34;#公钥与私钥&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;加密密钥就是公钥，解密密钥就是私钥&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;将原数据通过我的私钥，也就是签名，进行加密，得到签名数据，别人拿我的公钥对我的签名数据进行解密（也就是验证的过程），得到的就是我要发送的原数据。签名数据只有我能造出来，因为只有我拥有我的私钥，这就证明了这个数据是我写出来的。也就是所谓的签名的作用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5bzD6U.png&#34; alt=&#34;5bzD6U.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;签名和验证&#34;&gt;签名和验证&lt;a title=&#34;#签名和验证&#34; href=&#34;#签名和验证&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;签名和验证是拿私钥加密（签名），公钥解密（验证）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5qSkhq.png&#34; alt=&#34;5qSkhq.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;编码&#34;&gt;编码&lt;a title=&#34;#编码&#34; href=&#34;#编码&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;编码(化妆)是信息从一种形式或格式转换为另一种形式的过程。解码，是编码的逆过程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;常用编码&#34;&gt;常用编码&lt;a title=&#34;#常用编码&#34; href=&#34;#常用编码&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Base64， 16进制，Base32
+&lt;ul&gt;
+&lt;li&gt;将原来的信息用另外一种编码机制替换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;多语种的编码 UTF-8, UTF-16,UTF-32, Unicode, ISO8859-1, GBK, GB2312
+&lt;ul&gt;
+&lt;li&gt;主要是对各种语言的编码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BER/DER编码&lt;/li&gt;
+&lt;li&gt;HTML编码，JS编码，URL编码
+&lt;ul&gt;
+&lt;li&gt;针对脚本语言或者标签语言中的字符串中的特殊字符进行处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;base64&#34;&gt;Base64&lt;a title=&#34;#base64&#34; href=&#34;#base64&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将二进制数据转换成由64个字符组成的字符串的编码算法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5qt0Cd.png&#34; alt=&#34;5qt0Cd.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;编码示例:&lt;br&gt;
+&lt;img src=&#34;https://z3.ax1x.com/2021/10/28/5qNYzn.png&#34; alt=&#34;5qNYzn.png&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;作用: 让原数据具有字符串所具有的特性，可以放在URL中传输，可以保存到文本文件，可以通过普通的聊天软件进行文本传输&lt;/p&gt;
+&lt;p&gt;Base64加密图片会更加安全和高效吗？&lt;br&gt;
+不会，Base64是公开的算法，加密和解密都是公开的，任何人都可以解密，因此并不会更安全。通过Base64加密的文件或数据，都会增大约1/3，降低网络性能，增大用户流量，因此也不存在更高效的问题&lt;/p&gt;
+&lt;h3 id=&#34;应用领域&#34;&gt;应用领域&lt;a title=&#34;#应用领域&#34; href=&#34;#应用领域&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;压缩与解压缩&#34;&gt;压缩与解压缩&lt;a title=&#34;#压缩与解压缩&#34; href=&#34;#压缩与解压缩&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;压缩属于编码过程，解压缩属于解码过程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;压缩：把数据换一种方式来存储，以减少存储空间。&lt;br&gt;
+解压缩：把压缩后的数据还原成原先的形式，以便使用。&lt;br&gt;
+常⻅见压缩算法:DEFLATE（zip）、JPEG、MP3&lt;/p&gt;
+&lt;h4 id=&#34;媒体数据的编解码&#34;&gt;媒体数据的编解码&lt;a title=&#34;#媒体数据的编解码&#34; href=&#34;#媒体数据的编解码&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;图片的编码：把图像数据写成 JPG、PNG 等⽂件的编码格式。&lt;br&gt;
+图⽚的解码：把 JPG、PNG 等⽂文件中的数据解析成标准的图像数据。&lt;/p&gt;
+&lt;h4 id=&#34;序列化与反序列化&#34;&gt;序列化与反序列化&lt;a title=&#34;#序列化与反序列化&#34; href=&#34;#序列化与反序列化&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;序列化: 把数据对象，一般是内存中的，如JVM中的对象，转换成字节序列的过程。&lt;br&gt;
+反序列化: 把字节序列重新转换成内存中的对象&lt;/p&gt;
+&lt;h4 id=&#34;hash&#34;&gt;Hash&lt;a title=&#34;#hash&#34; href=&#34;#hash&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把任意数据转换成指定大小范围（通常很小）的数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;经典算法：MD5、SHA1、SHA256等&lt;/p&gt;
+&lt;p&gt;实际用途:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据完整性验证
+&lt;ul&gt;
+&lt;li&gt;从⽹络上下载文件后，通过比对文件的 Hash 值(例如 MD5、SHA1)，可以确认下载的文件是否有损坏。如果下载的文件 Hash 值和文件提供方给出的 Hash 值一致，则证明下载的文件是完好无损的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;唯一性验证
+&lt;ul&gt;
+&lt;li&gt;HashCode是一个数据的指纹信息，也就是从这个数据身上采取了足够多的特征来证明“你是你”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;快速查找: HashCode和HashMap
+&lt;ul&gt;
+&lt;li&gt;HashCode是数据的内存地址&lt;/li&gt;
+&lt;li&gt;HashMap：Key的HashCode是Value的地址，通过Key的HashCode可以找到Value&lt;/li&gt;
+&lt;li&gt;在重写equals()时，也必须重写hashCode(),因为如果不重写hashCode()，当使用equals()比较时，hashCode()是Object中的hashCode()，很可能出现用equals()判断相等而用hashCode()判断不相等的情况,甚至也有可能是相反的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;隐私保护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hash 是编码吗?&lt;br&gt;
+不是。 Hash 是单向过程，往往是不可逆的，无法进行逆向恢复操作，因此 Hash 不属于编码。&lt;/p&gt;
+&lt;p&gt;Hash 是加密吗?&lt;br&gt;
+不是。Hash 是单向过程，无法进行逆向回复操作，因此 Hash 不属于加密。(记住MD5 不是加密!MD5不可逆)&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
