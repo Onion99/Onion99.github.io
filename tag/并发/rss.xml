@@ -292,6 +292,24 @@
 &lt;li&gt;只能保证一个共享变量的原子操作&lt;/li&gt;
 &lt;li&gt;ABA问题&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;例子&#34;&gt;例子&lt;a title=&#34;#例子&#34; href=&#34;#例子&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;1.在内存地址V当中，存储着值为10的变量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9xFtf.png&#34; alt=&#34;q9xFtf.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2.此时线程1想要把变量的值增加1。对线程1来说，旧的预期值A=10，要修改的新值B=11。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9x90I.png&#34; alt=&#34;q9x90I.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;3.在线程1要提交更新之前，另一个线程2抢先一步，把内存地址V中的变量值率先更新成了11。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9vv1e.png&#34; alt=&#34;q9vv1e.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;4.线程1开始提交更新，首先进行A和地址V的实际值比较（Compare），发现A不等于V的实际值，提交失败。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9v56J.png&#34; alt=&#34;q9v56J.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;5.线程1重新获取内存地址V的当前值，并重新计算想要修改的新值。此时对线程1来说，A=11，B=12。这个重新尝试的过程被称为自旋。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9v8OA.png&#34; alt=&#34;q9v8OA.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;6.这一次比较幸运，没有其他线程改变地址V的值。线程1进行Compare，发现A和地址V的实际值是相等的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9vmo6.png&#34; alt=&#34;q9vmo6.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;7.线程1进行SWAP，把地址V的值替换为B，也就是12。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s1.ax1x.com/2022/03/17/q9j9vd.png&#34; alt=&#34;q9j9vd.png&#34; loading=&#34;lazy&#34; class=&#34;φbp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从思想上来说，Synchronized属于悲观锁，悲观地认为程序中的并发情况严重，所以严防死守。CAS属于乐观锁，乐观地认为程序中的并发情况不那么严重，所以让线程不断去尝试更新，最终可以理解成一个无阻塞多线程争抢资源的模型&lt;/p&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;a title=&#34;#参考&#34; href=&#34;#参考&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/ae25eb3cfb5d&#34; target=&#34;_blank&#34;&gt;Java：CAS(乐观锁) &lt;/a&gt;&lt;/p&gt;
  ]]></description>
         </item>
         <item>
