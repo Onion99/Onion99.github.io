@@ -4,9 +4,9 @@
     <title>Stay hungry , Stay foolish • Posts by &#34;android&#34; category</title>
     <link href="https://onion99.github.io" />
     <updated>2022-03-13T09:49:49.000Z</updated>
+    <category term="源码解析" />
     <category term="AOP" />
     <category term="性能优化" />
-    <category term="源码解析" />
     <category term="并发" />
     <category term="图形绘制" />
     <category term="课程学习" />
@@ -823,7 +823,7 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
     </entry>
     <entry>
         <id>https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</id>
-        <title>源码学习 - LiveData</title>
+        <title>源码学习-LiveData</title>
         <link rel="alternate" href="https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/"/>
         <content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.android.google.cn/reference/androidx/lifecycle/LiveData&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LiveData&lt;/code&gt;&lt;/a&gt; 是一种可观察的数据存储器类。与常规的可观察类不同，LiveData 具有生命周期感知能力，意指它遵循其他应用组件（如 Activity、Fragment 或 Service）的生命周期。这种感知能力可确保 LiveData 仅更新处于活跃生命周期状态的应用组件观察者&lt;/p&gt;

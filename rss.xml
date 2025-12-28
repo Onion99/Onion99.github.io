@@ -7,9 +7,9 @@
         <language>zh-Hans</language>
         <pubDate>Sun, 13 Mar 2022 17:49:49 +0800</pubDate>
         <lastBuildDate>Sun, 13 Mar 2022 17:49:49 +0800</lastBuildDate>
+        <category>源码解析</category>
         <category>AOP</category>
         <category>性能优化</category>
-        <category>源码解析</category>
         <category>并发</category>
         <category>图形绘制</category>
         <category>课程学习</category>
@@ -826,7 +826,7 @@ ART 预先编译机制，在安装时对 dex 文件执行dexopt优化之后再�
         </item>
         <item>
             <guid isPermalink="true">https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</guid>
-            <title>源码学习 - LiveData</title>
+            <title>源码学习-LiveData</title>
             <link>https://onion99.github.io/2022/03/03/p2ie22dC9NcVwpEH/</link>
             <category>源码解析</category>
             <pubDate>Thu, 03 Mar 2022 01:47:39 +0800</pubDate>
